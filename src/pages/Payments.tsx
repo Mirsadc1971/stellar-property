@@ -75,7 +75,7 @@ export default function Payments() {
                 
                 <div className="text-center p-6 border rounded-lg hover:shadow-md transition-shadow">
                   <div className="text-4xl mb-4">🏦</div>
-                  <h3 className="font-heading text-xl font-semibold mb-2">ACH/Bank Transfer</h3>
+                  <h3 className="font-heading text-xl font-semibold mb-2">Bill Pay</h3>
                   <p className="text-gray-600 mb-4">
                     Set up automatic recurring payments directly from your bank account.
                   </p>
@@ -84,7 +84,7 @@ export default function Payments() {
                     variant="outline" 
                     className="w-full border-darkBlue text-darkBlue hover:bg-darkBlue hover:text-white"
                   >
-                    Call to Setup ACH
+                    Call to Setup Bill Pay
                   </Button>
                 </div>
               </div>
