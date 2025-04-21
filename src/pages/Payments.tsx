@@ -80,7 +80,7 @@ export default function Payments() {
                     Set up Bill Pay through your bank's online banking platform.
                   </p>
                   <p className="text-sm text-gray-700 mb-4">
-                    Payable to: Your Association Name
+                    Payable to: Your Association
                     Mailing Address: 5107 North Western Avenue, Suite 1S, Chicago, IL 60625
                   </p>
                   <div className="text-sm text-gray-600 italic mb-4">
