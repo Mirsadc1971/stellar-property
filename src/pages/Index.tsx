@@ -17,6 +17,7 @@ const Index = () => {
       <ServicesSection />
       <FeaturedProperties />
       <Testimonials />
+      <Gpt4ChatBox />
       
       {/* Location Section */}
       <section className="py-16 bg-gray-100">
@@ -38,7 +39,6 @@ const Index = () => {
         </div>
       </section>
 
-      <Gpt4ChatBox />
       <CtaSection />
     </MainLayout>
   );
