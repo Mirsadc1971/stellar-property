@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
@@ -86,7 +87,7 @@ export default function Gpt4ChatBox({ showAdminControls = false }: { showAdminCo
               break;
             case "invalid_api_key":
               errorMessage = "Invalid API key. Please check and try again.";
-              setApiKey("");
+              clearApiKey();
               toast({
                 title: "Invalid API Key",
                 description: "Please enter a valid OpenAI API key.",
