@@ -6,8 +6,7 @@ import ServicesSection from "@/components/home/ServicesSection";
 import FeaturedProperties from "@/components/home/FeaturedProperties";
 import Testimonials from "@/components/home/Testimonials";
 import CtaSection from "@/components/home/CtaSection";
-import OpenAIChatbot from "@/components/home/OpenAIChatbot";
-import Gpt4ChatBox from "@/components/home/Gpt4ChatBox"; // new import
+import Gpt4ChatBox from "@/components/home/Gpt4ChatBox";
 
 const Index = () => {
   return (
@@ -18,7 +17,6 @@ const Index = () => {
       <FeaturedProperties />
       <Testimonials />
       <Gpt4ChatBox />
-      <OpenAIChatbot />
       <CtaSection />
     </MainLayout>
   );

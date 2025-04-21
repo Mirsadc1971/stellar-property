@@ -4,6 +4,23 @@ import { Button } from "@/components/ui/button";
 import { Send, LoaderCircle, KeyRound, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
+// Constants
+const OPENAI_MODEL = "gpt-4o";
+const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
+
+// Types
+interface ChatMessage {
+  role: "user" | "assistant";
+  content: string;
+}
+
+interface OpenAIError {
+  error: {
+    code: string;
+    message: string;
+  };
+}
+
 // Util to persist API key in localStorage for demo purposes
 function usePersistedApiKey() {
   const [apiKey, setApiKey] = useState<string>(() => {
@@ -143,6 +160,23 @@ export default function Gpt4ChatBox() {
       bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages, isLoading]);
+
+  const handleSaveApiKey = () => {
+    if (validateApiKey(apiKeyInput)) {
+      setApiKey(apiKeyInput);
+      setApiKeyInput("");
+      toast({
+        title: "API Key Saved",
+        description: "Your OpenAI API key has been saved successfully.",
+      });
+    } else {
+      toast({
+        title: "Invalid API Key",
+        description: "Please enter a valid OpenAI API key starting with 'sk-'.",
+        variant: "destructive",
+      });
+    }
+  };
 
   if (!apiKey) {
     return (
