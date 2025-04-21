@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -20,6 +20,23 @@ interface MapComponentProps {
 
 export default function MapComponent({ latitude, longitude, className = "" }: MapComponentProps) {
   const position: [number, number] = [latitude, longitude];
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    // This ensures the map only renders on the client side, not during SSR
+    setIsClient(true);
+  }, []);
+
+  // Don't render the map component during server-side rendering
+  if (!isClient) {
+    return (
+      <div className={`${className} flex items-center justify-center bg-gray-100`}>
+        <div className="text-center p-4">
+          <p className="text-gray-500">Loading map...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={className}>
