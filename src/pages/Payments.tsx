@@ -179,7 +179,7 @@ export default function Payments() {
             <div>
               <h3 className="font-heading text-xl font-semibold mb-2">Is there a fee for online payments?</h3>
               <p className="text-gray-600">
-                Free Bill Pay! We do not charge any additional fees for online payments. Simply use your bank's online banking to set up payments at no extra cost.
+                Credit card payments incur a processing fee of 3.5% per transaction. ACH/eCheck payments from your bank account are free.
               </p>
             </div>
             
