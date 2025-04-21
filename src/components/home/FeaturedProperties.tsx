@@ -32,30 +32,30 @@ export default function FeaturedProperties() {
     <section className="py-16 md:py-24">
       <div className="container mx-auto px-4">
         <SectionHeading 
-          title="Featured Properties" 
-          subtitle="Explore some of the commercial properties we manage across Chicago and its suburbs."
+          title="Featured Condominiums" 
+          subtitle="Explore some of the condominiums we manage across Chicago and its suburbs."
           center
         />
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           <PropertyCard 
-            image="https://images.unsplash.com/photo-1483058712412-4245e9b90334"
-            type="Office"
-            title="Modern Office Space"
+            image="https://images.unsplash.com/photo-1547319991-f55e4a91ce56"
+            type="Residential"
+            title="Lakefront Condos"
             location="North Side, Chicago"
           />
           
           <PropertyCard 
-            image="https://images.unsplash.com/photo-1496307653780-42ee777d4833"
-            type="Commercial"
-            title="Professional Business Center"
+            image="https://images.unsplash.com/photo-1502005229762-cf1b2da9c726"
+            type="Condominium"
+            title="Downtown High-Rise"
             location="Downtown Chicago"
           />
           
           <PropertyCard 
-            image="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e"
-            type="Corporate"
-            title="Corporate Business Hub"
+            image="https://images.unsplash.com/photo-1600566753190-17f0a9f1d9ec"
+            type="Residential"
+            title="Suburban Condo Complex"
             location="Chicago Suburbs"
           />
         </div>
@@ -63,3 +63,4 @@ export default function FeaturedProperties() {
     </section>
   );
 }
+
