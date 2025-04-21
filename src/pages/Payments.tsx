@@ -72,20 +72,31 @@ export default function Payments() {
                     </DialogContent>
                   </Dialog>
                 </div>
-                
-                <div className="text-center p-6 border rounded-lg hover:shadow-md transition-shadow">
-                  <div className="text-4xl mb-4">🏦</div>
-                  <h3 className="font-heading text-xl font-semibold mb-2">Bill Pay</h3>
-                  <p className="text-gray-600 mb-4">
-                    Set up Bill Pay through your bank's online banking platform.
-                  </p>
-                  <p className="text-sm text-gray-700 mb-4">
-                    Payable to: Your Association
-                    Mailing Address: 5107 North Western Avenue, Suite 1S, Chicago, IL 60625
-                  </p>
-                  <div className="text-sm text-gray-600 italic mb-4">
-                    <strong>Important:</strong> Include your property address and unit number with the payment.
-                  </div>
+              
+              <div className="text-center p-6 border rounded-lg hover:shadow-md transition-shadow">
+                <div className="text-4xl mb-4">🏦</div>
+                <h3 className="font-heading text-xl font-semibold mb-2">Bill Pay</h3>
+                <p className="text-gray-600 mb-4">
+                  Set up Bill Pay through your bank's online banking platform.
+                </p>
+                <div className="text-sm space-y-2">
+                  <p className="font-semibold">Instructions:</p>
+                  <ol className="text-left list-decimal list-inside space-y-1">
+                    <li>Log in to your bank's online banking</li>
+                    <li>Navigate to Bill Pay or Payments section</li>
+                    <li>Add new payee with these details:
+                      <div className="ml-6 mt-1">
+                        <p><strong>Payable to:</strong> Your Association</p>
+                        <p><strong>Mailing Address:</strong><br />
+                        5107 North Western Avenue, Suite 1S<br />
+                        Chicago, IL 60625</p>
+                      </div>
+                    </li>
+                    <li>Set up your payment schedule</li>
+                  </ol>
+                </div>
+                <div className="text-sm text-gray-600 italic mt-4">
+                  <strong>Important:</strong> Include your property address and unit number with the payment.
                 </div>
               </div>
             </div>
@@ -124,15 +135,23 @@ export default function Payments() {
               </div>
               
               <div>
-                <h3 className="font-heading text-xl font-semibold mb-3">ACH/Automatic Payments</h3>
+                <h3 className="font-heading text-xl font-semibold mb-3">Setting Up Bill Pay</h3>
                 <p className="text-gray-700 mb-4">
-                  Set up convenient recurring payments that are automatically withdrawn from your bank account each month.
-                  This ensures your payments are always on time and helps you avoid late fees.
+                  Bill Pay is a convenient way to manage your payments through your own bank's online banking platform.
+                  Follow these steps to set up recurring or one-time payments:
                 </p>
-                <p className="text-gray-700">
-                  To set up automatic payments, please contact our office at 773.728.0652 or email us at service@manage369.com.
-                  We'll provide you with the necessary forms and instructions.
-                </p>
+                <ol className="list-decimal list-inside space-y-2 text-gray-700">
+                  <li>Access your bank's online banking portal</li>
+                  <li>Look for the "Bill Pay" or "Payments" section</li>
+                  <li>Add a new payee using our information:
+                    <ul className="list-disc list-inside ml-8 mt-2">
+                      <li>Payee Name: Your Association</li>
+                      <li>Mailing Address: 5107 North Western Avenue, Suite 1S, Chicago, IL 60625</li>
+                    </ul>
+                  </li>
+                  <li>Schedule your payment (one-time or recurring)</li>
+                  <li>Include your property address and unit number in the memo or reference field</li>
+                </ol>
               </div>
             </div>
           </div>
