@@ -1,7 +1,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Trash2 } from "lucide-react";
+import { Trash2, MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useOpenAiKey } from "@/hooks/useOpenAiKey";
 import { ChatInput } from "./ChatInput";
@@ -146,49 +146,50 @@ export default function Gpt4ChatBox({ showAdminControls = false }: { showAdminCo
   }
 
   return (
-    <section className="py-8">
-      <div className="max-w-lg mx-auto bg-white shadow rounded-lg">
-        <div className="p-4 border-b">
-          <h3 className="font-semibold text-lg text-darkBlue flex items-center gap-2">
-            Chat with our AI Assistant
-          </h3>
-          <p className="text-xs text-gray-500 mt-1">
-            Powered by OpenAI GPT-4o. Instant answers for property management!
-          </p>
-        </div>
-        
-        <ChatMessages 
-          messages={messages}
-          isLoading={isLoading}
-          bottomRef={bottomRef}
-        />
-        
-        <ChatInput
-          userInput={userInput}
-          isLoading={isLoading}
-          onInputChange={setUserInput}
-          onSend={handleSend}
-        />
-        
-        {showAdminControls && (
-          <div className="px-4 pb-2">
-            <Button
-              size="sm"
-              variant="outline"
-              className="text-xs text-gray-500 border-gray-300 mt-2"
-              onClick={() => {
-                clearApiKey();
-                toast({
-                  title: "API Key Removed",
-                  description: "Your OpenAI API key has been removed from browser storage.",
-                });
-              }}
-            >
-              <Trash2 className="w-4 h-4 mr-2" />
-              Remove API Key
-            </Button>
+    <section className="py-12 bg-gradient-to-br from-blue-50 to-blue-100">
+      <div className="container mx-auto px-4">
+        <div className="max-w-xl mx-auto bg-white shadow-2xl rounded-xl overflow-hidden border-2 border-darkBlue/10 animate-fade-in">
+          <div className="bg-darkBlue text-white p-4 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <MessageCircle className="w-6 h-6" />
+              <h3 className="font-bold text-lg">AI Property Assistant</h3>
+            </div>
+            <span className="text-xs bg-blue-600 px-2 py-1 rounded-full">GPT-4o</span>
           </div>
-        )}
+          
+          <ChatMessages 
+            messages={messages}
+            isLoading={isLoading}
+            bottomRef={bottomRef}
+          />
+          
+          <ChatInput
+            userInput={userInput}
+            isLoading={isLoading}
+            onInputChange={setUserInput}
+            onSend={handleSend}
+          />
+          
+          {showAdminControls && (
+            <div className="px-4 pb-2">
+              <Button
+                size="sm"
+                variant="outline"
+                className="text-xs text-gray-500 border-gray-300 mt-2"
+                onClick={() => {
+                  clearApiKey();
+                  toast({
+                    title: "API Key Removed",
+                    description: "Your OpenAI API key has been removed from browser storage.",
+                  });
+                }}
+              >
+                <Trash2 className="w-4 h-4 mr-2" />
+                Remove API Key
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
