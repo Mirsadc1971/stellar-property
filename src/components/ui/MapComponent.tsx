@@ -30,7 +30,7 @@ export default function MapComponent({
   return (
     <div className={className}>
       <MapContainer 
-        center={position as any}
+        center={position}
         zoom={zoom}
         style={{ height: '100%', width: '100%' }}
         scrollWheelZoom={false}
