@@ -1,15 +1,80 @@
-
 import MainLayout from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { FileText } from "lucide-react";
 
 export default function ReportViolation() {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(event.currentTarget);
+    const data = {
+      reporterName: formData.get('reporterName'),
+      reporterEmail: formData.get('reporterEmail'),
+      reporterPhone: formData.get('reporterPhone'),
+      relationship: formData.get('relationship'),
+      propertyAddress: formData.get('propertyAddress'),
+      violationType: formData.get('violationType'),
+      violationDate: formData.get('violationDate'),
+      violationDescription: formData.get('violationDescription'),
+      evidenceDescription: formData.get('evidenceDescription'),
+      priorAttempts: formData.get('priorAttempts')
+    };
+
+    try {
+      // Send email using mailto link
+      const subject = `Violation Report - ${data.violationType}`;
+      const body = `
+Reporter Information:
+Name: ${data.reporterName}
+Email: ${data.reporterEmail}
+Phone: ${data.reporterPhone}
+Relationship to Property: ${data.relationship}
+
+Property Information:
+Address: ${data.propertyAddress}
+Violation Type: ${data.violationType}
+Date of Violation: ${data.violationDate}
+
+Violation Description:
+${data.violationDescription}
+
+Evidence Description:
+${data.evidenceDescription}
+
+Prior Attempts to Resolve:
+${data.priorAttempts}
+      `;
+
+      window.location.href = `mailto:service@manage369.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      toast({
+        title: "Form submitted successfully",
+        description: "Your email client should open with the violation report details.",
+      });
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "There was a problem submitting the form. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <MainLayout>
       {/* Hero Section */}
       <section className="bg-gray-100 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
+            <FileText className="mx-auto mb-4 h-12 w-12 text-darkBlue" />
             <h1 className="font-heading text-4xl font-bold mb-4">Report a Violation</h1>
             <p className="text-lg text-gray-600">
               Submit information about potential violations according to Illinois Ombudsman Act requirements.
@@ -29,7 +94,7 @@ export default function ReportViolation() {
               </p>
             </div>
             
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-6 bg-white p-6 rounded-lg shadow-md">
                 <h2 className="font-heading text-xl font-semibold">Reporter Information</h2>
                 
@@ -218,8 +283,13 @@ export default function ReportViolation() {
               </div>
               
               <div className="text-center">
-                <Button type="submit" size="lg" className="bg-darkBlue hover:bg-blue-800">
-                  Submit Violation Report
+                <Button 
+                  type="submit" 
+                  size="lg" 
+                  className="bg-darkBlue hover:bg-blue-800"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Submitting..." : "Submit Violation Report"}
                 </Button>
                 <p className="text-xs text-gray-500 mt-3">
                   * Required fields. All information submitted will be treated confidentially in accordance with our privacy policy.

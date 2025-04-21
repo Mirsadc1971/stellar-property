@@ -27,6 +27,7 @@ export default function Header() {
           <Link to="/faqs" className="px-3 py-2 text-sm font-medium hover:text-darkBlue">FAQs</Link>
           <Link to="/blog" className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Blog</Link>
           <Link to="/payments" className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Payments</Link>
+          <Link to="/report-violation" className="px-3 py-2 text-sm font-medium hover:text-darkBlue">File Violation</Link>
           <Button variant="default" className="ml-2 bg-darkBlue hover:bg-blue-800">
             <Link to="/request-proposal" className="text-white">Request Proposal</Link>
           </Button>
@@ -51,6 +52,7 @@ export default function Header() {
             <Link to="/faqs" className="px-3 py-2 text-sm font-medium hover:text-darkBlue" onClick={toggleMenu}>FAQs</Link>
             <Link to="/blog" className="px-3 py-2 text-sm font-medium hover:text-darkBlue" onClick={toggleMenu}>Blog</Link>
             <Link to="/payments" className="px-3 py-2 text-sm font-medium hover:text-darkBlue" onClick={toggleMenu}>Payments</Link>
+            <Link to="/report-violation" className="px-3 py-2 text-sm font-medium hover:text-darkBlue" onClick={toggleMenu}>File Violation</Link>
             <Link to="/request-proposal" className="px-3 py-2 bg-darkBlue hover:bg-blue-800 text-white rounded text-center" onClick={toggleMenu}>Request Proposal</Link>
           </div>
         </div>
