@@ -77,15 +77,15 @@ export default function Payments() {
                   <div className="text-4xl mb-4">🏦</div>
                   <h3 className="font-heading text-xl font-semibold mb-2">Bill Pay</h3>
                   <p className="text-gray-600 mb-4">
-                    Set up automatic recurring payments directly from your bank account.
+                    Set up Bill Pay through your bank's online banking platform.
                   </p>
-                  <Button 
-                    onClick={() => window.open('tel:7737280652')} 
-                    variant="outline" 
-                    className="w-full border-darkBlue text-darkBlue hover:bg-darkBlue hover:text-white"
-                  >
-                    Call to Setup Bill Pay
-                  </Button>
+                  <p className="text-sm text-gray-700 mb-4">
+                    Payable to: Manage369 Property Management
+                    Mailing Address: 5107 North Western Avenue, Suite 1S, Chicago, IL 60625
+                  </p>
+                  <div className="text-sm text-gray-600 italic mb-4">
+                    <strong>Important:</strong> Include your property address and unit number with the payment.
+                  </div>
                 </div>
               </div>
             </div>
