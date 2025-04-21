@@ -2,7 +2,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Send } from "lucide-react";
+import { Send, LoaderCircle } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 // See instructions: Never hard-code your secret API key for production apps
 const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
@@ -10,6 +11,14 @@ const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
 interface ChatMessage {
   role: "user" | "assistant";
   content: string;
+}
+
+interface OpenAIError {
+  error?: {
+    message: string;
+    type: string;
+    code: string;
+  };
 }
 
 // Util to persist API key in localStorage for demo purposes
@@ -43,6 +52,7 @@ export default function Gpt4ChatBox() {
   const [apiKey, setApiKey] = usePersistedApiKey();
   const [apiKeyInput, setApiKeyInput] = useState("");
   const bottomRef = useRef<HTMLDivElement | null>(null);
+  const { toast } = useToast();
 
   const handleSend = async () => {
     if (!userInput.trim() || isLoading || !apiKey) return;
@@ -61,6 +71,8 @@ export default function Gpt4ChatBox() {
         content: msg.content
       }));
 
+      console.log("Sending request to OpenAI with model: gpt-4o");
+      
       const response = await fetch(OPENAI_API_URL, {
         method: "POST",
         headers: {
@@ -73,10 +85,35 @@ export default function Gpt4ChatBox() {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error("Error from OpenAI API");
-      }
       const data = await response.json();
+      console.log("OpenAI API response status:", response.status);
+      
+      if (!response.ok) {
+        const errorData = data as OpenAIError;
+        console.error("OpenAI API error:", errorData);
+        
+        // Handle different error types
+        let errorMessage = "There was an error contacting the assistant. Please try again.";
+        
+        if (errorData.error) {
+          if (errorData.error.code === "insufficient_quota") {
+            errorMessage = "Your API key's quota has been exceeded. Please check your billing details on OpenAI's website.";
+          } else if (errorData.error.code === "invalid_api_key") {
+            errorMessage = "Invalid API key. Please check your API key and try again.";
+            // Clear invalid API key
+            setApiKey("");
+            toast({
+              title: "Invalid API Key",
+              description: "Your API key appears to be invalid. Please enter a new one.",
+            });
+          } else {
+            errorMessage = `Error from OpenAI: ${errorData.error.message}`;
+          }
+        }
+        
+        throw new Error(errorMessage);
+      }
+      
       const reply = data?.choices?.[0]?.message?.content?.trim();
 
       setMessages([
@@ -89,14 +126,22 @@ export default function Gpt4ChatBox() {
         },
       ]);
     } catch (error) {
+      console.error("Error in chat:", error);
       setMessages([
         ...updatedMessages,
         {
           role: "assistant",
-          content:
+          content: error instanceof Error ? error.message : 
             "There was an error contacting the assistant. Please check your API key and try again.",
         },
       ]);
+      
+      if (error instanceof Error && error.message.includes("API key")) {
+        // If we have an API key error and haven't cleared it yet
+        if (apiKey) {
+          setApiKey("");
+        }
+      }
     } finally {
       setIsLoading(false);
       setTimeout(() => {
@@ -139,6 +184,10 @@ export default function Gpt4ChatBox() {
             onClick={() => {
               setApiKey(apiKeyInput.trim());
               setApiKeyInput("");
+              toast({
+                title: "API Key Saved",
+                description: "Your OpenAI API key has been saved in your browser's localStorage.",
+              });
             }}
             aria-label="Save API Key"
           >
@@ -184,7 +233,7 @@ export default function Gpt4ChatBox() {
           ))}
           {isLoading && (
             <div className="flex justify-center items-center gap-2 text-sm text-blue-600 py-2">
-              <span className="animate-spin w-5 h-5 border-b-2 border-blue-500 rounded-full"></span>
+              <LoaderCircle className="w-5 h-5 animate-spin" />
               Thinking...
             </div>
           )}
@@ -217,7 +266,13 @@ export default function Gpt4ChatBox() {
             size="sm"
             variant="outline"
             className="text-xs text-gray-500 border-gray-300 mt-2"
-            onClick={() => setApiKey("")}
+            onClick={() => {
+              setApiKey("");
+              toast({
+                title: "API Key Removed",
+                description: "Your OpenAI API key has been removed from your browser's localStorage.",
+              });
+            }}
           >
             Remove API Key
           </Button>
