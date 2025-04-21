@@ -30,14 +30,14 @@ export default function MapComponent({
   return (
     <div className={className}>
       <MapContainer 
-        center={position}
-        zoom={zoom}
-        style={{ height: '100%', width: '100%' }}
+        center={position} 
+        zoom={zoom} 
+        style={{ height: '100%', width: '100%' }} 
         scrollWheelZoom={false}
       >
         <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker position={position}>
           <Popup>
@@ -49,3 +49,4 @@ export default function MapComponent({
     </div>
   );
 }
+
