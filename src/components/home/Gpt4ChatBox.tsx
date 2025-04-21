@@ -27,12 +27,17 @@ export default function Gpt4ChatBox() {
   const handleSend = async () => {
     if (!userInput.trim() || isLoading) return;
 
-    const updatedMessages = [...messages, { role: "user", content: userInput }];
+    const updatedMessages: ChatMessage[] = [...messages, { role: "user", content: userInput }];
     setMessages(updatedMessages);
     setIsLoading(true);
     setUserInput("");
 
     try {
+      const apiMessages = updatedMessages.map(msg => ({
+        role: msg.role,
+        content: msg.content
+      }));
+      
       const response = await fetch(OPENAI_API_URL, {
         method: "POST",
         headers: {
@@ -41,7 +46,7 @@ export default function Gpt4ChatBox() {
         },
         body: JSON.stringify({
           model: "gpt-4o",
-          messages: updatedMessages,
+          messages: apiMessages,
         }),
       });
 
