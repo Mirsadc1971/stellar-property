@@ -69,11 +69,17 @@ export default function Contact() {
               
               <div className="bg-gray-100 p-6 rounded-lg">
                 <h3 className="font-heading text-xl font-semibold mb-4">We Are Here</h3>
-                <div className="h-60 bg-gray-300 rounded mb-4">
-                  {/* Map placeholder - would be replaced with Google Maps */}
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-gray-500">Map Loading...</span>
-                  </div>
+                <div className="h-60 rounded mb-4 overflow-hidden">
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2966.1713100591656!2d-87.6915915!3d41.97593810000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd1fba4324187%3A0xaf90935c99bcf873!2s5107%20N%20Western%20Ave%20%231s%2C%20Chicago%2C%20IL%2060625!5e0!3m2!1sen!2sus!4v1713880082800!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0 }} 
+                    allowFullScreen={false} 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Manage369 Office Location"
+                  ></iframe>
                 </div>
                 <Button variant="outline" className="w-full border-darkBlue text-darkBlue hover:bg-darkBlue hover:text-white">
                   <a href="https://maps.google.com/?q=5107+North+Western+Avenue+Chicago+Illinois+60625" target="_blank" rel="noopener noreferrer">
