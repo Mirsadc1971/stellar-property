@@ -34,7 +34,7 @@ export default function FeaturedProperties() {
       <div className="container mx-auto px-4">
         <SectionHeading 
           title="Featured Condominiums" 
-          subtitle="Explore some of the condominiums we manage across Chicago and its suburbs."
+          subtitle="Explore some of the condominiums across Chicago and its suburbs."
           center
         />
         
