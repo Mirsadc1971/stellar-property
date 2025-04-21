@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Send, LoaderCircle, KeyRound, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useOpenAiKey } from "@/hooks/useOpenAiKey";
 
 // Constants
 const OPENAI_MODEL = "gpt-4o";
@@ -21,46 +22,16 @@ interface OpenAIError {
   };
 }
 
-// Util to persist API key in localStorage for demo purposes
-function usePersistedApiKey() {
-  const [apiKey, setApiKey] = useState<string>(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("OPENAI_API_KEY") || "";
-    }
-    return "";
-  });
-
-  useEffect(() => {
-    if (apiKey) {
-      localStorage.setItem("OPENAI_API_KEY", apiKey);
-    }
-  }, [apiKey]);
-
-  const clearApiKey = () => {
-    setApiKey("");
-    localStorage.removeItem("OPENAI_API_KEY");
-  };
-
-  const validateApiKey = (key: string) => {
-    // Basic validation: OpenAI API keys typically start with 'sk-' and are around 51 characters
-    return key.startsWith('sk-') && key.length >= 50;
-  };
-
-  return [apiKey, setApiKey, clearApiKey, validateApiKey] as const;
-}
-
 export default function Gpt4ChatBox() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
-      content:
-        "Hi! I'm the Manage369 GPT-4o assistant. Ask me anything about property management, condos, or HOA.",
+      content: "Hi! I'm the Manage369 GPT-4o assistant. Ask me anything about property management, condos, or HOA.",
     },
   ]);
   const [userInput, setUserInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [apiKey, setApiKey, clearApiKey, validateApiKey] = usePersistedApiKey();
-  const [apiKeyInput, setApiKeyInput] = useState("");
+  const { apiKey, apiKeyInput, setApiKeyInput, clearApiKey, handleSaveApiKey } = useOpenAiKey();
   const bottomRef = useRef<HTMLDivElement | null>(null);
   const { toast } = useToast();
 
@@ -160,23 +131,6 @@ export default function Gpt4ChatBox() {
       bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages, isLoading]);
-
-  const handleSaveApiKey = () => {
-    if (validateApiKey(apiKeyInput)) {
-      setApiKey(apiKeyInput);
-      setApiKeyInput("");
-      toast({
-        title: "API Key Saved",
-        description: "Your OpenAI API key has been saved successfully.",
-      });
-    } else {
-      toast({
-        title: "Invalid API Key",
-        description: "Please enter a valid OpenAI API key starting with 'sk-'.",
-        variant: "destructive",
-      });
-    }
-  };
 
   if (!apiKey) {
     return (
