@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -24,13 +24,14 @@ export default function MapComponent({ latitude, longitude, className = "" }: Ma
   return (
     <div className={className}>
       <MapContainer 
-        className="w-full h-full"
+        center={position}
         zoom={15}
         scrollWheelZoom={false}
+        className="w-full h-full"
       >
         <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker position={position}>
           <Popup>
