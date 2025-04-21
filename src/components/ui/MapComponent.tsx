@@ -25,7 +25,7 @@ export default function MapComponent({ latitude, longitude, className = "" }: Ma
     <div className={className}>
       <MapContainer 
         style={{ height: '100%', width: '100%' }}
-        center={position as any}
+        center={position}
         zoom={15}
         scrollWheelZoom={false}
         className="w-full h-full"
@@ -33,7 +33,6 @@ export default function MapComponent({ latitude, longitude, className = "" }: Ma
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          // @ts-ignore - type definitions in react-leaflet don't match actual API
         />
         <Marker position={position}>
           <Popup>
