@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Send, LoaderCircle, KeyRound, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useOpenAiKey } from "@/hooks/useOpenAiKey";
+import { ChatInput } from "./ChatInput";
+import { ChatMessages } from "./ChatMessages";
+import { ApiKeyForm } from "./ApiKeyForm";
 
 // Constants
 const OPENAI_MODEL = "gpt-4o";
@@ -134,45 +136,11 @@ export default function Gpt4ChatBox() {
 
   if (!apiKey) {
     return (
-      <section className="py-8">
-        <div className="max-w-lg mx-auto bg-white shadow rounded-lg p-6 text-center">
-          <h3 className="font-semibold text-lg text-darkBlue mb-2">Connect Your OpenAI API Key</h3>
-          <p className="text-sm text-gray-500 mb-4">
-            For demo/testing only. Your API key is temporarily saved in your browser's localStorage.
-            <br />You can obtain your key from&nbsp;
-            <a 
-              href="https://platform.openai.com/api-keys" 
-              className="underline text-blue-500" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              platform.openai.com/api-keys
-            </a>
-            .
-          </p>
-          <div className="flex gap-2">
-            <Input
-              type="password"
-              value={apiKeyInput}
-              className="flex-grow"
-              placeholder="sk-... OpenAI API Key"
-              onChange={e => setApiKeyInput(e.target.value)}
-            />
-            <Button
-              className="bg-darkBlue hover:bg-blue-800"
-              disabled={apiKeyInput.trim().length < 20}
-              onClick={handleSaveApiKey}
-              aria-label="Save API Key"
-            >
-              <KeyRound className="w-4 h-4 mr-2" />
-              Save
-            </Button>
-          </div>
-          <div className="text-xs text-gray-400 mt-2">
-            <b>Tip:</b> Remove your key at any time by clearing your browser's storage.
-          </div>
-        </div>
-      </section>
+      <ApiKeyForm 
+        apiKeyInput={apiKeyInput}
+        onInputChange={setApiKeyInput}
+        onSave={handleSaveApiKey}
+      />
     );
   }
 
@@ -181,61 +149,26 @@ export default function Gpt4ChatBox() {
       <div className="max-w-lg mx-auto bg-white shadow rounded-lg">
         <div className="p-4 border-b">
           <h3 className="font-semibold text-lg text-darkBlue flex items-center gap-2">
-            <span>Chat with our AI Assistant</span>
+            Chat with our AI Assistant
           </h3>
           <p className="text-xs text-gray-500 mt-1">
             Powered by OpenAI GPT-4o. Instant answers for property management!
           </p>
         </div>
-        <div className="p-4 h-80 overflow-y-auto bg-gray-50">
-          {messages.map((msg, idx) => (
-            <div
-              key={idx}
-              className={`mb-2 flex ${
-                msg.role === "user" ? "justify-end" : "justify-start"
-              }`}
-            >
-              <div
-                className={`rounded px-3 py-2 max-w-[75%] whitespace-pre-wrap ${
-                  msg.role === "user"
-                    ? "bg-darkBlue text-white"
-                    : "bg-gray-200 text-gray-700"
-                }`}
-              >
-                {msg.content}
-              </div>
-            </div>
-          ))}
-          {isLoading && (
-            <div className="flex justify-center items-center gap-2 text-sm text-blue-600 py-2">
-              <LoaderCircle className="w-5 h-5 animate-spin" />
-              Thinking...
-            </div>
-          )}
-          <div ref={bottomRef} />
-        </div>
-        <div className="p-3 border-t flex gap-2">
-          <Input
-            className="flex-1"
-            placeholder="Ask something..."
-            value={userInput}
-            disabled={isLoading}
-            onChange={(e) => setUserInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && userInput.trim()) handleSend();
-            }}
-            aria-label="Type your message"
-          />
-          <Button
-            type="button"
-            disabled={!userInput.trim() || isLoading}
-            className="bg-darkBlue hover:bg-blue-800 px-4"
-            onClick={handleSend}
-            aria-label="Send message"
-          >
-            <Send className="w-4 h-4" />
-          </Button>
-        </div>
+        
+        <ChatMessages 
+          messages={messages}
+          isLoading={isLoading}
+          bottomRef={bottomRef}
+        />
+        
+        <ChatInput
+          userInput={userInput}
+          isLoading={isLoading}
+          onInputChange={setUserInput}
+          onSend={handleSend}
+        />
+        
         <div className="px-4 pb-2">
           <Button
             size="sm"
