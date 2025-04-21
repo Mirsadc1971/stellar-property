@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
-// Fix for default marker icon
+// Fix for default marker icons in React Leaflet
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
@@ -15,38 +15,31 @@ L.Icon.Default.mergeOptions({
 interface MapComponentProps {
   latitude: number;
   longitude: number;
-  zoom?: number;
   className?: string;
 }
 
-export default function MapComponent({
-  latitude,
-  longitude,
-  zoom = 15,
-  className = "h-60 rounded mb-4 overflow-hidden"
-}: MapComponentProps) {
+export default function MapComponent({ latitude, longitude, className = "" }: MapComponentProps) {
   const position: [number, number] = [latitude, longitude];
 
   return (
     <div className={className}>
       <MapContainer 
-        center={position} 
-        zoom={zoom} 
-        style={{ height: '100%', width: '100%' }} 
+        className="w-full h-full"
+        zoom={15}
         scrollWheelZoom={false}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
         <Marker position={position}>
           <Popup>
-            5107 North Western Avenue<br/>
-            Chicago, Illinois 60625
+            Manage369 Property Management<br />
+            5107 North Western Avenue, Suite 1S<br />
+            Chicago, IL 60625
           </Popup>
         </Marker>
       </MapContainer>
     </div>
   );
 }
-
