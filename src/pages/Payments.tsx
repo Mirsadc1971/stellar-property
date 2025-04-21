@@ -211,7 +211,10 @@ export default function Payments() {
             <Button className="bg-darkBlue hover:bg-blue-800">
               <a href="tel:7737280652">Call Us: 773.728.0652</a>
             </Button>
-            <Button variant="outline" className="border-darkBlue text-darkBlue hover:bg-darkBlue hover:text-white">
+            <Button 
+              variant="outline" 
+              className="border-darkBlue text-darkBlue hover:bg-darkBlue hover:text-white"
+            >
               <a href="mailto:service@manage369.com">Email Us</a>
             </Button>
           </div>
