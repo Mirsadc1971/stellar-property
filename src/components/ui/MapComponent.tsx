@@ -30,9 +30,10 @@ export default function MapComponent({
   return (
     <div className={className}>
       <MapContainer 
-        center={position} 
-        zoom={zoom} 
+        center={position as any}
+        zoom={zoom}
         style={{ height: '100%', width: '100%' }}
+        scrollWheelZoom={false}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
