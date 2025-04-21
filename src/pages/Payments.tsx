@@ -80,7 +80,7 @@ export default function Payments() {
                     Set up Bill Pay through your bank's online banking platform.
                   </p>
                   <p className="text-sm text-gray-700 mb-4">
-                    Payable to: Manage369 Property Management
+                    Payable to: Your Association Name
                     Mailing Address: 5107 North Western Avenue, Suite 1S, Chicago, IL 60625
                   </p>
                   <div className="text-sm text-gray-600 italic mb-4">
