@@ -24,7 +24,7 @@ interface OpenAIError {
   };
 }
 
-export default function Gpt4ChatBox() {
+export default function Gpt4ChatBox({ showAdminControls = false }: { showAdminControls?: boolean }) {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
@@ -169,23 +169,25 @@ export default function Gpt4ChatBox() {
           onSend={handleSend}
         />
         
-        <div className="px-4 pb-2">
-          <Button
-            size="sm"
-            variant="outline"
-            className="text-xs text-gray-500 border-gray-300 mt-2"
-            onClick={() => {
-              clearApiKey();
-              toast({
-                title: "API Key Removed",
-                description: "Your OpenAI API key has been removed from browser storage.",
-              });
-            }}
-          >
-            <Trash2 className="w-4 h-4 mr-2" />
-            Remove API Key
-          </Button>
-        </div>
+        {showAdminControls && (
+          <div className="px-4 pb-2">
+            <Button
+              size="sm"
+              variant="outline"
+              className="text-xs text-gray-500 border-gray-300 mt-2"
+              onClick={() => {
+                clearApiKey();
+                toast({
+                  title: "API Key Removed",
+                  description: "Your OpenAI API key has been removed from browser storage.",
+                });
+              }}
+            >
+              <Trash2 className="w-4 h-4 mr-2" />
+              Remove API Key
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

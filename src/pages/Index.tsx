@@ -16,7 +16,7 @@ const Index = () => {
       <ServicesSection />
       <FeaturedProperties />
       <Testimonials />
-      <Gpt4ChatBox />
+      <Gpt4ChatBox /> {/* Default: No admin controls */}
       <CtaSection />
     </MainLayout>
   );
