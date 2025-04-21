@@ -39,23 +39,23 @@ export default function FeaturedProperties() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           <PropertyCard 
-            image="https://images.unsplash.com/photo-1486718448742-163732cd1544?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-            type="Condo"
-            title="Modern Condominium Complex"
+            image="https://images.unsplash.com/photo-1483058712412-4245e9b90334"
+            type="Office"
+            title="Modern Office Space"
             location="North Side, Chicago"
           />
           
           <PropertyCard 
-            image="https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-            type="Apartment"
-            title="Luxury Apartment Building"
+            image="https://images.unsplash.com/photo-1496307653780-42ee777d4833"
+            type="Commercial"
+            title="Professional Business Center"
             location="Downtown Chicago"
           />
           
           <PropertyCard 
-            image="https://images.unsplash.com/photo-1527576539890-dfa815648363?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-            type="HOA"
-            title="Riverside HOA Community"
+            image="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e"
+            type="Corporate"
+            title="Corporate Business Hub"
             location="Chicago Suburbs"
           />
         </div>
