@@ -1,3 +1,4 @@
+
 import MainLayout from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -73,30 +74,31 @@ export default function Payments() {
                   </Dialog>
                 </div>
               
-              <div className="text-center p-6 border rounded-lg hover:shadow-md transition-shadow">
-                <div className="text-4xl mb-4">🏦</div>
-                <h3 className="font-heading text-xl font-semibold mb-2">Bill Pay</h3>
-                <p className="text-gray-600 mb-4">
-                  Set up Bill Pay through your bank's online banking platform.
-                </p>
-                <div className="text-sm space-y-2">
-                  <p className="font-semibold">Instructions:</p>
-                  <ol className="text-left list-decimal list-inside space-y-1">
-                    <li>Log in to your bank's online banking</li>
-                    <li>Navigate to Bill Pay or Payments section</li>
-                    <li>Add new payee with these details:
-                      <div className="ml-6 mt-1">
-                        <p><strong>Payable to:</strong> Your Association</p>
-                        <p><strong>Mailing Address:</strong><br />
-                        5107 North Western Avenue, Suite 1S<br />
-                        Chicago, IL 60625</p>
-                      </div>
-                    </li>
-                    <li>Set up your payment schedule</li>
-                  </ol>
-                </div>
-                <div className="text-sm text-gray-600 italic mt-4">
-                  <strong>Important:</strong> Include your property address and unit number with the payment.
+                <div className="text-center p-6 border rounded-lg hover:shadow-md transition-shadow">
+                  <div className="text-4xl mb-4">🏦</div>
+                  <h3 className="font-heading text-xl font-semibold mb-2">Bill Pay</h3>
+                  <p className="text-gray-600 mb-4">
+                    Set up Bill Pay through your bank's online banking platform.
+                  </p>
+                  <div className="text-sm space-y-2">
+                    <p className="font-semibold">Instructions:</p>
+                    <ol className="text-left list-decimal list-inside space-y-1">
+                      <li>Log in to your bank's online banking</li>
+                      <li>Navigate to Bill Pay or Payments section</li>
+                      <li>Add new payee with these details:
+                        <div className="ml-6 mt-1">
+                          <p><strong>Payable to:</strong> Your Association</p>
+                          <p><strong>Mailing Address:</strong><br />
+                          5107 North Western Avenue, Suite 1S<br />
+                          Chicago, IL 60625</p>
+                        </div>
+                      </li>
+                      <li>Set up your payment schedule</li>
+                    </ol>
+                  </div>
+                  <div className="text-sm text-gray-600 italic mt-4">
+                    <strong>Important:</strong> Include your property address and unit number with the payment.
+                  </div>
                 </div>
               </div>
             </div>
