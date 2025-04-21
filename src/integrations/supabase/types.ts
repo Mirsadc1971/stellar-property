@@ -81,6 +81,7 @@ export type Database = {
           bedrooms: number | null
           city: string
           created_at: string
+          created_by: string | null
           description: string | null
           id: string
           price: number
@@ -98,6 +99,7 @@ export type Database = {
           bedrooms?: number | null
           city: string
           created_at?: string
+          created_by?: string | null
           description?: string | null
           id?: string
           price: number
@@ -115,6 +117,7 @@ export type Database = {
           bedrooms?: number | null
           city?: string
           created_at?: string
+          created_by?: string | null
           description?: string | null
           id?: string
           price?: number
