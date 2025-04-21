@@ -1,25 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Send, LoaderCircle } from "lucide-react";
+import { Send, LoaderCircle, KeyRound, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
-// Use gpt-4o-mini as the recommended model
-const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
-const OPENAI_MODEL = "gpt-4o-mini";
-
-interface ChatMessage {
-  role: "user" | "assistant";
-  content: string;
-}
-
-interface OpenAIError {
-  error?: {
-    message: string;
-    type: string;
-    code: string;
-  };
-}
 
 // Util to persist API key in localStorage for demo purposes
 function usePersistedApiKey() {
@@ -36,7 +19,17 @@ function usePersistedApiKey() {
     }
   }, [apiKey]);
 
-  return [apiKey, setApiKey] as const;
+  const clearApiKey = () => {
+    setApiKey("");
+    localStorage.removeItem("OPENAI_API_KEY");
+  };
+
+  const validateApiKey = (key: string) => {
+    // Basic validation: OpenAI API keys typically start with 'sk-' and are around 51 characters
+    return key.startsWith('sk-') && key.length >= 50;
+  };
+
+  return [apiKey, setApiKey, clearApiKey, validateApiKey] as const;
 }
 
 export default function Gpt4ChatBox() {
@@ -49,7 +42,7 @@ export default function Gpt4ChatBox() {
   ]);
   const [userInput, setUserInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [apiKey, setApiKey] = usePersistedApiKey();
+  const [apiKey, setApiKey, clearApiKey, validateApiKey] = usePersistedApiKey();
   const [apiKeyInput, setApiKeyInput] = useState("");
   const bottomRef = useRef<HTMLDivElement | null>(null);
   const { toast } = useToast();
@@ -145,14 +138,12 @@ export default function Gpt4ChatBox() {
     }
   };
 
-  // Scroll on initial mount and on each message
   useEffect(() => {
     if (!isLoading) {
       bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages, isLoading]);
 
-  // UI to set API key (simple form above chat)
   if (!apiKey) {
     return (
       <section className="py-8">
@@ -161,33 +152,34 @@ export default function Gpt4ChatBox() {
           <p className="text-sm text-gray-500 mb-4">
             For demo/testing only. Your API key is temporarily saved in your browser's localStorage.
             <br />You can obtain your key from&nbsp;
-            <a href="https://platform.openai.com/api-keys" className="underline text-blue-500" target="_blank" rel="noopener noreferrer">
+            <a 
+              href="https://platform.openai.com/api-keys" 
+              className="underline text-blue-500" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
               platform.openai.com/api-keys
             </a>
             .
           </p>
-          <Input
-            type="password"
-            value={apiKeyInput}
-            className="mb-2"
-            placeholder="sk-... OpenAI API Key"
-            onChange={e => setApiKeyInput(e.target.value)}
-          />
-          <Button
-            className="bg-darkBlue hover:bg-blue-800 mb-2"
-            disabled={apiKeyInput.trim().length < 20}
-            onClick={() => {
-              setApiKey(apiKeyInput.trim());
-              setApiKeyInput("");
-              toast({
-                title: "API Key Saved",
-                description: "Your OpenAI API key has been saved in your browser's localStorage.",
-              });
-            }}
-            aria-label="Save API Key"
-          >
-            Save API Key
-          </Button>
+          <div className="flex gap-2">
+            <Input
+              type="password"
+              value={apiKeyInput}
+              className="flex-grow"
+              placeholder="sk-... OpenAI API Key"
+              onChange={e => setApiKeyInput(e.target.value)}
+            />
+            <Button
+              className="bg-darkBlue hover:bg-blue-800"
+              disabled={apiKeyInput.trim().length < 20}
+              onClick={handleSaveApiKey}
+              aria-label="Save API Key"
+            >
+              <KeyRound className="w-4 h-4 mr-2" />
+              Save
+            </Button>
+          </div>
           <div className="text-xs text-gray-400 mt-2">
             <b>Tip:</b> Remove your key at any time by clearing your browser's storage.
           </div>
@@ -262,13 +254,14 @@ export default function Gpt4ChatBox() {
             variant="outline"
             className="text-xs text-gray-500 border-gray-300 mt-2"
             onClick={() => {
-              setApiKey("");
+              clearApiKey();
               toast({
                 title: "API Key Removed",
-                description: "Your OpenAI API key has been removed from your browser's localStorage.",
+                description: "Your OpenAI API key has been removed from browser storage.",
               });
             }}
           >
+            <Trash2 className="w-4 h-4 mr-2" />
             Remove API Key
           </Button>
         </div>
