@@ -10,9 +10,9 @@ export default function Payments() {
       <section className="bg-gray-100 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-heading text-4xl font-bold mb-4">Make a Payment</h1>
+            <h1 className="font-heading text-4xl font-bold mb-4">Property Management Payment Options</h1>
             <p className="text-lg text-gray-600">
-              Easily make payments for your property services online.
+              Convenient, Secure, and Flexible Payment Methods for Property Owners and Tenants
             </p>
           </div>
         </div>
@@ -23,14 +23,14 @@ export default function Payments() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white p-8 rounded-lg shadow-md mb-10">
-              <h2 className="font-heading text-2xl font-semibold mb-6 text-center">Payment Options</h2>
+              <h2 className="font-heading text-2xl font-semibold mb-6 text-center">Payment Methods</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="text-center p-6 border rounded-lg hover:shadow-md transition-shadow">
                   <div className="text-4xl mb-4">💻</div>
-                  <h3 className="font-heading text-xl font-semibold mb-2">Owner Portal</h3>
+                  <h3 className="font-heading text-xl font-semibold mb-2">Online Owner Portal</h3>
                   <p className="text-gray-600 mb-4">
-                    Log in to your secure owner portal to make payments and view your account.
+                    Securely manage and process payments through our dedicated online platform.
                   </p>
                   <Button 
                     className="w-full bg-darkBlue hover:bg-blue-800"
@@ -44,7 +44,7 @@ export default function Payments() {
                   <div className="text-4xl mb-4">✉️</div>
                   <h3 className="font-heading text-xl font-semibold mb-2">Mail Payment</h3>
                   <p className="text-gray-600 mb-4">
-                    Send check payments to our office address with your account details.
+                    Traditional check payments sent directly to our office address.
                   </p>
                   <Dialog>
                     <DialogTrigger asChild>
@@ -56,7 +56,7 @@ export default function Payments() {
                       <DialogHeader>
                         <DialogTitle>Mailing Address for Payments</DialogTitle>
                         <DialogDescription>
-                          Please send check payments to the following address:
+                          Send check payments to the following address:
                         </DialogDescription>
                       </DialogHeader>
                       <div className="bg-gray-50 p-4 rounded-md border border-gray-200 text-center">
@@ -75,35 +75,42 @@ export default function Payments() {
               
                 <div className="text-center p-6 border rounded-lg hover:shadow-md transition-shadow">
                   <div className="text-4xl mb-4">🏦</div>
-                  <h3 className="font-heading text-xl font-semibold mb-2">Bill Pay</h3>
+                  <h3 className="font-heading text-xl font-semibold mb-2">Bank Bill Pay</h3>
                   <p className="text-gray-600 mb-4">
-                    Set up Bill Pay through your bank's online banking platform.
+                    Convenient, zero-fee payment option through your bank's online platform.
                   </p>
                   <div className="text-sm space-y-2">
-                    <p className="font-semibold">Instructions:</p>
+                    <p className="font-semibold">Quick Setup Instructions:</p>
                     <ol className="text-left list-decimal list-inside space-y-1">
                       <li>Log in to your bank's online banking</li>
-                      <li>Navigate to Bill Pay or Payments section</li>
-                      <li>Add new payee with these details:
-                        <div className="ml-6 mt-1">
-                          <p><strong>Payable to:</strong> Your Association</p>
-                          <p><strong>Mailing Address:</strong><br />
-                          5107 North Western Avenue, Suite 1S<br />
-                          Chicago, IL 60625</p>
-                        </div>
-                      </li>
+                      <li>Navigate to Bill Pay section</li>
+                      <li>Add new payee with provided details</li>
                       <li>Set up your payment schedule</li>
                     </ol>
-                  </div>
-                  <div className="text-sm text-gray-600 italic mt-4">
-                    <strong>Important:</strong> Include your property address and unit number with the payment.
                   </div>
                 </div>
               </div>
             </div>
             
-            {/* Payment Instructions */}
+            {/* Payment Fees and Instructions */}
             <div className="space-y-8">
+              <div>
+                <h3 className="font-heading text-xl font-semibold mb-3">Payment Fees Explained</h3>
+                <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded mb-4">
+                  <p className="text-yellow-800">
+                    <strong>Fee Notice:</strong> We strive to provide transparent and cost-effective payment options.
+                  </p>
+                </div>
+                <ul className="list-disc list-inside space-y-2 text-gray-700">
+                  <li><strong>Credit Card Payments:</strong> 3.5% processing fee per transaction</li>
+                  <li><strong>ACH/Electronic Check Payments:</strong> 3.5% processing fee</li>
+                  <li><strong>Bank Bill Pay:</strong> 100% FREE - No additional charges</li>
+                </ul>
+                <p className="text-gray-600 mt-4 text-sm italic">
+                  We recommend Bank Bill Pay for the most cost-effective payment method.
+                </p>
+              </div>
+              
               <div>
                 <h3 className="font-heading text-xl font-semibold mb-3">Online Payments</h3>
                 <p className="text-gray-700 mb-4">
