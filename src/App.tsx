@@ -1,9 +1,11 @@
+
 import React from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Provider as TooltipProvider } from "@radix-ui/react-tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AuthLayout from "./components/layout/AuthLayout";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -27,17 +29,87 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/faqs" element={<FAQs />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:id" element={<BlogPost />} />
-            <Route path="/payments" element={<Payments />} />
-            <Route path="/request-proposal" element={<RequestProposal />} />
-            <Route path="/report-violation" element={<ReportViolation />} />
+            <Route
+              path="/"
+              element={
+                <AuthLayout>
+                  <Index />
+                </AuthLayout>
+              }
+            />
+            <Route
+              path="/about"
+              element={
+                <AuthLayout>
+                  <About />
+                </AuthLayout>
+              }
+            />
+            <Route
+              path="/services"
+              element={
+                <AuthLayout>
+                  <Services />
+                </AuthLayout>
+              }
+            />
+            <Route
+              path="/contact"
+              element={
+                <AuthLayout>
+                  <Contact />
+                </AuthLayout>
+              }
+            />
+            <Route
+              path="/faqs"
+              element={
+                <AuthLayout>
+                  <FAQs />
+                </AuthLayout>
+              }
+            />
+            <Route
+              path="/blog"
+              element={
+                <AuthLayout>
+                  <Blog />
+                </AuthLayout>
+              }
+            />
+            <Route
+              path="/blog/:id"
+              element={
+                <AuthLayout>
+                  <BlogPost />
+                </AuthLayout>
+              }
+            />
+            <Route
+              path="/payments"
+              element={
+                <AuthLayout>
+                  <Payments />
+                </AuthLayout>
+              }
+            />
+            <Route
+              path="/request-proposal"
+              element={
+                <AuthLayout>
+                  <RequestProposal />
+                </AuthLayout>
+              }
+            />
+            <Route
+              path="/report-violation"
+              element={
+                <AuthLayout>
+                  <ReportViolation />
+                </AuthLayout>
+              }
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

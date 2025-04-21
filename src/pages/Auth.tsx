@@ -5,8 +5,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
-import { Mail, Lock } from "lucide-react";
+import { Mail, Lock, Loader } from "lucide-react";
 import MainLayout from "@/components/layout/MainLayout";
+import { Card, CardHeader, CardContent, CardFooter, CardTitle, CardDescription } from "@/components/ui/card";
 
 export default function Auth() {
   const [loading, setLoading] = useState(false);
@@ -25,6 +26,10 @@ export default function Auth() {
         throw new Error("Please fill in all fields");
       }
 
+      if (password.length < 6) {
+        throw new Error("Password must be at least 6 characters long");
+      }
+
       const { error } = isSignUp 
         ? await supabase.auth.signUp({ email, password })
         : await supabase.auth.signInWithPassword({ email, password });
@@ -32,7 +37,7 @@ export default function Auth() {
       if (error) throw error;
 
       toast({
-        title: isSignUp ? "Account created!" : "Welcome back!",
+        title: isSignUp ? "Account created successfully!" : "Welcome back!",
         description: isSignUp 
           ? "You can now sign in with your credentials" 
           : "Successfully logged in",
@@ -55,69 +60,78 @@ export default function Auth() {
   return (
     <MainLayout>
       <div className="min-h-[80vh] flex items-center justify-center bg-gray-50">
-        <div className="max-w-md w-full px-6 py-8 bg-white rounded-lg shadow-md">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">
-              {isSignUp ? "Create Account" : "Welcome Back"}
-            </h1>
-            <p className="text-gray-600 mt-2">
+        <Card className="w-full max-w-md mx-4">
+          <CardHeader className="space-y-1 text-center">
+            <CardTitle className="text-2xl font-bold">
+              {isSignUp ? "Create an Account" : "Welcome Back"}
+            </CardTitle>
+            <CardDescription>
               {isSignUp 
-                ? "Sign up to get started" 
-                : "Sign in to access your account"}
-            </p>
-          </div>
-
-          <form onSubmit={handleAuth} className="space-y-6">
-            <div className="space-y-2">
-              <div className="relative">
-                <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                <Input
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="pl-10"
-                  required
-                />
+                ? "Enter your details to create your account" 
+                : "Enter your credentials to access your account"}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleAuth} className="space-y-4">
+              <div className="space-y-2">
+                <div className="relative">
+                  <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+                  <Input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="pl-10"
+                    required
+                    disabled={loading}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div className="space-y-2">
-              <div className="relative">
-                <Lock className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                <Input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10"
-                  required
-                  minLength={6}
-                />
+              <div className="space-y-2">
+                <div className="relative">
+                  <Lock className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+                  <Input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="pl-10"
+                    required
+                    minLength={6}
+                    disabled={loading}
+                  />
+                </div>
               </div>
-            </div>
 
-            <Button 
-              className="w-full bg-blue-600 hover:bg-blue-700" 
-              type="submit" 
-              disabled={loading}
-            >
-              {loading ? "Loading..." : isSignUp ? "Create Account" : "Sign In"}
-            </Button>
-          </form>
-
-          <div className="mt-6 text-center">
+              <Button 
+                className="w-full" 
+                type="submit" 
+                disabled={loading}
+              >
+                {loading ? (
+                  <span className="flex items-center gap-2">
+                    <Loader className="h-4 w-4 animate-spin" />
+                    Please wait...
+                  </span>
+                ) : (
+                  isSignUp ? "Create Account" : "Sign In"
+                )}
+              </Button>
+            </form>
+          </CardContent>
+          <CardFooter>
             <button
               type="button"
               onClick={() => setIsSignUp(!isSignUp)}
-              className="text-sm text-blue-600 hover:underline"
+              className="w-full text-sm text-primary hover:underline"
             >
               {isSignUp 
                 ? "Already have an account? Sign In" 
                 : "Need an account? Sign Up"}
             </button>
-          </div>
-        </div>
+          </CardFooter>
+        </Card>
       </div>
     </MainLayout>
   );
