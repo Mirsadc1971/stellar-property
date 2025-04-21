@@ -1,4 +1,3 @@
-
 import MainLayout from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -180,7 +179,7 @@ export default function Payments() {
             <div>
               <h3 className="font-heading text-xl font-semibold mb-2">Is there a fee for online payments?</h3>
               <p className="text-gray-600">
-                ACH payments (e-checks) from your bank account are free. Credit card payments incur a small processing fee of 2.95%.
+                Free Bill Pay! We do not charge any additional fees for online payments. Simply use your bank's online banking to set up payments at no extra cost.
               </p>
             </div>
             
