@@ -79,8 +79,12 @@ export default function Payments() {
                   <p className="text-gray-600 mb-4">
                     Set up automatic recurring payments directly from your bank account.
                   </p>
-                  <Button variant="outline" className="w-full border-darkBlue text-darkBlue hover:bg-darkBlue hover:text-white">
-                    Setup ACH
+                  <Button 
+                    onClick={() => window.open('tel:7737280652')} 
+                    variant="outline" 
+                    className="w-full border-darkBlue text-darkBlue hover:bg-darkBlue hover:text-white"
+                  >
+                    Call to Setup ACH
                   </Button>
                 </div>
               </div>
