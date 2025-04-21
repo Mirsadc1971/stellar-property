@@ -1,12 +1,12 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Send, LoaderCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-// See instructions: Never hard-code your secret API key for production apps
+// Use gpt-4o-mini as the recommended model
 const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
+const OPENAI_MODEL = "gpt-4o-mini";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -71,7 +71,7 @@ export default function Gpt4ChatBox() {
         content: msg.content
       }));
 
-      console.log("Sending request to OpenAI with model: gpt-4o");
+      console.log(`Sending request to OpenAI with model: ${OPENAI_MODEL}`);
       
       const response = await fetch(OPENAI_API_URL, {
         method: "POST",
@@ -80,8 +80,9 @@ export default function Gpt4ChatBox() {
           Authorization: `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
-          model: "gpt-4o",
+          model: OPENAI_MODEL,
           messages: apiMessages,
+          max_tokens: 300, // Limit response length
         }),
       });
 
@@ -92,56 +93,50 @@ export default function Gpt4ChatBox() {
         const errorData = data as OpenAIError;
         console.error("OpenAI API error:", errorData);
         
-        // Handle different error types
+        // Detailed error handling
         let errorMessage = "There was an error contacting the assistant. Please try again.";
         
         if (errorData.error) {
-          if (errorData.error.code === "insufficient_quota") {
-            errorMessage = "Your API key's quota has been exceeded. Please check your billing details on OpenAI's website.";
-          } else if (errorData.error.code === "invalid_api_key") {
-            errorMessage = "Invalid API key. Please check your API key and try again.";
-            // Clear invalid API key
-            setApiKey("");
-            toast({
-              title: "Invalid API Key",
-              description: "Your API key appears to be invalid. Please enter a new one.",
-            });
-          } else {
-            errorMessage = `Error from OpenAI: ${errorData.error.message}`;
+          switch (errorData.error.code) {
+            case "insufficient_quota":
+              errorMessage = "Your API key's quota has been exceeded. Please check your billing details.";
+              break;
+            case "invalid_api_key":
+              errorMessage = "Invalid API key. Please check and try again.";
+              setApiKey("");
+              toast({
+                title: "Invalid API Key",
+                description: "Please enter a valid OpenAI API key.",
+              });
+              break;
+            default:
+              errorMessage = `OpenAI Error: ${errorData.error.message}`;
           }
         }
         
         throw new Error(errorMessage);
       }
       
-      const reply = data?.choices?.[0]?.message?.content?.trim();
+      const reply = data?.choices?.[0]?.message?.content?.trim() || 
+        "I'm having trouble generating a response. Please try again.";
 
       setMessages([
         ...updatedMessages,
         {
           role: "assistant",
-          content:
-            reply ||
-            "Sorry, I couldn't respond at the moment. Please try again.",
+          content: reply,
         },
       ]);
     } catch (error) {
-      console.error("Error in chat:", error);
+      console.error("Chat error:", error);
       setMessages([
         ...updatedMessages,
         {
           role: "assistant",
           content: error instanceof Error ? error.message : 
-            "There was an error contacting the assistant. Please check your API key and try again.",
+            "There was an error processing your request.",
         },
       ]);
-      
-      if (error instanceof Error && error.message.includes("API key")) {
-        // If we have an API key error and haven't cleared it yet
-        if (apiKey) {
-          setApiKey("");
-        }
-      }
     } finally {
       setIsLoading(false);
       setTimeout(() => {
