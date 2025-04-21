@@ -1,32 +1,51 @@
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
+
+// See instructions: Never hard-code your secret API key for production apps
+const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
 
 interface ChatMessage {
   role: "user" | "assistant";
   content: string;
 }
 
-// Placeholder version: This will always reply with the fixed message
-const PLACEHOLDER_RESPONSE =
-  "Thank you for your question. This is a placeholder response. In the live version, this would be powered by OpenAI's GPT model with custom training on Manage369's property management services and FAQs.";
+// Util to persist API key in localStorage for demo purposes
+function usePersistedApiKey() {
+  const [apiKey, setApiKey] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("OPENAI_API_KEY") || "";
+    }
+    return "";
+  });
+
+  useEffect(() => {
+    if (apiKey) {
+      localStorage.setItem("OPENAI_API_KEY", apiKey);
+    }
+  }, [apiKey]);
+
+  return [apiKey, setApiKey] as const;
+}
 
 export default function Gpt4ChatBox() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
       content:
-        "Hi! I'm the Manage369 GPT-4 assistant. Ask me anything about property management, condos, or HOA.",
+        "Hi! I'm the Manage369 GPT-4o assistant. Ask me anything about property management, condos, or HOA.",
     },
   ]);
   const [userInput, setUserInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [apiKey, setApiKey] = usePersistedApiKey();
+  const [apiKeyInput, setApiKeyInput] = useState("");
   const bottomRef = useRef<HTMLDivElement | null>(null);
 
   const handleSend = async () => {
-    if (!userInput.trim() || isLoading) return;
+    if (!userInput.trim() || isLoading || !apiKey) return;
 
     const updatedMessages: ChatMessage[] = [
       ...messages,
@@ -36,21 +55,102 @@ export default function Gpt4ChatBox() {
     setIsLoading(true);
     setUserInput("");
 
-    // Show the placeholder reply after a short delay
-    setTimeout(() => {
+    try {
+      const apiMessages = updatedMessages.map(msg => ({
+        role: msg.role,
+        content: msg.content
+      }));
+
+      const response = await fetch(OPENAI_API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model: "gpt-4o",
+          messages: apiMessages,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error from OpenAI API");
+      }
+      const data = await response.json();
+      const reply = data?.choices?.[0]?.message?.content?.trim();
+
       setMessages([
         ...updatedMessages,
         {
           role: "assistant",
-          content: PLACEHOLDER_RESPONSE,
+          content:
+            reply ||
+            "Sorry, I couldn't respond at the moment. Please try again.",
         },
       ]);
+    } catch (error) {
+      setMessages([
+        ...updatedMessages,
+        {
+          role: "assistant",
+          content:
+            "There was an error contacting the assistant. Please check your API key and try again.",
+        },
+      ]);
+    } finally {
       setIsLoading(false);
       setTimeout(() => {
         bottomRef.current?.scrollIntoView({ behavior: "smooth" });
       }, 200);
-    }, 800);
+    }
   };
+
+  // Scroll on initial mount and on each message
+  useEffect(() => {
+    if (!isLoading) {
+      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages, isLoading]);
+
+  // UI to set API key (simple form above chat)
+  if (!apiKey) {
+    return (
+      <section className="py-8">
+        <div className="max-w-lg mx-auto bg-white shadow rounded-lg p-6 text-center">
+          <h3 className="font-semibold text-lg text-darkBlue mb-2">Connect Your OpenAI API Key</h3>
+          <p className="text-sm text-gray-500 mb-4">
+            For demo/testing only. Your API key is temporarily saved in your browser's localStorage.
+            <br />You can obtain your key from&nbsp;
+            <a href="https://platform.openai.com/api-keys" className="underline text-blue-500" target="_blank" rel="noopener noreferrer">
+              platform.openai.com/api-keys
+            </a>
+            .
+          </p>
+          <Input
+            type="password"
+            value={apiKeyInput}
+            className="mb-2"
+            placeholder="sk-... OpenAI API Key"
+            onChange={e => setApiKeyInput(e.target.value)}
+          />
+          <Button
+            className="bg-darkBlue hover:bg-blue-800 mb-2"
+            disabled={apiKeyInput.trim().length < 20}
+            onClick={() => {
+              setApiKey(apiKeyInput.trim());
+              setApiKeyInput("");
+            }}
+            aria-label="Save API Key"
+          >
+            Save API Key
+          </Button>
+          <div className="text-xs text-gray-400 mt-2">
+            <b>Tip:</b> Remove your key at any time by clearing your browser's storage.
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-8">
@@ -60,7 +160,7 @@ export default function Gpt4ChatBox() {
             <span>Chat with our AI Assistant</span>
           </h3>
           <p className="text-xs text-gray-500 mt-1">
-            Powered by OpenAI GPT-4. Instant answers for property management!
+            Powered by OpenAI GPT-4o. Instant answers for property management!
           </p>
         </div>
         <div className="p-4 h-80 overflow-y-auto bg-gray-50">
@@ -112,8 +212,17 @@ export default function Gpt4ChatBox() {
             <Send className="w-4 h-4" />
           </Button>
         </div>
+        <div className="px-4 pb-2">
+          <Button
+            size="sm"
+            variant="outline"
+            className="text-xs text-gray-500 border-gray-300 mt-2"
+            onClick={() => setApiKey("")}
+          >
+            Remove API Key
+          </Button>
+        </div>
       </div>
     </section>
   );
 }
-
