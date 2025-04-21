@@ -1,4 +1,3 @@
-
 import MainLayout from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -32,7 +31,10 @@ export default function Payments() {
                   <p className="text-gray-600 mb-4">
                     Log in to your secure owner portal to make payments and view your account.
                   </p>
-                  <Button className="w-full bg-darkBlue hover:bg-blue-800">
+                  <Button 
+                    className="w-full bg-darkBlue hover:bg-blue-800"
+                    onClick={() => window.open('https://stellarpropertygrp.appfolio.com/oportal/users/log_in', '_blank')}
+                  >
                     Access Portal
                   </Button>
                 </div>
