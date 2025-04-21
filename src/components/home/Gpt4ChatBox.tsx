@@ -9,8 +9,9 @@ interface ChatMessage {
   content: string;
 }
 
-const OPENAI_API_KEY = "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";
-const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
+// Placeholder version: This will always reply with the fixed message
+const PLACEHOLDER_RESPONSE =
+  "Thank you for your question. This is a placeholder response. In the live version, this would be powered by OpenAI's GPT model with custom training on Manage369's property management services and FAQs.";
 
 export default function Gpt4ChatBox() {
   const [messages, setMessages] = useState<ChatMessage[]>([
@@ -27,56 +28,28 @@ export default function Gpt4ChatBox() {
   const handleSend = async () => {
     if (!userInput.trim() || isLoading) return;
 
-    const updatedMessages: ChatMessage[] = [...messages, { role: "user", content: userInput }];
+    const updatedMessages: ChatMessage[] = [
+      ...messages,
+      { role: "user", content: userInput },
+    ];
     setMessages(updatedMessages);
     setIsLoading(true);
     setUserInput("");
 
-    try {
-      const apiMessages = updatedMessages.map(msg => ({
-        role: msg.role,
-        content: msg.content
-      }));
-      
-      const response = await fetch(OPENAI_API_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${OPENAI_API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: "gpt-4o",
-          messages: apiMessages,
-        }),
-      });
-
-      const data = await response.json();
-      const reply = data?.choices?.[0]?.message?.content?.trim();
-
+    // Show the placeholder reply after a short delay
+    setTimeout(() => {
       setMessages([
         ...updatedMessages,
         {
           role: "assistant",
-          content:
-            reply ||
-            "Sorry, I couldn't respond at the moment. Please try again.",
+          content: PLACEHOLDER_RESPONSE,
         },
       ]);
-    } catch (error) {
-      setMessages([
-        ...updatedMessages,
-        {
-          role: "assistant",
-          content:
-            "There was an error contacting the assistant. Please try again.",
-        },
-      ]);
-    } finally {
       setIsLoading(false);
       setTimeout(() => {
         bottomRef.current?.scrollIntoView({ behavior: "smooth" });
       }, 200);
-    }
+    }, 800);
   };
 
   return (
@@ -143,3 +116,4 @@ export default function Gpt4ChatBox() {
     </section>
   );
 }
+
