@@ -1,6 +1,7 @@
 import MainLayout from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 
 export default function Payments() {
   return (
@@ -45,9 +46,31 @@ export default function Payments() {
                   <p className="text-gray-600 mb-4">
                     Send check payments to our office address with your account details.
                   </p>
-                  <Button variant="outline" className="w-full border-darkBlue text-darkBlue hover:bg-darkBlue hover:text-white">
-                    View Address
-                  </Button>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button variant="outline" className="w-full border-darkBlue text-darkBlue hover:bg-darkBlue hover:text-white">
+                        View Mailing Address
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Mailing Address for Payments</DialogTitle>
+                        <DialogDescription>
+                          Please send check payments to the following address:
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="bg-gray-50 p-4 rounded-md border border-gray-200 text-center">
+                        <p className="font-semibold">
+                          Manage369 Property Management<br />
+                          5107 North Western Avenue, Suite 1S<br />
+                          Chicago, IL 60625
+                        </p>
+                      </div>
+                      <p className="text-sm text-gray-600 mt-2">
+                        <strong>Important:</strong> Include your property address and account number on the check.
+                      </p>
+                    </DialogContent>
+                  </Dialog>
                 </div>
                 
                 <div className="text-center p-6 border rounded-lg hover:shadow-md transition-shadow">
