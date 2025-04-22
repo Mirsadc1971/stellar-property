@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -17,6 +16,7 @@ import RequestProposal from "./pages/RequestProposal";
 import ReportViolation from "./pages/ReportViolation";
 import Nominations from "./pages/Nominations";
 import NotFound from "./pages/NotFound";
+import ResidentInfo from "./pages/ResidentInfo";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +32,7 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/services/nominations" element={<Nominations />} />
+            <Route path="/services/resident-info" element={<ResidentInfo />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/blog" element={<Blog />} />
