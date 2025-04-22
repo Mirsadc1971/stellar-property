@@ -50,8 +50,8 @@ export default function Services() {
             
             <div>
               <img 
-                src="https://images.unsplash.com/photo-1527576539890-dfa815648363?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                alt="Chicago property management"
+                src="https://images.unsplash.com/photo-1626266061622-4ea463a2a56b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Manage369 office at 5107 N Western Ave, Chicago"
                 className="rounded-lg shadow-xl w-full h-auto"
               />
             </div>
