@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -12,8 +11,8 @@ export default function HeroSection() {
     >
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace"
-          alt="Professional Chicago Property Management Services by Manage369 - Modern Urban Condominium Exterior" 
+          src="https://images.unsplash.com/photo-1487958449943-2429e8be8625"
+          alt="Modern Chicago Property Management - White Concrete Building Exterior by Manage369" 
           className="w-full h-full object-cover"
           itemProp="image"
         />
@@ -48,4 +47,3 @@ export default function HeroSection() {
     </section>
   );
 }
-
