@@ -47,14 +47,15 @@ export default function Services() {
               </div>
             </div>
             
-            <div>
+            <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1573164574397-c5b0a83e0a6a"
-                alt="Property Management Team"
-                className="rounded-lg shadow-xl w-full h-auto object-cover"
+                src="https://images.unsplash.com/photo-1496307653780-42ee777d4833"
+                alt="Professional property management team in Chicago"
+                className="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3]"
                 onError={(e) => {
                   console.error('Image failed to load', e);
-                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b";
+                  e.currentTarget.alt = "Property management services";
                 }}
               />
             </div>
@@ -120,8 +121,6 @@ export default function Services() {
               description="We promptly address lease and association violations to maintain order and protect your property's reputation."
             />
           </div>
-
-          {/* Remove the Nominations button */}
         </div>
       </section>
 
