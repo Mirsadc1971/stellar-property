@@ -226,6 +226,7 @@ function AreaCard({ title, areas }: AreaCardProps) {
   const getNeighborhoodPath = (area: string) => {
     const slugs: { [key: string]: string } = {
       "The Loop": "/neighborhoods/the-loop",
+      "River North": "/neighborhoods/river-north",
       // Add more mappings as we create more neighborhood pages
     };
     return slugs[area];
