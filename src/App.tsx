@@ -15,6 +15,7 @@ import BlogPost from "./pages/BlogPost";
 import Payments from "./pages/Payments";
 import RequestProposal from "./pages/RequestProposal";
 import ReportViolation from "./pages/ReportViolation";
+import Nominations from "./pages/Nominations";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
