@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
@@ -25,6 +26,7 @@ export default function Footer() {
               <li><Link to="/request-proposal" className="text-gray-300 hover:text-white">Request Proposal</Link></li>
               <li><Link to="/report-violation" className="text-gray-300 hover:text-white">File Violation</Link></li>
               <li><Link to="/payments" className="text-gray-300 hover:text-white">Payments</Link></li>
+              <li><Link to="/nominations" className="text-gray-300 hover:text-white">Submit Nomination</Link></li>
             </ul>
           </div>
           
