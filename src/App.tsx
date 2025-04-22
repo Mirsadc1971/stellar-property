@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -17,7 +18,7 @@ import ReportViolation from "./pages/ReportViolation";
 import Nominations from "./pages/Nominations";
 import NotFound from "./pages/NotFound";
 import ResidentInfo from "./pages/ResidentInfo";
-import TheLoop from "./pages/TheLoop";
+import TheLoop from "./pages/neighborhoods/TheLoop";
 
 const queryClient = new QueryClient();
 
