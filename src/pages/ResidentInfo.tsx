@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { Input } from '@/components/ui/input';
@@ -11,6 +10,9 @@ import { CarFront, Mail, User, Users, FileText } from 'lucide-react';
 
 const ResidentInfo = () => {
   const [formData, setFormData] = useState({
+    // Association Information
+    associationName: '',
+    
     // Owner Information
     homeowner1: '',
     homeowner1Cell: '',
@@ -81,6 +83,7 @@ const ResidentInfo = () => {
     
     const emailContent = `
       RESIDENT INFORMATION SHEET
+      Association Name: ${formData.associationName}
       Submission Date: ${submissionDate}
 
       OWNER INFORMATION
@@ -138,6 +141,25 @@ const ResidentInfo = () => {
           <h1 className="text-3xl font-bold mb-6">Resident Information Sheet</h1>
           
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Association Information */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 mb-4">
+                <h2 className="text-xl font-semibold">Association Information</h2>
+              </div>
+              
+              <div>
+                <Label htmlFor="associationName">Association Name</Label>
+                <Input
+                  id="associationName"
+                  name="associationName"
+                  value={formData.associationName}
+                  onChange={handleInputChange}
+                  placeholder="Enter your association name"
+                  required
+                />
+              </div>
+            </div>
+
             {/* Owner Information Section */}
             <div className="space-y-4">
               <div className="flex items-center gap-2 mb-4">
