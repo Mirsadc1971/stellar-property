@@ -14,7 +14,7 @@ const Nominations = () => {
     candidateUnit: '',
     qualifications: '',
     goals: '',
-    submissionDate: new Date().toLocaleDateString()
+    signature: ''
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -25,11 +25,26 @@ const Nominations = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: Implement form submission logic
-    toast.success('Nomination form submitted successfully');
-    console.log('Nomination Form Data:', formData);
+    const submissionDate = new Date().toLocaleDateString();
+    
+    // This would ideally be handled by a backend service
+    const emailContent = `
+      Association Name: ${formData.associationName}
+      Candidate Name: ${formData.candidateName}
+      Unit Number: ${formData.candidateUnit}
+      Qualifications: ${formData.qualifications}
+      Goals: ${formData.goals}
+      Signature: ${formData.signature}
+      Submission Date: ${submissionDate}
+    `;
+
+    // Open default email client with pre-filled content
+    const mailtoLink = `mailto:service@manage369.com?subject=Board Nomination Form&body=${encodeURIComponent(emailContent)}`;
+    window.location.href = mailtoLink;
+    
+    toast.success('Form ready to be sent via email');
   };
 
   return (
@@ -99,14 +114,15 @@ const Nominations = () => {
                   required
                 />
               </div>
-              
+
               <div>
-                <Label htmlFor="submissionDate">Date</Label>
+                <Label htmlFor="signature">Digital Signature</Label>
                 <Input 
-                  id="submissionDate" 
-                  name="submissionDate"
-                  value={formData.submissionDate}
+                  id="signature" 
+                  name="signature"
+                  value={formData.signature}
                   onChange={handleInputChange}
+                  placeholder="Type your full name as signature"
                   required 
                 />
               </div>
@@ -125,9 +141,11 @@ const Nominations = () => {
               <br />
               Manage369 Property Management
               <br />
-              Address: [Your Association Address]
+              5107 North Western Avenue Ste 1S
               <br />
-              Submission Deadline: [Specify Deadline]
+              Chicago, IL 60625
+              <br />
+              Email: service@manage369.com
             </p>
           </div>
         </div>
