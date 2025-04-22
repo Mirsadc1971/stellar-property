@@ -37,6 +37,11 @@ export const CommunicationSection: React.FC<SectionProps> = ({
               <Label htmlFor="comm-mail">Mail</Label>
             </div>
           </RadioGroup>
+          {formData.preferredCommunication === 'mail' && (
+            <div className="text-sm text-red-600 mt-2">
+              Note: Mailing fees will be charged back to the owner.
+            </div>
+          )}
         </div>
       </div>
 
