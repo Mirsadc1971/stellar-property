@@ -1,4 +1,3 @@
-
 import MainLayout from "@/components/layout/MainLayout";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
@@ -116,6 +115,20 @@ export default function Services() {
               title="Violation Management"
               description="We promptly address lease and association violations to maintain order and protect your property's reputation."
             />
+            
+            <ServiceCard 
+              id="nominations"
+              icon={<FileText className="h-8 w-8" />}
+              emoji="📝"
+              title="Board Nominations"
+              description="Submit your nomination for the Board of Directors and contribute to your community's leadership."
+            />
+          </div>
+
+          <div className="mt-8 text-center">
+            <Button variant="outline" className="mt-4">
+              <Link to="/services/nominations">Submit Board Nomination</Link>
+            </Button>
           </div>
         </div>
       </section>

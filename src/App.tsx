@@ -31,6 +31,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/nominations" element={<Nominations />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/blog" element={<Blog />} />
@@ -38,7 +39,6 @@ const App = () => (
             <Route path="/payments" element={<Payments />} />
             <Route path="/request-proposal" element={<RequestProposal />} />
             <Route path="/report-violation" element={<ReportViolation />} />
-            <Route path="/nominations" element={<Nominations />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
