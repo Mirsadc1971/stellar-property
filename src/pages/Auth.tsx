@@ -5,9 +5,10 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
-import { Mail, Lock, Loader } from "lucide-react";
+import { Mail, Lock, Loader, AlertCircle } from "lucide-react";
 import MainLayout from "@/components/layout/MainLayout";
 import { Card, CardHeader, CardContent, CardFooter, CardTitle, CardDescription } from "@/components/ui/card";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 export default function Auth() {
   const [loading, setLoading] = useState(false);
@@ -34,7 +35,12 @@ export default function Auth() {
         ? await supabase.auth.signUp({ email, password })
         : await supabase.auth.signInWithPassword({ email, password });
 
-      if (error) throw error;
+      if (error) {
+        if (error.message.includes("disabled")) {
+          throw new Error("Email authentication is currently disabled in this project. Please contact the administrator to enable it.");
+        }
+        throw error;
+      }
 
       toast({
         title: isSignUp ? "Account created successfully!" : "Welcome back!",
@@ -72,6 +78,13 @@ export default function Auth() {
             </CardDescription>
           </CardHeader>
           <CardContent>
+            <Alert className="mb-4 bg-yellow-50 border-yellow-200">
+              <AlertCircle className="h-4 w-4 text-yellow-600" />
+              <AlertDescription className="text-yellow-800">
+                Email authentication is currently disabled in this Supabase project. Please enable it in your Supabase dashboard under Authentication > Providers > Email.
+              </AlertDescription>
+            </Alert>
+            
             <form onSubmit={handleAuth} className="space-y-4">
               <div className="space-y-2">
                 <div className="relative">
