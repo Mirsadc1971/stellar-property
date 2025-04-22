@@ -1,4 +1,3 @@
-
 import MainLayout from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -23,8 +22,8 @@ export default function About() {
         <div className="container mx-auto px-4">
           <div className="rounded-lg overflow-hidden shadow-xl">
             <img 
-              src="https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace"
-              alt="White Modern Corporate Building Exterior with Clean Architecture"
+              src="https://images.unsplash.com/photo-1524230572899-a752b3835840"
+              alt="Pristine White Modern Corporate Building with Minimalist Architecture"
               className="w-full h-auto md:h-96 object-cover"
             />
           </div>
@@ -201,4 +200,3 @@ export default function About() {
     </MainLayout>
   );
 }
-
