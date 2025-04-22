@@ -68,6 +68,7 @@ export default function Services() {
           />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+            {/* Keep all existing ServiceCard components, remove the Nominations one */}
             <ServiceCard 
               id="law-compliance"
               icon={<Scale className="h-8 w-8" />}
@@ -115,21 +116,9 @@ export default function Services() {
               title="Violation Management"
               description="We promptly address lease and association violations to maintain order and protect your property's reputation."
             />
-            
-            <ServiceCard 
-              id="nominations"
-              icon={<FileText className="h-8 w-8" />}
-              emoji="📝"
-              title="Board Nominations"
-              description="Submit your nomination for the Board of Directors and contribute to your community's leadership."
-            />
           </div>
 
-          <div className="mt-8 text-center">
-            <Button variant="outline" className="mt-4">
-              <Link to="/services/nominations">Submit Board Nomination</Link>
-            </Button>
-          </div>
+          {/* Remove the Nominations button */}
         </div>
       </section>
 

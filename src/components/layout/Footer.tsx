@@ -26,7 +26,6 @@ export default function Footer() {
               <li><Link to="/request-proposal" className="text-gray-300 hover:text-white">Request Proposal</Link></li>
               <li><Link to="/report-violation" className="text-gray-300 hover:text-white">File Violation</Link></li>
               <li><Link to="/payments" className="text-gray-300 hover:text-white">Payments</Link></li>
-              <li><Link to="/nominations" className="text-gray-300 hover:text-white">Submit Nomination</Link></li>
             </ul>
           </div>
           
@@ -35,6 +34,7 @@ export default function Footer() {
             <h3 className="font-heading font-semibold text-lg mb-4">Services</h3>
             <ul className="space-y-2">
               <li><Link to="/services" className="text-gray-300 hover:text-white">What We Do</Link></li>
+              <li><Link to="/services/nominations" className="text-gray-300 hover:text-white">Board Nominations</Link></li>
             </ul>
           </div>
           
