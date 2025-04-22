@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
-import { User } from 'lucide-react';
+import { User, FileText } from 'lucide-react';
 import { SectionProps } from './FormTypes';
 
 export const OwnerSection: React.FC<SectionProps> = ({ formData, handleInputChange }) => {
@@ -151,7 +150,7 @@ export const OwnerSection: React.FC<SectionProps> = ({ formData, handleInputChan
         />
       </div>
 
-      <div>
+      <div className="space-y-2">
         <Label htmlFor="insuranceCompany">Homeowner's Insurance Company</Label>
         <Input
           id="insuranceCompany"
@@ -160,7 +159,21 @@ export const OwnerSection: React.FC<SectionProps> = ({ formData, handleInputChan
           onChange={handleInputChange}
           required
         />
-        <p className="text-sm text-gray-500 mt-1">Please attach a copy of insurance declaration page when submitting</p>
+        
+        <div className="flex items-center gap-2 mt-2">
+          <FileText className="h-4 w-4 text-gray-500" />
+          <Label htmlFor="insuranceProof" className="text-sm text-gray-500 cursor-pointer hover:text-gray-700">
+            Attach insurance declaration page (PDF)
+          </Label>
+          <Input
+            type="file"
+            id="insuranceProof"
+            name="insuranceProof"
+            accept=".pdf"
+            className="hidden"
+            onChange={handleInputChange}
+          />
+        </div>
       </div>
     </div>
   );

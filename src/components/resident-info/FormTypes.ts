@@ -1,4 +1,3 @@
-
 export interface FormData {
   // Association Information
   associationName: string;
@@ -17,6 +16,7 @@ export interface FormData {
   lockerNumber: string;
   legalOwners: string;
   insuranceCompany: string;
+  insuranceProof?: File;
   
   // Occupant Information
   isOwnerOccupied: string;

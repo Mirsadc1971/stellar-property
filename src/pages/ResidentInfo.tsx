@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { Button } from '@/components/ui/button';
@@ -59,11 +58,19 @@ const ResidentInfo = () => {
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+    const { name, value, type, files } = e.target;
+    
+    if (type === 'file' && files) {
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: files[0]
+      }));
+    } else {
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: value
+      }));
+    }
   };
 
   const handleRadioChange = (name: string, value: string) => {
@@ -103,6 +110,7 @@ const ResidentInfo = () => {
       Locker #: ${formData.lockerNumber}
       Legal and Beneficial Owner(s): ${formData.legalOwners}
       Insurance Company: ${formData.insuranceCompany}
+      Insurance Declaration Page: ${formData.insuranceProof ? 'Attached' : 'Not provided'}
 
       OCCUPANT INFORMATION
       Owner Occupied: ${formData.isOwnerOccupied}
