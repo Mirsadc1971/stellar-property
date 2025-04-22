@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -35,8 +36,19 @@ export default function HeroSection() {
             Dedicated to improving community living, increasing property values, and supporting HOA boards with reliable, full-service solutions tailored to Chicago's unique real estate landscape.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Button size="lg" className="bg-darkBlue hover:bg-blue-800">
-              <Link to="/contact" itemProp="potentialAction">Get Started Today</Link>
+            <Button 
+              size="lg" 
+              className="bg-darkBlue hover:bg-blue-800"
+              asChild
+            >
+              <a 
+                href="https://stellarpropertygrp.appfolio.com/oportal/users/log_in" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                itemProp="potentialAction"
+              >
+                Make Payment
+              </a>
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-darkBlue">
               <Link to="/services" itemProp="potentialAction">Our Services</Link>
