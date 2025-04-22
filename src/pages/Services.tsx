@@ -223,16 +223,31 @@ interface AreaCardProps {
 }
 
 function AreaCard({ title, areas }: AreaCardProps) {
+  const getNeighborhoodPath = (area: string) => {
+    const slugs: { [key: string]: string } = {
+      "The Loop": "/neighborhoods/the-loop",
+      // Add more mappings as we create more neighborhood pages
+    };
+    return slugs[area];
+  };
+
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
       <h3 className="font-heading text-xl font-semibold mb-4">{title}</h3>
       <ul className="space-y-2">
-        {areas.map((area, index) => (
-          <li key={index} className="flex items-center">
-            <span className="text-darkBlue mr-2">•</span>
-            <span>{area}</span>
-          </li>
-        ))}
+        {areas.map((area, index) => {
+          const path = getNeighborhoodPath(area);
+          return (
+            <li key={index} className="flex items-center">
+              <span className="text-darkBlue mr-2">•</span>
+              {path ? (
+                <Link to={path} className="hover:text-darkBlue">{area}</Link>
+              ) : (
+                <span>{area}</span>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

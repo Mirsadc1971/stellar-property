@@ -17,6 +17,7 @@ import ReportViolation from "./pages/ReportViolation";
 import Nominations from "./pages/Nominations";
 import NotFound from "./pages/NotFound";
 import ResidentInfo from "./pages/ResidentInfo";
+import TheLoop from "./pages/TheLoop";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ const App = () => (
             <Route path="/payments" element={<Payments />} />
             <Route path="/request-proposal" element={<RequestProposal />} />
             <Route path="/report-violation" element={<ReportViolation />} />
+            <Route path="/neighborhoods/the-loop" element={<TheLoop />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
