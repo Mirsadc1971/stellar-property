@@ -20,6 +20,13 @@ interface MapComponentProps {
   mapType?: 'leaflet' | 'google';
 }
 
+// Add Google Maps types
+declare global {
+  interface Window {
+    google: any;
+  }
+}
+
 const GoogleMap: React.FC<{ 
   latitude: number; 
   longitude: number; 
@@ -118,4 +125,3 @@ export default function MapComponent({
     />
   );
 }
-
