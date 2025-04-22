@@ -7,8 +7,8 @@ export default function HeroSection() {
     <section className="relative bg-gray-100 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f"
-          alt="Professional office desk with laptop" 
+          src="https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace"
+          alt="Modern white concrete building" 
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
