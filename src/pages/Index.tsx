@@ -54,7 +54,6 @@ const Index = () => {
       </section>
 
       <Testimonials />
-      <Gpt4ChatBox />
       
       {/* Location Section */}
       <section className="py-16 bg-gray-100" aria-labelledby="location-heading">
