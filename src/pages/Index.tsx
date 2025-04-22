@@ -28,10 +28,10 @@ const Index = () => {
             </div>
             <div className="text-center mt-8">
               <h2 className="font-heading text-3xl font-bold text-gray-900 mb-4">
-                Modern Property Management Excellence
+                Elevating Property Management Standards
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                We manage some of Chicago's most prestigious modern properties, bringing professional expertise to every building we serve.
+                Transforming urban property management with cutting-edge solutions, innovative technology, and a commitment to exceptional community living across Chicago.
               </p>
             </div>
           </div>
@@ -67,3 +67,4 @@ const Index = () => {
 };
 
 export default Index;
+
