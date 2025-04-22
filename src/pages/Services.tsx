@@ -50,7 +50,7 @@ export default function Services() {
             <div>
               <img 
                 src="https://images.unsplash.com/photo-1626266061622-4ea463a2a56b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                alt="Manage369 office at 5107 N Western Ave, Chicago"
+                alt="Property Management Office"
                 className="rounded-lg shadow-xl w-full h-auto"
               />
             </div>
@@ -68,7 +68,6 @@ export default function Services() {
           />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-            {/* Keep all existing ServiceCard components, remove the Nominations one */}
             <ServiceCard 
               id="law-compliance"
               icon={<Scale className="h-8 w-8" />}
