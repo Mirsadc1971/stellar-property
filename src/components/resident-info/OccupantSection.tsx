@@ -3,7 +3,7 @@ import React from 'react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Users } from 'lucide-react';
+import { Users, FileText } from 'lucide-react';
 import { SectionProps } from './FormTypes';
 
 export const OccupantSection: React.FC<SectionProps> = ({ 
@@ -104,7 +104,20 @@ export const OccupantSection: React.FC<SectionProps> = ({
             </div>
           </div>
           
-          <p className="text-sm text-gray-500">Note: Lease must be submitted to the managing agent.</p>
+          <div className="flex items-center gap-2 mt-2">
+            <FileText className="h-4 w-4 text-gray-500" />
+            <Label htmlFor="leaseDocument" className="text-sm text-gray-500 cursor-pointer hover:text-gray-700">
+              Attach lease document (PDF)
+            </Label>
+            <Input
+              type="file"
+              id="leaseDocument"
+              name="leaseDocument"
+              accept=".pdf"
+              className="hidden"
+              onChange={handleInputChange}
+            />
+          </div>
         </div>
       )}
 

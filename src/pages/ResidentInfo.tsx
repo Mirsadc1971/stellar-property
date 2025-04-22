@@ -87,7 +87,7 @@ const ResidentInfo = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const submissionDate = new Date().toLocaleDateString();
     
@@ -116,6 +116,7 @@ const ResidentInfo = () => {
       Owner Occupied: ${formData.isOwnerOccupied}
       Lease Holders: ${formData.leaseHolders}
       Lease Period: ${formData.leaseStart} to ${formData.leaseEnd}
+      Lease Document: ${formData.leaseDocument ? 'Attached' : 'Not provided'}
       Occupant Phone: ${formData.occupantPhone}
       Occupant Cell Phones: ${formData.occupantCell1}, ${formData.occupantCell2}
 

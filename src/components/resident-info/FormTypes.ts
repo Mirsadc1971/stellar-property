@@ -26,6 +26,7 @@ export interface FormData {
   occupantPhone: string;
   occupantCell1: string;
   occupantCell2: string;
+  leaseDocument?: File;
   
   // Additional Information
   otherResidents: string;
