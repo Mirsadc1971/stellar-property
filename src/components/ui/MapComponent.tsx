@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import { Wrapper } from "@googlemaps/react-wrapper";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -16,18 +17,45 @@ interface MapComponentProps {
   latitude: number;
   longitude: number;
   className?: string;
+  mapType?: 'leaflet' | 'google';
 }
 
-export default function MapComponent({ latitude, longitude, className = "" }: MapComponentProps) {
-  const position: [number, number] = [latitude, longitude];
+const GoogleMap: React.FC<{ 
+  latitude: number; 
+  longitude: number; 
+  className?: string 
+}> = ({ latitude, longitude, className }) => {
+  const mapRef = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!mapRef.current) return;
+
+    const map = new window.google.maps.Map(mapRef.current, {
+      center: { lat: latitude, lng: longitude },
+      zoom: 15,
+    });
+
+    new window.google.maps.Marker({
+      position: { lat: latitude, lng: longitude },
+      map: map,
+      title: 'Manage369 Property Management'
+    });
+  }, [latitude, longitude]);
+
+  return <div ref={mapRef} className={`w-full h-full ${className}`} />;
+};
+
+const LeafletMap: React.FC<MapComponentProps> = ({ 
+  latitude, 
+  longitude, 
+  className = "" 
+}) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // This ensures the map only renders on the client side, not during SSR
     setIsClient(true);
   }, []);
 
-  // Don't render the map component during server-side rendering
   if (!isClient) {
     return (
       <div className={`${className} flex items-center justify-center bg-gray-100`}>
@@ -42,7 +70,7 @@ export default function MapComponent({ latitude, longitude, className = "" }: Ma
     <div className={className}>
       <MapContainer 
         style={{ height: '100%', width: '100%' }}
-        center={position}
+        center={[latitude, longitude]}
         zoom={15}
         scrollWheelZoom={false}
         className="w-full h-full"
@@ -51,7 +79,7 @@ export default function MapComponent({ latitude, longitude, className = "" }: Ma
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={position}>
+        <Marker position={[latitude, longitude]}>
           <Popup>
             Manage369 Property Management<br />
             5107 North Western Avenue, Suite 1S<br />
@@ -61,4 +89,33 @@ export default function MapComponent({ latitude, longitude, className = "" }: Ma
       </MapContainer>
     </div>
   );
+};
+
+export default function MapComponent({ 
+  latitude, 
+  longitude, 
+  className = "",
+  mapType = 'leaflet'
+}: MapComponentProps) {
+  if (mapType === 'google') {
+    return (
+      <Wrapper apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
+        <GoogleMap 
+          latitude={latitude} 
+          longitude={longitude} 
+          className={className} 
+        />
+      </Wrapper>
+    );
+  }
+
+  return (
+    <LeafletMap 
+      latitude={latitude} 
+      longitude={longitude} 
+      className={className} 
+      mapType={mapType}
+    />
+  );
 }
+
