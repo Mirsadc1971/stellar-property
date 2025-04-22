@@ -20,6 +20,7 @@ import NotFound from "./pages/NotFound";
 import ResidentInfo from "./pages/ResidentInfo";
 import TheLoop from "./pages/neighborhoods/TheLoop";
 import RiverNorth from "./pages/neighborhoods/RiverNorth";
+import Streeterville from "./pages/neighborhoods/Streeterville";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ const App = () => (
               <Route path="/report-violation" element={<ReportViolation />} />
               <Route path="/neighborhoods/the-loop" element={<TheLoop />} />
               <Route path="/neighborhoods/river-north" element={<RiverNorth />} />
+              <Route path="/neighborhoods/streeterville" element={<Streeterville />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
