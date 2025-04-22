@@ -49,9 +49,13 @@ export default function Services() {
             
             <div>
               <img 
-                src="https://images.unsplash.com/photo-1626266061622-4ea463a2a56b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                alt="Property Management Office"
-                className="rounded-lg shadow-xl w-full h-auto"
+                src="https://images.unsplash.com/photo-1573164574397-c5b0a83e0a6a"
+                alt="Property Management Team"
+                className="rounded-lg shadow-xl w-full h-auto object-cover"
+                onError={(e) => {
+                  console.error('Image failed to load', e);
+                  e.currentTarget.style.display = 'none';
+                }}
               />
             </div>
           </div>
