@@ -1,8 +1,10 @@
+
 import MainLayout from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Link } from "react-router-dom";
 import { CheckIcon } from "lucide-react";
+import MapComponent from "@/components/ui/MapComponent";
 
 export default function About() {
   return (
@@ -182,15 +184,19 @@ export default function About() {
                   Chicago, Illinois 60625
                 </p>
                 
-                <div className="h-48 bg-gray-300 mb-6">
-                  {/* Map placeholder - would be replaced with actual map integration */}
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-gray-500">Map Loading...</span>
-                  </div>
+                <div className="h-48 mb-6">
+                  {/* Replacing the map placeholder with the actual MapComponent */}
+                  <MapComponent 
+                    latitude={41.975938} 
+                    longitude={-87.691592}
+                    className="w-full h-full rounded"
+                  />
                 </div>
                 
                 <Button variant="outline" className="w-full border-darkBlue text-darkBlue hover:bg-darkBlue hover:text-white">
-                  Get Directions
+                  <a href="https://maps.google.com/?q=5107+North+Western+Avenue+Chicago+Illinois+60625" target="_blank" rel="noopener noreferrer">
+                    Get Directions
+                  </a>
                 </Button>
               </div>
             </div>
