@@ -1,4 +1,3 @@
-
 import MainLayout from "@/components/layout/MainLayout";
 import HeroSection from "@/components/home/HeroSection";
 import AboutSection from "@/components/home/AboutSection";
@@ -12,6 +11,22 @@ const Index = () => {
   return (
     <MainLayout>
       <HeroSection />
+      
+      {/* AI Property Assistant Section - More Prominent */}
+      <section className="bg-gradient-to-br from-blue-50 to-blue-100 py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-darkBlue mb-8">
+              Your AI Property Management Assistant
+            </h2>
+            <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+              Get instant insights, answers, and guidance about property management directly from our advanced AI assistant.
+            </p>
+            <Gpt4ChatBox />
+          </div>
+        </div>
+      </section>
+
       <AboutSection />
       <ServicesSection />
       
