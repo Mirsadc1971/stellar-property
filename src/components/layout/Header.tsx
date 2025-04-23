@@ -21,8 +21,12 @@ export default function Header() {
     // Navigate to the path
     navigate(path);
     
-    // Scroll to the top of the page
-    window.scrollTo(0, 0);
+    // Ensure we scroll to the top of the page
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto'
+    });
   };
 
   return (
