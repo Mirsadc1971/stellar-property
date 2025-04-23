@@ -1,8 +1,15 @@
 
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function CtaSection() {
+  const navigate = useNavigate();
+  
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    window.scrollTo(0, 0);
+  };
+  
   return (
     <section className="bg-darkBlue py-16 md:py-20">
       <div className="container mx-auto px-4 text-center">
@@ -12,8 +19,13 @@ export default function CtaSection() {
         <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
           Join hundreds of property owners in Chicago who trust Manage369 with their valuable investments.
         </p>
-        <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-darkBlue">
-          <Link to="/contact">Get Started Today</Link>
+        <Button 
+          size="lg" 
+          variant="outline" 
+          className="border-white text-white hover:bg-white hover:text-darkBlue"
+          onClick={() => handleNavigation('/contact')}
+        >
+          Get Started Today
         </Button>
       </div>
     </section>

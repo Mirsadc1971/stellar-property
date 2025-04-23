@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface AreaCardProps {
   title: string;
@@ -7,6 +7,8 @@ interface AreaCardProps {
 }
 
 export default function AreaCard({ title, areas }: AreaCardProps) {
+  const navigate = useNavigate();
+  
   const getNeighborhoodPath = (area: string) => {
     const slugs: { [key: string]: string } = {
       "The Loop": "/neighborhoods/the-loop",
@@ -32,6 +34,13 @@ export default function AreaCard({ title, areas }: AreaCardProps) {
     };
     return slugs[area];
   };
+  
+  const handleNavigation = (path: string | undefined) => {
+    if (path) {
+      navigate(path);
+      window.scrollTo(0, 0);
+    }
+  };
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
@@ -43,7 +52,16 @@ export default function AreaCard({ title, areas }: AreaCardProps) {
             <li key={index} className="flex items-center">
               <span className="text-darkBlue mr-2">•</span>
               {path ? (
-                <Link to={path} className="hover:text-darkBlue">{area}</Link>
+                <a 
+                  href="#" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigation(path);
+                  }} 
+                  className="hover:text-darkBlue"
+                >
+                  {area}
+                </a>
               ) : (
                 <span>{area}</span>
               )}

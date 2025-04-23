@@ -1,9 +1,15 @@
 
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
+  
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    window.scrollTo(0, 0);
+  };
   
   return (
     <footer className="bg-gray-900 text-white">
@@ -19,13 +25,13 @@ export default function Footer() {
           <div className="col-span-1">
             <h3 className="font-heading font-semibold text-lg mb-4">Company</h3>
             <ul className="space-y-2">
-              <li><Link to="/" className="text-gray-300 hover:text-white">Home</Link></li>
-              <li><Link to="/about" className="text-gray-300 hover:text-white">About Us</Link></li>
-              <li><Link to="/blog" className="text-gray-300 hover:text-white">Blog</Link></li>
-              <li><Link to="/contact" className="text-gray-300 hover:text-white">Contact</Link></li>
-              <li><Link to="/request-proposal" className="text-gray-300 hover:text-white">Request Proposal</Link></li>
-              <li><Link to="/report-violation" className="text-gray-300 hover:text-white">File Violation</Link></li>
-              <li><Link to="/payments" className="text-gray-300 hover:text-white">Payments</Link></li>
+              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/')}} className="text-gray-300 hover:text-white">Home</a></li>
+              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/about')}} className="text-gray-300 hover:text-white">About Us</a></li>
+              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/blog')}} className="text-gray-300 hover:text-white">Blog</a></li>
+              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/contact')}} className="text-gray-300 hover:text-white">Contact</a></li>
+              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/request-proposal')}} className="text-gray-300 hover:text-white">Request Proposal</a></li>
+              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/report-violation')}} className="text-gray-300 hover:text-white">File Violation</a></li>
+              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/payments')}} className="text-gray-300 hover:text-white">Payments</a></li>
             </ul>
           </div>
           
@@ -33,9 +39,9 @@ export default function Footer() {
           <div className="col-span-1">
             <h3 className="font-heading font-semibold text-lg mb-4">Services</h3>
             <ul className="space-y-2">
-              <li><Link to="/services" className="text-gray-300 hover:text-white">What We Do</Link></li>
-              <li><Link to="/services/nominations" className="text-gray-300 hover:text-white">Board Nominations</Link></li>
-              <li><Link to="/services/resident-info" className="text-gray-300 hover:text-white">Resident Info Sheet</Link></li>
+              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/services')}} className="text-gray-300 hover:text-white">What We Do</a></li>
+              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/services/nominations')}} className="text-gray-300 hover:text-white">Board Nominations</a></li>
+              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/services/resident-info')}} className="text-gray-300 hover:text-white">Resident Info Sheet</a></li>
             </ul>
           </div>
           
@@ -66,7 +72,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">&copy; {currentYear} Manage369. All rights reserved.</p>
           <div className="mt-4 md:mt-0">
-            <Link to="/report-violation" className="text-gray-300 hover:text-white text-sm">Report Violation</Link>
+            <a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/report-violation')}} className="text-gray-300 hover:text-white text-sm">Report Violation</a>
           </div>
         </div>
       </div>
