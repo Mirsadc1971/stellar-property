@@ -11,6 +11,9 @@ export const BuyerInformation = ({ formData, handleInputChange }: BuyerInformati
   return (
     <div className="space-y-4">
       <h3 className="font-medium">When a Buyer is Obtained</h3>
+      <p className="text-sm text-gray-600 mb-4">
+        When the buyer is obtained, loan commitment, and/or sale, a copy of the contract must be submitted to the Board of Directors or its managing agent.
+      </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
           <label htmlFor="purchaserName" className="block text-sm font-medium mb-1">Name</label>
@@ -48,3 +51,4 @@ export const BuyerInformation = ({ formData, handleInputChange }: BuyerInformati
     </div>
   );
 };
+
