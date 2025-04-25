@@ -35,7 +35,6 @@ export default function Footer() {
               <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/request-proposal')}} className="text-gray-300 hover:text-white">Request Proposal</a></li>
               <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/report-violation')}} className="text-gray-300 hover:text-white">File Violation</a></li>
               <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/payments')}} className="text-gray-300 hover:text-white">Payments</a></li>
-              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/construction-request')}} className="text-gray-300 hover:text-white">Construction Request Form</a></li>
             </ul>
           </div>
           
@@ -46,6 +45,7 @@ export default function Footer() {
               <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/services')}} className="text-gray-300 hover:text-white">What We Do</a></li>
               <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/services/nominations')}} className="text-gray-300 hover:text-white">Board Nominations</a></li>
               <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/services/resident-info')}} className="text-gray-300 hover:text-white">Resident Info Sheet</a></li>
+              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/construction-request')}} className="text-gray-300 hover:text-white">Construction Request Form</a></li>
             </ul>
           </div>
           
