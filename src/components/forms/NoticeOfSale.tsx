@@ -23,7 +23,7 @@ interface NoticeFormData {
   phone: string;
   listingPrice: string;
   listingTerms: string;
-  // Purchaser Information
+  // Purchaser Information when obtained
   purchaserName: string;
   purchaserPhone: string;
   purchaserEmail: string;
@@ -102,6 +102,8 @@ ZIP: ${formData.zip}
 Phone: ${formData.phone}
 Listing Price: ${formData.listingPrice}
 Listing Terms: ${formData.listingTerms}
+
+WHEN A BUYER IS OBTAINED:
 
 Purchaser Information:
 Name: ${formData.purchaserName}
@@ -294,9 +296,9 @@ Date: ${formData.signatureDate}
           </div>
         </div>
 
-        {/* Purchaser Information */}
+        {/* When a Buyer is Obtained Section */}
         <div className="space-y-4">
-          <h3 className="font-medium">Purchaser Information</h3>
+          <h3 className="font-medium">When a Buyer is Obtained</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
               <label htmlFor="purchaserName" className="block text-sm font-medium mb-1">Name</label>
@@ -420,3 +422,4 @@ Date: ${formData.signatureDate}
     </Card>
   );
 };
+
