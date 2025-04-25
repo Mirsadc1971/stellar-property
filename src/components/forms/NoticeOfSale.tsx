@@ -4,25 +4,54 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
+import { FileText } from "lucide-react";
 
 interface NoticeFormData {
-  sellerName: string;
+  currentDate: string;
+  associationName: string;
+  unitOwnerInfo: string;
+  // Section 1
   unitNumber: string;
+  ownerName: string;
+  // Section 2 - Summary of Terms
+  listingFirm: string;
+  agentOrOwner: string;
+  address: string;
+  city: string;
+  state: string;
+  zip: string;
+  phone: string;
+  listingPrice: string;
+  listingTerms: string;
+  // Purchaser Information
   purchaserName: string;
   purchaserPhone: string;
   purchaserEmail: string;
+  // Attorney Information
   attorneyName: string;
   attorneyPhone: string;
   attorneyEmail: string;
   proposedClosingDate: string;
   signature: string;
-  date: string;
+  signatureDate: string;
 }
 
 export const NoticeOfSale = () => {
   const [formData, setFormData] = useState<NoticeFormData>({
-    sellerName: '',
+    currentDate: '',
+    associationName: '',
+    unitOwnerInfo: '',
     unitNumber: '',
+    ownerName: '',
+    listingFirm: '',
+    agentOrOwner: '',
+    address: '',
+    city: '',
+    state: '',
+    zip: '',
+    phone: '',
+    listingPrice: '',
+    listingTerms: '3 months',
     purchaserName: '',
     purchaserPhone: '',
     purchaserEmail: '',
@@ -31,7 +60,7 @@ export const NoticeOfSale = () => {
     attorneyEmail: '',
     proposedClosingDate: '',
     signature: '',
-    date: ''
+    signatureDate: ''
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,11 +75,33 @@ export const NoticeOfSale = () => {
     e.preventDefault();
     
     const emailContent = `
-Notice of Intent to Sell Unit
+NOTICE OF INTENT TO SELL UNIT
 
-Seller Information:
-Name: ${formData.sellerName}
+Date: ${formData.currentDate}
+
+To: Board of Directors
+${formData.associationName}
+
+From: ${formData.unitOwnerInfo}
+
+SECTION 1 - NOTICE OF INTENT TO SELL
+
+In accordance with the requirements of ${formData.associationName}, I hereby submit this Notice of Intent to Sell.
+
+Unit Owner Name: ${formData.ownerName}
 Unit Number: ${formData.unitNumber}
+
+SECTION 2 - SUMMARY OF TERMS OF SALE
+
+Listing Real Estate Firm: ${formData.listingFirm}
+Agent/Owner: ${formData.agentOrOwner}
+Address: ${formData.address}
+City: ${formData.city}
+State: ${formData.state}
+ZIP: ${formData.zip}
+Phone: ${formData.phone}
+Listing Price: ${formData.listingPrice}
+Listing Terms: ${formData.listingTerms}
 
 Purchaser Information:
 Name: ${formData.purchaserName}
@@ -65,7 +116,7 @@ Email: ${formData.attorneyEmail}
 Proposed Closing Date: ${formData.proposedClosingDate}
 
 Signature: ${formData.signature}
-Date: ${formData.date}
+Date: ${formData.signatureDate}
     `;
 
     const mailtoLink = `mailto:service@manage369.com?subject=Notice of Intent to Sell Unit - ${formData.unitNumber}&body=${encodeURIComponent(emailContent)}`;
@@ -76,18 +127,57 @@ Date: ${formData.date}
 
   return (
     <Card className="p-6">
-      <h2 className="text-xl font-semibold mb-6">Notice of Intent to Sell Unit</h2>
+      <h2 className="text-xl font-semibold mb-6 flex items-center gap-2">
+        <FileText className="h-5 w-5" />
+        Notice of Intent to Sell Unit
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Header Information */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Seller Information */}
-          <div className="space-y-4">
-            <h3 className="font-medium">Seller Information</h3>
+          <div>
+            <label htmlFor="currentDate" className="block text-sm font-medium mb-1">Date</label>
+            <Input
+              id="currentDate"
+              name="currentDate"
+              type="date"
+              value={formData.currentDate}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="associationName" className="block text-sm font-medium mb-1">Association Name</label>
+            <Input
+              id="associationName"
+              name="associationName"
+              value={formData.associationName}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="unitOwnerInfo" className="block text-sm font-medium mb-1">From (Unit Owner Information)</label>
+          <Input
+            id="unitOwnerInfo"
+            name="unitOwnerInfo"
+            value={formData.unitOwnerInfo}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+
+        {/* Section 1 */}
+        <div className="space-y-4">
+          <h3 className="font-medium">Section 1 - Notice of Intent to Sell</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="sellerName" className="block text-sm font-medium mb-1">Current Owner Name</label>
+              <label htmlFor="ownerName" className="block text-sm font-medium mb-1">Unit Owner Name</label>
               <Input
-                id="sellerName"
-                name="sellerName"
-                value={formData.sellerName}
+                id="ownerName"
+                name="ownerName"
+                value={formData.ownerName}
                 onChange={handleInputChange}
                 required
               />
@@ -103,10 +193,111 @@ Date: ${formData.date}
               />
             </div>
           </div>
+        </div>
 
-          {/* Purchaser Information */}
-          <div className="space-y-4">
-            <h3 className="font-medium">Purchaser Information</h3>
+        {/* Section 2 - Summary of Terms */}
+        <div className="space-y-4">
+          <h3 className="font-medium">Section 2 - Summary of Terms of Sale</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="listingFirm" className="block text-sm font-medium mb-1">Listing Real Estate Firm</label>
+              <Input
+                id="listingFirm"
+                name="listingFirm"
+                value={formData.listingFirm}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="agentOrOwner" className="block text-sm font-medium mb-1">Agent/Owner</label>
+              <Input
+                id="agentOrOwner"
+                name="agentOrOwner"
+                value={formData.agentOrOwner}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="address" className="block text-sm font-medium mb-1">Address</label>
+              <Input
+                id="address"
+                name="address"
+                value={formData.address}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="city" className="block text-sm font-medium mb-1">City</label>
+              <Input
+                id="city"
+                name="city"
+                value={formData.city}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="state" className="block text-sm font-medium mb-1">State</label>
+              <Input
+                id="state"
+                name="state"
+                value={formData.state}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="zip" className="block text-sm font-medium mb-1">ZIP</label>
+              <Input
+                id="zip"
+                name="zip"
+                value={formData.zip}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="phone" className="block text-sm font-medium mb-1">Phone</label>
+              <Input
+                id="phone"
+                name="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="listingPrice" className="block text-sm font-medium mb-1">Listing Price</label>
+              <Input
+                id="listingPrice"
+                name="listingPrice"
+                value={formData.listingPrice}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="listingTerms" className="block text-sm font-medium mb-1">Listing Terms</label>
+              <Input
+                id="listingTerms"
+                name="listingTerms"
+                value={formData.listingTerms}
+                onChange={handleInputChange}
+                placeholder="3 months, 6 months, or other"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Purchaser Information */}
+        <div className="space-y-4">
+          <h3 className="font-medium">Purchaser Information</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
               <label htmlFor="purchaserName" className="block text-sm font-medium mb-1">Name</label>
               <Input
@@ -208,12 +399,12 @@ Date: ${formData.date}
             />
           </div>
           <div>
-            <label htmlFor="date" className="block text-sm font-medium mb-1">Date</label>
+            <label htmlFor="signatureDate" className="block text-sm font-medium mb-1">Date</label>
             <Input
-              id="date"
-              name="date"
+              id="signatureDate"
+              name="signatureDate"
               type="date"
-              value={formData.date}
+              value={formData.signatureDate}
               onChange={handleInputChange}
               required
             />
