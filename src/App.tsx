@@ -40,6 +40,7 @@ import RogersPark from "./pages/neighborhoods/RogersPark";
 import Ravenswood from "./pages/neighborhoods/Ravenswood";
 import ConstructionRequest from "./pages/ConstructionRequest";
 import Forms from "./pages/Forms";
+import NoticePage from "./pages/NoticePage";
 
 const queryClient = new QueryClient();
 
@@ -86,6 +87,7 @@ const App = () => (
               <Route path="/neighborhoods/rogers-park" element={<RogersPark />} />
               <Route path="/neighborhoods/ravenswood" element={<Ravenswood />} />
               <Route path="/construction-request" element={<ConstructionRequest />} />
+              <Route path="/notice-of-sale" element={<NoticePage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
