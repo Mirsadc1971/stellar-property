@@ -1,8 +1,8 @@
 
 import React from 'react';
-import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Checkbox } from '@/components/ui/checkbox';
+import { WorkDates } from './WorkDates';
+import { ProjectOptions } from './ProjectOptions';
 
 interface ProjectDetailsProps {
   formData: {
@@ -42,81 +42,21 @@ export const ProjectDetails = ({ formData, handleInputChange, handleCheckboxChan
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label htmlFor="startDate" className="block mb-2">Start Date</label>
-          <Input 
-            type="date" 
-            id="startDate" 
-            name="startDate"
-            value={formData.startDate}
-            onChange={handleInputChange}
-            required 
-          />
-        </div>
-        <div>
-          <label htmlFor="completionDate" className="block mb-2">Completion Date</label>
-          <Input 
-            type="date" 
-            id="completionDate" 
-            name="completionDate"
-            value={formData.completionDate}
-            onChange={handleInputChange}
-            required 
-          />
-        </div>
-      </div>
+      <WorkDates 
+        startDate={formData.startDate}
+        completionDate={formData.completionDate}
+        handleInputChange={handleInputChange}
+      />
 
-      <div className="space-y-4">
-        <div className="flex items-center space-x-2">
-          <Checkbox 
-            id="roofAccess" 
-            checked={formData.roofAccess}
-            onCheckedChange={() => handleCheckboxChange('roofAccess')}
-          />
-          <label htmlFor="roofAccess">Will roof access be needed?</label>
-        </div>
-        
-        {formData.roofAccess && (
-          <div>
-            <label htmlFor="roofAccessDateTime" className="block mb-2">Specify date and time for roof access</label>
-            <Input 
-              type="datetime-local" 
-              id="roofAccessDateTime" 
-              name="roofAccessDateTime"
-              value={formData.roofAccessDateTime}
-              onChange={handleInputChange}
-            />
-          </div>
-        )}
-
-        <div className="flex items-center space-x-2">
-          <Checkbox 
-            id="elevatorUse" 
-            checked={formData.elevatorUse}
-            onCheckedChange={() => handleCheckboxChange('elevatorUse')}
-          />
-          <label htmlFor="elevatorUse">Will elevator be used for transporting materials or tools?</label>
-        </div>
-
-        <div className="flex items-center space-x-2">
-          <Checkbox 
-            id="debrisRemoval" 
-            checked={formData.debrisRemoval}
-            onCheckedChange={() => handleCheckboxChange('debrisRemoval')}
-          />
-          <label htmlFor="debrisRemoval">Will all construction debris be removed at owner's expense?</label>
-        </div>
-
-        <div className="flex items-center space-x-2">
-          <Checkbox 
-            id="permitRequired" 
-            checked={formData.permitRequired}
-            onCheckedChange={() => handleCheckboxChange('permitRequired')}
-          />
-          <label htmlFor="permitRequired">Does the scope of work require a permit?</label>
-        </div>
-      </div>
+      <ProjectOptions 
+        roofAccess={formData.roofAccess}
+        roofAccessDateTime={formData.roofAccessDateTime}
+        elevatorUse={formData.elevatorUse}
+        debrisRemoval={formData.debrisRemoval}
+        permitRequired={formData.permitRequired}
+        handleInputChange={handleInputChange}
+        handleCheckboxChange={handleCheckboxChange}
+      />
     </div>
   );
 };
