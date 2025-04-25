@@ -2,7 +2,6 @@
 export interface NoticeFormData {
   currentDate: string;
   associationName: string;
-  unitOwnerInfo: string;
   ownerName: string;
   unitNumber: string;
   associationAddress: string;

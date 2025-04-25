@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -13,7 +14,6 @@ export const NoticeOfSale = () => {
   const [formData, setFormData] = useState<NoticeFormData>({
     currentDate: '',
     associationName: '',
-    unitOwnerInfo: '',
     ownerName: '',
     unitNumber: '',
     associationAddress: '',
@@ -51,7 +51,6 @@ ${formData.associationAddress}
 
 From: ${formData.ownerName}
 Unit Number: ${formData.unitNumber}
-${formData.unitOwnerInfo}
 
 SECTION 1 - NOTICE OF INTENT TO SELL
 

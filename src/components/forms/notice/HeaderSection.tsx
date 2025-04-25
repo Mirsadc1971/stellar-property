@@ -67,16 +67,6 @@ export const HeaderSection = ({ formData, handleInputChange }: HeaderSectionProp
             />
           </div>
         </div>
-        <div>
-          <label htmlFor="unitOwnerInfo" className="block text-sm font-medium mb-1">Additional Owner Information</label>
-          <Input
-            id="unitOwnerInfo"
-            name="unitOwnerInfo"
-            value={formData.unitOwnerInfo}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
       </div>
     </>
   );
