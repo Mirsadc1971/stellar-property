@@ -8,9 +8,7 @@ import { HeaderSection } from './notice/HeaderSection';
 import { Section1 } from './notice/Section1';
 import { Section2 } from './notice/Section2';
 import { BuyerInformation } from './notice/BuyerInformation';
-import { AttorneyInformation } from './notice/AttorneyInformation';
 import { NoticeFormData } from './types';
-import { Input } from '@/components/ui/input';
 
 export const NoticeOfSale = () => {
   const [formData, setFormData] = useState<NoticeFormData>({
@@ -31,10 +29,6 @@ export const NoticeOfSale = () => {
     purchaserName: '',
     purchaserPhone: '',
     purchaserEmail: '',
-    attorneyName: '',
-    attorneyPhone: '',
-    attorneyEmail: '',
-    proposedClosingDate: '',
     signature: '',
     signatureDate: ''
   });
@@ -86,13 +80,6 @@ Name: ${formData.purchaserName}
 Phone: ${formData.purchaserPhone}
 Email: ${formData.purchaserEmail}
 
-Attorney Information:
-Name: ${formData.attorneyName}
-Phone: ${formData.attorneyPhone}
-Email: ${formData.attorneyEmail}
-
-Proposed Closing Date: ${formData.proposedClosingDate}
-
 Signature: ${formData.signature}
 Date: ${formData.signatureDate}
     `;
@@ -114,47 +101,7 @@ Date: ${formData.signatureDate}
         <Section1 formData={formData} handleInputChange={handleInputChange} />
         <Section2 formData={formData} handleInputChange={handleInputChange} />
         <BuyerInformation formData={formData} handleInputChange={handleInputChange} />
-        <AttorneyInformation formData={formData} handleInputChange={handleInputChange} />
         
-        {/* Closing Date */}
-        <div>
-          <label htmlFor="proposedClosingDate" className="block text-sm font-medium mb-1">Proposed Closing Date</label>
-          <Input
-            id="proposedClosingDate"
-            name="proposedClosingDate"
-            type="date"
-            value={formData.proposedClosingDate}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-
-        {/* Signature and Date */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label htmlFor="signature" className="block text-sm font-medium mb-1">Signature</label>
-            <Input
-              id="signature"
-              name="signature"
-              value={formData.signature}
-              onChange={handleInputChange}
-              required
-              placeholder="Type your full name as signature"
-            />
-          </div>
-          <div>
-            <label htmlFor="signatureDate" className="block text-sm font-medium mb-1">Date</label>
-            <Input
-              id="signatureDate"
-              name="signatureDate"
-              type="date"
-              value={formData.signatureDate}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-        </div>
-
         <div className="flex justify-end">
           <Button type="submit">
             Submit Notice

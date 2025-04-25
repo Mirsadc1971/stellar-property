@@ -20,11 +20,6 @@ export interface NoticeFormData {
   purchaserName: string;
   purchaserPhone: string;
   purchaserEmail: string;
-  // Attorney Information
-  attorneyName: string;
-  attorneyPhone: string;
-  attorneyEmail: string;
-  proposedClosingDate: string;
   signature: string;
   signatureDate: string;
 }
