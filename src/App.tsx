@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -39,6 +38,7 @@ import Andersonville from "./pages/neighborhoods/Andersonville";
 import Edgewater from "./pages/neighborhoods/Edgewater";
 import RogersPark from "./pages/neighborhoods/RogersPark";
 import Ravenswood from "./pages/neighborhoods/Ravenswood";
+import ConstructionRequest from "./pages/ConstructionRequest";
 
 const queryClient = new QueryClient();
 
@@ -83,6 +83,7 @@ const App = () => (
               <Route path="/neighborhoods/edgewater" element={<Edgewater />} />
               <Route path="/neighborhoods/rogers-park" element={<RogersPark />} />
               <Route path="/neighborhoods/ravenswood" element={<Ravenswood />} />
+              <Route path="/construction-request" element={<ConstructionRequest />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
