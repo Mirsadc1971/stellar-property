@@ -17,17 +17,17 @@ const Forms = () => {
           <Card className="p-6">
             <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
               <FileText className="h-5 w-5" />
-              Violation Report
+              Board Nominations
             </h2>
             <p className="text-gray-600 mb-4">
-              Submit a violation report for your property or community.
+              Submit your nomination for the Board of Directors.
             </p>
             <Button 
-              onClick={() => navigate('/report-violation')}
+              onClick={() => navigate('/services/nominations')}
               variant="outline" 
               className="w-full"
             >
-              File Violation
+              Submit Nomination
             </Button>
           </Card>
 
@@ -62,6 +62,23 @@ const Forms = () => {
               className="w-full"
             >
               Update Info
+            </Button>
+          </Card>
+
+          <Card className="p-6">
+            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <FileText className="h-5 w-5" />
+              Violation Report
+            </h2>
+            <p className="text-gray-600 mb-4">
+              Submit a violation report for your property or community.
+            </p>
+            <Button 
+              onClick={() => navigate('/report-violation')}
+              variant="outline" 
+              className="w-full"
+            >
+              File Violation
             </Button>
           </Card>
         </div>
