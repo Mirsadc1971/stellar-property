@@ -14,6 +14,9 @@ export const NoticeOfSale = () => {
     currentDate: '',
     associationName: '',
     unitOwnerInfo: '',
+    ownerName: '',
+    unitNumber: '',
+    associationAddress: '',
     listingFirm: '',
     agentOrOwner: '',
     address: '',
@@ -44,8 +47,11 @@ Date: ${formData.currentDate}
 
 To: Board of Directors
 ${formData.associationName}
+${formData.associationAddress}
 
-From: ${formData.unitOwnerInfo}
+From: ${formData.ownerName}
+Unit Number: ${formData.unitNumber}
+${formData.unitOwnerInfo}
 
 SECTION 1 - NOTICE OF INTENT TO SELL
 

@@ -34,14 +34,49 @@ export const HeaderSection = ({ formData, handleInputChange }: HeaderSectionProp
         </div>
       </div>
       <div>
-        <label htmlFor="unitOwnerInfo" className="block text-sm font-medium mb-1">From (Unit Owner Information)</label>
+        <label htmlFor="associationAddress" className="block text-sm font-medium mb-1">Association Address</label>
         <Input
-          id="unitOwnerInfo"
-          name="unitOwnerInfo"
-          value={formData.unitOwnerInfo}
+          id="associationAddress"
+          name="associationAddress"
+          value={formData.associationAddress}
           onChange={handleInputChange}
           required
         />
+      </div>
+      <div className="space-y-4">
+        <h3 className="text-sm font-medium">From (Unit Owner Information)</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="ownerName" className="block text-sm font-medium mb-1">Owner Name</label>
+            <Input
+              id="ownerName"
+              name="ownerName"
+              value={formData.ownerName}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="unitNumber" className="block text-sm font-medium mb-1">Unit Number</label>
+            <Input
+              id="unitNumber"
+              name="unitNumber"
+              value={formData.unitNumber}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+        </div>
+        <div>
+          <label htmlFor="unitOwnerInfo" className="block text-sm font-medium mb-1">Additional Owner Information</label>
+          <Input
+            id="unitOwnerInfo"
+            name="unitOwnerInfo"
+            value={formData.unitOwnerInfo}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
       </div>
     </>
   );
