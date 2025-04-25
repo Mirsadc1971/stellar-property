@@ -10,6 +10,7 @@ import { Upload } from 'lucide-react';
 
 const ConstructionRequest = () => {
   const [formData, setFormData] = useState({
+    associationName: '', // New field for association name
     ownerName: '',
     unitNumber: '',
     phoneNumber: '',
@@ -55,6 +56,7 @@ const ConstructionRequest = () => {
       CONDOMINIUM CONSTRUCTION REQUEST FORM
 
       UNIT OWNER INFORMATION
+      Association Name: ${formData.associationName}
       Owner Name: ${formData.ownerName}
       Unit Number: ${formData.unitNumber}
       Phone Number: ${formData.phoneNumber}
@@ -110,6 +112,17 @@ const ConstructionRequest = () => {
               <h2 className="text-xl font-semibold mb-4">Unit Owner Information</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="associationName" className="block mb-2">Association Name</label>
+                  <Input 
+                    type="text" 
+                    id="associationName" 
+                    name="associationName"
+                    value={formData.associationName}
+                    onChange={handleInputChange}
+                    required 
+                  />
+                </div>
                 <div>
                   <label htmlFor="ownerName" className="block mb-2">Owner Name</label>
                   <Input 
@@ -348,3 +361,4 @@ const ConstructionRequest = () => {
 };
 
 export default ConstructionRequest;
+
