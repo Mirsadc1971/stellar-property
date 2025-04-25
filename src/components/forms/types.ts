@@ -17,7 +17,6 @@ export interface NoticeFormData {
   listingPrice: string;
   listingTerms: string;
   // Purchaser Information when obtained
-  purchaserName: string;
   purchaserPhone: string;
   purchaserEmail: string;
   signature: string;

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -26,7 +25,6 @@ export const NoticeOfSale = () => {
     phone: '',
     listingPrice: '',
     listingTerms: '3 months',
-    purchaserName: '',
     purchaserPhone: '',
     purchaserEmail: '',
     signature: '',
@@ -76,7 +74,6 @@ Listing Terms: ${formData.listingTerms}
 WHEN A BUYER IS OBTAINED:
 
 Purchaser Information:
-Name: ${formData.purchaserName}
 Phone: ${formData.purchaserPhone}
 Email: ${formData.purchaserEmail}
 

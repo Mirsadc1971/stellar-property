@@ -13,17 +13,7 @@ export const BuyerInformation = ({ formData, handleInputChange }: BuyerInformati
       <p className="text-sm text-gray-600 mb-4">
         When the buyer is obtained, loan commitment, and/or sale, a copy of the contract must be submitted to the Board of Directors or its managing agent.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div>
-          <label htmlFor="purchaserName" className="block text-sm font-medium mb-1">Buyer Name</label>
-          <Input
-            id="purchaserName"
-            name="purchaserName"
-            value={formData.purchaserName}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label htmlFor="purchaserPhone" className="block text-sm font-medium mb-1">Buyer Phone</label>
           <Input
