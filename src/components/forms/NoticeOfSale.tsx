@@ -24,8 +24,7 @@ export const NoticeOfSale = () => {
     zip: '',
     phone: '',
     listingPrice: '',
-    listingTerms: '',
-    signature: ''
+    listingTerms: ''
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
