@@ -8,11 +8,12 @@ interface DocumentUploadProps {
   documents: File[];
   permitRequired: boolean;
   handleFileUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
 }
 
-export const DocumentUpload = ({ documents, permitRequired, handleFileUpload }: DocumentUploadProps) => {
+export const DocumentUpload = ({ documents, permitRequired, handleFileUpload, className }: DocumentUploadProps) => {
   return (
-    <div className="bg-white p-6 rounded-lg border border-gray-200 space-y-6">
+    <div className={`bg-white p-6 rounded-lg border border-gray-200 space-y-6 ${className || ''}`}>
       <h2 className="text-xl font-semibold mb-4">Required Documents</h2>
       
       {permitRequired && (
