@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -24,7 +25,8 @@ export const NoticeOfSale = () => {
     zip: '',
     phone: '',
     listingPrice: '',
-    listingTerms: ''
+    listingTerms: '',
+    signature: '' // Added back signature field
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,6 +67,8 @@ ZIP: ${formData.zip}
 Phone: ${formData.phone}
 Listing Price: ${formData.listingPrice}
 Listing Duration: ${formData.listingTerms} month(s)
+
+Signature: ${formData.signature}
     `;
 
     const mailtoLink = `mailto:service@manage369.com?subject=Notice of Intent to Sell Unit&body=${encodeURIComponent(emailContent)}`;
@@ -84,6 +88,20 @@ Listing Duration: ${formData.listingTerms} month(s)
         <Section1 formData={formData} handleInputChange={handleInputChange} />
         <Section2 formData={formData} handleInputChange={handleInputChange} />
         <BuyerInformation formData={formData} handleInputChange={handleInputChange} />
+        
+        <div className="mb-4">
+          <label htmlFor="signature" className="block text-sm font-medium mb-1">Signature</label>
+          <input
+            id="signature"
+            name="signature"
+            type="text"
+            value={formData.signature}
+            onChange={handleInputChange}
+            className="w-full px-3 py-2 border rounded-md"
+            placeholder="Enter your signature"
+            required
+          />
+        </div>
         
         <div className="flex justify-end">
           <Button type="submit">

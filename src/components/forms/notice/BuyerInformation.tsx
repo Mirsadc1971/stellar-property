@@ -12,6 +12,7 @@ export const BuyerInformation = ({ formData, handleInputChange }: BuyerInformati
       <p className="text-sm text-gray-600 mb-4">
         When the buyer is obtained, loan commitment, and/or sale, a copy of the contract must be submitted to the Board of Directors or its managing agent.
       </p>
+      {/* Note: Signature input has been moved to the main form component */}
     </div>
   );
 };
