@@ -75,7 +75,6 @@ export default function Footer() {
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">&copy; {currentYear} Manage369. All rights reserved.</p>
           <div className="mt-4 md:mt-0">
-            <a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/report-violation')}} className="text-gray-300 hover:text-white text-sm">Report Violation</a>
           </div>
         </div>
       </div>
