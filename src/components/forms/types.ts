@@ -13,6 +13,5 @@ export interface NoticeFormData {
   zip: string;
   phone: string;
   listingPrice: string;
-  listingTerms: string;
-  signature: string;
+  listingTerms: string; // This will now specifically represent listing duration in months
 }

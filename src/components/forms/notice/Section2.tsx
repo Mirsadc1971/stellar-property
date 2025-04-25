@@ -93,13 +93,16 @@ export const Section2 = ({ formData, handleInputChange }: Section2Props) => {
           />
         </div>
         <div>
-          <label htmlFor="listingTerms" className="block text-sm font-medium mb-1">Listing Terms</label>
+          <label htmlFor="listingTerms" className="block text-sm font-medium mb-1">Listing Duration (Months)</label>
           <Input
             id="listingTerms"
             name="listingTerms"
+            type="number"
+            min="1"
+            max="12"
             value={formData.listingTerms}
             onChange={handleInputChange}
-            placeholder="Enter listing terms"
+            placeholder="Enter listing duration (1-12 months)"
           />
         </div>
       </div>

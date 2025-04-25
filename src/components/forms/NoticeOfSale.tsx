@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -66,9 +65,7 @@ State: ${formData.state}
 ZIP: ${formData.zip}
 Phone: ${formData.phone}
 Listing Price: ${formData.listingPrice}
-Listing Terms: ${formData.listingTerms}
-
-Signature: ${formData.signature}
+Listing Duration: ${formData.listingTerms} month(s)
     `;
 
     const mailtoLink = `mailto:service@manage369.com?subject=Notice of Intent to Sell Unit&body=${encodeURIComponent(emailContent)}`;
