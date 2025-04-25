@@ -7,6 +7,7 @@ import { OwnerInformation } from '@/components/construction/OwnerInformation';
 import { ProjectDetails } from '@/components/construction/ProjectDetails';
 import { DocumentUpload } from '@/components/construction/DocumentUpload';
 import { Guidelines } from '@/components/construction/Guidelines';
+import { PrintButton } from '@/components/construction/PrintButton';
 
 const ConstructionRequest = () => {
   const [formData, setFormData] = useState({
@@ -94,11 +95,15 @@ const ConstructionRequest = () => {
 
   return (
     <MainLayout>
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12 print:px-0 print:py-0">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl font-bold mb-6">Condominium Construction Request Form</h1>
-          <div className="bg-yellow-50 border border-yellow-200 p-4 rounded-md mb-6">
-            <p className="text-sm text-yellow-800">
+          <div className="flex justify-between items-center mb-6">
+            <h1 className="text-3xl font-bold">Condominium Construction Request Form</h1>
+            <PrintButton />
+          </div>
+          
+          <div className="bg-yellow-50 border border-yellow-200 p-4 rounded-md mb-6 print:bg-transparent print:border-none">
+            <p className="text-sm text-yellow-800 print:text-black">
               This form must be submitted to Management for Board approval prior to the start of any construction work in the unit. 
               Owners must upload all required documents using the form below.
             </p>
@@ -120,17 +125,18 @@ const ConstructionRequest = () => {
               documents={documents}
               permitRequired={formData.permitRequired}
               handleFileUpload={handleFileUpload}
+              className="print:hidden"
             />
 
             <Guidelines />
 
-            <div className="bg-white p-6 rounded-lg border border-gray-200">
+            <div className="bg-white p-6 rounded-lg border border-gray-200 print:border-none">
               <h2 className="text-xl font-semibold mb-4">Owner Certification</h2>
               <p className="text-sm text-gray-700 mb-6">
                 By submitting this form, I confirm that all information provided is accurate. I agree to upload all required documents, 
                 comply with all construction policies, and understand that violations may result in fines or suspension of construction access.
               </p>
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full print:hidden">
                 Submit Construction Request
               </Button>
             </div>

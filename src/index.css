@@ -108,3 +108,35 @@
     @apply bg-background text-foreground;
   }
 }
+
+@media print {
+  body {
+    background: white;
+  }
+  
+  .container {
+    max-width: none;
+    width: 100%;
+  }
+  
+  input, textarea {
+    border: 1px solid #ddd !important;
+    background: white !important;
+  }
+  
+  .print\:hidden {
+    display: none !important;
+  }
+  
+  .print\:border-none {
+    border: none !important;
+  }
+  
+  .print\:bg-transparent {
+    background: transparent !important;
+  }
+  
+  .print\:text-black {
+    color: black !important;
+  }
+}
