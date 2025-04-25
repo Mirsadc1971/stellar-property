@@ -24,7 +24,7 @@ export const NoticeOfSale = () => {
     zip: '',
     phone: '',
     listingPrice: '',
-    listingTerms: '3 months',
+    listingTerms: '',
     signature: ''
   });
 

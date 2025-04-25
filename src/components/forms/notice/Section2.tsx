@@ -1,4 +1,3 @@
-
 import { Input } from "@/components/ui/input";
 import { NoticeFormData } from "../types";
 
@@ -100,8 +99,7 @@ export const Section2 = ({ formData, handleInputChange }: Section2Props) => {
             name="listingTerms"
             value={formData.listingTerms}
             onChange={handleInputChange}
-            placeholder="3 months, 6 months, or other"
-            required
+            placeholder="Enter listing terms"
           />
         </div>
       </div>

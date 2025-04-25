@@ -1,4 +1,3 @@
-
 export interface NoticeFormData {
   currentDate: string;
   associationName: string;
@@ -16,6 +15,5 @@ export interface NoticeFormData {
   phone: string;
   listingPrice: string;
   listingTerms: string;
-  // Owner's Signature
   signature: string;
 }
