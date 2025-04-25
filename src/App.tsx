@@ -39,6 +39,7 @@ import Edgewater from "./pages/neighborhoods/Edgewater";
 import RogersPark from "./pages/neighborhoods/RogersPark";
 import Ravenswood from "./pages/neighborhoods/Ravenswood";
 import ConstructionRequest from "./pages/ConstructionRequest";
+import Forms from "./pages/Forms";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,7 @@ const App = () => (
               <Route path="/payments" element={<Payments />} />
               <Route path="/request-proposal" element={<RequestProposal />} />
               <Route path="/report-violation" element={<ReportViolation />} />
+              <Route path="/forms" element={<Forms />} />
               <Route path="/neighborhoods/the-loop" element={<TheLoop />} />
               <Route path="/neighborhoods/river-north" element={<RiverNorth />} />
               <Route path="/neighborhoods/streeterville" element={<Streeterville />} />

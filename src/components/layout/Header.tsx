@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -81,6 +80,11 @@ export default function Header() {
             handleNavigation('/report-violation');
           }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">File Violation</a>
           
+          <a href="#" onClick={(e) => {
+            e.preventDefault();
+            handleNavigation('/forms');
+          }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Forms</a>
+          
           <Button variant="default" className="ml-2 bg-darkBlue hover:bg-blue-800" onClick={(e) => {
             e.preventDefault();
             handleNavigation('/request-proposal');
@@ -140,6 +144,11 @@ export default function Header() {
               e.preventDefault();
               handleNavigation('/report-violation');
             }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">File Violation</a>
+            
+            <a href="#" onClick={(e) => {
+              e.preventDefault();
+              handleNavigation('/forms');
+            }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Forms</a>
             
             <a href="#" onClick={(e) => {
               e.preventDefault();
