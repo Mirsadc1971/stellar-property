@@ -1,4 +1,3 @@
-
 import { useNavigate } from 'react-router-dom';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
@@ -45,9 +44,7 @@ export default function Footer() {
             <h3 className="font-heading font-semibold text-lg mb-4">Services</h3>
             <ul className="space-y-2">
               <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/services')}} className="text-gray-300 hover:text-white">What We Do</a></li>
-              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/services/nominations')}} className="text-gray-300 hover:text-white">Board Nominations</a></li>
-              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/services/resident-info')}} className="text-gray-300 hover:text-white">Resident Info Sheet</a></li>
-              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/construction-request')}} className="text-gray-300 hover:text-white">Construction Request Form</a></li>
+              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/forms')}} className="text-gray-300 hover:text-white">Forms</a></li>
             </ul>
           </div>
           
