@@ -1,11 +1,8 @@
+
 export interface NoticeFormData {
   currentDate: string;
   associationName: string;
   unitOwnerInfo: string;
-  // Section 1
-  unitNumber: string;
-  ownerName: string;
-  // Section 2 - Summary of Terms
   listingFirm: string;
   agentOrOwner: string;
   address: string;

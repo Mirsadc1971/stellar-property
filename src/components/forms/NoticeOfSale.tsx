@@ -14,8 +14,6 @@ export const NoticeOfSale = () => {
     currentDate: '',
     associationName: '',
     unitOwnerInfo: '',
-    unitNumber: '',
-    ownerName: '',
     listingFirm: '',
     agentOrOwner: '',
     address: '',
@@ -35,7 +33,7 @@ export const NoticeOfSale = () => {
       [name]: value
     }));
   };
-
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -53,9 +51,6 @@ SECTION 1 - NOTICE OF INTENT TO SELL
 
 In accordance with the requirements of ${formData.associationName}, I hereby submit this Notice of Intent to Sell.
 
-Unit Owner Name: ${formData.ownerName}
-Unit Number: ${formData.unitNumber}
-
 SECTION 2 - SUMMARY OF TERMS OF SALE
 
 Listing Real Estate Firm: ${formData.listingFirm}
@@ -71,7 +66,7 @@ Listing Terms: ${formData.listingTerms}
 Signature: ${formData.signature}
     `;
 
-    const mailtoLink = `mailto:service@manage369.com?subject=Notice of Intent to Sell Unit - ${formData.unitNumber}&body=${encodeURIComponent(emailContent)}`;
+    const mailtoLink = `mailto:service@manage369.com?subject=Notice of Intent to Sell Unit&body=${encodeURIComponent(emailContent)}`;
     window.location.href = mailtoLink;
     
     toast.success('Notice form prepared for email submission');
