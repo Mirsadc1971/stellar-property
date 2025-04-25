@@ -25,10 +25,7 @@ export const NoticeOfSale = () => {
     phone: '',
     listingPrice: '',
     listingTerms: '3 months',
-    purchaserPhone: '',
-    purchaserEmail: '',
-    signature: '',
-    signatureDate: ''
+    signature: ''
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,14 +68,7 @@ Phone: ${formData.phone}
 Listing Price: ${formData.listingPrice}
 Listing Terms: ${formData.listingTerms}
 
-WHEN A BUYER IS OBTAINED:
-
-Purchaser Information:
-Phone: ${formData.purchaserPhone}
-Email: ${formData.purchaserEmail}
-
 Signature: ${formData.signature}
-Date: ${formData.signatureDate}
     `;
 
     const mailtoLink = `mailto:service@manage369.com?subject=Notice of Intent to Sell Unit - ${formData.unitNumber}&body=${encodeURIComponent(emailContent)}`;
