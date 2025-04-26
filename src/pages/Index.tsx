@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import MainLayout from "@/components/layout/MainLayout";
 import HeroSection from "@/components/home/HeroSection";
 import AboutSection from "@/components/home/AboutSection";
@@ -12,11 +12,24 @@ import Gpt4ChatBox from "@/components/home/Gpt4ChatBox";
 
 const Index = () => {
   useEffect(() => {
+    // Immediate scroll
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'auto'
+      behavior: 'instant'
     });
+
+    // Delayed scroll to ensure all content is loaded
+    const timer = setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'auto'
+      });
+    }, 100);
+
+    // Cleanup function to clear the timeout
+    return () => clearTimeout(timer);
   }, []);
 
   return (
