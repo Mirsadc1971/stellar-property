@@ -1,12 +1,46 @@
+
 import MainLayout from "@/components/layout/MainLayout";
-import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
+import { PaymentMethodCard } from "@/components/payments/PaymentMethodCard";
+import { PaymentFees } from "@/components/payments/PaymentFees";
+import { PaymentInstructions } from "@/components/payments/PaymentInstructions";
+import { PaymentFAQ } from "@/components/payments/PaymentFAQ";
+import { ContactSection } from "@/components/payments/ContactSection";
 
 export default function Payments() {
+  const paymentMethods = [
+    {
+      icon: "💻",
+      title: "Online Owner Portal",
+      description: "Securely manage and process payments through our dedicated online platform.",
+      actionButton: {
+        label: "Access Portal",
+        href: "https://stellarpropertygrp.appfolio.com/connect/"
+      }
+    },
+    {
+      icon: "✉️",
+      title: "Mail Payment",
+      description: "Traditional check payments sent directly to our office address.",
+      actionButton: {
+        label: "View Mailing Address",
+        variant: "outline"
+      },
+      mailingAddress: true
+    },
+    {
+      icon: "🏦",
+      title: "Bank Bill Pay",
+      description: "Convenient, zero-fee payment option through your bank's online platform.",
+      actionButton: {
+        label: "View Instructions",
+        variant: "outline"
+      }
+    }
+  ];
+
   return (
     <MainLayout>
-      {/* Hero Section */}
       <section className="bg-gray-100 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
@@ -18,7 +52,6 @@ export default function Payments() {
         </div>
       </section>
 
-      {/* Payment Options */}
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
@@ -26,93 +59,16 @@ export default function Payments() {
               <h2 className="font-heading text-2xl font-semibold mb-6 text-center">Payment Methods</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="text-center p-6 border rounded-lg hover:shadow-md transition-shadow">
-                  <div className="text-4xl mb-4">💻</div>
-                  <h3 className="font-heading text-xl font-semibold mb-2">Online Owner Portal</h3>
-                  <p className="text-gray-600 mb-4">
-                    Securely manage and process payments through our dedicated online platform.
-                  </p>
-                  <Button 
-                    className="w-full bg-darkBlue hover:bg-blue-800"
-                    onClick={() => window.open('https://stellarpropertygrp.appfolio.com/connect/', '_blank')}
-                  >
-                    Access Portal
-                  </Button>
-                </div>
-                
-                <div className="text-center p-6 border rounded-lg hover:shadow-md transition-shadow">
-                  <div className="text-4xl mb-4">✉️</div>
-                  <h3 className="font-heading text-xl font-semibold mb-2">Mail Payment</h3>
-                  <p className="text-gray-600 mb-4">
-                    Traditional check payments sent directly to our office address.
-                  </p>
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button variant="outline" className="w-full border-darkBlue text-darkBlue hover:bg-darkBlue hover:text-white">
-                        View Mailing Address
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent>
-                      <DialogHeader>
-                        <DialogTitle>Mailing Address for Payments</DialogTitle>
-                        <DialogDescription>
-                          Send check payments to the following address:
-                        </DialogDescription>
-                      </DialogHeader>
-                      <div className="bg-gray-50 p-4 rounded-md border border-gray-200 text-center">
-                        <p className="font-semibold">
-                          Manage369 Property Management<br />
-                          5107 North Western Avenue, Suite 1S<br />
-                          Chicago, IL 60625
-                        </p>
-                      </div>
-                      <p className="text-sm text-gray-600 mt-2">
-                        <strong>Important:</strong> Include your property address and account number on the check.
-                      </p>
-                    </DialogContent>
-                  </Dialog>
-                </div>
-              
-                <div className="text-center p-6 border rounded-lg hover:shadow-md transition-shadow">
-                  <div className="text-4xl mb-4">🏦</div>
-                  <h3 className="font-heading text-xl font-semibold mb-2">Bank Bill Pay</h3>
-                  <p className="text-gray-600 mb-4">
-                    Convenient, zero-fee payment option through your bank's online platform.
-                  </p>
-                  <div className="text-sm space-y-2">
-                    <p className="font-semibold">Quick Setup Instructions:</p>
-                    <ol className="text-left list-decimal list-inside space-y-1">
-                      <li>Log in to your bank's online banking</li>
-                      <li>Navigate to Bill Pay section</li>
-                      <li>Add new payee with provided details</li>
-                      <li>Set up your payment schedule</li>
-                    </ol>
-                  </div>
-                </div>
+                {paymentMethods.map((method, index) => (
+                  <PaymentMethodCard key={index} {...method} />
+                ))}
               </div>
             </div>
             
-            {/* Payment Fees and Instructions */}
             <div className="space-y-8">
-              <div>
-                <h3 className="font-heading text-xl font-semibold mb-3">Payment Fees Explained</h3>
-                <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded mb-4">
-                  <p className="text-yellow-800">
-                    <strong>Fee Notice:</strong> We strive to provide transparent and cost-effective payment options.
-                  </p>
-                </div>
-                <ul className="list-disc list-inside space-y-2 text-gray-700">
-                  <li><strong>Credit Card Payments:</strong> 3.5% processing fee per transaction</li>
-                  <li><strong>ACH/Electronic Check Payments:</strong> 3.5% processing fee</li>
-                  <li><strong>Bank Bill Pay:</strong> 100% FREE - No additional charges</li>
-                </ul>
-                <p className="text-gray-600 mt-4 text-sm italic">
-                  We recommend Bank Bill Pay for the most cost-effective payment method.
-                </p>
-              </div>
+              <PaymentFees />
               
-              <div>
-                <h3 className="font-heading text-xl font-semibold mb-3">Online Payments</h3>
+              <PaymentInstructions title="Online Payments">
                 <p className="text-gray-700 mb-4">
                   Our secure owner portal allows you to make payments, view your account balance, and access important documents.
                   To access the portal, you'll need your account number and password provided to you.
@@ -123,10 +79,9 @@ export default function Payments() {
                   <li>Navigate to the "Payments" section</li>
                   <li>Follow the instructions to submit your payment</li>
                 </ol>
-              </div>
+              </PaymentInstructions>
               
-              <div>
-                <h3 className="font-heading text-xl font-semibold mb-3">Mail Payments</h3>
+              <PaymentInstructions title="Mail Payments">
                 <p className="text-gray-700 mb-4">
                   If you prefer to mail your payments, please send them to:
                 </p>
@@ -140,10 +95,9 @@ export default function Payments() {
                 <p className="text-gray-700 mt-4">
                   <strong>Important:</strong> Please include your property address and account number on your check to ensure proper crediting to your account.
                 </p>
-              </div>
+              </PaymentInstructions>
               
-              <div>
-                <h3 className="font-heading text-xl font-semibold mb-3">Setting Up Bill Pay</h3>
+              <PaymentInstructions title="Setting Up Bill Pay">
                 <p className="text-gray-700 mb-4">
                   Bill Pay is a convenient way to manage your payments through your own bank's online banking platform.
                   Follow these steps to set up recurring or one-time payments:
@@ -160,13 +114,12 @@ export default function Payments() {
                   <li>Schedule your payment (one-time or recurring)</li>
                   <li>Include your property address and unit number in the memo or reference field</li>
                 </ol>
-              </div>
+              </PaymentInstructions>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQs */}
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <SectionHeading 
@@ -174,59 +127,11 @@ export default function Payments() {
             subtitle="Common questions about payments and billing."
             center
           />
-          
-          <div className="max-w-3xl mx-auto mt-10 space-y-8">
-            <div>
-              <h3 className="font-heading text-xl font-semibold mb-2">When are payments due?</h3>
-              <p className="text-gray-600">
-                Monthly payments are typically due on the 1st of each month, with a grace period until the 5th. Please check your specific agreement for your property's due dates.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="font-heading text-xl font-semibold mb-2">Is there a fee for online payments?</h3>
-              <p className="text-gray-600">
-                Credit card payments incur a processing fee of 3.5% per transaction. ACH/eCheck payments from your bank account are free.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="font-heading text-xl font-semibold mb-2">What if my payment is late?</h3>
-              <p className="text-gray-600">
-                Late fees vary by association and are outlined in your governing documents. Typically, payments received after the grace period incur a late fee as determined by your association's rules.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="font-heading text-xl font-semibold mb-2">How can I check my account balance?</h3>
-              <p className="text-gray-600">
-                You can view your current balance by logging into your owner portal. If you haven't set up portal access, please contact our office for assistance.
-              </p>
-            </div>
-          </div>
+          <PaymentFAQ />
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-12">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="font-heading text-2xl font-semibold mb-4">Need Help With Your Payment?</h2>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            If you have any questions about making payments or need assistance with your account, our team is here to help.
-          </p>
-          <div className="space-x-4">
-            <Button className="bg-darkBlue hover:bg-blue-800">
-              <a href="tel:7737280652">Call Us: 773.728.0652</a>
-            </Button>
-            <Button 
-              variant="outline" 
-              className="border-darkBlue text-darkBlue hover:bg-darkBlue hover:text-white"
-            >
-              <a href="mailto:service@manage369.com">Email Us</a>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <ContactSection />
     </MainLayout>
   );
 }
