@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export default function WhyChooseUs() {
   const benefits = [
-    "Licensed and Insured Property Managers",
+    "Licensed and Insured Property Management Company",
     "Fast, Responsive Communication",
     "Customized Management Plans",
     "Transparent Financial Reporting",
@@ -16,7 +16,7 @@ export default function WhyChooseUs() {
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8 font-heading text-center">Why Choose Manage369?</h2>
         <p className="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">
-          Choosing Manage369 means partnering with a team committed to your community's success. We offer:
+          Choosing Manage369 means partnering with a licensed and insured Chicago property management company committed to your community's success. We offer:
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -42,3 +42,4 @@ export default function WhyChooseUs() {
     </section>
   );
 }
+
