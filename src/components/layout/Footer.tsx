@@ -21,7 +21,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="col-span-1 md:col-span-1">
             <h2 className="font-heading font-bold text-xl mb-4">Manage369</h2>
-            <p className="text-gray-300 mb-4">Condominium and HOA Management Experts</p>
+            <p className="text-gray-300 mb-4">Chicago's trusted Condominium and HOA Management Experts</p>
           </div>
           
           {/* Company Links */}
