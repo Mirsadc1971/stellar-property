@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -7,16 +8,13 @@ export default function HeroSection() {
     <section 
       className="relative bg-gray-100 overflow-hidden" 
       aria-labelledby="hero-heading"
-      itemScope 
-      itemType="https://schema.org/Service"
     >
       <div className="absolute inset-0 z-0">
         <img 
           src="https://images.unsplash.com/photo-1487958449943-2429e8be8625"
-          alt="Chicago Property Management Services by Manage369 - Modern Condominium Building" 
+          alt="Professional Chicago property management services by Manage369 - Modern luxury condominiums" 
           className="w-full h-full object-cover"
           loading="lazy"
-          itemProp="image"
         />
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
@@ -26,15 +24,13 @@ export default function HeroSection() {
           <h1 
             id="hero-heading" 
             className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
-            itemProp="name"
           >
             Chicago's Trusted Property Management Experts
           </h1>
           <p 
             className="text-xl text-white/90 mb-8"
-            itemProp="description"
           >
-            Specialized HOA & Condo Management Services to Maximize Your Community's Success
+            Specialized HOA & Condo Management Services in Chicago to Maximize Your Community's Success
           </p>
           <div className="flex flex-wrap gap-4">
             <Button 
