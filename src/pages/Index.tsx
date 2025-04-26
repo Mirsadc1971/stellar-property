@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react';
 import MainLayout from "@/components/layout/MainLayout";
 import HeroSection from "@/components/home/HeroSection";
 import AboutSection from "@/components/home/AboutSection";
@@ -10,6 +11,14 @@ import MapComponent from "@/components/ui/MapComponent";
 import Gpt4ChatBox from "@/components/home/Gpt4ChatBox";
 
 const Index = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto'
+    });
+  }, []);
+
   return (
     <MainLayout>
       <HeroSection />
