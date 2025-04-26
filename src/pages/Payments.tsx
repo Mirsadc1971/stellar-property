@@ -16,7 +16,7 @@ export default function Payments() {
       actionButton: {
         label: "Access Portal",
         href: "https://stellarpropertygrp.appfolio.com/connect/",
-        variant: "default"
+        variant: "default" as const
       }
     },
     {
@@ -25,7 +25,7 @@ export default function Payments() {
       description: "Traditional check payments sent directly to our office address.",
       actionButton: {
         label: "View Mailing Address",
-        variant: "outline"
+        variant: "outline" as const
       },
       mailingAddress: true
     },
@@ -35,7 +35,7 @@ export default function Payments() {
       description: "Convenient, zero-fee payment option through your bank's online platform.",
       actionButton: {
         label: "View Instructions",
-        variant: "outline"
+        variant: "outline" as const
       }
     }
   ];
