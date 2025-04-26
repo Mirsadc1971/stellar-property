@@ -1,238 +1,90 @@
 
-import { useState } from "react";
+import React from 'react';
 import MainLayout from "@/components/layout/MainLayout";
-import { SectionHeading } from "@/components/ui/section-heading";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-interface FAQCategory {
-  title: string;
-  faqs: {
-    question: string;
-    answer: React.ReactNode;
-  }[];
-}
-
 export default function FAQs() {
-  const faqCategories: FAQCategory[] = [
+  const faqs = [
     {
-      title: "Quick Answers",
-      faqs: [
-        {
-          question: "What does Manage369 Do?",
-          answer: "We provide property management for condo/HOA associations, commercial property, and investment real estate, with a focus on operational support, financial management, and maintenance coordination."
-        },
-        {
-          question: "How do I make a maintenance request?",
-          answer: "All requests should be submitted via your online Owner or Tenant Portal. For emergency issues (like flooding, fire risk, gas leaks), call us 24/7 at 773.728.0652."
-        },
-        {
-          question: "Where can I access my account or documents?",
-          answer: "Owners and tenants can log in to their portal (link at the top of our website) to access statements, documents, maintenance requests, and more."
-        }
-      ]
+      question: "What types of properties does Manage369 specialize in managing?",
+      answer: "Manage369 specializes in managing homeowner associations (HOAs), condominium associations, and multi-unit residential communities throughout the Chicago area. Our expertise in Chicago property management makes us a trusted partner for communities seeking professional management solutions."
     },
     {
-      title: "For Tenants & Residents",
-      faqs: [
-        {
-          question: "Do you manage rental units or leases?",
-          answer: "We do not manage leases directly. Lease agreements are between tenants and their unit owner. Contact your landlord for lease renewals, terms, or move-out."
-        },
-        {
-          question: "How do I report a maintenance issue?",
-          answer: "Please use your Tenant Portal for all non-emergency requests. For true emergencies (no heat, water leak, fire/gas risk) call 773.728.0652."
-        },
-        {
-          question: "Who do I contact about utility outages?",
-          answer: (
-            <div>
-              <ul className="list-disc ml-6 space-y-2">
-                <li>For in-unit electrical issues: Contact your landlord.</li>
-                <li>
-                  Building-wide/outdoor outages:
-                  <ul className="list-disc ml-6 mt-1">
-                    <li>ComEd: 1-800-334-7661 | <a href="https://www.comed.com" className="text-darkBlue hover:underline">www.comed.com</a></li>
-                  </ul>
-                </li>
-                <li>
-                  For gas leaks, leave the building and call:
-                  <ul className="list-disc ml-6 mt-1">
-                    <li>Peoples Gas: 866-556-6002 (Chicago)</li>
-                    <li>NICOR Gas: 1-888-642-6748</li>
-                  </ul>
-                  Notify us after the gas company responds.
-                </li>
-              </ul>
-            </div>
-          )
-        }
-      ]
+      question: "What services are included in your property management packages?",
+      answer: "Our comprehensive HOA and condo management services in Chicago include:\n\n" +
+        "• Professional board meeting support and governance\n" +
+        "• Detailed financial reporting and budgeting\n" +
+        "• Vendor management and contract negotiations\n" +
+        "• 24/7 maintenance coordination\n" +
+        "• Proactive homeowner communication\n" +
+        "• Association compliance enforcement\n\n" +
+        "We also offer customized management packages tailored to your community's specific needs."
     },
     {
-      title: "For Property Owners",
-      faqs: [
-        {
-          question: "What are my maintenance responsibilities vs. the association?",
-          answer: (
-            <div>
-              <p className="mb-2"><strong>Owners:</strong> Responsible for all interior repairs (plumbing, appliances, electrical, flooring, windows, etc.) within your unit.</p>
-              <p className="mb-2"><strong>Association:</strong> Typically covers building structure, roof, common areas, common mechanicals, and exterior.</p>
-              <p>Refer to your association documents or contact us for clarification.</p>
-            </div>
-          )
-        },
-        {
-          question: "What financial/accounting support do you provide?",
-          answer: (
-            <ul className="list-disc ml-6 space-y-1">
-              <li>Monthly and annual financial statements</li>
-              <li>Collection of assessments</li>
-              <li>Bill payment and vendor management</li>
-              <li>Budget preparation & reserve planning</li>
-            </ul>
-          )
-        },
-        {
-          question: "How do I access my owner portal?",
-          answer: "Login via the portal link at the top of our website. Access financials, documents, and submit requests."
-        },
-        {
-          question: "Do you manage rental/leasing for owners?",
-          answer: "We do not negotiate leases or collect rent. Owners are responsible for leasing and must provide us with a copy of any new lease."
-        }
-      ]
+      question: "How much does HOA or condo management cost?",
+      answer: "Chicago HOA and condo management fees are customized based on your community's size and service requirements. Contact Manage369 for a detailed management proposal tailored to your association's needs. We pride ourselves on providing transparent pricing and exceptional value."
     },
     {
-      title: "Documents & Policies",
-      faqs: [
-        {
-          question: "Where do I find association rules or governing documents?",
-          answer: "All relevant documents (bylaws, rules, meeting minutes, policies) are available in your Owner Portal. If you can't find something, email us at service@manage369.com."
-        },
-        {
-          question: "How are violations handled?",
-          answer: "We follow each association's adopted policy. Typically notice is sent to the owner, and fines (if any) are determined by the Board as outlined in your governing documents."
-        },
-        {
-          question: "Where are meeting agendas or minutes posted?",
-          answer: "These are posted in your Owner Portal and often emailed to owners prior to meetings."
-        },
-        {
-          question: "What are the rules about construction or renovation work?",
-          answer: "Structural changes, electrical work, plumbing, or any other work that requires a permit and licensed contractors must have the full scope of work submitted for approval before starting. Fines for non-compliance can be up to $1,000."
-        }
-      ]
+      question: "How does Manage369 handle maintenance and repairs?",
+      answer: "As your Chicago property management company, Manage369 coordinates all maintenance and repairs through our extensive network of licensed and insured vendors. We ensure high-quality work is completed on time and within budget, managing everything from routine maintenance to emergency repairs for your association."
     },
     {
-      title: "Contact & Emergencies",
-      faqs: [
-        {
-          question: "How do I contact Manage369?",
-          answer: (
-            <div>
-              <p className="mb-1">773.728.0652 | service@manage369.com</p>
-              <p className="mb-1"><strong>Office Hours:</strong> Mon–Fri, 9:30AM–4:30PM (closed weekends/holidays)</p>
-              <p><strong>After-hours:</strong> For emergencies only, call the number above.</p>
-            </div>
-          )
-        },
-        {
-          question: "What is considered an emergency?",
-          answer: (
-            <div>
-              <p className="mb-2">Emergencies are situations that pose immediate risk or cause property damage: fire, major flooding, gas leaks, no heat in winter, building-wide outages, or property security issues.</p>
-              <p>For emergencies, call us 24/7 at 773.728.0652.</p>
-            </div>
-          )
-        },
-        {
-          question: "Who do I call for power outages, gas leaks, or city issues?",
-          answer: (
-            <ul className="list-disc ml-6 space-y-1">
-              <li>Power outage (ComEd): 1-800-334-7661</li>
-              <li>Gas leak (Peoples Gas): 866-556-6002 • NICOR Gas: 1-888-642-6748</li>
-              <li>City Services (Chicago 311): Call 311 for sanitation, snow, graffiti, etc.</li>
-            </ul>
-          )
-        }
-      ]
+      question: "Can board members and homeowners easily access financial reports?",
+      answer: "Yes. As part of our commitment to transparent HOA management in Chicago, we provide comprehensive monthly financial reports through our secure online portal. Board members can access detailed financial statements, and additional custom reports are available upon request to ensure complete transparency in your association's financial management."
+    },
+    {
+      question: "How does Manage369 communicate with boards and homeowners?",
+      answer: "Effective communication is central to our Chicago property management approach. We provide regular updates through multiple channels:\n\n" +
+        "• Dedicated online owner portals\n" +
+        "• Prompt email responses\n" +
+        "• Professional phone support\n" +
+        "• Regular community newsletters\n" +
+        "• Emergency 24/7 contact options"
+    },
+    {
+      question: "How do we get started with Manage369?",
+      answer: "Getting started with professional Chicago HOA management is simple. Contact us to schedule a consultation, and we'll assess your community's needs to create a customized property management plan. Our team will guide you through every step of the transition process to ensure a smooth handover of management responsibilities."
     }
   ];
 
-  const [searchTerm, setSearchTerm] = useState("");
-  
-  // Filter FAQs based on search term
-  const filteredCategories = searchTerm 
-    ? faqCategories.map(category => ({
-        ...category,
-        faqs: category.faqs.filter(faq => 
-          faq.question.toLowerCase().includes(searchTerm.toLowerCase()) || 
-          (typeof faq.answer === 'string' && faq.answer.toLowerCase().includes(searchTerm.toLowerCase()))
-        )
-      })).filter(category => category.faqs.length > 0)
-    : faqCategories;
-
   return (
     <MainLayout>
-      {/* Header */}
-      <section className="bg-gray-100 py-16">
+      <div className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h1 className="font-heading text-4xl font-bold mb-4">
-              🏢 Manage369 – Frequently Asked Questions
-            </h1>
-            <p className="text-gray-600">
-              📍 5107 N Western Ave Suite 1S, Chicago, IL 60625<br />
-              773.728.0652 | service@manage369.com
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Content */}
-      <section className="py-12 md:py-20">
-        <div className="container mx-auto px-4">
-          {/* Search */}
-          <div className="max-w-xl mx-auto mb-12">
-            <input
-              type="text"
-              placeholder="Search for answers..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-darkBlue"
-            />
-          </div>
-          
-          {/* FAQ Categories */}
           <div className="max-w-3xl mx-auto">
-            {filteredCategories.map((category, index) => (
-              <div key={index} className="mb-12">
-                <h2 className="font-heading text-2xl font-bold mb-6">{category.title}</h2>
-                
-                <Accordion type="single" collapsible className="border rounded-lg overflow-hidden">
-                  {category.faqs.map((faq, faqIndex) => (
-                    <AccordionItem key={faqIndex} value={`item-${index}-${faqIndex}`}>
-                      <AccordionTrigger className="px-6 hover:text-darkBlue">
-                        {faq.question}
-                      </AccordionTrigger>
-                      <AccordionContent className="px-6 pb-4 text-gray-700">
-                        {faq.answer}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </div>
-            ))}
+            <h1 className="font-heading text-4xl font-bold mb-6 text-center">
+              Frequently Asked Questions
+            </h1>
+            <p className="text-lg text-gray-600 mb-12 text-center">
+              Common questions about our Chicago HOA and condo management services
+            </p>
 
-            {/* Need More Help */}
-            <div className="mt-16 p-6 bg-gray-50 rounded-lg border border-gray-200">
-              <h2 className="font-heading text-xl font-bold mb-4">Need More Help?</h2>
-              <p className="mb-2">Email: <a href="mailto:service@manage369.com" className="text-darkBlue hover:underline">service@manage369.com</a></p>
-              <p>Office Hours: Mon–Fri, 9:30AM–4:30PM</p>
+            <Accordion type="single" collapsible className="bg-white rounded-lg shadow-sm">
+              {faqs.map((faq, index) => (
+                <AccordionItem key={index} value={`item-${index}`} className="px-4 border-b last:border-b-0">
+                  <AccordionTrigger className="py-4 text-left font-medium hover:text-darkBlue">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-4 text-gray-600 whitespace-pre-wrap">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+
+            <div className="mt-12 p-6 bg-white rounded-lg shadow-sm text-center">
+              <h2 className="text-xl font-bold mb-4">Still have questions?</h2>
+              <p className="text-gray-600 mb-4">
+                Contact our Chicago property management team for answers specific to your community's needs.
+              </p>
+              <p className="font-medium">
+                Call us at: (773) 728-0652<br />
+                Email: service@manage369.com
+              </p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </MainLayout>
   );
 }
