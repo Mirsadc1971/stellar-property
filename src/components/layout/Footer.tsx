@@ -40,7 +40,7 @@ export default function Footer() {
           <div className="col-span-1">
             <h3 className="font-heading font-semibold text-lg mb-4">Services</h3>
             <ul className="space-y-2">
-              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/services')}} className="text-gray-300 hover:text-white">What We Do</a></li>
+              <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/services')}} className="text-gray-300 hover:text-white">Condominium and HOA Management</a></li>
               <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/request-proposal')}} className="text-gray-300 hover:text-white">Request Proposal</a></li>
               <li><a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/payments')}} className="text-gray-300 hover:text-white">Payments</a></li>
             </ul>
