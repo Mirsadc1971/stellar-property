@@ -34,7 +34,7 @@ export default function Payments() {
                   </p>
                   <Button 
                     className="w-full bg-darkBlue hover:bg-blue-800"
-                    onClick={() => window.open('https://stellarpropertygrp.appfolio.com/oportal/users/log_in', '_blank')}
+                    onClick={() => window.open('https://stellarpropertygrp.appfolio.com/connect/', '_blank')}
                   >
                     Access Portal
                   </Button>
