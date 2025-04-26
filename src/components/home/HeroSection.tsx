@@ -27,13 +27,13 @@ export default function HeroSection() {
             className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
             itemProp="name"
           >
-            Top-Rated Condominium & HOA Property Management Experts in Chicago
+            Chicago's Trusted Property Management Company
           </h1>
           <p 
             className="text-xl text-white/90 mb-8"
             itemProp="description"
           >
-            Dedicated to improving community living, increasing property values, and supporting HOA boards with reliable, full-service solutions tailored to Chicago's unique real estate landscape.
+            Expert HOA and condominium management services across Chicago. We enhance community living, increase property values, and deliver reliable solutions for your property needs.
           </p>
           <div className="flex flex-wrap gap-4">
             <Button 
