@@ -80,13 +80,6 @@ export default function Header() {
             e.preventDefault();
             handleNavigation('/forms');
           }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Forms</a>
-          
-          <Button variant="default" className="ml-2 bg-darkBlue hover:bg-blue-800" onClick={(e) => {
-            e.preventDefault();
-            handleNavigation('/request-proposal');
-          }}>
-            <span className="text-white">Request Proposal</span>
-          </Button>
         </nav>
         
         {/* Mobile menu button */}
@@ -140,14 +133,10 @@ export default function Header() {
               e.preventDefault();
               handleNavigation('/forms');
             }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Forms</a>
-            
-            <a href="#" onClick={(e) => {
-              e.preventDefault();
-              handleNavigation('/request-proposal');
-            }} className="px-3 py-2 bg-darkBlue hover:bg-blue-800 text-white rounded text-center">Request Proposal</a>
           </div>
         </div>
       )}
     </header>
   );
 }
+
