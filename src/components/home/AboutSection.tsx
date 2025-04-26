@@ -1,7 +1,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { SectionHeading } from "../ui/section-heading";
 
 export default function AboutSection() {
   return (
@@ -15,10 +14,10 @@ export default function AboutSection() {
               At Manage369, we believe great communities start with great management. Our team provides full-service property management for homeowner associations (HOAs) and condominium communities across the Chicago area.
             </p>
             <p className="mb-6 text-gray-700">
-              We focus on responsive communication, transparent financials, and tailored solutions to help your community thrive. With our experienced team of Chicago property management professionals, you can trust us to protect and enhance your community's value.
+              We focus on responsive communication, transparent financials, and tailored solutions to help your community thrive.
             </p>
             
-            <Button className="mt-2 bg-darkBlue hover:bg-blue-800">
+            <Button className="mt-2 bg-darkBlue hover:bg-blue-800" asChild>
               <Link to="/about">Learn More About Us</Link>
             </Button>
           </div>

@@ -2,72 +2,68 @@
 import { Link } from "react-router-dom";
 import { SectionHeading } from "../ui/section-heading";
 import { 
-  Building, 
-  ClipboardList, 
-  Wrench, 
-  LineChart 
+  Building,
+  ClipboardList,
+  Wrench,
+  LineChart
 } from "lucide-react";
-
-interface ServiceCardProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  link: string;
-}
-
-function ServiceCard({ icon, title, description, link }: ServiceCardProps) {
-  return (
-    <div className="bg-white p-6 rounded-lg shadow-md flex flex-col h-full">
-      <div className="text-darkBlue mb-4">
-        {icon}
-      </div>
-      <h3 className="text-xl font-heading font-semibold mb-3">{title}</h3>
-      <p className="text-gray-600 mb-4 flex-grow">{description}</p>
-      <Link to={link} className="text-darkBlue hover:text-blue-700 flex items-center mt-2">
-        Learn more <span className="ml-1">→</span>
-      </Link>
-    </div>
-  );
-}
 
 export default function ServicesSection() {
   return (
     <section className="bg-gray-100 py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <SectionHeading 
-          title="Our Services" 
-          subtitle="Discover professional property management tailored to Chicago and its suburbs—from leasing to maintenance and financial reporting."
-          center
-        />
+        <h2 className="text-3xl font-bold mb-12 font-heading text-center">Our Services</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-          <ServiceCard 
-            icon={<Building size={36} />}
-            title="Full-Service Property Management"
-            description="Turnkey solutions including leasing, maintenance coordination, tenant relations, and rent collection for residential and commercial properties in Chicago and suburbs."
-            link="/services#full-service"
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="text-darkBlue mb-4">
+              <Building className="h-8 w-8" />
+            </div>
+            <h3 className="text-xl font-semibold mb-3">HOA Management Services</h3>
+            <p className="text-gray-600 mb-4">
+              We offer complete HOA management, including board meeting support, maintenance oversight, vendor management, and covenant enforcement.
+            </p>
+          </div>
           
-          <ServiceCard 
-            icon={<ClipboardList size={36} />}
-            title="Administrative Services"
-            description="Professional handling of all paperwork, record-keeping, compliance matters, and resident communications to ensure smooth operation of your property."
-            link="/services#administrative"
-          />
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="text-darkBlue mb-4">
+              <ClipboardList className="h-8 w-8" />
+            </div>
+            <h3 className="text-xl font-semibold mb-3">Condo Association Management</h3>
+            <p className="text-gray-600 mb-4">
+              Our condo management services include financial reporting, homeowner communication, maintenance coordination, and administrative support.
+            </p>
+          </div>
           
-          <ServiceCard 
-            icon={<Wrench size={36} />}
-            title="Maintenance Coordination"
-            description="24/7 repair handling and preventative maintenance with our trusted network—protect your assets and ensure tenant satisfaction, worry-free."
-            link="/services#maintenance"
-          />
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="text-darkBlue mb-4">
+              <LineChart className="h-8 w-8" />
+            </div>
+            <h3 className="text-xl font-semibold mb-3">Financial & Accounting Services</h3>
+            <p className="text-gray-600 mb-4">
+              We deliver accurate budgeting, monthly financial reporting, assessment collections, and delinquency tracking to keep your community's finances strong.
+            </p>
+          </div>
           
-          <ServiceCard 
-            icon={<LineChart size={36} />}
-            title="Financial Reporting"
-            description="Detailed income and expense statements, transparent owner portals, and end-of-year tax preparation for total financial clarity."
-            link="/services#financial"
-          />
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="text-darkBlue mb-4">
+              <Wrench className="h-8 w-8" />
+            </div>
+            <h3 className="text-xl font-semibold mb-3">Maintenance Coordination</h3>
+            <p className="text-gray-600 mb-4">
+              From routine repairs to emergency services, we coordinate trusted vendors to protect your property investments.
+            </p>
+          </div>
+        </div>
+        
+        <div className="text-center mt-8">
+          <Link 
+            to="/services" 
+            className="text-darkBlue hover:text-blue-700 font-medium inline-flex items-center"
+          >
+            View All Services
+            <span className="ml-2">→</span>
+          </Link>
         </div>
       </div>
     </section>

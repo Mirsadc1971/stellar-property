@@ -1,5 +1,5 @@
 
-import { Circle, CircleCheck } from "lucide-react";
+import { CircleCheck } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function WhyChooseUs() {
