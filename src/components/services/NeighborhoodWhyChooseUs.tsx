@@ -28,7 +28,7 @@ export default function NeighborhoodWhyChooseUs({ neighborhood }: NeighborhoodWh
   return (
     <div className="mt-12">
       <h3 className="text-2xl font-bold mb-6 text-center">
-        Why Property Owners Choose Manage369 for {neighborhood} Property Management
+        {neighborhood} Property Management Services
       </h3>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
