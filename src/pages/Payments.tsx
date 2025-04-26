@@ -15,7 +15,8 @@ export default function Payments() {
       description: "Securely manage and process payments through our dedicated online platform.",
       actionButton: {
         label: "Access Portal",
-        href: "https://stellarpropertygrp.appfolio.com/connect/"
+        href: "https://stellarpropertygrp.appfolio.com/connect/",
+        variant: "default"
       }
     },
     {
