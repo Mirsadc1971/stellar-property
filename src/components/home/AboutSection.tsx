@@ -1,7 +1,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import LeadershipTeam from "./LeadershipTeam";
 import ExperienceBadge from "./ExperienceBadge";
 
 export default function AboutSection() {
@@ -17,8 +16,6 @@ export default function AboutSection() {
             <p className="mb-6 text-gray-700">
               At Manage369, we bring over two decades of Chicago property management expertise to your HOA or condo association. Our locally-based team understands the unique challenges of managing properties in Chicago's diverse neighborhoods.
             </p>
-            
-            <LeadershipTeam />
             
             <Button className="mt-2 bg-darkBlue hover:bg-blue-800" asChild>
               <Link to="/about">Meet Our Full Team</Link>
