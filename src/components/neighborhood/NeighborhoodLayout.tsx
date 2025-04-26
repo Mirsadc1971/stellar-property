@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet-async";
 import MainLayout from "@/components/layout/MainLayout";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -104,8 +103,8 @@ export default function NeighborhoodLayout({
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <SectionHeading 
-            title="Property Management in This Area"
-            subtitle="Why property owners choose Manage369 for this neighborhood"
+            title={`Property Management in ${title}`}
+            subtitle={`Why property owners choose Manage369 for ${title}`}
             center
           />
           
