@@ -1,8 +1,13 @@
-
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,6 +34,10 @@ export default function Header() {
     });
   };
 
+  const handleExternalNavigation = (url: string) => {
+    window.open(url, '_blank');
+  };
+
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -39,7 +48,6 @@ export default function Header() {
           <h1 className="text-2xl font-bold font-heading text-darkBlue">Manage369</h1>
         </Link>
         
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-1">
           <a href="#" onClick={(e) => {
             e.preventDefault();
@@ -71,10 +79,19 @@ export default function Header() {
             handleNavigation('/blog');
           }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Blog</a>
           
-          <a href="#" onClick={(e) => {
-            e.preventDefault();
-            handleNavigation('/payments');
-          }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Payments</a>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="px-3 py-2 text-sm font-medium hover:text-darkBlue">
+              Payments
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="bg-white">
+              <DropdownMenuItem onClick={() => handleExternalNavigation('https://stellarpropertygrp.appfolio.com/connect/')}>
+                Pay Dues
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleNavigation('/payments')}>
+                Payment Options
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           
           <a href="#" onClick={(e) => {
             e.preventDefault();
@@ -82,7 +99,6 @@ export default function Header() {
           }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Forms</a>
         </nav>
         
-        {/* Mobile menu button */}
         <div className="md:hidden flex items-center">
           <button onClick={toggleMenu} className="text-gray-700 hover:text-darkBlue">
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -90,7 +106,6 @@ export default function Header() {
         </div>
       </div>
       
-      {/* Mobile Navigation */}
       {isMenuOpen && (
         <div className="md:hidden bg-white py-2">
           <div className="container mx-auto px-4 flex flex-col space-y-2">
@@ -124,10 +139,28 @@ export default function Header() {
               handleNavigation('/blog');
             }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Blog</a>
             
-            <a href="#" onClick={(e) => {
-              e.preventDefault();
-              handleNavigation('/payments');
-            }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Payments</a>
+            <div className="space-y-2 pl-4">
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleExternalNavigation('https://stellarpropertygrp.appfolio.com/connect/');
+                }}
+                className="block px-3 py-2 text-sm font-medium hover:text-darkBlue"
+              >
+                Pay Dues
+              </a>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigation('/payments');
+                }}
+                className="block px-3 py-2 text-sm font-medium hover:text-darkBlue"
+              >
+                Payment Options
+              </a>
+            </div>
             
             <a href="#" onClick={(e) => {
               e.preventDefault();
@@ -139,4 +172,3 @@ export default function Header() {
     </header>
   );
 }
-
