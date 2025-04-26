@@ -48,82 +48,146 @@
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "@id": "https://manage369.com",
-      "name": "Manage369 Property Management",
-      "image": "https://manage369.com/og-image.jpg",
-      "description": "Professional Chicago property management company specializing in HOA and condo association management services. Expert solutions for property maintenance, financial management, and community success.",
-      "url": "https://manage369.com",
-      "telephone": "+17737280652",
-      "priceRange": "$$",
-      "areaServed": {
-        "@type": "City",
-        "name": "Chicago",
-        "containsPlace": [
-          {
-            "@type": "Neighborhood",
-            "name": "The Loop"
-          },
-          {
-            "@type": "Neighborhood",
-            "name": "River North"
-          }
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://manage369.com",
+        "name": "Manage369 Property Management",
+        "image": "https://manage369.com/og-image.jpg",
+        "description": "Professional Chicago property management company specializing in HOA and condo association management services. Expert solutions for property maintenance, financial management, and community success.",
+        "url": "https://manage369.com",
+        "telephone": "+17737280652",
+        "priceRange": "$$",
+        "areaServed": {
+          "@type": "City",
+          "name": "Chicago",
+          "containsPlace": [
+            {
+              "@type": "Neighborhood",
+              "name": "The Loop"
+            },
+            {
+              "@type": "Neighborhood",
+              "name": "River North"
+            }
+          ]
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "5107 North Western Avenue Ste 1S",
+          "addressLocality": "Chicago",
+          "addressRegion": "IL",
+          "postalCode": "60625",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 41.975938,
+          "longitude": -87.691592
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:30",
+          "closes": "16:30"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Property Management Services",
+          "itemListElement": [
+            {
+              "@type": "Service",
+              "name": "HOA Management Chicago",
+              "description": "Complete HOA and condo association management services in Chicago"
+            },
+            {
+              "@type": "Service",
+              "name": "Property Maintenance",
+              "description": "24/7 maintenance services for Chicago properties"
+            },
+            {
+              "@type": "Service",
+              "name": "Financial Management",
+              "description": "Professional financial services for property associations in Chicago"
+            }
+          ]
+        },
+        "sameAs": [
+          "https://www.facebook.com/manage369",
+          "https://www.linkedin.com/company/manage369",
+          "https://twitter.com/manage369"
         ]
       },
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "5107 North Western Avenue Ste 1S",
-        "addressLocality": "Chicago",
-        "addressRegion": "IL",
-        "postalCode": "60625",
-        "addressCountry": "US"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 41.975938,
-        "longitude": -87.691592
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "09:30",
-        "closes": "16:30"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Property Management Services",
-        "itemListElement": [
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
           {
-            "@type": "Service",
-            "name": "HOA Management Chicago",
-            "description": "Complete HOA and condo association management services in Chicago"
+            "@type": "Question",
+            "name": "What types of properties does Manage369 specialize in managing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Manage369 specializes in managing homeowner associations (HOAs), condominium associations, and multi-unit residential communities throughout the Chicago area."
+            }
           },
           {
-            "@type": "Service",
-            "name": "Property Maintenance",
-            "description": "24/7 maintenance services for Chicago properties"
+            "@type": "Question",
+            "name": "What services are included in your property management packages?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our property management services include board meeting support, financial reporting, vendor management, maintenance coordination, homeowner communication, and compliance enforcement. We also offer customized packages."
+            }
           },
           {
-            "@type": "Service",
-            "name": "Financial Management",
-            "description": "Professional financial services for property associations in Chicago"
+            "@type": "Question",
+            "name": "How much does HOA or condo management cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Management fees depend on the size of the community and the services required. Contact Manage369 for a customized management proposal."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does Manage369 handle maintenance and repairs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Manage369 coordinates maintenance and repairs through a network of trusted vendors, ensuring high-quality work completed on time and within budget."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can board members and homeowners easily access financial reports?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. We provide monthly transparent financial reports and can supply additional reports upon request to ensure complete transparency."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does Manage369 communicate with boards and homeowners?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Manage369 prioritizes clear and responsive communication, offering updates through email, phone, and online portals."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do we get started with Manage369?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "To get started, contact us to schedule a consultation. We'll assess your needs and create a customized property management plan."
+            }
           }
         ]
-      },
-      "sameAs": [
-        "https://www.facebook.com/manage369",
-        "https://www.linkedin.com/company/manage369",
-        "https://twitter.com/manage369"
-      ]
-    }
+      }
+    ]
     </script>
 
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
