@@ -9,16 +9,13 @@ export default function AboutSection() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <SectionHeading 
-              title="About Manage369" 
-              subtitle="We deliver exceptional property management services tailored to condominium associations and HOAs across Chicago."
-            />
+            <h2 className="text-3xl font-bold mb-6 font-heading text-gray-900">About Manage369</h2>
             
             <p className="mb-6 text-gray-700">
-              We specialize in proactive management that fosters thriving communities, ensures legal compliance, and maximizes property values for owners.
+              At Manage369, we believe great communities start with great management. Our team provides full-service property management for homeowner associations (HOAs) and condominium communities across the Chicago area.
             </p>
             <p className="mb-6 text-gray-700">
-              Our dedicated local team partners with boards to provide transparent financial stewardship, prompt maintenance, and effective resident communications. With an in-depth knowledge of Chicago's unique property landscape, we focus solely on association-managed properties—helping communities flourish through attentive, professional service.
+              We focus on responsive communication, transparent financials, and tailored solutions to help your community thrive. With our experienced team of Chicago property management professionals, you can trust us to protect and enhance your community's value.
             </p>
             
             <Button className="mt-2 bg-darkBlue hover:bg-blue-800">
@@ -28,9 +25,10 @@ export default function AboutSection() {
           
           <div className="relative">
             <img 
-              src="https://images.unsplash.com/photo-1496307653780-42ee777d4833?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
-              alt="Modern glass building" 
+              src="https://images.unsplash.com/photo-1496307653780-42ee777d4833" 
+              alt="Professional Chicago HOA and condo management services by Manage369" 
               className="rounded-lg shadow-lg w-full h-auto"
+              loading="lazy"
             />
             <div className="absolute -bottom-6 -left-6 bg-darkBlue text-white p-6 rounded-lg shadow-lg">
               <p className="text-2xl font-bold font-heading">20+</p>

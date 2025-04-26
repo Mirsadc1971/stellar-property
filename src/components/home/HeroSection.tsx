@@ -13,8 +13,9 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <img 
           src="https://images.unsplash.com/photo-1487958449943-2429e8be8625"
-          alt="Modern Chicago Property Management - White Concrete Building Exterior by Manage369" 
+          alt="Chicago Property Management Services by Manage369 - Modern Condominium Building" 
           className="w-full h-full object-cover"
+          loading="lazy"
           itemProp="image"
         />
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -27,13 +28,13 @@ export default function HeroSection() {
             className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
             itemProp="name"
           >
-            Chicago's Trusted Property Management Company
+            Chicago's Trusted Property Management Experts
           </h1>
           <p 
             className="text-xl text-white/90 mb-8"
             itemProp="description"
           >
-            Expert HOA and condominium management services across Chicago. We enhance community living, increase property values, and deliver reliable solutions for your property needs.
+            Specialized HOA & Condo Management Services to Maximize Your Community's Success
           </p>
           <div className="flex flex-wrap gap-4">
             <Button 
@@ -41,17 +42,7 @@ export default function HeroSection() {
               className="bg-darkBlue hover:bg-blue-800"
               asChild
             >
-              <a 
-                href="https://stellarpropertygrp.appfolio.com/oportal/users/log_in" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                itemProp="potentialAction"
-              >
-                Make Payment
-              </a>
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-darkBlue">
-              <Link to="/services" itemProp="potentialAction">Our Services</Link>
+              <Link to="/request-proposal">Get a Free Management Proposal</Link>
             </Button>
           </div>
         </div>
