@@ -1,15 +1,15 @@
-
 import { SectionHeading } from "@/components/ui/section-heading";
 import ServiceCard from "./ServiceCard";
 import { Scale, DollarSign, FileSearch, Wrench, LineChart, Flag } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function ServicesOfferings() {
   return (
     <section id="services-offerings" className="py-12 md:py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <SectionHeading 
-          title="Our Property Management Services" 
-          subtitle="Our comprehensive service packages are carefully designed to make property ownership truly hassle-free."
+          title="Professional Property Management Services in Chicago" 
+          subtitle="Comprehensive management solutions for HOAs and condominiums across Chicago's neighborhoods."
           center
         />
         
@@ -18,16 +18,16 @@ export default function ServicesOfferings() {
             id="law-compliance"
             icon={<Scale className="h-8 w-8" />}
             emoji="⚖️"
-            title="Law Compliance"
-            description="We ensure all properties comply with the latest local, state, and federal regulations, so you never have to worry about legal issues."
+            title="Chicago HOA Compliance"
+            description="Expert guidance on local, state, and federal regulations for Chicago HOAs and condominiums."
           />
           
           <ServiceCard 
             id="collection"
             icon={<DollarSign className="h-8 w-8" />}
             emoji="💰"
-            title="Collection Assistance"
-            description="Our team expertly manages rent invoicing, payment collection, and delinquencies to keep your cash flow steady."
+            title="Assessment Collection"
+            description="Professional management of HOA dues, assessments, and financial planning for Chicago properties."
           />
           
           <ServiceCard 
@@ -61,6 +61,12 @@ export default function ServicesOfferings() {
             title="Violation Management"
             description="We promptly address lease and association violations to maintain order and protect your property's reputation."
           />
+        </div>
+        
+        <div className="text-center mt-12">
+          <Button asChild variant="default" className="bg-darkBlue hover:bg-blue-800">
+            <Link to="/request-proposal">Get Started with Professional Property Management</Link>
+          </Button>
         </div>
       </div>
     </section>
