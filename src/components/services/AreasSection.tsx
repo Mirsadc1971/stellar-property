@@ -18,7 +18,7 @@ export default function AreasSection() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
           <AreaCard 
-            title="Downtown Chicago Property Management"
+            title="The Loop Property Management"
             areas={[
               "The Loop",
               "River North",
@@ -29,7 +29,7 @@ export default function AreasSection() {
           />
           
           <AreaCard 
-            title="North Side Property Management"
+            title="Lincoln Park Property Management"
             areas={[
               "Lincoln Park",
               "Lakeview",
@@ -40,7 +40,7 @@ export default function AreasSection() {
           />
           
           <AreaCard 
-            title="Northwest Side Property Management"
+            title="Wicker Park Property Management"
             areas={[
               "Wicker Park",
               "Bucktown",
@@ -51,7 +51,7 @@ export default function AreasSection() {
           />
           
           <AreaCard 
-            title="Northeast Side Property Management"
+            title="Uptown Property Management"
             areas={[
               "Uptown",
               "Andersonville",
