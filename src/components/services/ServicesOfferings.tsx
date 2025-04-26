@@ -9,11 +9,12 @@ export default function ServicesOfferings() {
   return (
     <section id="services-offerings" className="py-12 md:py-20 bg-gray-50">
       <div className="container mx-auto px-4">
-        <SectionHeading 
-          title="Professional Property Management Services in Chicago" 
-          subtitle="Comprehensive management solutions for HOAs and condominiums across Chicago's neighborhoods."
-          center
-        />
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading text-center">
+          Expert HOA & Condo Management Services in Chicago
+        </h2>
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto text-center mb-12">
+          Professional property management solutions tailored for Chicago's diverse communities and neighborhoods.
+        </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           <ServiceCard 
