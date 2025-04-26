@@ -1,3 +1,4 @@
+
 import MainLayout from "@/components/layout/MainLayout";
 import HeroSection from "@/components/home/HeroSection";
 import AboutSection from "@/components/home/AboutSection";
@@ -12,9 +13,6 @@ const Index = () => {
   return (
     <MainLayout>
       <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <WhyChooseUs />
       
       {/* AI Property Assistant Section */}
       <section className="bg-gradient-to-br from-blue-50 to-blue-100 py-16">
@@ -31,6 +29,9 @@ const Index = () => {
         </div>
       </section>
 
+      <AboutSection />
+      <ServicesSection />
+      <WhyChooseUs />
       <Testimonials />
       
       {/* Location Section */}
