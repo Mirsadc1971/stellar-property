@@ -1,20 +1,24 @@
 
 import { SectionHeading } from "@/components/ui/section-heading";
 import AreaCard from "./AreaCard";
+import NeighborhoodWhyChooseUs from "./NeighborhoodWhyChooseUs";
+import { useParams } from "react-router-dom";
 
 export default function AreasSection() {
+  const { neighborhood } = useParams();
+
   return (
     <section className="py-12 md:py-20">
       <div className="container mx-auto px-4">
         <SectionHeading 
-          title="Areas We Serve" 
-          subtitle="Manage369 provides property management services throughout Chicago and its surrounding suburbs."
+          title="Chicago Property Management Service Areas" 
+          subtitle="Professional property management services throughout Chicago's diverse neighborhoods"
           center
         />
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
           <AreaCard 
-            title="Downtown Chicago"
+            title="Downtown Chicago Property Management"
             areas={[
               "The Loop",
               "River North",
@@ -25,7 +29,7 @@ export default function AreasSection() {
           />
           
           <AreaCard 
-            title="North Side"
+            title="North Side Property Management"
             areas={[
               "Lincoln Park",
               "Lakeview",
@@ -36,7 +40,7 @@ export default function AreasSection() {
           />
           
           <AreaCard 
-            title="Northwest Side"
+            title="Northwest Side Property Management"
             areas={[
               "Wicker Park",
               "Bucktown",
@@ -47,7 +51,7 @@ export default function AreasSection() {
           />
           
           <AreaCard 
-            title="Northeast Side"
+            title="Northeast Side Property Management"
             areas={[
               "Uptown",
               "Andersonville",
@@ -57,6 +61,8 @@ export default function AreasSection() {
             ]}
           />
         </div>
+
+        {neighborhood && <NeighborhoodWhyChooseUs neighborhood={neighborhood} />}
       </div>
     </section>
   );
