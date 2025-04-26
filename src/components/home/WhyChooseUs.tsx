@@ -1,5 +1,5 @@
 
-import { CircleCheck, Award, Shield, Clock, Building2, Briefcase } from "lucide-react";
+import { CircleCheck, Award, Shield, Clock, Building2, Briefcase, DollarSign } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -35,6 +35,11 @@ export default function WhyChooseUs() {
       icon: Briefcase,
       title: "Professional Team",
       description: "Certified property managers with extensive HOA experience"
+    },
+    {
+      icon: DollarSign,
+      title: "Transparent Pricing",
+      description: "Tailored services with clear, upfront pricing to meet your specific needs"
     }
   ];
 
@@ -77,3 +82,4 @@ export default function WhyChooseUs() {
     </section>
   );
 }
+
