@@ -10,7 +10,6 @@ export function PaymentFees() {
       </div>
       <ul className="list-disc list-inside space-y-2 text-gray-700">
         <li><strong>Credit Card Payments:</strong> 3.5% processing fee per transaction</li>
-        <li><strong>ACH/Electronic Check Payments:</strong> 3.5% processing fee</li>
         <li><strong>Bank Bill Pay:</strong> 100% FREE - No additional charges</li>
       </ul>
       <p className="text-gray-600 mt-4 text-sm italic">
