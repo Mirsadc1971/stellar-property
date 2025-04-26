@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export default function WhyChooseUs() {
   const benefits = [
+    "Licensed and Insured Property Managers",
     "Licensed and Insured Property Management Company",
     "Fast, Responsive Communication",
     "Customized Management Plans",
@@ -42,4 +43,3 @@ export default function WhyChooseUs() {
     </section>
   );
 }
-
