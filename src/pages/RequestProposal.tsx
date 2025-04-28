@@ -1,4 +1,3 @@
-
 import MainLayout from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -12,7 +11,7 @@ export default function RequestProposal() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">Request a Proposal</h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Get started with professional property management services from Manage369
+            Get started with professional property management services from Stellar Property Management
           </p>
         </div>
       </section>
@@ -23,7 +22,7 @@ export default function RequestProposal() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Left - Benefits */}
             <div className="lg:col-span-1">
-              <h2 className="font-heading text-2xl font-bold mb-6">Why Choose Manage369?</h2>
+              <h2 className="font-heading text-2xl font-bold mb-6">Why Choose Stellar Property Management?</h2>
               
               <div className="space-y-4 mb-8">
                 <div className="flex items-start">
@@ -208,7 +207,7 @@ export default function RequestProposal() {
                     required
                   />
                   <label htmlFor="consent" className="ml-2 block text-sm text-gray-700">
-                    I consent to Manage369 contacting me about my property management needs.*
+                    I consent to Stellar Property Management contacting me about my property management needs.*
                   </label>
                 </div>
                 
