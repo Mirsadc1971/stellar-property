@@ -1,3 +1,4 @@
+
 import { Helmet } from "react-helmet-async";
 import MainLayout from "@/components/layout/MainLayout";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -29,9 +30,9 @@ export default function NeighborhoodLayout({
   return (
     <MainLayout>
       <Helmet>
-        <title>{`${title} Property Management - Manage369`}</title>
+        <title>{`${title} Property Management - Stellar Property Management`}</title>
         <meta name="description" content={metaDescription} />
-        <meta property="og:title" content={`${title} Property Management - Manage369`} />
+        <meta property="og:title" content={`${title} Property Management - Stellar Property Management`} />
         <meta property="og:description" content={metaDescription} />
       </Helmet>
 
@@ -104,7 +105,7 @@ export default function NeighborhoodLayout({
         <div className="container mx-auto px-4">
           <SectionHeading 
             title={`Property Management in ${title}`}
-            subtitle={`Why property owners choose Manage369 for ${title}`}
+            subtitle={`Why property owners choose Stellar Property Management for ${title}`}
             center
           />
           
@@ -125,7 +126,7 @@ export default function NeighborhoodLayout({
             Expert Property Management in {title}
           </h2>
           <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-            Trust Manage369 to handle your property with the local expertise and professional service you deserve.
+            Trust Stellar Property Management to handle your property with the local expertise and professional service you deserve.
           </p>
           <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-darkBlue">
             <Link to="/contact">Contact Us Today</Link>

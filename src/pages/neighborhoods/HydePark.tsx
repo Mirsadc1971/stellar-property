@@ -5,7 +5,7 @@ export default function HydePark() {
   return (
     <NeighborhoodLayout
       title="Hyde Park, Chicago"
-      metaDescription="Expert property management services in Hyde Park, Chicago's historic lakefront community. Manage369 offers professional property management for residential and commercial properties."
+      metaDescription="Expert property management services in Hyde Park, Chicago's historic lakefront community. Stellar Property Management offers professional property management for residential and commercial properties."
       heroImage="https://images.unsplash.com/photo-1578681994506-b8bdf7a35d0a"
       description="A historic lakefront neighborhood home to the University of Chicago, museums, and architectural landmarks."
       history="Hyde Park's development began in 1853, gaining prominence when it hosted the World's Columbian Exposition of 1893. The founding of the University of Chicago in 1890 established the neighborhood as an intellectual center. Throughout the 20th century, Hyde Park maintained its diverse character, becoming known for progressive politics and racial integration during a time of significant segregation in Chicago. Today, it remains a vibrant community that balances academic institutions, historic architecture, cultural attractions, and lakefront recreation areas."
