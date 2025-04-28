@@ -5,7 +5,7 @@ export default function OldTown() {
   return (
     <NeighborhoodLayout
       title="Old Town, Chicago"
-      metaDescription="Expert property management services in Old Town, Chicago's historic neighborhood with unique charm. Manage369 offers professional property management for residential and commercial properties."
+      metaDescription="Expert property management services in Old Town, Chicago's historic neighborhood with unique charm. Stellar Property Management offers professional property management for residential and commercial properties."
       heroImage="https://images.unsplash.com/photo-1594262335218-18986eb4a2bd"
       description="A historic neighborhood known for its Victorian-era buildings, comedy clubs, and vibrant arts scene."
       history="Old Town's history dates back to the mid-19th century, surviving the Great Chicago Fire of 1871. The neighborhood has maintained much of its historic charm with tree-lined streets and well-preserved Victorian buildings. In the 1960s and 70s, it became known as a center for folk music, comedy, and counterculture, and today continues to be one of Chicago's most distinctive neighborhoods, blending historic architecture with modern amenities."

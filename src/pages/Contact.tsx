@@ -12,7 +12,7 @@ export default function Contact() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">Contact</h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            We'd love to hear from you! For questions, service requests, or to learn more about Manage369, use the details below.
+            We'd love to hear from you! For questions, service requests, or to learn more about Stellar Property Management, use the details below.
           </p>
         </div>
       </section>
@@ -51,7 +51,7 @@ export default function Contact() {
                   <div>
                     <h3 className="font-heading text-xl font-semibold mb-1">Email Address</h3>
                     <p className="text-gray-600">
-                      <a href="mailto:service@manage369.com" className="hover:text-darkBlue">service@manage369.com</a>
+                      <a href="mailto:service@stellarpropertygroup.com" className="hover:text-darkBlue">service@stellarpropertygroup.com</a>
                     </p>
                   </div>
                 </div>

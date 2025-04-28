@@ -71,7 +71,7 @@ Listing Duration: ${formData.listingTerms} month(s)
 Signature: ${formData.signature}
     `;
 
-    const mailtoLink = `mailto:service@manage369.com?subject=Notice of Intent to Sell Unit&body=${encodeURIComponent(emailContent)}`;
+    const mailtoLink = `mailto:service@stellarpropertygroup.com?subject=Notice of Intent to Sell Unit&body=${encodeURIComponent(emailContent)}`;
     window.location.href = mailtoLink;
     
     toast.success('Notice form prepared for email submission');

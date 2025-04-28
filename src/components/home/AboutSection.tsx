@@ -14,7 +14,7 @@ export default function AboutSection() {
             </h2>
             
             <p className="mb-6 text-gray-700">
-              At Manage369, we bring over two decades of Chicago property management expertise to your HOA or condo association. Our locally-based team understands the unique challenges of managing properties in Chicago's diverse neighborhoods.
+              At Stellar Property Management, we bring over two decades of Chicago property management expertise to your HOA or condo association. Our locally-based team understands the unique challenges of managing properties in Chicago's diverse neighborhoods.
             </p>
             
             <Button className="mt-2 bg-darkBlue hover:bg-blue-800" asChild>
@@ -25,7 +25,7 @@ export default function AboutSection() {
           <div className="relative">
             <img 
               src="https://images.unsplash.com/photo-1496307653780-42ee777d4833"
-              alt="Manage369 Chicago property management team" 
+              alt="Stellar Property Management Chicago property management team" 
               className="rounded-lg shadow-lg w-full h-auto object-cover aspect-[4/3]"
               loading="lazy"
               onError={(e) => {

@@ -87,7 +87,7 @@ const ConstructionRequest = () => {
     });
 
     // For now, we'll use mailto for the email content
-    const mailtoLink = `mailto:service@manage369.com?subject=Construction Request Form - Unit ${formData.unitNumber}&body=${encodeURIComponent(emailContent)}`;
+    const mailtoLink = `mailto:service@stellarpropertygroup.com?subject=Construction Request Form - Unit ${formData.unitNumber}&body=${encodeURIComponent(emailContent)}`;
     window.location.href = mailtoLink;
     
     toast.success('Construction request form prepared for email submission');

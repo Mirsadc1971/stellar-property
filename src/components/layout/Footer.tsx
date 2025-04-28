@@ -1,3 +1,4 @@
+
 import { useNavigate } from 'react-router-dom';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
@@ -20,7 +21,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-1">
-            <h2 className="font-heading font-bold text-xl mb-4">Manage369</h2>
+            <h2 className="font-heading font-bold text-xl mb-4">Stellar Property Management</h2>
             <p className="text-gray-300 mb-4">Chicago's trusted Condominium and HOA Management Experts</p>
           </div>
           
@@ -58,7 +59,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center">
                 <Mail className="h-5 w-5 mr-2 text-gray-400" />
-                <a href="mailto:service@manage369.com" className="text-gray-300 hover:text-white">service@manage369.com</a>
+                <a href="mailto:service@stellarpropertygroup.com" className="text-gray-300 hover:text-white">service@stellarpropertygroup.com</a>
               </div>
               <div className="flex items-center">
                 <Phone className="h-5 w-5 mr-2 text-gray-400" />
@@ -70,7 +71,7 @@ export default function Footer() {
         
         {/* Bottom Footer */}
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">&copy; {currentYear} Manage369. All rights reserved.</p>
+          <p className="text-gray-400 text-sm">&copy; {currentYear} Stellar Property Management. All rights reserved.</p>
           <div className="mt-4 md:mt-0">
           </div>
         </div>

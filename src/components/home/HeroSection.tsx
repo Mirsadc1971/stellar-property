@@ -12,7 +12,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <img 
           src="https://images.unsplash.com/photo-1487958449943-2429e8be8625"
-          alt="Professional Chicago property management services by Manage369 - Modern luxury condominiums" 
+          alt="Professional Chicago property management services by Stellar Property Management - Modern luxury condominiums" 
           className="w-full h-full object-cover"
           loading="lazy"
         />

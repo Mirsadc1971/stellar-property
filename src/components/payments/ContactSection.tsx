@@ -17,7 +17,7 @@ export function ContactSection() {
             variant="outline" 
             className="border-darkBlue text-darkBlue hover:bg-darkBlue hover:text-white"
           >
-            <a href="mailto:service@manage369.com">Email Us</a>
+            <a href="mailto:service@stellarpropertygroup.com">Email Us</a>
           </Button>
         </div>
       </div>

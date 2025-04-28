@@ -21,7 +21,7 @@ export default function CtaSection() {
           Ready to Simplify Your Property Management?
         </h2>
         <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-          Join hundreds of property owners in Chicago who trust Manage369 with their valuable investments.
+          Join hundreds of property owners in Chicago who trust Stellar Property Management with their valuable investments.
         </p>
         <Button 
           size="lg" 

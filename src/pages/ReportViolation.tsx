@@ -1,3 +1,4 @@
+
 import MainLayout from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -51,7 +52,7 @@ Prior Attempts to Resolve:
 ${data.priorAttempts}
       `;
 
-      window.location.href = `mailto:service@manage369.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:service@stellarpropertygroup.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
       toast({
         title: "Form submitted successfully",
@@ -106,6 +107,7 @@ ${data.priorAttempts}
                     <input
                       type="text"
                       id="reporterName"
+                      name="reporterName"
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkBlue focus:border-darkBlue"
                       required
                     />
@@ -118,6 +120,7 @@ ${data.priorAttempts}
                     <input
                       type="email"
                       id="reporterEmail"
+                      name="reporterEmail"
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkBlue focus:border-darkBlue"
                       required
                     />
@@ -131,6 +134,7 @@ ${data.priorAttempts}
                   <input
                     type="tel"
                     id="reporterPhone"
+                    name="reporterPhone"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkBlue focus:border-darkBlue"
                   />
                 </div>
@@ -141,6 +145,7 @@ ${data.priorAttempts}
                   </label>
                   <select
                     id="relationship"
+                    name="relationship"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkBlue focus:border-darkBlue"
                     required
                   >
@@ -165,6 +170,7 @@ ${data.priorAttempts}
                   <input
                     type="text"
                     id="propertyAddress"
+                    name="propertyAddress"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkBlue focus:border-darkBlue"
                     required
                   />
@@ -176,6 +182,7 @@ ${data.priorAttempts}
                   </label>
                   <select
                     id="violationType"
+                    name="violationType"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkBlue focus:border-darkBlue"
                     required
                   >
@@ -198,6 +205,7 @@ ${data.priorAttempts}
                   <input
                     type="date"
                     id="violationDate"
+                    name="violationDate"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkBlue focus:border-darkBlue"
                   />
                 </div>
@@ -208,6 +216,7 @@ ${data.priorAttempts}
                   </label>
                   <textarea
                     id="violationDescription"
+                    name="violationDescription"
                     rows={6}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkBlue focus:border-darkBlue"
                     placeholder="Please provide as much detail as possible about what happened, when it happened, who was involved, and the impact of the violation..."
@@ -221,6 +230,7 @@ ${data.priorAttempts}
                   </label>
                   <textarea
                     id="evidenceDescription"
+                    name="evidenceDescription"
                     rows={3}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkBlue focus:border-darkBlue"
                     placeholder="Describe any evidence you have of the violation (documents, photos, emails, etc.). Do not attach evidence to this form."
@@ -233,6 +243,7 @@ ${data.priorAttempts}
                   </label>
                   <textarea
                     id="priorAttempts"
+                    name="priorAttempts"
                     rows={3}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkBlue focus:border-darkBlue"
                     placeholder="Have you taken any steps to resolve this issue? If so, please describe them and any responses received."
@@ -248,6 +259,7 @@ ${data.priorAttempts}
                     <input
                       type="checkbox"
                       id="consentCheck"
+                      name="consentCheck"
                       className="mt-1 h-4 w-4 rounded border-gray-300 text-darkBlue focus:ring-darkBlue"
                       required
                     />
@@ -260,6 +272,7 @@ ${data.priorAttempts}
                     <input
                       type="checkbox"
                       id="accuracyCheck"
+                      name="accuracyCheck"
                       className="mt-1 h-4 w-4 rounded border-gray-300 text-darkBlue focus:ring-darkBlue"
                       required
                     />
@@ -272,6 +285,7 @@ ${data.priorAttempts}
                     <input
                       type="checkbox"
                       id="followUpCheck"
+                      name="followUpCheck"
                       className="mt-1 h-4 w-4 rounded border-gray-300 text-darkBlue focus:ring-darkBlue"
                       required
                     />

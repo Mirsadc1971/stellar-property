@@ -12,7 +12,7 @@ export default function About() {
       {/* Hero Section */}
       <section className="relative bg-gray-100 py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">About Manage369</h1>
+          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">About Stellar Property Management</h1>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto">
             Chicago's premier property management company with a commitment to excellence and personalized service.
           </p>
@@ -38,7 +38,7 @@ export default function About() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="font-heading text-3xl font-bold mb-6">Our Mission</h2>
             <p className="text-lg text-gray-700 mb-12">
-              At Manage369, our mission is to provide exceptional property management services that enhance property values, maximize returns, and create peace of mind for property owners.
+              At Stellar Property Management, our mission is to provide exceptional property management services that enhance property values, maximize returns, and create peace of mind for property owners.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -74,7 +74,7 @@ export default function About() {
       <section className="py-12 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <h2 className="font-heading text-3xl font-bold mb-10 text-center">Why Choose Manage369?</h2>
+            <h2 className="font-heading text-3xl font-bold mb-10 text-center">Why Choose Stellar Property Management?</h2>
             
             <div className="space-y-6">
               <div className="flex items-start">

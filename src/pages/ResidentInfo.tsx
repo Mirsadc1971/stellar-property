@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { Button } from '@/components/ui/button';
@@ -140,7 +141,7 @@ const ResidentInfo = () => {
       Digital Signature: ${formData.signature}
     `;
 
-    const mailtoLink = `mailto:service@manage369.com?subject=Resident Information Sheet&body=${encodeURIComponent(emailContent)}`;
+    const mailtoLink = `mailto:service@stellarpropertygroup.com?subject=Resident Information Sheet&body=${encodeURIComponent(emailContent)}`;
     window.location.href = mailtoLink;
     
     toast.success('Form ready to be sent via email');
@@ -184,13 +185,13 @@ const ResidentInfo = () => {
             <p className="text-sm text-gray-700">
               Please return the completed Resident Information Sheet to:
               <br />
-              Manage369 Property Management
+              Stellar Property Management
               <br />
               5107 North Western Avenue Ste 1S
               <br />
               Chicago, IL 60625
               <br />
-              Email: service@manage369.com
+              Email: service@stellarpropertygroup.com
             </p>
           </div>
         </div>

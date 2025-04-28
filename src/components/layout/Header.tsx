@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -45,7 +46,7 @@ export default function Header() {
           e.preventDefault();
           handleNavigation('/');
         }}>
-          <h1 className="text-2xl font-bold font-heading text-darkBlue">Manage369</h1>
+          <h1 className="text-2xl font-bold font-heading text-darkBlue">Stellar Property Management</h1>
         </Link>
         
         <nav className="hidden md:flex items-center space-x-1">

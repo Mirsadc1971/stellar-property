@@ -88,7 +88,7 @@ export default function Payments() {
                 </p>
                 <div className="bg-gray-50 p-4 rounded-md border border-gray-200">
                   <p>
-                    Manage369 Property Management<br />
+                    Stellar Property Management<br />
                     5107 North Western Avenue, Suite 1S<br />
                     Chicago, IL 60625
                   </p>
