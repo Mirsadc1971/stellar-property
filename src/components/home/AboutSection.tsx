@@ -1,6 +1,4 @@
 
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import ExperienceBadge from "./ExperienceBadge";
 
 export default function AboutSection() {
@@ -16,10 +14,6 @@ export default function AboutSection() {
             <p className="mb-6 text-gray-700">
               At Stellar Property Management, we bring over two decades of Chicago property management expertise to your HOA or condo association. Our locally-based team understands the unique challenges of managing properties in Chicago's diverse neighborhoods.
             </p>
-            
-            <Button className="mt-2 bg-darkBlue hover:bg-blue-800" asChild>
-              <Link to="/about">Meet Our Full Team</Link>
-            </Button>
           </div>
           
           <div className="relative">
