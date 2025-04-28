@@ -14,11 +14,11 @@ export default function ServicesOverview() {
             </h2>
             
             <h3 className="text-xl font-semibold mb-4 font-heading text-gray-800">
-              Why Choose Manage369?
+              Why Choose Stellar Property Management?
             </h3>
             
             <p className="mb-6 text-gray-700">
-              At Manage369, we offer comprehensive property management services designed to protect your investment, maximize returns, and minimize your involvement in day-to-day operations in Chicago and surrounding areas.
+              At Stellar Property Management, we offer comprehensive property management services designed to protect your investment, maximize returns, and minimize your involvement in day-to-day operations in Chicago and surrounding areas.
             </p>
             
             <h3 className="text-xl font-semibold mb-4 font-heading text-gray-800">
