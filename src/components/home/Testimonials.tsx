@@ -26,25 +26,25 @@ export default function Testimonials() {
       <div className="container mx-auto px-4">
         <SectionHeading 
           title="What Our Clients Say" 
-          subtitle="Don't just take our word for it. Here's what property owners have to say about working with Manage369."
+          subtitle="Don't just take our word for it. Here's what property owners have to say about working with Stellar Property Management."
           center
         />
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
           <TestimonialCard 
-            quote="Manage369 has transformed how I handle my investment properties in Chicago. Their team is responsive, professional, and has helped increase my rental income significantly."
+            quote="Stellar Property Management has transformed how I handle my investment properties in Chicago. Their team is responsive, professional, and has helped increase my rental income significantly."
             author="Michael Johnson"
             role="Property Owner"
           />
           
           <TestimonialCard 
-            quote="As a commercial property owner, I needed a management company that understood the Chicago market. Manage369 has exceeded my expectations in every way."
+            quote="As a commercial property owner, I needed a management company that understood the Chicago market. Stellar Property Management has exceeded my expectations in every way."
             author="Sarah Patel"
             role="Commercial Property Owner"
           />
           
           <TestimonialCard 
-            quote="I own multiple properties across Chicago suburbs, and Manage369 has made it possible for me to expand my portfolio without taking on additional stress."
+            quote="I own multiple properties across Chicago suburbs, and Stellar Property Management has made it possible for me to expand my portfolio without taking on additional stress."
             author="David Miller"
             role="Investor"
           />

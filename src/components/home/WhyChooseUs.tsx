@@ -46,7 +46,7 @@ export default function WhyChooseUs() {
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-4 font-heading text-center">Why Choose Manage369?</h2>
+        <h2 className="text-3xl font-bold mb-4 font-heading text-center">Why Choose Stellar Property Management?</h2>
         
         <div className="flex justify-center gap-4 mb-12">
           {certifications.map((cert) => (
@@ -74,7 +74,7 @@ export default function WhyChooseUs() {
 
         <div className="mt-12 text-center bg-white p-8 rounded-lg shadow-md">
           <blockquote className="text-lg italic text-gray-700 mb-4">
-            "Manage369 transformed our building's operations. Their Chicago property management expertise and responsive team made all the difference!"
+            "Stellar Property Management transformed our building's operations. Their Chicago property management expertise and responsive team made all the difference!"
           </blockquote>
           <cite className="text-gray-600">– Board President, Lincoln Park HOA</cite>
         </div>
@@ -82,4 +82,3 @@ export default function WhyChooseUs() {
     </section>
   );
 }
-
