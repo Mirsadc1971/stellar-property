@@ -57,10 +57,8 @@ export default function NeighborhoodLayout({
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <SectionHeading 
-                title="Neighborhood Overview" 
-                subtitle="Discover what makes this area unique"
-              />
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Neighborhood Overview</h2>
+              <p className="text-lg text-gray-600 mb-6">Discover what makes this area unique</p>
               <div className="prose max-w-none">
                 <p className="text-gray-700 mb-6">{history}</p>
               </div>
@@ -103,11 +101,8 @@ export default function NeighborhoodLayout({
       {/* Features Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <SectionHeading 
-            title={`Property Management in ${title}`}
-            subtitle={`Why property owners choose Stellar Property Management for ${title}`}
-            center
-          />
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-4">{`Property Management in ${title}`}</h2>
+          <p className="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12">{`Why property owners choose Stellar Property Management for ${title}`}</p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             {features.map((feature, index) => (
