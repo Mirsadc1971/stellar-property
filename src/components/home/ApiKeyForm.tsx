@@ -2,20 +2,23 @@
 import React from 'react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { KeyRound, AlertCircle } from "lucide-react";
+import { KeyRound, AlertCircle, Info } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface ApiKeyFormProps {
   apiKeyInput: string;
   onInputChange: (value: string) => void;
   onSave: () => void;
   storageAvailable?: boolean;
+  storageError?: string | null;
 }
 
 export function ApiKeyForm({ 
   apiKeyInput, 
   onInputChange, 
   onSave,
-  storageAvailable = true
+  storageAvailable = true,
+  storageError = null
 }: ApiKeyFormProps) {
   return (
     <section className="py-8">
@@ -36,12 +39,21 @@ export function ApiKeyForm({
         </p>
         
         {!storageAvailable && (
-          <div className="bg-amber-50 border border-amber-200 rounded-md p-3 mb-4 flex items-start">
-            <AlertCircle className="w-5 h-5 text-amber-500 mt-0.5 mr-2 flex-shrink-0" />
-            <p className="text-sm text-amber-700">
+          <Alert variant="destructive" className="mb-4">
+            <AlertCircle className="h-4 w-4" />
+            <AlertDescription>
               Browser storage is unavailable. Your API key will only work for this session and will need to be entered again when you reload the page.
-            </p>
-          </div>
+            </AlertDescription>
+          </Alert>
+        )}
+        
+        {storageError && (
+          <Alert variant="destructive" className="mb-4">
+            <AlertCircle className="h-4 w-4" />
+            <AlertDescription>
+              {storageError}
+            </AlertDescription>
+          </Alert>
         )}
         
         <div className="flex gap-2">
@@ -66,6 +78,13 @@ export function ApiKeyForm({
             <KeyRound className="w-4 h-4 mr-2" />
             Save
           </Button>
+        </div>
+        
+        <div className="mt-4 text-xs text-gray-500 flex items-center justify-center">
+          <Info className="w-3 h-3 mr-1" />
+          <span>
+            If you're having trouble with your API key being requested repeatedly, please check your browser's privacy settings or try a different browser.
+          </span>
         </div>
       </div>
     </section>

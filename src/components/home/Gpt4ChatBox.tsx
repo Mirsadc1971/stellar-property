@@ -34,7 +34,15 @@ export default function Gpt4ChatBox({ showAdminControls = false }: { showAdminCo
   ]);
   const [userInput, setUserInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { apiKey, apiKeyInput, storageAvailable, setApiKeyInput, clearApiKey, handleSaveApiKey } = useOpenAiKey();
+  const { 
+    apiKey, 
+    apiKeyInput, 
+    storageAvailable, 
+    storageError,
+    setApiKeyInput, 
+    clearApiKey, 
+    handleSaveApiKey 
+  } = useOpenAiKey();
   const bottomRef = useRef<HTMLDivElement | null>(null);
   const { toast } = useToast();
 
@@ -142,6 +150,7 @@ export default function Gpt4ChatBox({ showAdminControls = false }: { showAdminCo
         onInputChange={setApiKeyInput}
         onSave={handleSaveApiKey}
         storageAvailable={storageAvailable}
+        storageError={storageError}
       />
     );
   }
@@ -186,6 +195,12 @@ export default function Gpt4ChatBox({ showAdminControls = false }: { showAdminCo
               {!storageAvailable && (
                 <div className="mt-2 text-xs text-amber-600 bg-amber-50 p-2 rounded">
                   Note: Browser storage is unavailable. Your API key will only persist for this session.
+                </div>
+              )}
+              
+              {storageError && (
+                <div className="mt-2 text-xs text-red-600 bg-red-50 p-2 rounded">
+                  Storage error: {storageError}
                 </div>
               )}
             </div>

@@ -6,16 +6,20 @@ export function useOpenAiKey() {
   const [apiKey, setApiKey] = useState<string>("");
   const [apiKeyInput, setApiKeyInput] = useState("");
   const [storageAvailable, setStorageAvailable] = useState<boolean>(true);
+  const [storageError, setStorageError] = useState<string | null>(null);
   const { toast } = useToast();
 
   // Check if localStorage is available and working
   const checkLocalStorage = (): boolean => {
     try {
+      // Test if localStorage is available and working
       localStorage.setItem("test", "test");
       localStorage.removeItem("test");
+      console.log("localStorage is available and working");
       return true;
     } catch (e) {
       console.error("localStorage is not available:", e);
+      setStorageError(`Storage error: ${e instanceof Error ? e.message : 'Unknown error'}`);
       return false;
     }
   };
@@ -33,7 +37,9 @@ export function useOpenAiKey() {
           setApiKey(savedKey);
         }
       } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
         console.error("Error retrieving API key from localStorage:", error);
+        setStorageError(`Error retrieving key: ${errorMessage}`);
         toast({
           title: "Storage Error",
           description: "Unable to retrieve your saved API key. Browser storage may be disabled.",
@@ -54,9 +60,13 @@ export function useOpenAiKey() {
     if (apiKey && storageAvailable) {
       try {
         localStorage.setItem("OPENAI_API_KEY", apiKey);
-        console.log("API key saved to localStorage");
+        console.log("API key saved to localStorage successfully");
+        // Clear any previous storage errors
+        setStorageError(null);
       } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
         console.error("Error saving API key to localStorage:", error);
+        setStorageError(`Error saving key: ${errorMessage}`);
         toast({
           title: "Storage Error",
           description: "Unable to save your API key. Browser storage may be disabled.",
@@ -73,7 +83,9 @@ export function useOpenAiKey() {
         localStorage.removeItem("OPENAI_API_KEY");
         console.log("API key removed from localStorage");
       } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
         console.error("Error removing API key from localStorage:", error);
+        setStorageError(`Error removing key: ${errorMessage}`);
       }
     }
     toast({
@@ -109,6 +121,7 @@ export function useOpenAiKey() {
     apiKey,
     apiKeyInput,
     storageAvailable,
+    storageError,
     setApiKeyInput,
     clearApiKey,
     handleSaveApiKey
