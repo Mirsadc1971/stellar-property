@@ -25,8 +25,7 @@ export default function CtaSection() {
         </p>
         <Button 
           size="lg" 
-          variant="outline" 
-          className="border-white text-white hover:bg-white hover:text-darkBlue font-medium"
+          className="bg-darkBlue border border-white hover:bg-white hover:text-darkBlue transition-colors font-medium"
           onClick={() => handleNavigation('/contact')}
         >
           <span className="text-[#33C3F0]">Get Started Today</span>
