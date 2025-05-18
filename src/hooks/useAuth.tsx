@@ -59,6 +59,51 @@ export function useAuth() {
     }
   };
 
+  const isEmailVerified = (): boolean => {
+    return user?.email_confirmed_at != null;
+  };
+
+  const sendVerificationEmail = async (): Promise<boolean> => {
+    try {
+      if (!user?.email) {
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: "No email address found for your account",
+        });
+        return false;
+      }
+
+      const { error } = await supabase.auth.resend({
+        type: 'signup',
+        email: user.email,
+      });
+
+      if (error) {
+        toast({
+          variant: "destructive",
+          title: "Error sending verification email",
+          description: error.message,
+        });
+        return false;
+      }
+
+      toast({
+        title: "Verification email sent",
+        description: "Please check your inbox and verify your email address",
+      });
+      return true;
+    } catch (error) {
+      console.error('Error sending verification email:', error);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to send verification email. Please try again later.",
+      });
+      return false;
+    }
+  };
+
   // This function can be used to require authentication for specific pages
   const requireAuth = (callback?: () => void) => {
     if (!session && !loading) {
@@ -76,12 +121,36 @@ export function useAuth() {
     return true;
   };
 
+  // New function to require email verification
+  const requireVerifiedEmail = (callback?: () => void) => {
+    if (!requireAuth()) {
+      return false;
+    }
+    
+    if (!isEmailVerified()) {
+      toast({
+        variant: "warning",
+        title: "Email verification required",
+        description: "Please verify your email address to access this feature",
+      });
+      return false;
+    }
+    
+    if (callback && isEmailVerified()) {
+      callback();
+    }
+    return true;
+  };
+
   return {
     user,
     session,
     loading,
     signOut,
     requireAuth,
+    requireVerifiedEmail,
     isAuthenticated: !!session,
+    isEmailVerified,
+    sendVerificationEmail,
   };
 }

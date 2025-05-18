@@ -1,22 +1,32 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
-import { Mail, Lock, Loader, AlertCircle } from "lucide-react";
+import { Mail, Lock, Loader, AlertCircle, CheckCircle, RefreshCw } from "lucide-react";
 import MainLayout from "@/components/layout/MainLayout";
 import { Card, CardHeader, CardContent, CardFooter, CardTitle, CardDescription } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Auth() {
   const [loading, setLoading] = useState(false);
+  const [verificationLoading, setVerificationLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { user, isEmailVerified, sendVerificationEmail } = useAuth();
+
+  // Redirect to home if already logged in and verified
+  useEffect(() => {
+    if (user && !isSignUp) {
+      navigate("/");
+    }
+  }, [user, navigate, isSignUp]);
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,14 +52,16 @@ export default function Auth() {
         throw error;
       }
 
-      toast({
-        title: isSignUp ? "Account created successfully!" : "Welcome back!",
-        description: isSignUp 
-          ? "You can now sign in with your credentials" 
-          : "Successfully logged in",
-      });
-
-      if (!isSignUp) {
+      if (isSignUp) {
+        toast({
+          title: "Verification email sent!",
+          description: "Please check your inbox and verify your email before signing in",
+        });
+      } else {
+        toast({
+          title: "Welcome back!",
+          description: "Successfully logged in",
+        });
         navigate("/");
       }
     } catch (error) {
@@ -61,6 +73,12 @@ export default function Auth() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleResendVerification = async () => {
+    setVerificationLoading(true);
+    await sendVerificationEmail();
+    setVerificationLoading(false);
   };
 
   return (
@@ -78,71 +96,120 @@ export default function Auth() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Alert className="mb-4 bg-yellow-50 border-yellow-200">
-              <AlertCircle className="h-4 w-4 text-yellow-600" />
-              <AlertDescription className="text-yellow-800">
-                Authentication is required to submit forms and access protected resources.
-              </AlertDescription>
-            </Alert>
+            {user && !isEmailVerified() && (
+              <Alert className="mb-4 bg-yellow-50 border-yellow-200">
+                <AlertCircle className="h-4 w-4 text-yellow-600" />
+                <AlertDescription className="text-yellow-800">
+                  <div className="flex flex-col gap-2">
+                    <p>Your email address has not been verified yet.</p>
+                    <p>Please check your inbox or request a new verification email.</p>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="mt-2 flex items-center gap-2" 
+                      onClick={handleResendVerification}
+                      disabled={verificationLoading}
+                    >
+                      {verificationLoading ? (
+                        <Loader className="h-4 w-4 animate-spin" />
+                      ) : (
+                        <RefreshCw className="h-4 w-4" />
+                      )}
+                      Resend Verification Email
+                    </Button>
+                  </div>
+                </AlertDescription>
+              </Alert>
+            )}
             
-            <form onSubmit={handleAuth} className="space-y-4">
-              <div className="space-y-2">
-                <div className="relative">
-                  <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                  <Input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10"
-                    required
-                    disabled={loading}
-                  />
-                </div>
-              </div>
+            {user && isEmailVerified() && (
+              <Alert className="mb-4 bg-green-50 border-green-200">
+                <CheckCircle className="h-4 w-4 text-green-600" />
+                <AlertDescription className="text-green-800">
+                  Your email has been verified. You can now access all features.
+                </AlertDescription>
+              </Alert>
+            )}
 
-              <div className="space-y-2">
-                <div className="relative">
-                  <Lock className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                  <Input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10"
-                    required
-                    minLength={6}
-                    disabled={loading}
-                  />
+            {!user && (
+              <Alert className="mb-4 bg-yellow-50 border-yellow-200">
+                <AlertCircle className="h-4 w-4 text-yellow-600" />
+                <AlertDescription className="text-yellow-800">
+                  Authentication is required to submit forms and access protected resources.
+                </AlertDescription>
+              </Alert>
+            )}
+            
+            {!user && (
+              <form onSubmit={handleAuth} className="space-y-4">
+                <div className="space-y-2">
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+                    <Input
+                      type="email"
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="pl-10"
+                      required
+                      disabled={loading}
+                    />
+                  </div>
                 </div>
-              </div>
 
-              <Button 
-                className="w-full" 
-                type="submit" 
-                disabled={loading}
-              >
-                {loading ? (
-                  <span className="flex items-center gap-2">
-                    <Loader className="h-4 w-4 animate-spin" />
-                    Please wait...
-                  </span>
-                ) : (
-                  isSignUp ? "Create Account" : "Sign In"
-                )}
-              </Button>
-            </form>
+                <div className="space-y-2">
+                  <div className="relative">
+                    <Lock className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+                    <Input
+                      type="password"
+                      placeholder="Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="pl-10"
+                      required
+                      minLength={6}
+                      disabled={loading}
+                    />
+                  </div>
+                </div>
+
+                <Button 
+                  className="w-full" 
+                  type="submit" 
+                  disabled={loading}
+                >
+                  {loading ? (
+                    <span className="flex items-center gap-2">
+                      <Loader className="h-4 w-4 animate-spin" />
+                      Please wait...
+                    </span>
+                  ) : (
+                    isSignUp ? "Create Account" : "Sign In"
+                  )}
+                </Button>
+              </form>
+            )}
           </CardContent>
           <CardFooter>
-            <button
-              type="button"
-              onClick={() => setIsSignUp(!isSignUp)}
-              className="w-full text-sm text-primary hover:underline"
-            >
-              {isSignUp 
-                ? "Already have an account? Sign In" 
-                : "Need an account? Sign Up"}
-            </button>
+            {!user ? (
+              <button
+                type="button"
+                onClick={() => setIsSignUp(!isSignUp)}
+                className="w-full text-sm text-primary hover:underline"
+              >
+                {isSignUp 
+                  ? "Already have an account? Sign In" 
+                  : "Need an account? Sign Up"}
+              </button>
+            ) : (
+              <Button 
+                variant="outline" 
+                className="w-full" 
+                onClick={() => navigate("/")}
+              >
+                Return to Home
+              </Button>
+            )}
           </CardFooter>
         </Card>
       </div>
