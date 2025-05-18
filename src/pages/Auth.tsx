@@ -81,7 +81,7 @@ export default function Auth() {
             <Alert className="mb-4 bg-yellow-50 border-yellow-200">
               <AlertCircle className="h-4 w-4 text-yellow-600" />
               <AlertDescription className="text-yellow-800">
-                Email authentication is currently disabled in this Supabase project. Please enable it in your Supabase dashboard under Authentication &gt; Providers &gt; Email.
+                Authentication is required to submit forms and access protected resources.
               </AlertDescription>
             </Alert>
             

@@ -1,12 +1,67 @@
 
+import { useEffect } from "react";
 import MainLayout from "@/components/layout/MainLayout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { FileText } from "lucide-react";
+import { FileText, LogIn } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { useToast } from "@/components/ui/use-toast";
 
 const Forms = () => {
   const navigate = useNavigate();
+  const { isAuthenticated, loading, requireAuth } = useAuth();
+  const { toast } = useToast();
+  
+  useEffect(() => {
+    if (!loading && !isAuthenticated) {
+      toast({
+        title: "Authentication Required",
+        description: "Please sign in to access and submit forms",
+        variant: "default",
+      });
+    }
+  }, [loading, isAuthenticated, toast]);
+
+  const handleFormNavigation = (path: string) => {
+    if (requireAuth()) {
+      navigate(path);
+    }
+  };
+
+  if (loading) {
+    return (
+      <MainLayout>
+        <div className="container mx-auto px-4 py-8 flex justify-center items-center min-h-[60vh]">
+          <p className="text-lg">Loading...</p>
+        </div>
+      </MainLayout>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <MainLayout>
+        <div className="container mx-auto px-4 py-8">
+          <h1 className="text-3xl font-bold text-darkBlue mb-8">Forms & Documents</h1>
+          
+          <Card className="p-6 text-center max-w-md mx-auto">
+            <h2 className="text-xl font-semibold mb-4">Authentication Required</h2>
+            <p className="text-gray-600 mb-6">
+              You must be signed in to access and submit forms. This helps us protect your data and ensure secure submissions.
+            </p>
+            <Button 
+              onClick={() => navigate('/auth')}
+              className="w-full flex items-center justify-center gap-2"
+            >
+              <LogIn className="h-5 w-5" />
+              Sign In / Register
+            </Button>
+          </Card>
+        </div>
+      </MainLayout>
+    );
+  }
 
   return (
     <MainLayout>
@@ -24,7 +79,7 @@ const Forms = () => {
               Submit your nomination for the Board of Directors.
             </p>
             <Button 
-              onClick={() => navigate('/services/nominations')}
+              onClick={() => handleFormNavigation('/services/nominations')}
               variant="outline" 
               className="w-full"
             >
@@ -42,7 +97,7 @@ const Forms = () => {
               Submit a request for construction or renovation work.
             </p>
             <Button 
-              onClick={() => navigate('/construction-request')}
+              onClick={() => handleFormNavigation('/construction-request')}
               variant="outline" 
               className="w-full"
             >
@@ -60,7 +115,7 @@ const Forms = () => {
               Submit a notice of intent to sell your unit.
             </p>
             <Button 
-              onClick={() => navigate('/notice-of-sale')}
+              onClick={() => handleFormNavigation('/notice-of-sale')}
               variant="outline" 
               className="w-full"
             >
@@ -78,7 +133,7 @@ const Forms = () => {
               Update your resident information and contact details.
             </p>
             <Button 
-              onClick={() => navigate('/services/resident-info')}
+              onClick={() => handleFormNavigation('/services/resident-info')}
               variant="outline" 
               className="w-full"
             >
@@ -96,7 +151,7 @@ const Forms = () => {
               Submit a violation report for your property or community.
             </p>
             <Button 
-              onClick={() => navigate('/report-violation')}
+              onClick={() => handleFormNavigation('/report-violation')}
               variant="outline" 
               className="w-full"
             >
