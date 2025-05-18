@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
@@ -121,7 +120,7 @@ export function useAuth() {
     return true;
   };
 
-  // New function to require email verification
+  // Function to require email verification
   const requireVerifiedEmail = (callback?: () => void) => {
     if (!requireAuth()) {
       return false;
@@ -129,7 +128,7 @@ export function useAuth() {
     
     if (!isEmailVerified()) {
       toast({
-        variant: "warning",
+        variant: "destructive",
         title: "Email verification required",
         description: "Please verify your email address to access this feature",
       });

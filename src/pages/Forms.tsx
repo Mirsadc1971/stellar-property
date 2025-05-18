@@ -29,7 +29,7 @@ const Forms = () => {
       navigate(path);
     } else if (requireAuth() && !isEmailVerified()) {
       toast({
-        variant: "warning",
+        variant: "destructive", // Changed from "warning" to "destructive"
         title: "Email verification required",
         description: "Please verify your email address before submitting forms",
       });
