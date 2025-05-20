@@ -68,3 +68,24 @@ export interface InsuranceProofFormData {
   signature: string;
   signatureDate: string;
 }
+
+export interface MovePermitFormData {
+  associationName: string;
+  ownerName: string;
+  unitNumber: string;
+  phone: string;
+  email: string;
+  moveDate: string;
+  moveType: 'moveIn' | 'moveOut';
+  movingCompanyName: string;
+  elevatorUseRequired: boolean;
+  elevatorStartTime: string;
+  elevatorEndTime: string;
+  moveDay: 'weekday' | 'saturday' | 'sunday';
+  signature: string;
+  signatureDate: string;
+  elevatorKeyRequired: boolean;
+  depositAmount: number;
+  depositPaid: boolean;
+  additionalNotes: string;
+}

@@ -4,7 +4,7 @@ import MainLayout from "@/components/layout/MainLayout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { FileText, Shield, Wrench } from "lucide-react";
+import { FileText, Shield, Wrench, TruckIcon } from "lucide-react";
 
 const Forms = () => {
   const navigate = useNavigate();
@@ -99,6 +99,24 @@ const Forms = () => {
               className="w-full"
             >
               Submit Insurance Proof
+            </Button>
+          </Card>
+
+          {/* Move Permit Request */}
+          <Card className="p-6">
+            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <TruckIcon className="h-5 w-5" />
+              Move Permit Request
+            </h2>
+            <p className="text-gray-600 mb-4">
+              Request a permit for moving in or out of your unit (10 days notice required).
+            </p>
+            <Button 
+              onClick={() => handleFormNavigation('/move-permit')}
+              variant="outline" 
+              className="w-full"
+            >
+              Request Move Permit
             </Button>
           </Card>
 

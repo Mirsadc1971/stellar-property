@@ -45,6 +45,7 @@ import NoticePage from "./pages/NoticePage";
 import ElectronicConsentPage from "./pages/ElectronicConsentPage";
 import RepairRequestPage from "./pages/RepairRequestPage";
 import InsuranceProofPage from "./pages/InsuranceProofPage";
+import MovePermitPage from "./pages/MovePermitPage";
 
 const queryClient = new QueryClient();
 
@@ -95,6 +96,7 @@ const App = () => (
               <Route path="/electronic-consent" element={<ElectronicConsentPage />} />
               <Route path="/repair-request" element={<RepairRequestPage />} />
               <Route path="/insurance-proof" element={<InsuranceProofPage />} />
+              <Route path="/move-permit" element={<MovePermitPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
