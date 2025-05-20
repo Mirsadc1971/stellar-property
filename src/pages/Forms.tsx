@@ -102,6 +102,24 @@ const Forms = () => {
             </Button>
           </Card>
 
+          {/* Electronic Consent Form */}
+          <Card className="p-6">
+            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <FileText className="h-5 w-5" />
+              Electronic Consent
+            </h2>
+            <p className="text-gray-600 mb-4">
+              Submit your consent to receive association notices electronically.
+            </p>
+            <Button 
+              onClick={() => handleFormNavigation('/electronic-consent')}
+              variant="outline" 
+              className="w-full"
+            >
+              Submit Consent
+            </Button>
+          </Card>
+
           {/* Violation Report */}
           <Card className="p-6">
             <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">

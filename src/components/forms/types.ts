@@ -16,3 +16,15 @@ export interface NoticeFormData {
   listingTerms: string;
   signature: string; // Restored signature field
 }
+
+export interface ElectronicConsentFormData {
+  propertyAddress: string;
+  ownerNames: string;
+  emailAddress: string;
+  phoneNumber: string;
+  agreesToConsent: boolean;
+  ownerSignature: string;
+  coOwnerSignature: string;
+  ownerSignatureDate: string;
+  coOwnerSignatureDate: string;
+}
