@@ -1,5 +1,3 @@
-
-
 export interface NoticeFormData {
   currentDate: string;
   associationName: string;
@@ -51,3 +49,22 @@ export interface RepairRequestFormData {
   signatureDate: string;
 }
 
+export interface InsuranceProofFormData {
+  associationName: string;
+  ownerNames: string;
+  unitAddress: string;
+  email: string;
+  phone: string;
+  insuranceCarrier: string;
+  policyNumber: string;
+  policyStartDate: string;
+  policyEndDate: string;
+  agentInfo: string;
+  declarationAttached: boolean;
+  interiorCoverageAttached: boolean;
+  liabilityCoverageAttached: boolean;
+  propertyCoverageAttached: boolean;
+  pdfFile: File | null;
+  signature: string;
+  signatureDate: string;
+}

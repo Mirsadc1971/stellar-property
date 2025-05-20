@@ -84,6 +84,24 @@ const Forms = () => {
             </Button>
           </Card>
 
+          {/* HO-6 Insurance Proof */}
+          <Card className="p-6">
+            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <Shield className="h-5 w-5" />
+              HO-6 Insurance Proof
+            </h2>
+            <p className="text-gray-600 mb-4">
+              Submit your HO-6 insurance policy documentation for annual compliance.
+            </p>
+            <Button 
+              onClick={() => handleFormNavigation('/insurance-proof')}
+              variant="outline" 
+              className="w-full"
+            >
+              Submit Insurance Proof
+            </Button>
+          </Card>
+
           {/* Notice of Intent to Sell */}
           <Card className="p-6">
             <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
