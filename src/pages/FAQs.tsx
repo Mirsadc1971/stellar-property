@@ -6,8 +6,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 export default function FAQs() {
   const faqs = [
     {
-      question: "What types of properties does Manage369 specialize in managing?",
-      answer: "Manage369 specializes in managing homeowner associations (HOAs), condominium associations, and multi-unit residential communities throughout the Chicago area. Our expertise in Chicago property management makes us a trusted partner for communities seeking professional management solutions."
+      question: "What types of properties does Stellar Property Management specialize in managing?",
+      answer: "Stellar Property Management specializes in managing homeowner associations (HOAs), condominium associations, and multi-unit residential communities throughout the Chicago area. Our expertise in Chicago property management makes us a trusted partner for communities seeking professional management solutions."
     },
     {
       question: "What services are included in your property management packages?",
@@ -22,18 +22,18 @@ export default function FAQs() {
     },
     {
       question: "How much does HOA or condo management cost?",
-      answer: "Chicago HOA and condo management fees are customized based on your community's size and service requirements. Contact Manage369 for a detailed management proposal tailored to your association's needs. We pride ourselves on providing transparent pricing and exceptional value."
+      answer: "Chicago HOA and condo management fees are customized based on your community's size and service requirements. Contact Stellar Property Management for a detailed management proposal tailored to your association's needs. We pride ourselves on providing transparent pricing and exceptional value."
     },
     {
-      question: "How does Manage369 handle maintenance and repairs?",
-      answer: "As your Chicago property management company, Manage369 coordinates all maintenance and repairs through our extensive network of licensed and insured vendors. We ensure high-quality work is completed on time and within budget, managing everything from routine maintenance to emergency repairs for your association."
+      question: "How does Stellar Property Management handle maintenance and repairs?",
+      answer: "As your Chicago property management company, Stellar Property Management coordinates all maintenance and repairs through our extensive network of licensed and insured vendors. We ensure high-quality work is completed on time and within budget, managing everything from routine maintenance to emergency repairs for your association."
     },
     {
       question: "Can board members and homeowners easily access financial reports?",
       answer: "Yes. As part of our commitment to transparent HOA management in Chicago, we provide comprehensive monthly financial reports through our secure online portal. Board members can access detailed financial statements, and additional custom reports are available upon request to ensure complete transparency in your association's financial management."
     },
     {
-      question: "How does Manage369 communicate with boards and homeowners?",
+      question: "How does Stellar Property Management communicate with boards and homeowners?",
       answer: "Effective communication is central to our Chicago property management approach. We provide regular updates through multiple channels:\n\n" +
         "• Dedicated online owner portals\n" +
         "• Prompt email responses\n" +
@@ -42,7 +42,7 @@ export default function FAQs() {
         "• Emergency 24/7 contact options"
     },
     {
-      question: "How do we get started with Manage369?",
+      question: "How do we get started with Stellar Property Management?",
       answer: "Getting started with professional Chicago HOA management is simple. Contact us to schedule a consultation, and we'll assess your community's needs to create a customized property management plan. Our team will guide you through every step of the transition process to ensure a smooth handover of management responsibilities."
     }
   ];
@@ -79,7 +79,7 @@ export default function FAQs() {
               </p>
               <p className="font-medium">
                 Call us at: (773) 728-0652<br />
-                Email: service@manage369.com
+                Email: service@stellarpropertygroup.com
               </p>
             </div>
           </div>
