@@ -4,7 +4,7 @@ import MainLayout from "@/components/layout/MainLayout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { FileText } from "lucide-react";
+import { FileText, Shield } from "lucide-react";
 
 const Forms = () => {
   const navigate = useNavigate();
@@ -17,6 +17,17 @@ const Forms = () => {
     <MainLayout>
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold text-darkBlue mb-8">Forms & Documents</h1>
+        
+        <div className="bg-blue-50 border border-blue-200 p-4 rounded-md mb-8">
+          <div className="flex items-center gap-2 mb-2">
+            <Shield className="h-5 w-5 text-darkBlue" />
+            <h2 className="font-semibold text-darkBlue">Protected with reCAPTCHA</h2>
+          </div>
+          <p className="text-sm text-gray-700">
+            All our forms are now protected with Google reCAPTCHA to prevent spam submissions.
+            You'll need to complete a quick verification before submitting any form.
+          </p>
+        </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Board Nominations */}

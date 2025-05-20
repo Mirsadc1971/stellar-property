@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
@@ -9,6 +9,9 @@ import { Section1 } from './notice/Section1';
 import { Section2 } from './notice/Section2';
 import { BuyerInformation } from './notice/BuyerInformation';
 import { NoticeFormData } from './types';
+import { Recaptcha } from '@/components/ui/recaptcha';
+import { useRecaptcha } from '@/hooks/use-recaptcha';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 export const NoticeOfSale = () => {
   const [formData, setFormData] = useState<NoticeFormData>({
@@ -26,8 +29,18 @@ export const NoticeOfSale = () => {
     phone: '',
     listingPrice: '',
     listingTerms: '',
-    signature: '' // Added back signature field
+    signature: ''
   });
+
+  const {
+    captchaToken,
+    captchaError,
+    handleCaptchaChange,
+    handleCaptchaError,
+    validateCaptcha
+  } = useRecaptcha();
+  
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -39,6 +52,12 @@ export const NoticeOfSale = () => {
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate reCAPTCHA
+    if (!validateCaptcha()) {
+      toast.error('Please complete the CAPTCHA verification');
+      return;
+    }
     
     const emailContent = `
 NOTICE OF INTENT TO SELL UNIT
@@ -69,12 +88,18 @@ Listing Price: ${formData.listingPrice}
 Listing Duration: ${formData.listingTerms} month(s)
 
 Signature: ${formData.signature}
+CAPTCHA Verified: Yes
     `;
 
     const mailtoLink = `mailto:service@stellarpropertygroup.com?subject=Notice of Intent to Sell Unit&body=${encodeURIComponent(emailContent)}`;
     window.location.href = mailtoLink;
     
     toast.success('Notice form prepared for email submission');
+    
+    // Reset the CAPTCHA
+    if (recaptchaRef.current) {
+      recaptchaRef.current.reset();
+    }
   };
 
   return (
@@ -103,8 +128,20 @@ Signature: ${formData.signature}
           />
         </div>
         
+        <div className="my-6">
+          <label className="block text-sm font-medium mb-1">Verification</label>
+          <Recaptcha 
+            onChange={handleCaptchaChange}
+            onError={handleCaptchaError}
+            className="mt-2"
+          />
+          {captchaError && (
+            <p className="text-sm text-red-500 mt-1">{captchaError}</p>
+          )}
+        </div>
+        
         <div className="flex justify-end">
-          <Button type="submit">
+          <Button type="submit" disabled={!captchaToken}>
             Submit Notice
           </Button>
         </div>

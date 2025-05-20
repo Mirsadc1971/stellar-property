@@ -1,10 +1,63 @@
 
 import MainLayout from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Shield } from "lucide-react";
 import MapComponent from "@/components/ui/MapComponent";
+import { Recaptcha } from "@/components/ui/recaptcha";
+import { useRecaptcha } from "@/hooks/use-recaptcha";
+import { FormEvent, useState } from "react";
+import { toast } from "sonner";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: ""
+  });
+  
+  const {
+    captchaToken,
+    captchaError,
+    handleCaptchaChange,
+    handleCaptchaError,
+    validateCaptcha
+  } = useRecaptcha();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    // Validate reCAPTCHA
+    if (!validateCaptcha()) {
+      toast.error('Please complete the CAPTCHA verification');
+      return;
+    }
+    
+    const emailContent = `
+    Name: ${formData.name}
+    Email: ${formData.email}
+    Phone: ${formData.phone}
+    Subject: ${formData.subject}
+    Message: ${formData.message}
+    CAPTCHA Verified: Yes
+    `;
+    
+    // Open default email client with pre-filled content
+    const mailtoLink = `mailto:service@stellarpropertygroup.com?subject=${encodeURIComponent(formData.subject || 'Contact Form Submission')}&body=${encodeURIComponent(emailContent)}`;
+    window.location.href = mailtoLink;
+    
+    toast.success('Contact message prepared for email');
+  };
+
   return (
     <MainLayout>
       {/* Hero Section */}
@@ -86,7 +139,16 @@ export default function Contact() {
             <div>
               <h2 className="font-heading text-3xl font-bold mb-8">Send Us a Message</h2>
               
-              <form className="space-y-6">
+              <div className="bg-blue-50 border border-blue-200 p-4 rounded-md mb-6">
+                <div className="flex items-center gap-2">
+                  <Shield className="h-5 w-5 text-darkBlue" />
+                  <p className="text-sm text-gray-700">
+                    Protected with Google reCAPTCHA to prevent spam
+                  </p>
+                </div>
+              </div>
+              
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     Name
@@ -94,6 +156,9 @@ export default function Contact() {
                   <input
                     type="text"
                     id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkBlue focus:border-darkBlue"
                     required
                   />
@@ -106,6 +171,9 @@ export default function Contact() {
                   <input
                     type="email"
                     id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkBlue focus:border-darkBlue"
                     required
                   />
@@ -118,6 +186,9 @@ export default function Contact() {
                   <input
                     type="tel"
                     id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkBlue focus:border-darkBlue"
                   />
                 </div>
@@ -129,6 +200,9 @@ export default function Contact() {
                   <input
                     type="text"
                     id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkBlue focus:border-darkBlue"
                   />
                 </div>
@@ -139,13 +213,30 @@ export default function Contact() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={6}
+                    value={formData.message}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-darkBlue focus:border-darkBlue"
                     required
                   ></textarea>
                 </div>
                 
-                <Button type="submit" className="w-full bg-darkBlue hover:bg-blue-800">
+                <div className="mt-4">
+                  <Recaptcha 
+                    onChange={handleCaptchaChange}
+                    onError={handleCaptchaError}
+                  />
+                  {captchaError && (
+                    <p className="text-sm text-red-500 mt-1">{captchaError}</p>
+                  )}
+                </div>
+                
+                <Button 
+                  type="submit" 
+                  className="w-full bg-darkBlue hover:bg-blue-800"
+                  disabled={!captchaToken}
+                >
                   Send Message
                 </Button>
               </form>

@@ -1,11 +1,14 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import { Recaptcha } from '@/components/ui/recaptcha';
+import { useRecaptcha } from '@/hooks/use-recaptcha';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const Nominations = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +19,16 @@ const Nominations = () => {
     goals: '',
     signature: ''
   });
+  
+  const {
+    captchaToken,
+    captchaError,
+    handleCaptchaChange,
+    handleCaptchaError,
+    validateCaptcha
+  } = useRecaptcha();
+  
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -27,6 +40,13 @@ const Nominations = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    // Validate reCAPTCHA
+    if (!validateCaptcha()) {
+      toast.error('Please complete the CAPTCHA verification');
+      return;
+    }
+    
     const submissionDate = new Date().toLocaleDateString();
     
     // This would ideally be handled by a backend service
@@ -38,6 +58,7 @@ const Nominations = () => {
       Goals: ${formData.goals}
       Signature: ${formData.signature}
       Submission Date: ${submissionDate}
+      CAPTCHA Verified: Yes
     `;
 
     // Open default email client with pre-filled content
@@ -45,6 +66,11 @@ const Nominations = () => {
     window.location.href = mailtoLink;
     
     toast.success('Form ready to be sent via email');
+    
+    // Reset the CAPTCHA
+    if (recaptchaRef.current) {
+      recaptchaRef.current.reset();
+    }
   };
 
   return (
@@ -127,8 +153,24 @@ const Nominations = () => {
                 />
               </div>
               
+              <div className="my-6">
+                <Label>Verification</Label>
+                <Recaptcha 
+                  onChange={handleCaptchaChange}
+                  onError={handleCaptchaError}
+                  className="mt-2"
+                />
+                {captchaError && (
+                  <p className="text-sm text-red-500 mt-1">{captchaError}</p>
+                )}
+              </div>
+              
               <div className="pt-4">
-                <Button type="submit" className="w-full md:w-auto">
+                <Button 
+                  type="submit" 
+                  className="w-full md:w-auto"
+                  disabled={!captchaToken}
+                >
                   Submit Nomination
                 </Button>
               </div>
