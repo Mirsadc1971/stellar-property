@@ -1,4 +1,5 @@
 
+
 export interface NoticeFormData {
   currentDate: string;
   associationName: string;
@@ -28,3 +29,25 @@ export interface ElectronicConsentFormData {
   ownerSignatureDate: string;
   coOwnerSignatureDate: string;
 }
+
+export interface RepairRequestFormData {
+  ownerName: string;
+  unitNumber: string;
+  phone: string;
+  email: string;
+  repairDescription: string;
+  scopeOfWork: string;
+  contractorName: string;
+  contractorLicense: string;
+  contractorContact: string;
+  contractorPhone: string;
+  contractorEmail: string;
+  insuranceCertificate: boolean;
+  needsRoofAccess: boolean;
+  roofAccessDate: string;
+  needsElevator: boolean;
+  elevatorDate: string;
+  ownerSignature: string;
+  signatureDate: string;
+}
+

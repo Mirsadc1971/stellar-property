@@ -4,7 +4,7 @@ import MainLayout from "@/components/layout/MainLayout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { FileText, Shield } from "lucide-react";
+import { FileText, Shield, Wrench } from "lucide-react";
 
 const Forms = () => {
   const navigate = useNavigate();
@@ -59,6 +59,24 @@ const Forms = () => {
             </p>
             <Button 
               onClick={() => handleFormNavigation('/construction-request')}
+              variant="outline" 
+              className="w-full"
+            >
+              Submit Request
+            </Button>
+          </Card>
+
+          {/* Repair Request */}
+          <Card className="p-6">
+            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <Wrench className="h-5 w-5" />
+              Repair Request
+            </h2>
+            <p className="text-gray-600 mb-4">
+              Submit a request for repairs requiring licensed contractors.
+            </p>
+            <Button 
+              onClick={() => handleFormNavigation('/repair-request')}
               variant="outline" 
               className="w-full"
             >
