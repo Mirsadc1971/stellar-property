@@ -1,13 +1,10 @@
 
 import React from 'react';
-import { InsuranceProofFormData } from '../types';
+import { useInsuranceForm } from './InsuranceFormContext';
 
-interface OwnerSectionProps {
-  formData: InsuranceProofFormData;
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-export const OwnerSection = ({ formData, handleInputChange }: OwnerSectionProps) => {
+export const OwnerSection = () => {
+  const { formData, handleInputChange } = useInsuranceForm();
+  
   return (
     <div className="bg-white p-6 rounded-lg border border-gray-200 space-y-4">
       <h3 className="text-lg font-semibold">Unit Owner Information</h3>

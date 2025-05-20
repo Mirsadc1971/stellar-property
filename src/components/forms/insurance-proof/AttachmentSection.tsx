@@ -1,15 +1,11 @@
+
 import React, { useRef } from 'react';
-import { InsuranceProofFormData } from '../types';
 import { Button } from '@/components/ui/button';
 import { Paperclip, Check, File } from 'lucide-react';
+import { useInsuranceForm } from './InsuranceFormContext';
 
-interface AttachmentSectionProps {
-  formData: InsuranceProofFormData;
-  handleFileUpload: (file: File | null) => void;
-  handleCheckboxChange: (name: string, checked: boolean) => void;
-}
-
-export const AttachmentSection = ({ formData, handleFileUpload, handleCheckboxChange }: AttachmentSectionProps) => {
+export const AttachmentSection = () => {
+  const { formData, handleFileUpload, handleCheckboxChange } = useInsuranceForm();
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
