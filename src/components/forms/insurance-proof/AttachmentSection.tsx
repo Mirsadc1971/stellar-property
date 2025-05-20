@@ -1,4 +1,3 @@
-
 import React, { useRef } from 'react';
 import { InsuranceProofFormData } from '../types';
 import { Button } from '@/components/ui/button';
@@ -81,7 +80,7 @@ export const AttachmentSection = ({ formData, handleFileUpload, handleCheckboxCh
             className="h-4 w-4 border-gray-300 rounded"
           />
           <label htmlFor="liabilityCoverageAttached" className="ml-2 block text-sm text-gray-700">
-            Minimum liability coverage of $300,000
+            Minimum liability coverage per your governing documents
           </label>
         </div>
         

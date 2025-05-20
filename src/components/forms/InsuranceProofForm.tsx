@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -115,7 +114,7 @@ Agent Name / Contact Info: ${formData.agentInfo || 'Not provided'}
 REQUIRED ATTACHMENTS
 ☐ Copy of Current HO-6 Policy Declaration Page: ${formData.declarationAttached ? 'Included' : 'Not included'}
 ☐ Proof that policy includes building interior: ${formData.interiorCoverageAttached ? 'Included' : 'Not included'}
-☐ Minimum liability coverage of $300,000: ${formData.liabilityCoverageAttached ? 'Included' : 'Not included'}
+☐ Minimum liability coverage per governing documents: ${formData.liabilityCoverageAttached ? 'Included' : 'Not included'}
 ☐ Personal property coverage: ${formData.propertyCoverageAttached ? 'Included' : 'Not included'}
 
 PDF Document attached: ${formData.pdfFile?.name || 'None'}
