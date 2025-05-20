@@ -2,6 +2,7 @@
 import React from 'react';
 import { RepairRequestFormData } from '../types';
 import { Input } from "@/components/ui/input";
+import { AlertTriangle } from "lucide-react";
 
 interface AgreementSectionProps {
   formData: RepairRequestFormData;
@@ -12,6 +13,15 @@ export const AgreementSection = ({ formData, handleInputChange }: AgreementSecti
   return (
     <div>
       <h3 className="text-lg font-semibold mb-3">Owner Agreement</h3>
+      
+      <div className="bg-red-50 border border-red-200 p-4 rounded-md mb-4">
+        <div className="flex items-center gap-2">
+          <AlertTriangle className="h-5 w-5 text-red-600" />
+          <p className="text-sm font-bold text-red-700">
+            I understand that submitting this form is NOT approval, and work may only begin after receiving explicit written approval from the Board.
+          </p>
+        </div>
+      </div>
       
       <div className="bg-blue-50 border border-blue-200 p-4 rounded-md mb-4">
         <p className="text-sm text-gray-700 mb-2 font-medium">I acknowledge and agree to the following:</p>

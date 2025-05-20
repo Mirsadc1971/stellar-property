@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { Wrench, FileCheck } from "lucide-react";
+import { Wrench, FileCheck, AlertTriangle } from "lucide-react";
 import { RepairRequestFormData } from './types';
 import { Recaptcha } from '@/components/ui/recaptcha';
 import { useRecaptcha } from '@/hooks/use-recaptcha';
@@ -91,7 +91,7 @@ ${formData.scopeOfWork}
 CONTRACTOR INFORMATION
 Company Name: ${formData.contractorName}
 License Number: ${formData.contractorLicense}
-Contact Name: ${formData.contractorContact}
+Contact Name: ${formData.contactorContact}
 Phone: ${formData.contractorPhone}
 Email: ${formData.contractorEmail}
 
@@ -103,6 +103,7 @@ ${formData.needsElevator ? `Elevator Reservation Date: ${formData.elevatorDate}`
 
 OWNER AGREEMENT
 I acknowledge and agree to the terms specified in the repair request policy.
+I understand that this submission does NOT constitute approval, and no work may begin until written approval is received.
 
 Owner Signature: ${formData.ownerSignature}
 Date: ${formData.signatureDate}
@@ -113,7 +114,7 @@ CAPTCHA Verified: Yes
     const mailtoLink = `mailto:service@stellarpropertygroup.com?subject=Repair Request Form - Unit ${formData.unitNumber}&body=${encodeURIComponent(emailContent)}`;
     window.location.href = mailtoLink;
     
-    toast.success('Repair request form prepared for email submission');
+    toast.success('Repair request submitted. You will be notified when your request has been reviewed. No work may begin until you receive written approval.');
     
     // Reset the CAPTCHA
     if (recaptchaRef.current) {
@@ -133,10 +134,16 @@ CAPTCHA Verified: Yes
           <FileCheck className="h-5 w-5 text-yellow-700 mt-0.5 flex-shrink-0" />
           <div>
             <p className="text-sm font-medium text-yellow-800 mb-1">This form is for repair work only — not construction or remodeling.</p>
-            <p className="text-sm text-yellow-700">
+            <p className="text-sm text-yellow-700 mb-2">
               Repairs involve licensed trades (e.g., plumbing, electrical, HVAC) but do not include any structural or material changes to the unit.
               All repairs involving licensed trades must be reviewed by the Association to ensure safety, compliance, and minimal disruption to common elements.
             </p>
+            <div className="flex items-start mt-2 gap-2 bg-amber-100 p-2 rounded-md">
+              <AlertTriangle className="h-5 w-5 text-amber-700 mt-0.5 flex-shrink-0" />
+              <p className="text-sm font-semibold text-amber-800">
+                IMPORTANT: Submission of this form does not constitute approval. Work may not begin until the Board has reviewed and explicitly approved the request in writing.
+              </p>
+            </div>
           </div>
         </div>
       </div>
