@@ -91,7 +91,7 @@ ${formData.scopeOfWork}
 CONTRACTOR INFORMATION
 Company Name: ${formData.contractorName}
 License Number: ${formData.contractorLicense}
-Contact Name: ${formData.contactorContact}
+Contact Name: ${formData.contractorContact}
 Phone: ${formData.contractorPhone}
 Email: ${formData.contractorEmail}
 
