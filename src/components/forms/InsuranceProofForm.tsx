@@ -40,13 +40,12 @@ export const InsuranceProofForm = () => {
       <FormIntro />
       
       <InsuranceFormProvider initialData={initialFormData}>
-        <FormSubmission />
-        
         <AssociationSection />
         <OwnerSection />
         <InsuranceDetailsSection />
         <AttachmentSection />
         <AcknowledgementSection />
+        <FormSubmission />
       </InsuranceFormProvider>
     </Card>
   );
