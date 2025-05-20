@@ -1,3 +1,4 @@
+
 export interface NoticeFormData {
   currentDate: string;
   associationName: string;
@@ -87,5 +88,6 @@ export interface MovePermitFormData {
   elevatorKeyRequired: boolean;
   depositAmount: number;
   depositPaid: boolean;
+  depositRefundType: 'refundable' | 'nonRefundable' | 'partial';
   additionalNotes: string;
 }

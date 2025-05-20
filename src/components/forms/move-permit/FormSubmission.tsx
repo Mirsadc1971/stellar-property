@@ -50,6 +50,21 @@ export const FormSubmission: React.FC = () => {
       return;
     }
     
+    // Validate deposit refund type selection
+    if (!formData.depositRefundType) {
+      toast.error('Please select a deposit refund policy');
+      return;
+    }
+    
+    const getDepositRefundTypeText = () => {
+      switch (formData.depositRefundType) {
+        case 'refundable': return 'Fully Refundable';
+        case 'nonRefundable': return 'Non-refundable';
+        case 'partial': return 'Partially Refundable';
+        default: return 'Not specified';
+      }
+    };
+    
     const emailContent = `
 MOVE-IN / MOVE-OUT PERMIT REQUEST
 
@@ -71,13 +86,17 @@ ELEVATOR REQUIREMENTS
 Elevator Required: ${formData.elevatorUseRequired ? 'Yes' : 'No'}
 ${formData.elevatorUseRequired ? `Elevator Time: ${formData.elevatorStartTime} to ${formData.elevatorEndTime}` : ''}
 Elevator Key Required: ${formData.elevatorKeyRequired ? 'Yes' : 'No'}
+
+DEPOSIT DETAILS
 Security Deposit Amount: $${formData.depositAmount}
+Deposit Refund Type: ${getDepositRefundTypeText()}
 
 ADDITIONAL NOTES
 ${formData.additionalNotes || 'None provided'}
 
 ACKNOWLEDGEMENT
 I acknowledge that I have read and agree to abide by all move rules and regulations and accept responsibility for any damages.
+I have reviewed my association's governing documents regarding move procedures and policies.
 
 Signature: ${formData.signature}
 Date: ${formData.signatureDate}

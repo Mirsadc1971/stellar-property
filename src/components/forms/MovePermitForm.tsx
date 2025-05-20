@@ -32,6 +32,7 @@ export const MovePermitForm = () => {
     elevatorKeyRequired: false,
     depositAmount: 500,
     depositPaid: false,
+    depositRefundType: 'refundable',
     additionalNotes: ''
   };
 

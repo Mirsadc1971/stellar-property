@@ -2,9 +2,10 @@
 import React from 'react';
 import { useMovePermit } from './MovePermitContext';
 import { Input } from "@/components/ui/input";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export const RulesSection = () => {
-  const { formData, handleInputChange, handleCheckboxChange } = useMovePermit();
+  const { formData, handleInputChange, handleCheckboxChange, handleRadioChange } = useMovePermit();
   
   return (
     <div className="bg-white p-6 rounded-lg border border-gray-200 space-y-4 mb-6">
@@ -92,8 +93,38 @@ export const RulesSection = () => {
             step="50"
             className="w-full md:w-1/3"
           />
-          <p className="text-xs text-gray-500 mt-1">
-            This deposit may be fully or partially refundable depending on building policy and any damages
+        </div>
+        
+        <div>
+          <label className="block text-sm font-medium mb-2">
+            Deposit Refund Policy
+          </label>
+          <RadioGroup 
+            className="flex flex-col space-y-2" 
+            value={formData.depositRefundType}
+            onValueChange={(value) => handleRadioChange('depositRefundType', value)}
+          >
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="refundable" id="refundable" />
+              <label htmlFor="refundable" className="text-sm">
+                Fully Refundable (returned after inspection if no damages)
+              </label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="nonRefundable" id="nonRefundable" />
+              <label htmlFor="nonRefundable" className="text-sm">
+                Non-refundable (administrative/usage fee)
+              </label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="partial" id="partial" />
+              <label htmlFor="partial" className="text-sm">
+                Partially Refundable (portion retained as a fee)
+              </label>
+            </div>
+          </RadioGroup>
+          <p className="text-xs text-amber-600 mt-1">
+            Please verify your property's specific deposit policy in your association's governing documents
           </p>
         </div>
         
