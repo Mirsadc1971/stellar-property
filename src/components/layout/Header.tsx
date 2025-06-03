@@ -30,7 +30,7 @@ export default function Header() {
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="container mx-auto px-6 py-5 flex justify-between items-center">
+      <div className="container mx-auto px-8 py-6 flex justify-between items-center">
         <Link to="/" className="flex items-center" onClick={(e) => {
           e.preventDefault();
           handleNavigation('/');
@@ -38,36 +38,36 @@ export default function Header() {
           <h1 className="text-2xl font-bold font-heading text-darkBlue tracking-tight">Stellar Property Management</h1>
         </Link>
         
-        {/* Desktop Navigation - Cleaner & More Spaced */}
-        <nav className="hidden lg:flex items-center space-x-8">
+        {/* Desktop Navigation - Much cleaner spacing like Havelock */}
+        <nav className="hidden lg:flex items-center space-x-12">
           <a href="#" onClick={(e) => {
             e.preventDefault();
             handleNavigation('/');
-          }} className="text-gray-700 hover:text-darkBlue font-medium transition-colors">Home</a>
+          }} className="text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">Home</a>
           
           <a href="#" onClick={(e) => {
             e.preventDefault();
             handleNavigation('/about');
-          }} className="text-gray-700 hover:text-darkBlue font-medium transition-colors">About</a>
+          }} className="text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">About</a>
           
           <a href="#" onClick={(e) => {
             e.preventDefault();
             handleNavigation('/services');
-          }} className="text-gray-700 hover:text-darkBlue font-medium transition-colors">Services</a>
+          }} className="text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">Services</a>
           
           <a href="#" onClick={(e) => {
             e.preventDefault();
             handleNavigation('/contact');
-          }} className="text-gray-700 hover:text-darkBlue font-medium transition-colors">Contact</a>
+          }} className="text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">Contact</a>
           
           <a href="#" onClick={(e) => {
             e.preventDefault();
             handleNavigation('/faqs');
-          }} className="text-gray-700 hover:text-darkBlue font-medium transition-colors">FAQs</a>
+          }} className="text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">FAQs</a>
           
           <Button 
             onClick={() => handleExternalNavigation('https://stellarpropertygrp.appfolio.com/connect/')}
-            className="bg-darkBlue hover:bg-blue-800 text-white px-6 py-2 font-medium"
+            className="bg-darkBlue hover:bg-blue-800 text-white px-8 py-3 font-normal text-base ml-6"
           >
             Pay Dues
           </Button>
@@ -84,35 +84,35 @@ export default function Header() {
       {/* Mobile Navigation */}
       {isMenuOpen && (
         <div className="lg:hidden bg-white border-t">
-          <div className="container mx-auto px-6 py-4 flex flex-col space-y-4">
+          <div className="container mx-auto px-8 py-6 flex flex-col space-y-6">
             <a href="#" onClick={(e) => {
               e.preventDefault();
               handleNavigation('/');
-            }} className="text-gray-700 hover:text-darkBlue font-medium">Home</a>
+            }} className="text-gray-700 hover:text-darkBlue font-normal text-base">Home</a>
             
             <a href="#" onClick={(e) => {
               e.preventDefault();
               handleNavigation('/about');
-            }} className="text-gray-700 hover:text-darkBlue font-medium">About</a>
+            }} className="text-gray-700 hover:text-darkBlue font-normal text-base">About</a>
             
             <a href="#" onClick={(e) => {
               e.preventDefault();
               handleNavigation('/services');
-            }} className="text-gray-700 hover:text-darkBlue font-medium">Services</a>
+            }} className="text-gray-700 hover:text-darkBlue font-normal text-base">Services</a>
             
             <a href="#" onClick={(e) => {
               e.preventDefault();
               handleNavigation('/contact');
-            }} className="text-gray-700 hover:text-darkBlue font-medium">Contact</a>
+            }} className="text-gray-700 hover:text-darkBlue font-normal text-base">Contact</a>
             
             <a href="#" onClick={(e) => {
               e.preventDefault();
               handleNavigation('/faqs');
-            }} className="text-gray-700 hover:text-darkBlue font-medium">FAQs</a>
+            }} className="text-gray-700 hover:text-darkBlue font-normal text-base">FAQs</a>
             
             <Button 
               onClick={() => handleExternalNavigation('https://stellarpropertygrp.appfolio.com/connect/')}
-              className="bg-darkBlue hover:bg-blue-800 text-white w-full"
+              className="bg-darkBlue hover:bg-blue-800 text-white w-full py-3 font-normal text-base"
             >
               Pay Dues
             </Button>
