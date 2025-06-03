@@ -106,7 +106,7 @@ CAPTCHA Verified: Yes
 This request requires management approval. You will receive confirmation once approved.
     `;
 
-    const mailtoLink = `mailto:service@stellarpropertygroup.com?subject=Move Permit Request - ${formData.unitNumber}&body=${encodeURIComponent(emailContent)}`;
+    const mailtoLink = `mailto:management@stellarpropertygroup.com?subject=Move Permit Request - ${formData.unitNumber}&body=${encodeURIComponent(emailContent)}`;
     window.location.href = mailtoLink;
     
     toast.success('Move permit request prepared. Please attach any additional documents to the email before sending.');
