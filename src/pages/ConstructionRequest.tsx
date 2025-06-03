@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { Button } from '@/components/ui/button';
@@ -8,8 +7,12 @@ import { ProjectDetails } from '@/components/construction/ProjectDetails';
 import { DocumentUpload } from '@/components/construction/DocumentUpload';
 import { Guidelines } from '@/components/construction/Guidelines';
 import { PrintButton } from '@/components/construction/PrintButton';
+import { FormSubmissionModal } from '@/components/forms/shared/FormSubmissionModal';
 
 const ConstructionRequest = () => {
+  const [showSubmissionModal, setShowSubmissionModal] = useState(false);
+  const [emailContent, setEmailContent] = useState('');
+  
   const [formData, setFormData] = useState({
     associationName: '',
     ownerName: '',
@@ -53,44 +56,35 @@ const ConstructionRequest = () => {
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    const emailContent = `
-      CONDOMINIUM CONSTRUCTION REQUEST FORM
+    const content = `
+CONDOMINIUM CONSTRUCTION REQUEST FORM
 
-      UNIT OWNER INFORMATION
-      Association Name: ${formData.associationName}
-      Owner Name: ${formData.ownerName}
-      Unit Number: ${formData.unitNumber}
-      Phone Number: ${formData.phoneNumber}
-      Email Address: ${formData.email}
+UNIT OWNER INFORMATION
+Association Name: ${formData.associationName}
+Owner Name: ${formData.ownerName}
+Unit Number: ${formData.unitNumber}
+Phone Number: ${formData.phoneNumber}
+Email Address: ${formData.email}
 
-      CONSTRUCTION PROJECT DETAILS
-      Work Description:
-      ${formData.workDescription}
+CONSTRUCTION PROJECT DETAILS
+Work Description:
+${formData.workDescription}
 
-      Start Date: ${formData.startDate}
-      Completion Date: ${formData.completionDate}
-      
-      Roof Access Needed: ${formData.roofAccess ? 'Yes' : 'No'}
-      ${formData.roofAccess ? `Roof Access Date/Time: ${formData.roofAccessDateTime}` : ''}
-      Elevator Use for Materials/Tools: ${formData.elevatorUse ? 'Yes' : 'No'}
-      Construction Debris Removal at Owner's Expense: ${formData.debrisRemoval ? 'Yes' : 'No'}
-      
-      Permit Required: ${formData.permitRequired ? 'Yes' : 'No'}
-      
-      Documents Attached: ${documents.map(doc => doc.name).join(', ')}
+Start Date: ${formData.startDate}
+Completion Date: ${formData.completionDate}
+
+Roof Access Needed: ${formData.roofAccess ? 'Yes' : 'No'}
+${formData.roofAccess ? `Roof Access Date/Time: ${formData.roofAccessDateTime}` : ''}
+Elevator Use for Materials/Tools: ${formData.elevatorUse ? 'Yes' : 'No'}
+Construction Debris Removal at Owner's Expense: ${formData.debrisRemoval ? 'Yes' : 'No'}
+
+Permit Required: ${formData.permitRequired ? 'Yes' : 'No'}
+
+Documents Attached: ${documents.map(doc => doc.name).join(', ')}
     `;
 
-    // Create form data for files
-    const formDataWithFiles = new FormData();
-    documents.forEach(file => {
-      formDataWithFiles.append('documents', file);
-    });
-
-    // For now, we'll use mailto for the email content
-    const mailtoLink = `mailto:service@stellarpropertygroup.com?subject=Construction Request Form - Unit ${formData.unitNumber}&body=${encodeURIComponent(emailContent)}`;
-    window.location.href = mailtoLink;
-    
-    toast.success('Construction request form prepared for email submission');
+    setEmailContent(content);
+    setShowSubmissionModal(true);
   };
 
   return (
@@ -141,6 +135,13 @@ const ConstructionRequest = () => {
               </Button>
             </div>
           </form>
+
+          <FormSubmissionModal
+            isOpen={showSubmissionModal}
+            onClose={() => setShowSubmissionModal(false)}
+            emailContent={emailContent}
+            subject={`Construction Request Form - Unit ${formData.unitNumber}`}
+          />
         </div>
       </div>
     </MainLayout>

@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { Input } from '@/components/ui/input';
@@ -8,9 +7,13 @@ import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { Recaptcha } from '@/components/ui/recaptcha';
 import { useRecaptcha } from '@/hooks/use-recaptcha';
+import { FormSubmissionModal } from '@/components/forms/shared/FormSubmissionModal';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 const Nominations = () => {
+  const [showSubmissionModal, setShowSubmissionModal] = useState(false);
+  const [emailContent, setEmailContent] = useState('');
+  
   const [formData, setFormData] = useState({
     associationName: '',
     candidateName: '',
@@ -49,23 +52,28 @@ const Nominations = () => {
     
     const submissionDate = new Date().toLocaleDateString();
     
-    // This would ideally be handled by a backend service
-    const emailContent = `
-      Association Name: ${formData.associationName}
-      Candidate Name: ${formData.candidateName}
-      Unit Number: ${formData.candidateUnit}
-      Qualifications: ${formData.qualifications}
-      Goals: ${formData.goals}
-      Signature: ${formData.signature}
-      Submission Date: ${submissionDate}
-      CAPTCHA Verified: Yes
+    const content = `
+NOMINATION APPLICATION FOR BOARD OF DIRECTORS
+
+Association Name: ${formData.associationName}
+Candidate Name: ${formData.candidateName}
+Unit Number: ${formData.candidateUnit}
+
+QUALIFICATIONS / RELEVANT EXPERIENCE:
+${formData.qualifications}
+
+GOALS AS A BOARD MEMBER:
+${formData.goals}
+
+SIGNATURE:
+${formData.signature}
+
+Submission Date: ${submissionDate}
+CAPTCHA Verified: Yes
     `;
 
-    // Open default email client with pre-filled content
-    const mailtoLink = `mailto:service@stellarpropertygroup.com?subject=Board Nomination Form&body=${encodeURIComponent(emailContent)}`;
-    window.location.href = mailtoLink;
-    
-    toast.success('Form ready to be sent via email');
+    setEmailContent(content);
+    setShowSubmissionModal(true);
     
     // Reset the CAPTCHA
     if (recaptchaRef.current) {
@@ -176,6 +184,13 @@ const Nominations = () => {
               </div>
             </div>
           </form>
+
+          <FormSubmissionModal
+            isOpen={showSubmissionModal}
+            onClose={() => setShowSubmissionModal(false)}
+            emailContent={emailContent}
+            subject="Board Nomination Form"
+          />
           
           <div className="mt-6 p-4 bg-gray-100 rounded-md">
             <p className="text-sm text-gray-700">

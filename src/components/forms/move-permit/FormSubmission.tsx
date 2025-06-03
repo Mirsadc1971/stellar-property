@@ -1,14 +1,18 @@
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useMovePermit } from './MovePermitContext';
 import { useRecaptcha } from '@/hooks/use-recaptcha';
 import { Recaptcha } from '@/components/ui/recaptcha';
+import { FormSubmissionModal } from '@/components/forms/shared/FormSubmissionModal';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 export const FormSubmission: React.FC = () => {
   const { formData } = useMovePermit();
+  const [showSubmissionModal, setShowSubmissionModal] = useState(false);
+  const [emailContent, setEmailContent] = useState('');
+  
   const {
     captchaToken,
     captchaError,
@@ -65,7 +69,7 @@ export const FormSubmission: React.FC = () => {
       }
     };
     
-    const emailContent = `
+    const content = `
 MOVE-IN / MOVE-OUT PERMIT REQUEST
 
 RESIDENT INFORMATION
@@ -106,10 +110,8 @@ CAPTCHA Verified: Yes
 This request requires management approval. You will receive confirmation once approved.
     `;
 
-    const mailtoLink = `mailto:service@stellarpropertygroup.com?subject=Move Permit Request - ${formData.unitNumber}&body=${encodeURIComponent(emailContent)}`;
-    window.location.href = mailtoLink;
-    
-    toast.success('Move permit request prepared. Please attach any additional documents to the email before sending.');
+    setEmailContent(content);
+    setShowSubmissionModal(true);
     
     // Reset the CAPTCHA
     if (recaptchaRef.current) {
@@ -118,24 +120,33 @@ This request requires management approval. You will receive confirmation once ap
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="my-6">
-        <label className="block text-sm font-medium mb-1">Verification</label>
-        <Recaptcha 
-          onChange={handleCaptchaChange}
-          onError={handleCaptchaError}
-          className="mt-2"
-        />
-        {captchaError && (
-          <p className="text-sm text-red-500 mt-1">{captchaError}</p>
-        )}
-      </div>
-      
-      <div className="flex justify-end">
-        <Button type="submit" disabled={!captchaToken}>
-          Submit Move Permit Request
-        </Button>
-      </div>
-    </form>
+    <>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="my-6">
+          <label className="block text-sm font-medium mb-1">Verification</label>
+          <Recaptcha 
+            onChange={handleCaptchaChange}
+            onError={handleCaptchaError}
+            className="mt-2"
+          />
+          {captchaError && (
+            <p className="text-sm text-red-500 mt-1">{captchaError}</p>
+          )}
+        </div>
+        
+        <div className="flex justify-end">
+          <Button type="submit" disabled={!captchaToken}>
+            Submit Move Permit Request
+          </Button>
+        </div>
+      </form>
+
+      <FormSubmissionModal
+        isOpen={showSubmissionModal}
+        onClose={() => setShowSubmissionModal(false)}
+        emailContent={emailContent}
+        subject={`Move Permit Request - ${formData.unitNumber}`}
+      />
+    </>
   );
 };

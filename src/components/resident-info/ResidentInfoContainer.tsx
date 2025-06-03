@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
@@ -9,8 +8,12 @@ import { OccupantSection } from '@/components/resident-info/OccupantSection';
 import { VehicleSection } from '@/components/resident-info/VehicleSection';
 import { EmergencyContactSection } from '@/components/resident-info/EmergencyContactSection';
 import { CommunicationSection } from '@/components/resident-info/CommunicationSection';
+import { FormSubmissionModal } from '@/components/forms/shared/FormSubmissionModal';
 
 export const ResidentInfoContainer = () => {
+  const [showSubmissionModal, setShowSubmissionModal] = useState(false);
+  const [emailContent, setEmailContent] = useState('');
+  
   const [formData, setFormData] = useState<FormData>({
     // Association Information
     associationName: '',
@@ -91,59 +94,57 @@ export const ResidentInfoContainer = () => {
     e.preventDefault();
     const submissionDate = new Date().toLocaleDateString();
     
-    const emailContent = `
-      RESIDENT INFORMATION SHEET
-      Association Name: ${formData.associationName}
-      Submission Date: ${submissionDate}
+    const content = `
+RESIDENT INFORMATION SHEET
+Association Name: ${formData.associationName}
+Submission Date: ${submissionDate}
 
-      OWNER INFORMATION
-      Homeowner 1: ${formData.homeowner1}
-      Homeowner 1 Cell: ${formData.homeowner1Cell}
-      Homeowner 2: ${formData.homeowner2}
-      Homeowner 2 Cell: ${formData.homeowner2Cell}
-      Address: ${formData.address}
-      Unit: ${formData.unit}
-      Home Phone: ${formData.homePhone}
-      Homeowner 1 Email: ${formData.homeowner1Email}
-      Homeowner 2 Email: ${formData.homeowner2Email}
-      Parking Space #: ${formData.parkingSpace}
-      Locker #: ${formData.lockerNumber}
-      Legal and Beneficial Owner(s): ${formData.legalOwners}
-      Insurance Company: ${formData.insuranceCompany}
-      Insurance Declaration Page: ${formData.insuranceProof ? 'Attached' : 'Not provided'}
+OWNER INFORMATION
+Homeowner 1: ${formData.homeowner1}
+Homeowner 1 Cell: ${formData.homeowner1Cell}
+Homeowner 2: ${formData.homeowner2}
+Homeowner 2 Cell: ${formData.homeowner2Cell}
+Address: ${formData.address}
+Unit: ${formData.unit}
+Home Phone: ${formData.homePhone}
+Homeowner 1 Email: ${formData.homeowner1Email}
+Homeowner 2 Email: ${formData.homeowner2Email}
+Parking Space #: ${formData.parkingSpace}
+Locker #: ${formData.lockerNumber}
+Legal and Beneficial Owner(s): ${formData.legalOwners}
+Insurance Company: ${formData.insuranceCompany}
+Insurance Declaration Page: ${formData.insuranceProof ? 'Attached' : 'Not provided'}
 
-      OCCUPANT INFORMATION
-      Owner Occupied: ${formData.isOwnerOccupied}
-      Lease Holders: ${formData.leaseHolders}
-      Lease Period: ${formData.leaseStart} to ${formData.leaseEnd}
-      Lease Document: ${formData.leaseDocument ? 'Attached' : 'Not provided'}
-      Occupant Phone: ${formData.occupantPhone}
-      Occupant Cell Phones: ${formData.occupantCell1}, ${formData.occupantCell2}
+OCCUPANT INFORMATION
+Owner Occupied: ${formData.isOwnerOccupied}
+Lease Holders: ${formData.leaseHolders}
+Lease Period: ${formData.leaseStart} to ${formData.leaseEnd}
+Lease Document: ${formData.leaseDocument ? 'Attached' : 'Not provided'}
+Occupant Phone: ${formData.occupantPhone}
+Occupant Cell Phones: ${formData.occupantCell1}, ${formData.occupantCell2}
 
-      ADDITIONAL INFORMATION
-      Other Residents: ${formData.otherResidents}
-      Pets (Breed, Name): ${formData.pets}
-      Needs Special Help: ${formData.needsSpecialHelp}
-      Preferred Communication: ${formData.preferredCommunication}
-      
-      VEHICLE INFORMATION
-      Make: ${formData.vehicleMake}
-      Model: ${formData.vehicleModel}
-      License Plate: ${formData.licensePlate}
+ADDITIONAL INFORMATION
+Other Residents: ${formData.otherResidents}
+Pets (Breed, Name): ${formData.pets}
+Needs Special Help: ${formData.needsSpecialHelp}
+Preferred Communication: ${formData.preferredCommunication}
 
-      EMERGENCY CONTACT
-      Name: ${formData.emergencyContactName}
-      Phone: ${formData.emergencyContactPhone}
+VEHICLE INFORMATION
+Make: ${formData.vehicleMake}
+Model: ${formData.vehicleModel}
+License Plate: ${formData.licensePlate}
 
-      ELECTRONIC COMMUNICATION AGREEMENT
-      Agrees to Electronic Communication: ${formData.agreesToElectronicComm ? 'Yes' : 'No'}
-      Digital Signature: ${formData.signature}
+EMERGENCY CONTACT
+Name: ${formData.emergencyContactName}
+Phone: ${formData.emergencyContactPhone}
+
+ELECTRONIC COMMUNICATION AGREEMENT
+Agrees to Electronic Communication: ${formData.agreesToElectronicComm ? 'Yes' : 'No'}
+Digital Signature: ${formData.signature}
     `;
 
-    const mailtoLink = `mailto:service@stellarpropertygroup.com?subject=Resident Information Sheet&body=${encodeURIComponent(emailContent)}`;
-    window.location.href = mailtoLink;
-    
-    toast.success('Form ready to be sent via email');
+    setEmailContent(content);
+    setShowSubmissionModal(true);
   };
 
   return (
@@ -177,6 +178,13 @@ export const ResidentInfoContainer = () => {
           </Button>
         </div>
       </form>
+
+      <FormSubmissionModal
+        isOpen={showSubmissionModal}
+        onClose={() => setShowSubmissionModal(false)}
+        emailContent={emailContent}
+        subject="Resident Information Sheet"
+      />
 
       <div className="mt-6 p-4 bg-gray-100 rounded-md">
         <p className="text-sm text-gray-700">
