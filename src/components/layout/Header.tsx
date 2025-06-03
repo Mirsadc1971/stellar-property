@@ -3,12 +3,6 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,15 +13,10 @@ export default function Header() {
   };
 
   const handleNavigation = (path: string) => {
-    // Close the menu if it's open
     if (isMenuOpen) {
       setIsMenuOpen(false);
     }
-    
-    // Navigate to the path
     navigate(path);
-    
-    // Ensure we scroll to the top of the page
     window.scrollTo({
       top: 0,
       left: 0,
@@ -41,132 +30,92 @@ export default function Header() {
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div className="container mx-auto px-6 py-5 flex justify-between items-center">
         <Link to="/" className="flex items-center" onClick={(e) => {
           e.preventDefault();
           handleNavigation('/');
         }}>
-          <h1 className="text-2xl font-bold font-heading text-darkBlue">Stellar Property Management</h1>
+          <h1 className="text-2xl font-bold font-heading text-darkBlue tracking-tight">Stellar Property Management</h1>
         </Link>
         
-        <nav className="hidden md:flex items-center space-x-1">
+        {/* Desktop Navigation - Cleaner & More Spaced */}
+        <nav className="hidden lg:flex items-center space-x-8">
           <a href="#" onClick={(e) => {
             e.preventDefault();
             handleNavigation('/');
-          }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Home</a>
+          }} className="text-gray-700 hover:text-darkBlue font-medium transition-colors">Home</a>
           
           <a href="#" onClick={(e) => {
             e.preventDefault();
             handleNavigation('/about');
-          }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">About</a>
+          }} className="text-gray-700 hover:text-darkBlue font-medium transition-colors">About</a>
           
           <a href="#" onClick={(e) => {
             e.preventDefault();
             handleNavigation('/services');
-          }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Services</a>
+          }} className="text-gray-700 hover:text-darkBlue font-medium transition-colors">Services</a>
           
           <a href="#" onClick={(e) => {
             e.preventDefault();
             handleNavigation('/contact');
-          }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Contact</a>
+          }} className="text-gray-700 hover:text-darkBlue font-medium transition-colors">Contact</a>
           
           <a href="#" onClick={(e) => {
             e.preventDefault();
             handleNavigation('/faqs');
-          }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">FAQs</a>
+          }} className="text-gray-700 hover:text-darkBlue font-medium transition-colors">FAQs</a>
           
-          <a href="#" onClick={(e) => {
-            e.preventDefault();
-            handleNavigation('/blog');
-          }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Blog</a>
-          
-          <DropdownMenu>
-            <DropdownMenuTrigger className="px-3 py-2 text-sm font-medium hover:text-darkBlue">
-              Payments
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-white">
-              <DropdownMenuItem onClick={() => handleExternalNavigation('https://stellarpropertygrp.appfolio.com/connect/')}>
-                Pay Dues
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleNavigation('/payments')}>
-                Payment Options
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          
-          <a href="#" onClick={(e) => {
-            e.preventDefault();
-            handleNavigation('/forms');
-          }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Forms</a>
+          <Button 
+            onClick={() => handleExternalNavigation('https://stellarpropertygrp.appfolio.com/connect/')}
+            className="bg-darkBlue hover:bg-blue-800 text-white px-6 py-2 font-medium"
+          >
+            Pay Dues
+          </Button>
         </nav>
         
-        <div className="md:hidden flex items-center">
+        {/* Mobile Menu Button */}
+        <div className="lg:hidden flex items-center">
           <button onClick={toggleMenu} className="text-gray-700 hover:text-darkBlue">
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
       
+      {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white py-2">
-          <div className="container mx-auto px-4 flex flex-col space-y-2">
+        <div className="lg:hidden bg-white border-t">
+          <div className="container mx-auto px-6 py-4 flex flex-col space-y-4">
             <a href="#" onClick={(e) => {
               e.preventDefault();
               handleNavigation('/');
-            }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Home</a>
+            }} className="text-gray-700 hover:text-darkBlue font-medium">Home</a>
             
             <a href="#" onClick={(e) => {
               e.preventDefault();
               handleNavigation('/about');
-            }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">About</a>
+            }} className="text-gray-700 hover:text-darkBlue font-medium">About</a>
             
             <a href="#" onClick={(e) => {
               e.preventDefault();
               handleNavigation('/services');
-            }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Services</a>
+            }} className="text-gray-700 hover:text-darkBlue font-medium">Services</a>
             
             <a href="#" onClick={(e) => {
               e.preventDefault();
               handleNavigation('/contact');
-            }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Contact</a>
+            }} className="text-gray-700 hover:text-darkBlue font-medium">Contact</a>
             
             <a href="#" onClick={(e) => {
               e.preventDefault();
               handleNavigation('/faqs');
-            }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">FAQs</a>
+            }} className="text-gray-700 hover:text-darkBlue font-medium">FAQs</a>
             
-            <a href="#" onClick={(e) => {
-              e.preventDefault();
-              handleNavigation('/blog');
-            }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Blog</a>
-            
-            <div className="space-y-2 pl-4">
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleExternalNavigation('https://stellarpropertygrp.appfolio.com/connect/');
-                }}
-                className="block px-3 py-2 text-sm font-medium hover:text-darkBlue"
-              >
-                Pay Dues
-              </a>
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavigation('/payments');
-                }}
-                className="block px-3 py-2 text-sm font-medium hover:text-darkBlue"
-              >
-                Payment Options
-              </a>
-            </div>
-            
-            <a href="#" onClick={(e) => {
-              e.preventDefault();
-              handleNavigation('/forms');
-            }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Forms</a>
+            <Button 
+              onClick={() => handleExternalNavigation('https://stellarpropertygrp.appfolio.com/connect/')}
+              className="bg-darkBlue hover:bg-blue-800 text-white w-full"
+            >
+              Pay Dues
+            </Button>
           </div>
         </div>
       )}
