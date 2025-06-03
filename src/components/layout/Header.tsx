@@ -1,8 +1,14 @@
 
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,6 +34,40 @@ export default function Header() {
     window.open(url, '_blank');
   };
 
+  const servicesItems = [
+    { label: 'HOA Management', path: '/services' },
+    { label: 'Condo Management', path: '/services' },
+    { label: 'Financial Services', path: '/services' },
+    { label: 'Maintenance Coordination', path: '/services' },
+    { label: 'Board Support', path: '/services' },
+    { label: 'Compliance Management', path: '/services' },
+  ];
+
+  const neighborhoodsItems = [
+    { label: 'The Loop', path: '/neighborhoods/the-loop' },
+    { label: 'River North', path: '/neighborhoods/river-north' },
+    { label: 'Streeterville', path: '/neighborhoods/streeterville' },
+    { label: 'South Loop', path: '/neighborhoods/south-loop' },
+    { label: 'West Loop', path: '/neighborhoods/west-loop' },
+    { label: 'Lincoln Park', path: '/neighborhoods/lincoln-park' },
+    { label: 'Lakeview', path: '/neighborhoods/lakeview' },
+    { label: 'Gold Coast', path: '/neighborhoods/gold-coast' },
+    { label: 'Old Town', path: '/neighborhoods/old-town' },
+    { label: 'Wicker Park', path: '/neighborhoods/wicker-park' },
+    { label: 'Bucktown', path: '/neighborhoods/bucktown' },
+    { label: 'Logan Square', path: '/neighborhoods/logan-square' },
+  ];
+
+  const resourcesItems = [
+    { label: 'Forms', path: '/forms' },
+    { label: 'FAQs', path: '/faqs' },
+    { label: 'Blog', path: '/blog' },
+    { label: 'Payment Instructions', path: '/payments' },
+    { label: 'Move Permit', path: '/move-permit' },
+    { label: 'Insurance Proof', path: '/insurance-proof' },
+    { label: 'Construction Request', path: '/construction-request' },
+  ];
+
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-8 py-6 flex justify-between items-center">
@@ -38,8 +78,8 @@ export default function Header() {
           <h1 className="text-2xl font-bold font-heading text-darkBlue tracking-tight">Stellar Property Management</h1>
         </Link>
         
-        {/* Desktop Navigation - Much cleaner spacing like Havelock */}
-        <nav className="hidden lg:flex items-center space-x-12">
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center space-x-8">
           <a href="#" onClick={(e) => {
             e.preventDefault();
             handleNavigation('/');
@@ -50,20 +90,64 @@ export default function Header() {
             handleNavigation('/about');
           }} className="text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">About</a>
           
-          <a href="#" onClick={(e) => {
-            e.preventDefault();
-            handleNavigation('/services');
-          }} className="text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">Services</a>
+          {/* Services Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">
+              Services <ChevronDown className="ml-1 h-4 w-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="bg-white border shadow-lg rounded-md min-w-[200px] z-50">
+              {servicesItems.map((item, index) => (
+                <DropdownMenuItem 
+                  key={index} 
+                  onClick={() => handleNavigation(item.path)}
+                  className="cursor-pointer hover:bg-gray-50 px-4 py-2"
+                >
+                  {item.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Neighborhoods Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">
+              Neighborhoods <ChevronDown className="ml-1 h-4 w-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="bg-white border shadow-lg rounded-md min-w-[200px] max-h-[400px] overflow-y-auto z-50">
+              {neighborhoodsItems.map((item, index) => (
+                <DropdownMenuItem 
+                  key={index} 
+                  onClick={() => handleNavigation(item.path)}
+                  className="cursor-pointer hover:bg-gray-50 px-4 py-2"
+                >
+                  {item.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Resources Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">
+              Resources <ChevronDown className="ml-1 h-4 w-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="bg-white border shadow-lg rounded-md min-w-[200px] z-50">
+              {resourcesItems.map((item, index) => (
+                <DropdownMenuItem 
+                  key={index} 
+                  onClick={() => handleNavigation(item.path)}
+                  className="cursor-pointer hover:bg-gray-50 px-4 py-2"
+                >
+                  {item.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
           
           <a href="#" onClick={(e) => {
             e.preventDefault();
             handleNavigation('/contact');
           }} className="text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">Contact</a>
-          
-          <a href="#" onClick={(e) => {
-            e.preventDefault();
-            handleNavigation('/faqs');
-          }} className="text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">FAQs</a>
           
           <Button 
             onClick={() => handleExternalNavigation('https://stellarpropertygrp.appfolio.com/connect/')}
