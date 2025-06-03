@@ -80,7 +80,7 @@ CAPTCHA Verified: Yes
 Note: This form has been submitted electronically. Please find the attached PDF for the complete insurance documentation.
     `;
 
-    const mailtoLink = `mailto:insurance@stellarpropertygroup.com?subject=HO-6 Insurance Proof - ${formData.unitAddress}&body=${encodeURIComponent(emailContent)}`;
+    const mailtoLink = `mailto:service@stellarpropertygroup.com?subject=HO-6 Insurance Proof - ${formData.unitAddress}&body=${encodeURIComponent(emailContent)}`;
     window.location.href = mailtoLink;
     
     toast.success('Insurance proof submission prepared. Please attach your PDF file to the email before sending.');
