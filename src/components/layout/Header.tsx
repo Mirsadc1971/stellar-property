@@ -92,15 +92,15 @@ export default function Header() {
           
           {/* Services Dropdown */}
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">
+            <DropdownMenuTrigger className="flex items-center text-gray-700 hover:text-darkBlue font-normal text-base transition-colors focus:outline-none">
               Services <ChevronDown className="ml-1 h-4 w-4" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-white border shadow-lg rounded-md min-w-[200px] z-50">
+            <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg rounded-md min-w-[200px] z-[100] p-0">
               {servicesItems.map((item, index) => (
                 <DropdownMenuItem 
                   key={index} 
                   onClick={() => handleNavigation(item.path)}
-                  className="cursor-pointer hover:bg-gray-50 px-4 py-2"
+                  className="cursor-pointer hover:bg-gray-50 px-4 py-3 text-sm text-gray-700 border-b border-gray-100 last:border-b-0"
                 >
                   {item.label}
                 </DropdownMenuItem>
@@ -110,15 +110,15 @@ export default function Header() {
 
           {/* Neighborhoods Dropdown */}
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">
+            <DropdownMenuTrigger className="flex items-center text-gray-700 hover:text-darkBlue font-normal text-base transition-colors focus:outline-none">
               Neighborhoods <ChevronDown className="ml-1 h-4 w-4" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-white border shadow-lg rounded-md min-w-[200px] max-h-[400px] overflow-y-auto z-50">
+            <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg rounded-md min-w-[200px] max-h-[400px] overflow-y-auto z-[100] p-0">
               {neighborhoodsItems.map((item, index) => (
                 <DropdownMenuItem 
                   key={index} 
                   onClick={() => handleNavigation(item.path)}
-                  className="cursor-pointer hover:bg-gray-50 px-4 py-2"
+                  className="cursor-pointer hover:bg-gray-50 px-4 py-3 text-sm text-gray-700 border-b border-gray-100 last:border-b-0"
                 >
                   {item.label}
                 </DropdownMenuItem>
@@ -128,15 +128,15 @@ export default function Header() {
 
           {/* Resources Dropdown */}
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">
+            <DropdownMenuTrigger className="flex items-center text-gray-700 hover:text-darkBlue font-normal text-base transition-colors focus:outline-none">
               Resources <ChevronDown className="ml-1 h-4 w-4" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-white border shadow-lg rounded-md min-w-[200px] z-50">
+            <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg rounded-md min-w-[200px] z-[100] p-0">
               {resourcesItems.map((item, index) => (
                 <DropdownMenuItem 
                   key={index} 
                   onClick={() => handleNavigation(item.path)}
-                  className="cursor-pointer hover:bg-gray-50 px-4 py-2"
+                  className="cursor-pointer hover:bg-gray-50 px-4 py-3 text-sm text-gray-700 border-b border-gray-100 last:border-b-0"
                 >
                   {item.label}
                 </DropdownMenuItem>
