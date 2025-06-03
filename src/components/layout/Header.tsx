@@ -3,10 +3,6 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import ServicesDropdown from './ServicesDropdown';
-import NeighborhoodsDropdown from './NeighborhoodsDropdown';
-import ResourcesDropdown from './ResourcesDropdown';
-import MobileNavigation from './MobileNavigation';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,14 +50,20 @@ export default function Header() {
             handleNavigation('/about');
           }} className="text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">About</a>
           
-          <ServicesDropdown handleNavigation={handleNavigation} />
-          <NeighborhoodsDropdown handleNavigation={handleNavigation} />
-          <ResourcesDropdown handleNavigation={handleNavigation} />
+          <a href="#" onClick={(e) => {
+            e.preventDefault();
+            handleNavigation('/services');
+          }} className="text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">Services</a>
           
           <a href="#" onClick={(e) => {
             e.preventDefault();
             handleNavigation('/contact');
           }} className="text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">Contact</a>
+          
+          <a href="#" onClick={(e) => {
+            e.preventDefault();
+            handleNavigation('/faqs');
+          }} className="text-gray-700 hover:text-darkBlue font-normal text-base transition-colors">FAQs</a>
           
           <Button 
             onClick={() => handleExternalNavigation('https://stellarpropertygrp.appfolio.com/connect/')}
@@ -80,11 +82,43 @@ export default function Header() {
       </div>
       
       {/* Mobile Navigation */}
-      <MobileNavigation 
-        isMenuOpen={isMenuOpen}
-        handleNavigation={handleNavigation}
-        handleExternalNavigation={handleExternalNavigation}
-      />
+      {isMenuOpen && (
+        <div className="lg:hidden bg-white border-t">
+          <div className="container mx-auto px-8 py-6 flex flex-col space-y-6">
+            <a href="#" onClick={(e) => {
+              e.preventDefault();
+              handleNavigation('/');
+            }} className="text-gray-700 hover:text-darkBlue font-normal text-base">Home</a>
+            
+            <a href="#" onClick={(e) => {
+              e.preventDefault();
+              handleNavigation('/about');
+            }} className="text-gray-700 hover:text-darkBlue font-normal text-base">About</a>
+            
+            <a href="#" onClick={(e) => {
+              e.preventDefault();
+              handleNavigation('/services');
+            }} className="text-gray-700 hover:text-darkBlue font-normal text-base">Services</a>
+            
+            <a href="#" onClick={(e) => {
+              e.preventDefault();
+              handleNavigation('/contact');
+            }} className="text-gray-700 hover:text-darkBlue font-normal text-base">Contact</a>
+            
+            <a href="#" onClick={(e) => {
+              e.preventDefault();
+              handleNavigation('/faqs');
+            }} className="text-gray-700 hover:text-darkBlue font-normal text-base">FAQs</a>
+            
+            <Button 
+              onClick={() => handleExternalNavigation('https://stellarpropertygrp.appfolio.com/connect/')}
+              className="bg-darkBlue hover:bg-blue-800 text-white w-full py-3 font-normal text-base"
+            >
+              Pay Dues
+            </Button>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
