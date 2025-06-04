@@ -5,14 +5,15 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import { CheckCircle } from 'lucide-react';
 import { Recaptcha } from '@/components/ui/recaptcha';
 import { useRecaptcha } from '@/hooks/use-recaptcha';
-import { FormSubmissionModal } from '@/components/forms/shared/FormSubmissionModal';
+import { useFormSubmission } from '@/hooks/useFormSubmission';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 const Nominations = () => {
-  const [showSubmissionModal, setShowSubmissionModal] = useState(false);
-  const [emailContent, setEmailContent] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submissionId, setSubmissionId] = useState<string>('');
   
   const [formData, setFormData] = useState({
     associationName: '',
@@ -30,6 +31,11 @@ const Nominations = () => {
     handleCaptchaError,
     validateCaptcha
   } = useRecaptcha();
+
+  const { submitForm, isSubmitting } = useFormSubmission({
+    functionName: 'submit-board-nomination',
+    successMessage: 'Board nomination submitted successfully!'
+  });
   
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
@@ -44,42 +50,61 @@ const Nominations = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    // Validate reCAPTCHA
     if (!validateCaptcha()) {
       toast.error('Please complete the CAPTCHA verification');
       return;
     }
     
-    const submissionDate = new Date().toLocaleDateString();
+    const result = await submitForm(formData);
     
-    const content = `
-NOMINATION APPLICATION FOR BOARD OF DIRECTORS
-
-Association Name: ${formData.associationName}
-Candidate Name: ${formData.candidateName}
-Unit Number: ${formData.candidateUnit}
-
-QUALIFICATIONS / RELEVANT EXPERIENCE:
-${formData.qualifications}
-
-GOALS AS A BOARD MEMBER:
-${formData.goals}
-
-SIGNATURE:
-${formData.signature}
-
-Submission Date: ${submissionDate}
-CAPTCHA Verified: Yes
-    `;
-
-    setEmailContent(content);
-    setShowSubmissionModal(true);
-    
-    // Reset the CAPTCHA
-    if (recaptchaRef.current) {
-      recaptchaRef.current.reset();
+    if (result.success) {
+      setIsSubmitted(true);
+      setSubmissionId(result.submissionId || '');
+      
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
     }
   };
+
+  if (isSubmitted) {
+    return (
+      <MainLayout>
+        <div className="container mx-auto px-4 py-12">
+          <div className="max-w-3xl mx-auto text-center py-12">
+            <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
+            <h1 className="text-3xl font-bold mb-4 text-green-800">Nomination Submitted Successfully!</h1>
+            <p className="text-lg text-gray-600 mb-6">
+              Thank you for submitting your board nomination application. 
+              We have received your submission and will review it during the nomination process.
+            </p>
+            {submissionId && (
+              <p className="text-sm text-gray-500 mb-6">
+                Submission ID: {submissionId}
+              </p>
+            )}
+            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-green-800 mb-2">What happens next?</h3>
+              <ul className="text-left text-green-700 space-y-2">
+                <li>• Your nomination has been securely stored in our system</li>
+                <li>• The board will review your application</li>
+                <li>• You will be contacted regarding the election process</li>
+                <li>• Thank you for your interest in serving the community</li>
+              </ul>
+            </div>
+            
+            <Button 
+              onClick={() => window.location.reload()} 
+              className="mt-6"
+              variant="outline"
+            >
+              Submit Another Nomination
+            </Button>
+          </div>
+        </div>
+      </MainLayout>
+    );
+  }
 
   return (
     <MainLayout>
@@ -177,21 +202,14 @@ CAPTCHA Verified: Yes
                 <Button 
                   type="submit" 
                   className="w-full md:w-auto"
-                  disabled={!captchaToken}
+                  disabled={!captchaToken || isSubmitting}
                 >
-                  Submit Nomination
+                  {isSubmitting ? 'Submitting...' : 'Submit Nomination'}
                 </Button>
               </div>
             </div>
           </form>
 
-          <FormSubmissionModal
-            isOpen={showSubmissionModal}
-            onClose={() => setShowSubmissionModal(false)}
-            emailContent={emailContent}
-            subject="Board Nomination Form"
-          />
-          
           <div className="mt-6 p-4 bg-gray-100 rounded-md">
             <p className="text-sm text-gray-700">
               Please return the completed Nomination Application Form to:

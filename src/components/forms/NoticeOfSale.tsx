@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
-import { FileText } from "lucide-react";
+import { FileText, CheckCircle } from "lucide-react";
 import { HeaderSection } from './notice/HeaderSection';
 import { Section1 } from './notice/Section1';
 import { Section2 } from './notice/Section2';
@@ -11,9 +11,13 @@ import { BuyerInformation } from './notice/BuyerInformation';
 import { NoticeFormData } from './types';
 import { Recaptcha } from '@/components/ui/recaptcha';
 import { useRecaptcha } from '@/hooks/use-recaptcha';
+import { useFormSubmission } from '@/hooks/useFormSubmission';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 export const NoticeOfSale = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submissionId, setSubmissionId] = useState<string>('');
+  
   const [formData, setFormData] = useState<NoticeFormData>({
     currentDate: '',
     associationName: '',
@@ -39,6 +43,11 @@ export const NoticeOfSale = () => {
     handleCaptchaError,
     validateCaptcha
   } = useRecaptcha();
+
+  const { submitForm, isSubmitting } = useFormSubmission({
+    functionName: 'submit-notice-of-sale',
+    successMessage: 'Notice of sale form submitted successfully!'
+  });
   
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
@@ -50,57 +59,51 @@ export const NoticeOfSale = () => {
     }));
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate reCAPTCHA
     if (!validateCaptcha()) {
       toast.error('Please complete the CAPTCHA verification');
       return;
     }
     
-    const emailContent = `
-NOTICE OF INTENT TO SELL UNIT
-
-Date: ${formData.currentDate}
-
-To: Board of Directors
-${formData.associationName}
-${formData.associationAddress}
-
-From: ${formData.ownerName}
-Unit Number: ${formData.unitNumber}
-
-SECTION 1 - NOTICE OF INTENT TO SELL
-
-In accordance with the requirements of ${formData.associationName}, I hereby submit this Notice of Intent to Sell.
-
-SECTION 2 - SUMMARY OF TERMS OF SALE
-
-Listing Real Estate Firm: ${formData.listingFirm}
-Agent/Owner: ${formData.agentOrOwner}
-Address: ${formData.address}
-City: ${formData.city}
-State: ${formData.state}
-ZIP: ${formData.zip}
-Phone: ${formData.phone}
-Listing Price: ${formData.listingPrice}
-Listing Duration: ${formData.listingTerms} month(s)
-
-Signature: ${formData.signature}
-CAPTCHA Verified: Yes
-    `;
-
-    const mailtoLink = `mailto:service@stellarpropertygroup.com?subject=Notice of Intent to Sell Unit&body=${encodeURIComponent(emailContent)}`;
-    window.location.href = mailtoLink;
+    const result = await submitForm(formData);
     
-    toast.success('Notice form prepared for email submission');
-    
-    // Reset the CAPTCHA
-    if (recaptchaRef.current) {
-      recaptchaRef.current.reset();
+    if (result.success) {
+      setIsSubmitted(true);
+      setSubmissionId(result.submissionId || '');
+      
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
     }
   };
+
+  if (isSubmitted) {
+    return (
+      <Card className="p-6">
+        <div className="text-center py-12">
+          <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold mb-4 text-green-800">Form Submitted Successfully!</h2>
+          <p className="text-lg text-gray-600 mb-6">
+            Thank you for submitting your notice of sale form. 
+            We have received your submission and will process it shortly.
+          </p>
+          {submissionId && (
+            <p className="text-sm text-gray-500 mb-6">
+              Submission ID: {submissionId}
+            </p>
+          )}
+          <Button 
+            onClick={() => window.location.reload()} 
+            variant="outline"
+          >
+            Submit Another Form
+          </Button>
+        </div>
+      </Card>
+    );
+  }
 
   return (
     <Card className="p-6">
@@ -141,8 +144,11 @@ CAPTCHA Verified: Yes
         </div>
         
         <div className="flex justify-end">
-          <Button type="submit" disabled={!captchaToken}>
-            Submit Notice
+          <Button 
+            type="submit" 
+            disabled={!captchaToken || isSubmitting}
+          >
+            {isSubmitting ? 'Submitting...' : 'Submit Notice'}
           </Button>
         </div>
       </form>

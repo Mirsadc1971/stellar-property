@@ -2,16 +2,17 @@
 import React, { useRef, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { CheckCircle } from 'lucide-react';
 import { useMovePermit } from './MovePermitContext';
 import { useRecaptcha } from '@/hooks/use-recaptcha';
 import { Recaptcha } from '@/components/ui/recaptcha';
-import { FormSubmissionModal } from '@/components/forms/shared/FormSubmissionModal';
+import { useFormSubmission } from '@/hooks/useFormSubmission';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 export const FormSubmission: React.FC = () => {
   const { formData } = useMovePermit();
-  const [showSubmissionModal, setShowSubmissionModal] = useState(false);
-  const [emailContent, setEmailContent] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submissionId, setSubmissionId] = useState<string>('');
   
   const {
     captchaToken,
@@ -20,25 +21,27 @@ export const FormSubmission: React.FC = () => {
     handleCaptchaError,
     validateCaptcha
   } = useRecaptcha();
+
+  const { submitForm, isSubmitting } = useFormSubmission({
+    functionName: 'submit-move-permit',
+    successMessage: 'Move permit request submitted successfully!'
+  });
   
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate reCAPTCHA
     if (!validateCaptcha()) {
       toast.error('Please complete the CAPTCHA verification');
       return;
     }
     
-    // Validate that a move date is set
     if (!formData.moveDate) {
       toast.error('Please select a move date');
       return;
     }
     
-    // Calculate if move date is at least 10 days from now
     const moveDate = new Date(formData.moveDate);
     const today = new Date();
     const dayDifference = Math.floor((moveDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
@@ -48,76 +51,62 @@ export const FormSubmission: React.FC = () => {
       return;
     }
     
-    // Check that signature is provided
     if (!formData.signature.trim()) {
       toast.error('Please provide your signature');
       return;
     }
     
-    // Validate deposit refund type selection
     if (!formData.depositRefundType) {
       toast.error('Please select a deposit refund policy');
       return;
     }
     
-    const getDepositRefundTypeText = () => {
-      switch (formData.depositRefundType) {
-        case 'refundable': return 'Fully Refundable';
-        case 'nonRefundable': return 'Non-refundable';
-        case 'partial': return 'Partially Refundable';
-        default: return 'Not specified';
+    const result = await submitForm(formData);
+    
+    if (result.success) {
+      setIsSubmitted(true);
+      setSubmissionId(result.submissionId || '');
+      
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
       }
-    };
-    
-    const content = `
-MOVE-IN / MOVE-OUT PERMIT REQUEST
-
-RESIDENT INFORMATION
-Association Name: ${formData.associationName}
-Unit Owner Name: ${formData.ownerName}
-Unit Number: ${formData.unitNumber}
-Phone Number: ${formData.phone}
-Email Address: ${formData.email}
-
-MOVE DETAILS
-Date of Move: ${formData.moveDate}
-Type of Move: ${formData.moveType === 'moveIn' ? 'Move-In' : 'Move-Out'}
-Moving Company: ${formData.movingCompanyName || 'Not specified'}
-Day of Week: ${formData.moveDay === 'weekday' ? 'Weekday (Monday-Friday)' : 
-              formData.moveDay === 'saturday' ? 'Saturday' : 'Sunday (Emergency)'}
-
-ELEVATOR REQUIREMENTS
-Elevator Required: ${formData.elevatorUseRequired ? 'Yes' : 'No'}
-${formData.elevatorUseRequired ? `Elevator Time: ${formData.elevatorStartTime} to ${formData.elevatorEndTime}` : ''}
-Elevator Key Required: ${formData.elevatorKeyRequired ? 'Yes' : 'No'}
-
-DEPOSIT DETAILS
-Security Deposit Amount: $${formData.depositAmount}
-Deposit Refund Type: ${getDepositRefundTypeText()}
-
-ADDITIONAL NOTES
-${formData.additionalNotes || 'None provided'}
-
-ACKNOWLEDGEMENT
-I acknowledge that I have read and agree to abide by all move rules and regulations and accept responsibility for any damages.
-I have reviewed my association's governing documents regarding move procedures and policies.
-
-Signature: ${formData.signature}
-Date: ${formData.signatureDate}
-
-CAPTCHA Verified: Yes
-
-This request requires management approval. You will receive confirmation once approved.
-    `;
-
-    setEmailContent(content);
-    setShowSubmissionModal(true);
-    
-    // Reset the CAPTCHA
-    if (recaptchaRef.current) {
-      recaptchaRef.current.reset();
     }
   };
+
+  if (isSubmitted) {
+    return (
+      <div className="text-center py-12">
+        <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
+        <h2 className="text-2xl font-bold mb-4 text-green-800">Move Permit Request Submitted!</h2>
+        <p className="text-lg text-gray-600 mb-6">
+          Thank you for submitting your move permit request. 
+          We have received your submission and will review it shortly.
+        </p>
+        {submissionId && (
+          <p className="text-sm text-gray-500 mb-6">
+            Submission ID: {submissionId}
+          </p>
+        )}
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+          <h3 className="text-lg font-semibold text-blue-800 mb-2">What happens next?</h3>
+          <ul className="text-left text-blue-700 space-y-2">
+            <li>• Your request has been submitted to management</li>
+            <li>• You will receive approval confirmation via email</li>
+            <li>• No moving activities may begin until approval is received</li>
+            <li>• Please allow time for processing before your move date</li>
+          </ul>
+        </div>
+        
+        <Button 
+          onClick={() => window.location.reload()} 
+          className="mt-6"
+          variant="outline"
+        >
+          Submit Another Request
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -135,18 +124,14 @@ This request requires management approval. You will receive confirmation once ap
         </div>
         
         <div className="flex justify-end">
-          <Button type="submit" disabled={!captchaToken}>
-            Submit Move Permit Request
+          <Button 
+            type="submit" 
+            disabled={!captchaToken || isSubmitting}
+          >
+            {isSubmitting ? 'Submitting...' : 'Submit Move Permit Request'}
           </Button>
         </div>
       </form>
-
-      <FormSubmissionModal
-        isOpen={showSubmissionModal}
-        onClose={() => setShowSubmissionModal(false)}
-        emailContent={emailContent}
-        subject={`Move Permit Request - ${formData.unitNumber}`}
-      />
     </>
   );
 };

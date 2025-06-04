@@ -3,10 +3,11 @@ import React, { useState, useRef } from 'react';
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { Wrench, FileCheck, AlertTriangle } from "lucide-react";
+import { Wrench, FileCheck, AlertTriangle, CheckCircle } from "lucide-react";
 import { RepairRequestFormData } from './types';
 import { Recaptcha } from '@/components/ui/recaptcha';
 import { useRecaptcha } from '@/hooks/use-recaptcha';
+import { useFormSubmission } from '@/hooks/useFormSubmission';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { OwnerInfoSection } from './repair-request/OwnerInfoSection';
 import { RepairDetailsSection } from './repair-request/RepairDetailsSection';
@@ -15,8 +16,9 @@ import { AccessSection } from './repair-request/AccessSection';
 import { AgreementSection } from './repair-request/AgreementSection';
 
 export const RepairRequestForm = () => {
-  // Get current date in YYYY-MM-DD format for the date field
   const currentDate = new Date().toISOString().split('T')[0];
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submissionId, setSubmissionId] = useState<string>('');
   
   const [formData, setFormData] = useState<RepairRequestFormData>({
     ownerName: '',
@@ -46,6 +48,11 @@ export const RepairRequestForm = () => {
     handleCaptchaError,
     validateCaptcha
   } = useRecaptcha();
+
+  const { submitForm, isSubmitting } = useFormSubmission({
+    functionName: 'submit-repair-request',
+    successMessage: 'Repair request submitted successfully!'
+  });
   
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
@@ -64,63 +71,59 @@ export const RepairRequestForm = () => {
     }));
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate reCAPTCHA
     if (!validateCaptcha()) {
       toast.error('Please complete the CAPTCHA verification');
       return;
     }
     
-    const emailContent = `
-REPAIR REQUEST FORM
-
-UNIT OWNER INFORMATION
-Name: ${formData.ownerName}
-Unit Number: ${formData.unitNumber}
-Phone: ${formData.phone}
-Email: ${formData.email}
-
-DESCRIPTION OF REPAIR WORK
-${formData.repairDescription}
-
-Scope of Work:
-${formData.scopeOfWork}
-
-CONTRACTOR INFORMATION
-Company Name: ${formData.contractorName}
-License Number: ${formData.contractorLicense}
-Contact Name: ${formData.contractorContact}
-Phone: ${formData.contractorPhone}
-Email: ${formData.contractorEmail}
-
-Certificate of Insurance provided: ${formData.insuranceCertificate ? 'Yes' : 'No'}
-
-ACCESS REQUESTS
-${formData.needsRoofAccess ? `Roof Access Date: ${formData.roofAccessDate}` : 'No roof access needed'}
-${formData.needsElevator ? `Elevator Reservation Date: ${formData.elevatorDate}` : 'No elevator reservation needed'}
-
-OWNER AGREEMENT
-I acknowledge and agree to the terms specified in the repair request policy.
-I understand that this submission does NOT constitute approval, and no work may begin until written approval is received.
-
-Owner Signature: ${formData.ownerSignature}
-Date: ${formData.signatureDate}
-
-CAPTCHA Verified: Yes
-    `;
-
-    const mailtoLink = `mailto:service@stellarpropertygroup.com?subject=Repair Request Form - Unit ${formData.unitNumber}&body=${encodeURIComponent(emailContent)}`;
-    window.location.href = mailtoLink;
+    const result = await submitForm(formData);
     
-    toast.success('Repair request submitted. You will be notified when your request has been reviewed. No work may begin until you receive written approval.');
-    
-    // Reset the CAPTCHA
-    if (recaptchaRef.current) {
-      recaptchaRef.current.reset();
+    if (result.success) {
+      setIsSubmitted(true);
+      setSubmissionId(result.submissionId || '');
+      
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
     }
   };
+
+  if (isSubmitted) {
+    return (
+      <Card className="p-6">
+        <div className="text-center py-12">
+          <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold mb-4 text-green-800">Form Submitted Successfully!</h2>
+          <p className="text-lg text-gray-600 mb-6">
+            Thank you for submitting your repair request. 
+            We have received your submission and will review it shortly.
+          </p>
+          {submissionId && (
+            <p className="text-sm text-gray-500 mb-6">
+              Submission ID: {submissionId}
+            </p>
+          )}
+          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
+            <div className="flex items-start gap-2">
+              <AlertTriangle className="h-5 w-5 text-amber-700 mt-0.5 flex-shrink-0" />
+              <p className="text-sm font-medium text-amber-800">
+                IMPORTANT: No work may begin until you receive written approval from the Board.
+              </p>
+            </div>
+          </div>
+          <Button 
+            onClick={() => window.location.reload()} 
+            variant="outline"
+          >
+            Submit Another Request
+          </Button>
+        </div>
+      </Card>
+    );
+  }
 
   return (
     <Card className="p-6">
@@ -189,8 +192,11 @@ CAPTCHA Verified: Yes
         </div>
         
         <div className="flex justify-end">
-          <Button type="submit" disabled={!captchaToken}>
-            Submit Repair Request
+          <Button 
+            type="submit" 
+            disabled={!captchaToken || isSubmitting}
+          >
+            {isSubmitting ? 'Submitting...' : 'Submit Repair Request'}
           </Button>
         </div>
       </form>

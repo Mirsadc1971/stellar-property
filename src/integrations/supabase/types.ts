@@ -9,6 +9,30 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      board_nomination_submissions: {
+        Row: {
+          id: string
+          status: string | null
+          submission_data: Json
+          submitted_at: string
+          submitter_email: string | null
+        }
+        Insert: {
+          id?: string
+          status?: string | null
+          submission_data: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Update: {
+          id?: string
+          status?: string | null
+          submission_data?: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Relationships: []
+      }
       chat_conversations: {
         Row: {
           created_at: string
@@ -71,6 +95,78 @@ export type Database = {
           },
         ]
       }
+      construction_request_submissions: {
+        Row: {
+          id: string
+          status: string | null
+          submission_data: Json
+          submitted_at: string
+          submitter_email: string | null
+        }
+        Insert: {
+          id?: string
+          status?: string | null
+          submission_data: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Update: {
+          id?: string
+          status?: string | null
+          submission_data?: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Relationships: []
+      }
+      contact_submissions: {
+        Row: {
+          id: string
+          status: string | null
+          submission_data: Json
+          submitted_at: string
+          submitter_email: string | null
+        }
+        Insert: {
+          id?: string
+          status?: string | null
+          submission_data: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Update: {
+          id?: string
+          status?: string | null
+          submission_data?: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Relationships: []
+      }
+      electronic_consent_submissions: {
+        Row: {
+          id: string
+          status: string | null
+          submission_data: Json
+          submitted_at: string
+          submitter_email: string | null
+        }
+        Insert: {
+          id?: string
+          status?: string | null
+          submission_data: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Update: {
+          id?: string
+          status?: string | null
+          submission_data?: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Relationships: []
+      }
       faqs: {
         Row: {
           answer: string
@@ -92,6 +188,30 @@ export type Database = {
           id?: string
           question?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      insurance_proof_submissions: {
+        Row: {
+          id: string
+          status: string | null
+          submission_data: Json
+          submitted_at: string
+          submitter_email: string | null
+        }
+        Insert: {
+          id?: string
+          status?: string | null
+          submission_data: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Update: {
+          id?: string
+          status?: string | null
+          submission_data?: Json
+          submitted_at?: string
+          submitter_email?: string | null
         }
         Relationships: []
       }
@@ -135,6 +255,54 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      move_permit_submissions: {
+        Row: {
+          id: string
+          status: string | null
+          submission_data: Json
+          submitted_at: string
+          submitter_email: string | null
+        }
+        Insert: {
+          id?: string
+          status?: string | null
+          submission_data: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Update: {
+          id?: string
+          status?: string | null
+          submission_data?: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Relationships: []
+      }
+      notice_of_sale_submissions: {
+        Row: {
+          id: string
+          status: string | null
+          submission_data: Json
+          submitted_at: string
+          submitter_email: string | null
+        }
+        Insert: {
+          id?: string
+          status?: string | null
+          submission_data: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Update: {
+          id?: string
+          status?: string | null
+          submission_data?: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Relationships: []
       }
       profiles: {
         Row: {
@@ -217,7 +385,55 @@ export type Database = {
         }
         Relationships: []
       }
+      repair_request_submissions: {
+        Row: {
+          id: string
+          status: string | null
+          submission_data: Json
+          submitted_at: string
+          submitter_email: string | null
+        }
+        Insert: {
+          id?: string
+          status?: string | null
+          submission_data: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Update: {
+          id?: string
+          status?: string | null
+          submission_data?: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Relationships: []
+      }
       resident_submissions: {
+        Row: {
+          id: string
+          status: string | null
+          submission_data: Json
+          submitted_at: string
+          submitter_email: string | null
+        }
+        Insert: {
+          id?: string
+          status?: string | null
+          submission_data: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Update: {
+          id?: string
+          status?: string | null
+          submission_data?: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Relationships: []
+      }
+      violation_report_submissions: {
         Row: {
           id: string
           status: string | null

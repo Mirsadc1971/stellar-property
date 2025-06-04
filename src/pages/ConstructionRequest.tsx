@@ -1,17 +1,19 @@
+
 import React, { useState } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import { CheckCircle } from 'lucide-react';
 import { OwnerInformation } from '@/components/construction/OwnerInformation';
 import { ProjectDetails } from '@/components/construction/ProjectDetails';
 import { DocumentUpload } from '@/components/construction/DocumentUpload';
 import { Guidelines } from '@/components/construction/Guidelines';
 import { PrintButton } from '@/components/construction/PrintButton';
-import { FormSubmissionModal } from '@/components/forms/shared/FormSubmissionModal';
+import { useFormSubmission } from '@/hooks/useFormSubmission';
 
 const ConstructionRequest = () => {
-  const [showSubmissionModal, setShowSubmissionModal] = useState(false);
-  const [emailContent, setEmailContent] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submissionId, setSubmissionId] = useState<string>('');
   
   const [formData, setFormData] = useState({
     associationName: '',
@@ -30,6 +32,11 @@ const ConstructionRequest = () => {
   });
 
   const [documents, setDocuments] = useState<File[]>([]);
+
+  const { submitForm, isSubmitting } = useFormSubmission({
+    functionName: 'submit-construction-request',
+    successMessage: 'Construction request submitted successfully!'
+  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -56,36 +63,57 @@ const ConstructionRequest = () => {
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    const content = `
-CONDOMINIUM CONSTRUCTION REQUEST FORM
-
-UNIT OWNER INFORMATION
-Association Name: ${formData.associationName}
-Owner Name: ${formData.ownerName}
-Unit Number: ${formData.unitNumber}
-Phone Number: ${formData.phoneNumber}
-Email Address: ${formData.email}
-
-CONSTRUCTION PROJECT DETAILS
-Work Description:
-${formData.workDescription}
-
-Start Date: ${formData.startDate}
-Completion Date: ${formData.completionDate}
-
-Roof Access Needed: ${formData.roofAccess ? 'Yes' : 'No'}
-${formData.roofAccess ? `Roof Access Date/Time: ${formData.roofAccessDateTime}` : ''}
-Elevator Use for Materials/Tools: ${formData.elevatorUse ? 'Yes' : 'No'}
-Construction Debris Removal at Owner's Expense: ${formData.debrisRemoval ? 'Yes' : 'No'}
-
-Permit Required: ${formData.permitRequired ? 'Yes' : 'No'}
-
-Documents Attached: ${documents.map(doc => doc.name).join(', ')}
-    `;
-
-    setEmailContent(content);
-    setShowSubmissionModal(true);
+    const submissionData = {
+      ...formData,
+      documents: documents
+    };
+    
+    const result = await submitForm(submissionData);
+    
+    if (result.success) {
+      setIsSubmitted(true);
+      setSubmissionId(result.submissionId || '');
+    }
   };
+
+  if (isSubmitted) {
+    return (
+      <MainLayout>
+        <div className="container mx-auto px-4 py-12">
+          <div className="max-w-3xl mx-auto text-center py-12">
+            <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
+            <h1 className="text-3xl font-bold mb-4 text-green-800">Construction Request Submitted!</h1>
+            <p className="text-lg text-gray-600 mb-6">
+              Thank you for submitting your construction request. 
+              We have received your submission and will review it for board approval.
+            </p>
+            {submissionId && (
+              <p className="text-sm text-gray-500 mb-6">
+                Submission ID: {submissionId}
+              </p>
+            )}
+            <div className="bg-amber-50 border border-amber-200 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-amber-800 mb-2">Important Reminder</h3>
+              <ul className="text-left text-amber-700 space-y-2">
+                <li>• Your request has been submitted for Board review</li>
+                <li>• NO CONSTRUCTION WORK MAY BEGIN until written approval is received</li>
+                <li>• You will be notified of the Board's decision via email</li>
+                <li>• Please allow adequate time for review before your planned start date</li>
+              </ul>
+            </div>
+            
+            <Button 
+              onClick={() => window.location.reload()} 
+              className="mt-6"
+              variant="outline"
+            >
+              Submit Another Request
+            </Button>
+          </div>
+        </div>
+      </MainLayout>
+    );
+  }
 
   return (
     <MainLayout>
@@ -130,18 +158,15 @@ Documents Attached: ${documents.map(doc => doc.name).join(', ')}
                 By submitting this form, I confirm that all information provided is accurate. I agree to upload all required documents, 
                 comply with all construction policies, and understand that violations may result in fines or suspension of construction access.
               </p>
-              <Button type="submit" className="w-full print:hidden">
-                Submit Construction Request
+              <Button 
+                type="submit" 
+                className="w-full print:hidden"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Submitting...' : 'Submit Construction Request'}
               </Button>
             </div>
           </form>
-
-          <FormSubmissionModal
-            isOpen={showSubmissionModal}
-            onClose={() => setShowSubmissionModal(false)}
-            emailContent={emailContent}
-            subject={`Construction Request Form - Unit ${formData.unitNumber}`}
-          />
         </div>
       </div>
     </MainLayout>

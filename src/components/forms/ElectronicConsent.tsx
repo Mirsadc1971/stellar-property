@@ -3,18 +3,20 @@ import React, { useState, useRef } from 'react';
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { FileText } from "lucide-react";
+import { FileText, CheckCircle } from "lucide-react";
 import { PropertySection } from "./electronic-consent/PropertySection";
 import { ConsentSection } from "./electronic-consent/ConsentSection";
 import { SignatureSection } from "./electronic-consent/SignatureSection";
 import { ElectronicConsentFormData } from './types';
 import { Recaptcha } from '@/components/ui/recaptcha';
 import { useRecaptcha } from '@/hooks/use-recaptcha';
+import { useFormSubmission } from '@/hooks/useFormSubmission';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 export const ElectronicConsent = () => {
-  // Get current date in YYYY-MM-DD format for the date fields
   const currentDate = new Date().toISOString().split('T')[0];
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submissionId, setSubmissionId] = useState<string>('');
   
   const [formData, setFormData] = useState<ElectronicConsentFormData>({
     propertyAddress: '',
@@ -35,6 +37,11 @@ export const ElectronicConsent = () => {
     handleCaptchaError,
     validateCaptcha
   } = useRecaptcha();
+
+  const { submitForm, isSubmitting } = useFormSubmission({
+    functionName: 'submit-electronic-consent',
+    successMessage: 'Electronic consent form submitted successfully!'
+  });
   
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
@@ -53,52 +60,56 @@ export const ElectronicConsent = () => {
     }));
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate reCAPTCHA
     if (!validateCaptcha()) {
       toast.error('Please complete the CAPTCHA verification');
       return;
     }
     
-    // Validate consent checkbox
     if (!formData.agreesToConsent) {
       toast.error('You must agree to the consent terms to proceed');
       return;
     }
     
-    const emailContent = `
-CONSENT TO ELECTRONIC NOTICES
-
-Property Address: ${formData.propertyAddress}
-Owner Name(s): ${formData.ownerNames}
-Email Address: ${formData.emailAddress}
-Phone Number: ${formData.phoneNumber}
-
-CONSENT AGREEMENT:
-I have read and agreed to receive all official notices, announcements, and communications 
-from the Association electronically via email at the provided email address.
-
-Owner Signature: ${formData.ownerSignature}
-Date: ${formData.ownerSignatureDate}
-
-${formData.coOwnerSignature ? `Co-Owner Signature: ${formData.coOwnerSignature}
-Date: ${formData.coOwnerSignatureDate}` : ''}
-
-CAPTCHA Verified: Yes
-    `;
-
-    const mailtoLink = `mailto:service@stellarpropertygroup.com?subject=Consent to Electronic Notices&body=${encodeURIComponent(emailContent)}`;
-    window.location.href = mailtoLink;
+    const result = await submitForm(formData);
     
-    toast.success('Consent form prepared for email submission');
-    
-    // Reset the CAPTCHA
-    if (recaptchaRef.current) {
-      recaptchaRef.current.reset();
+    if (result.success) {
+      setIsSubmitted(true);
+      setSubmissionId(result.submissionId || '');
+      
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
     }
   };
+
+  if (isSubmitted) {
+    return (
+      <Card className="p-6">
+        <div className="text-center py-12">
+          <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold mb-4 text-green-800">Form Submitted Successfully!</h2>
+          <p className="text-lg text-gray-600 mb-6">
+            Thank you for submitting your electronic consent form. 
+            We have received your submission and will process it shortly.
+          </p>
+          {submissionId && (
+            <p className="text-sm text-gray-500 mb-6">
+              Submission ID: {submissionId}
+            </p>
+          )}
+          <Button 
+            onClick={() => window.location.reload()} 
+            variant="outline"
+          >
+            Submit Another Form
+          </Button>
+        </div>
+      </Card>
+    );
+  }
 
   return (
     <Card className="p-6">
@@ -125,8 +136,11 @@ CAPTCHA Verified: Yes
         </div>
         
         <div className="flex justify-end">
-          <Button type="submit" disabled={!captchaToken || !formData.agreesToConsent}>
-            Submit Consent Form
+          <Button 
+            type="submit" 
+            disabled={!captchaToken || !formData.agreesToConsent || isSubmitting}
+          >
+            {isSubmitting ? 'Submitting...' : 'Submit Consent Form'}
           </Button>
         </div>
       </form>
