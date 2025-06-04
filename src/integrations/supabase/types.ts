@@ -136,6 +136,30 @@ export type Database = {
           },
         ]
       }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       properties: {
         Row: {
           address: string
@@ -190,6 +214,30 @@ export type Database = {
           title?: string
           updated_at?: string
           zip?: string
+        }
+        Relationships: []
+      }
+      resident_submissions: {
+        Row: {
+          id: string
+          status: string | null
+          submission_data: Json
+          submitted_at: string
+          submitter_email: string | null
+        }
+        Insert: {
+          id?: string
+          status?: string | null
+          submission_data: Json
+          submitted_at?: string
+          submitter_email?: string | null
+        }
+        Update: {
+          id?: string
+          status?: string | null
+          submission_data?: Json
+          submitted_at?: string
+          submitter_email?: string | null
         }
         Relationships: []
       }
