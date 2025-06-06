@@ -1,6 +1,5 @@
 
 import { useState, useRef, useEffect } from "react";
-import { useToast } from "@/hooks/use-toast";
 import { sendMessageToOpenAI } from "./openAiService";
 
 interface ChatMessage {
@@ -8,7 +7,7 @@ interface ChatMessage {
   content: string;
 }
 
-export function useChatLogic(apiKey: string | null) {
+export function useChatLogic() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
@@ -18,10 +17,9 @@ export function useChatLogic(apiKey: string | null) {
   const [userInput, setUserInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement | null>(null);
-  const { toast } = useToast();
 
   const handleSend = async () => {
-    if (!userInput.trim() || isLoading || !apiKey) return;
+    if (!userInput.trim() || isLoading) return;
 
     const updatedMessages: ChatMessage[] = [
       ...messages,
@@ -32,7 +30,7 @@ export function useChatLogic(apiKey: string | null) {
     setUserInput("");
 
     try {
-      const reply = await sendMessageToOpenAI(apiKey, updatedMessages);
+      const reply = await sendMessageToOpenAI(updatedMessages);
       
       setMessages([
         ...updatedMessages,

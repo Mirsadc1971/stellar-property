@@ -1,28 +1,11 @@
 
 import React from "react";
 import { MessageCircle } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { useOpenAiKey } from "@/hooks/useOpenAiKey";
 import { ChatInput } from "./ChatInput";
 import { ChatMessages } from "./ChatMessages";
-import { ApiKeyForm } from "./ApiKeyForm";
-import { AdminControls } from "./AdminControls";
 import { useChatLogic } from "./useChatLogic";
 
-export default function Gpt4ChatBox({ showAdminControls = false }: { showAdminControls?: boolean }) {
-  const { 
-    apiKey, 
-    apiKeyInput, 
-    storageAvailable, 
-    storageError,
-    storageMethod,
-    setApiKeyInput, 
-    clearApiKey, 
-    handleSaveApiKey 
-  } = useOpenAiKey();
-  
-  const { toast } = useToast();
-  
+export default function Gpt4ChatBox() {
   const {
     messages,
     userInput,
@@ -30,29 +13,7 @@ export default function Gpt4ChatBox({ showAdminControls = false }: { showAdminCo
     bottomRef,
     setUserInput,
     handleSend
-  } = useChatLogic(apiKey);
-
-  const handleClearApiKey = () => {
-    clearApiKey();
-    // Show invalid API key toast for better UX
-    toast({
-      title: "Invalid API Key",
-      description: "Please enter a valid OpenAI API key.",
-    });
-  };
-
-  if (!apiKey) {
-    return (
-      <ApiKeyForm 
-        apiKeyInput={apiKeyInput}
-        onInputChange={setApiKeyInput}
-        onSave={handleSaveApiKey}
-        storageAvailable={storageAvailable}
-        storageError={storageError}
-        storageMethod={storageMethod}
-      />
-    );
-  }
+  } = useChatLogic();
 
   return (
     <section className="py-12 bg-gradient-to-br from-blue-50 to-blue-100">
@@ -78,14 +39,6 @@ export default function Gpt4ChatBox({ showAdminControls = false }: { showAdminCo
             onInputChange={setUserInput}
             onSend={handleSend}
           />
-          
-          {showAdminControls && (
-            <AdminControls
-              onClearApiKey={handleClearApiKey}
-              storageMethod={storageMethod}
-              storageError={storageError}
-            />
-          )}
         </div>
       </div>
     </section>
