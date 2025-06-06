@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Trash2, MessageCircle } from "lucide-react";
@@ -39,6 +38,7 @@ export default function Gpt4ChatBox({ showAdminControls = false }: { showAdminCo
     apiKeyInput, 
     storageAvailable, 
     storageError,
+    storageMethod,
     setApiKeyInput, 
     clearApiKey, 
     handleSaveApiKey 
@@ -151,6 +151,7 @@ export default function Gpt4ChatBox({ showAdminControls = false }: { showAdminCo
         onSave={handleSaveApiKey}
         storageAvailable={storageAvailable}
         storageError={storageError}
+        storageMethod={storageMethod}
       />
     );
   }
@@ -192,17 +193,11 @@ export default function Gpt4ChatBox({ showAdminControls = false }: { showAdminCo
                 Remove API Key
               </Button>
               
-              {!storageAvailable && (
-                <div className="mt-2 text-xs text-amber-600 bg-amber-50 p-2 rounded">
-                  Note: Browser storage is unavailable. Your API key will only persist for this session.
-                </div>
-              )}
-              
-              {storageError && (
-                <div className="mt-2 text-xs text-red-600 bg-red-50 p-2 rounded">
-                  Storage error: {storageError}
-                </div>
-              )}
+              <div className="mt-2 text-xs text-gray-600 bg-gray-50 p-2 rounded">
+                Storage: {storageMethod === 'localStorage' ? 'Persistent' : 
+                         storageMethod === 'sessionStorage' ? 'Session only' : 'Unavailable'}
+                {storageError && ` (${storageError})`}
+              </div>
             </div>
           )}
         </div>

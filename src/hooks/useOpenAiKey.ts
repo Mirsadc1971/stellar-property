@@ -7,90 +7,175 @@ export function useOpenAiKey() {
   const [apiKeyInput, setApiKeyInput] = useState("");
   const [storageAvailable, setStorageAvailable] = useState<boolean>(true);
   const [storageError, setStorageError] = useState<string | null>(null);
+  const [storageMethod, setStorageMethod] = useState<'localStorage' | 'sessionStorage' | 'none'>('none');
   const { toast } = useToast();
 
-  // Check if localStorage is available and working
-  const checkLocalStorage = (): boolean => {
+  // Enhanced storage detection with persistence testing
+  const detectBestStorageMethod = (): 'localStorage' | 'sessionStorage' | 'none' => {
+    console.log('Testing storage methods...');
+    
+    // Test localStorage with persistence
     try {
-      // Test if localStorage is available and working
-      localStorage.setItem("test", "test");
-      localStorage.removeItem("test");
-      console.log("localStorage is available and working");
-      return true;
-    } catch (e) {
-      console.error("localStorage is not available:", e);
-      setStorageError(`Storage error: ${e instanceof Error ? e.message : 'Unknown error'}`);
+      const testKey = 'lovable_storage_test_' + Date.now();
+      const testValue = 'test_value';
+      
+      localStorage.setItem(testKey, testValue);
+      const retrieved = localStorage.getItem(testKey);
+      localStorage.removeItem(testKey);
+      
+      if (retrieved === testValue) {
+        console.log('localStorage is working and persistent');
+        return 'localStorage';
+      }
+    } catch (error) {
+      console.log('localStorage failed:', error);
+    }
+
+    // Fallback to sessionStorage
+    try {
+      const testKey = 'lovable_session_test_' + Date.now();
+      const testValue = 'test_value';
+      
+      sessionStorage.setItem(testKey, testValue);
+      const retrieved = sessionStorage.getItem(testKey);
+      sessionStorage.removeItem(testKey);
+      
+      if (retrieved === testValue) {
+        console.log('sessionStorage is working (session-only storage)');
+        return 'sessionStorage';
+      }
+    } catch (error) {
+      console.log('sessionStorage failed:', error);
+    }
+
+    console.log('No storage method available');
+    return 'none';
+  };
+
+  // Validate stored API key
+  const validateStoredKey = (key: string): boolean => {
+    return key && key.startsWith('sk-') && key.length >= 20;
+  };
+
+  // Get stored API key with fallback methods
+  const getStoredApiKey = (): string | null => {
+    const storage = storageMethod === 'localStorage' ? localStorage : 
+                   storageMethod === 'sessionStorage' ? sessionStorage : null;
+    
+    if (!storage) return null;
+
+    try {
+      const storedKey = storage.getItem("OPENAI_API_KEY");
+      if (storedKey && validateStoredKey(storedKey)) {
+        console.log(`Retrieved valid API key from ${storageMethod}`);
+        return storedKey;
+      } else if (storedKey) {
+        console.log('Found invalid API key in storage, removing it');
+        storage.removeItem("OPENAI_API_KEY");
+      }
+    } catch (error) {
+      console.error(`Error retrieving API key from ${storageMethod}:`, error);
+      setStorageError(`Error retrieving key: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+    
+    return null;
+  };
+
+  // Store API key with validation
+  const storeApiKey = (key: string): boolean => {
+    if (!validateStoredKey(key)) {
+      console.error('Attempted to store invalid API key');
+      return false;
+    }
+
+    const storage = storageMethod === 'localStorage' ? localStorage : 
+                   storageMethod === 'sessionStorage' ? sessionStorage : null;
+    
+    if (!storage) {
+      console.log('No storage method available, key will only persist for this session');
+      return false;
+    }
+
+    try {
+      storage.setItem("OPENAI_API_KEY", key);
+      
+      // Verify storage worked
+      const retrieved = storage.getItem("OPENAI_API_KEY");
+      if (retrieved === key) {
+        console.log(`API key successfully stored in ${storageMethod}`);
+        setStorageError(null);
+        return true;
+      } else {
+        throw new Error('Storage verification failed');
+      }
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      console.error(`Error storing API key in ${storageMethod}:`, error);
+      setStorageError(`Error saving key: ${errorMessage}`);
       return false;
     }
   };
 
-  // Load API key from localStorage on initial render
+  // Initialize storage method and load API key
   useEffect(() => {
-    const isStorageAvailable = checkLocalStorage();
-    setStorageAvailable(isStorageAvailable);
+    const method = detectBestStorageMethod();
+    setStorageMethod(method);
+    setStorageAvailable(method !== 'none');
 
-    if (isStorageAvailable) {
-      try {
-        const savedKey = localStorage.getItem("OPENAI_API_KEY");
-        console.log("Retrieved API key from localStorage:", savedKey ? "Key exists" : "No key found");
-        if (savedKey) {
-          setApiKey(savedKey);
-        }
-      } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-        console.error("Error retrieving API key from localStorage:", error);
-        setStorageError(`Error retrieving key: ${errorMessage}`);
-        toast({
-          title: "Storage Error",
-          description: "Unable to retrieve your saved API key. Browser storage may be disabled.",
-          variant: "destructive",
-        });
+    if (method !== 'none') {
+      const storedKey = getStoredApiKey();
+      if (storedKey) {
+        setApiKey(storedKey);
       }
     } else {
+      setStorageError('Browser storage is not available or disabled');
       toast({
-        title: "Browser Storage Unavailable",
-        description: "Local storage is disabled or not available in your browser. Your API key cannot be saved between sessions.",
+        title: "Storage Unavailable",
+        description: "Your browser's storage is disabled. API key will only work for this session.",
         variant: "destructive",
       });
     }
   }, [toast]);
 
-  // Save API key to localStorage whenever it changes
+  // Update storage method when it changes
   useEffect(() => {
-    if (apiKey && storageAvailable) {
-      try {
-        localStorage.setItem("OPENAI_API_KEY", apiKey);
-        console.log("API key saved to localStorage successfully");
-        // Clear any previous storage errors
-        setStorageError(null);
-      } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-        console.error("Error saving API key to localStorage:", error);
-        setStorageError(`Error saving key: ${errorMessage}`);
-        toast({
-          title: "Storage Error",
-          description: "Unable to save your API key. Browser storage may be disabled.",
-          variant: "destructive",
-        });
+    if (storageMethod !== 'none') {
+      const storedKey = getStoredApiKey();
+      if (storedKey && storedKey !== apiKey) {
+        setApiKey(storedKey);
       }
     }
-  }, [apiKey, storageAvailable, toast]);
+  }, [storageMethod]);
+
+  // Save API key when it changes
+  useEffect(() => {
+    if (apiKey && storageMethod !== 'none') {
+      const stored = storeApiKey(apiKey);
+      if (!stored && storageMethod === 'localStorage') {
+        // Try sessionStorage as fallback
+        console.log('localStorage failed, trying sessionStorage as fallback');
+        setStorageMethod('sessionStorage');
+      }
+    }
+  }, [apiKey, storageMethod]);
 
   const clearApiKey = () => {
     setApiKey("");
-    if (storageAvailable) {
+    
+    // Clear from all possible storage locations
+    ['localStorage', 'sessionStorage'].forEach(method => {
       try {
-        localStorage.removeItem("OPENAI_API_KEY");
-        console.log("API key removed from localStorage");
+        const storage = method === 'localStorage' ? localStorage : sessionStorage;
+        storage.removeItem("OPENAI_API_KEY");
+        console.log(`API key removed from ${method}`);
       } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-        console.error("Error removing API key from localStorage:", error);
-        setStorageError(`Error removing key: ${errorMessage}`);
+        console.error(`Error removing API key from ${method}:`, error);
       }
-    }
+    });
+
     toast({
       title: "API Key Removed",
-      description: "Your OpenAI API key has been removed.",
+      description: "Your OpenAI API key has been removed from all storage.",
     });
   };
 
@@ -102,16 +187,21 @@ export function useOpenAiKey() {
     if (validateApiKey(apiKeyInput)) {
       setApiKey(apiKeyInput);
       setApiKeyInput("");
+      
+      const persistenceMessage = storageMethod === 'localStorage' 
+        ? "Your API key has been saved and will persist between sessions."
+        : storageMethod === 'sessionStorage'
+        ? "Your API key has been saved for this session only. You'll need to re-enter it if you reload the page."
+        : "Your API key is saved for this session only and will not persist.";
+
       toast({
         title: "API Key Saved",
-        description: storageAvailable 
-          ? "Your OpenAI API key has been saved successfully."
-          : "Your OpenAI API key has been saved for this session only. It will not persist after you close the page.",
+        description: persistenceMessage,
       });
     } else {
       toast({
         title: "Invalid API Key",
-        description: "Please enter a valid OpenAI API key starting with 'sk-'.",
+        description: "Please enter a valid OpenAI API key starting with 'sk-' and at least 50 characters long.",
         variant: "destructive",
       });
     }
@@ -122,6 +212,7 @@ export function useOpenAiKey() {
     apiKeyInput,
     storageAvailable,
     storageError,
+    storageMethod,
     setApiKeyInput,
     clearApiKey,
     handleSaveApiKey
