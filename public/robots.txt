@@ -10,7 +10,7 @@ Allow: /about
 Allow: /contact
 Allow: /blog/
 
-# Block admin/form pages from indexing
+# Block admin/form pages from indexing but allow crawling for internal use
 Disallow: /forms/
 Disallow: /resident-info/
 Disallow: /payments/
@@ -35,12 +35,25 @@ Sitemap: https://stellarpropertygroup.com/sitemap.xml
 # Crawl delay (be nice to servers)
 Crawl-delay: 1
 
-# Google-specific rules
+# Google-specific rules for better indexing
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 1
+# Allow Google to access critical resources
+Allow: /static/
+Allow: /assets/
 
 # Bing-specific rules
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
+
+# Block aggressive crawlers
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
