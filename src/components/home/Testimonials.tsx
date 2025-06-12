@@ -1,6 +1,7 @@
 
 import { SectionHeading } from "../ui/section-heading";
 import StructuredData from "@/components/seo/StructuredData";
+import SchemaMarkup from "@/components/seo/SchemaMarkup";
 
 interface TestimonialCardProps {
   quote: string;
@@ -51,10 +52,28 @@ export default function Testimonials() {
     }
   ];
 
-  const reviewsStructuredData = testimonials.map(testimonial => ({
-    text: testimonial.quote,
-    author: testimonial.author,
-    rating: testimonial.rating
+  const reviewsStructuredData = testimonials.map((testimonial, index) => ({
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": testimonial.rating,
+      "bestRating": 5
+    },
+    "author": {
+      "@type": "Person",
+      "name": testimonial.author
+    },
+    "reviewBody": testimonial.quote,
+    "itemReviewed": {
+      "@type": "LocalBusiness",
+      "name": "Stellar Property Management",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Chicago",
+        "addressRegion": "IL"
+      }
+    }
   }));
 
   return (
@@ -80,7 +99,11 @@ export default function Testimonials() {
 
         {/* Add structured data for reviews */}
         {reviewsStructuredData.map((review, index) => (
-          <StructuredData key={index} type="review" data={review} />
+          <script
+            key={index}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(review) }}
+          />
         ))}
       </div>
     </section>
