@@ -1,54 +1,87 @@
 
 import { SectionHeading } from "../ui/section-heading";
+import StructuredData from "@/components/seo/StructuredData";
 
 interface TestimonialCardProps {
   quote: string;
   author: string;
   role: string;
+  rating?: number;
 }
 
-function TestimonialCard({ quote, author, role }: TestimonialCardProps) {
+function TestimonialCard({ quote, author, role, rating = 5 }: TestimonialCardProps) {
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
       <div className="mb-4 text-2xl text-gray-400">"</div>
       <p className="text-gray-700 italic mb-6">{quote}</p>
-      <div>
-        <p className="font-semibold">{author}</p>
-        <p className="text-gray-600 text-sm">{role}</p>
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="font-semibold">{author}</p>
+          <p className="text-gray-600 text-sm">{role}</p>
+        </div>
+        <div className="flex text-yellow-500">
+          {[...Array(rating)].map((_, i) => (
+            <span key={i}>⭐</span>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
 export default function Testimonials() {
+  const testimonials = [
+    {
+      quote: "Stellar Property Management has transformed how our HOA operates in Lincoln Park. Their team is responsive, professional, and has helped streamline our building operations significantly.",
+      author: "Michael Johnson",
+      role: "HOA Board President, Lincoln Park",
+      rating: 5
+    },
+    {
+      quote: "As a condo association in River North, we needed a management company that understood downtown Chicago's unique challenges. Stellar Property Management exceeded our expectations in every way.",
+      author: "Sarah Patel", 
+      role: "Board Treasurer, River North Condo Association",
+      rating: 5
+    },
+    {
+      quote: "Managing multiple properties across Chicago suburbs was overwhelming until we partnered with Stellar. Their systematic approach and local expertise made all the difference.",
+      author: "David Miller",
+      role: "Property Owner, North Suburbs",
+      rating: 5
+    }
+  ];
+
+  const reviewsStructuredData = testimonials.map(testimonial => ({
+    text: testimonial.quote,
+    author: testimonial.author,
+    rating: testimonial.rating
+  }));
+
   return (
     <section className="bg-gray-50 py-16 md:py-24">
       <div className="container mx-auto px-4">
         <SectionHeading 
-          title="What Our Clients Say" 
-          subtitle="Don't just take our word for it. Here's what property owners have to say about working with Stellar Property Management."
+          title="What Our Chicago Clients Say" 
+          subtitle="Don't just take our word for it. Here's what HOA boards and property owners have to say about working with Stellar Property Management in Chicago."
           center
         />
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-          <TestimonialCard 
-            quote="Stellar Property Management has transformed how I handle my investment properties in Chicago. Their team is responsive, professional, and has helped increase my rental income significantly."
-            author="Michael Johnson"
-            role="Property Owner"
-          />
-          
-          <TestimonialCard 
-            quote="As a commercial property owner, I needed a management company that understood the Chicago market. Stellar Property Management has exceeded my expectations in every way."
-            author="Sarah Patel"
-            role="Commercial Property Owner"
-          />
-          
-          <TestimonialCard 
-            quote="I own multiple properties across Chicago suburbs, and Stellar Property Management has made it possible for me to expand my portfolio without taking on additional stress."
-            author="David Miller"
-            role="Investor"
-          />
+          {testimonials.map((testimonial, index) => (
+            <TestimonialCard 
+              key={index}
+              quote={testimonial.quote}
+              author={testimonial.author}
+              role={testimonial.role}
+              rating={testimonial.rating}
+            />
+          ))}
         </div>
+
+        {/* Add structured data for reviews */}
+        {reviewsStructuredData.map((review, index) => (
+          <StructuredData key={index} type="review" data={review} />
+        ))}
       </div>
     </section>
   );

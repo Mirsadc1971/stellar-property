@@ -1,205 +1,183 @@
 
 import MainLayout from "@/components/layout/MainLayout";
+import SEOHead from "@/components/seo/SEOHead";
+import StructuredData from "@/components/seo/StructuredData";
 import { Button } from "@/components/ui/button";
-import { SectionHeading } from "@/components/ui/section-heading";
 import { Link } from "react-router-dom";
-import { CheckIcon } from "lucide-react";
-import MapComponent from "@/components/ui/MapComponent";
+import { Building, Users, Award, Shield } from "lucide-react";
 
 export default function About() {
+  const aboutStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Stellar Property Management",
+    "description": "Learn about Chicago's trusted property management company with over 20 years of experience managing HOAs and condo associations throughout the city.",
+    "mainEntity": {
+      "@type": "LocalBusiness",
+      "name": "Stellar Property Management",
+      "foundingDate": "2003",
+      "description": "Chicago-based property management company specializing in HOA and condo association management with over 20 years of local expertise.",
+      "numberOfEmployees": "15-25",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "5107 North Western Avenue Ste 1S",
+        "addressLocality": "Chicago",
+        "addressRegion": "IL",
+        "postalCode": "60625",
+        "addressCountry": "US"
+      },
+      "telephone": "+17737280652",
+      "email": "info@stellarpropertygroup.com"
+    }
+  };
+
+  const stats = [
+    { icon: Building, number: "500+", label: "Properties Managed" },
+    { icon: Users, number: "20+", label: "Years Experience" },
+    { icon: Award, number: "98%", label: "Client Satisfaction" },
+    { icon: Shield, number: "24/7", label: "Emergency Response" }
+  ];
+
   return (
     <MainLayout>
+      <SEOHead
+        title="About Stellar Property Management - Chicago's Trusted HOA Experts"
+        description="Learn about Chicago's premier property management company. Over 20 years of experience managing HOAs and condo associations with 98% client satisfaction and 24/7 support."
+        canonical="/about"
+        keywords="about Stellar Property Management, Chicago property management company, HOA management experts Chicago, property management experience, Chicago condo management team"
+        structuredData={aboutStructuredData}
+      />
+
       {/* Hero Section */}
-      <section className="relative bg-gray-100 py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">About Stellar Property Management</h1>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-            Chicago's premier property management company with a commitment to excellence and personalized service.
-          </p>
+      <section className="relative bg-gray-100 py-16 md:py-24">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d)' }}
+        >
+          <div className="absolute inset-0 bg-black/50" />
         </div>
-      </section>
-
-      {/* Main Image */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="rounded-lg overflow-hidden shadow-xl">
-            <img 
-              src="https://images.unsplash.com/photo-1524230572899-a752b3835840"
-              alt="Pristine White Modern Corporate Building with Minimalist Architecture"
-              className="w-full h-auto md:h-96 object-cover"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Mission Section */}
-      <section className="py-12 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-heading text-3xl font-bold mb-6">Our Mission</h2>
-            <p className="text-lg text-gray-700 mb-12">
-              At Stellar Property Management, our mission is to provide exceptional property management services that enhance property values, maximize returns, and create peace of mind for property owners.
+        <div className="relative container mx-auto px-4">
+          <div className="max-w-3xl text-white">
+            <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">
+              Chicago's Trusted Property Management Experts
+            </h1>
+            <p className="text-xl mb-8">
+              Over 20 years of dedicated service to Chicago HOAs and condo associations, 
+              building stronger communities through professional management.
             </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <div className="w-12 h-12 bg-darkBlue rounded-full flex items-center justify-center text-white text-2xl mb-4 mx-auto">✓</div>
-                <h3 className="font-heading text-xl font-semibold mb-3">Excellence</h3>
-                <p className="text-gray-600">
-                  We strive for excellence in everything we do, from property maintenance to tenant relations, ensuring your property is always at its best.
-                </p>
+            <Button size="lg" className="bg-darkBlue hover:bg-blue-800" asChild>
+              <Link to="/contact">Get to Know Our Team</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <stat.icon className="h-12 w-12 text-darkBlue mx-auto mb-4" />
+                <div className="text-3xl font-bold text-darkBlue mb-2">{stat.number}</div>
+                <div className="text-gray-600">{stat.label}</div>
               </div>
-              
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <div className="w-12 h-12 bg-darkBlue rounded-full flex items-center justify-center text-white text-2xl mb-4 mx-auto">✓</div>
-                <h3 className="font-heading text-xl font-semibold mb-3">Integrity</h3>
-                <p className="text-gray-600">
-                  We operate with unwavering integrity, providing transparent communication and honest advice to all our clients.
-                </p>
-              </div>
-              
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <div className="w-12 h-12 bg-darkBlue rounded-full flex items-center justify-center text-white text-2xl mb-4 mx-auto">✓</div>
-                <h3 className="font-heading text-xl font-semibold mb-3">Innovation</h3>
-                <p className="text-gray-600">
-                  We embrace innovative technologies and strategies to streamline property management and enhance the experience for owners and tenants alike.
-                </p>
-              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Story Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">Our Chicago Story</h2>
+              <p className="text-gray-700 mb-6">
+                Founded in 2003, Stellar Property Management has grown from a small Chicago startup 
+                to one of the city's most trusted property management companies. We've weathered 
+                economic changes, adapted to new technologies, and always maintained our commitment 
+                to personalized service.
+              </p>
+              <p className="text-gray-700 mb-6">
+                Our deep understanding of Chicago's unique neighborhoods, from downtown high-rises 
+                to suburban communities, allows us to provide tailored solutions that work for 
+                each property's specific needs.
+              </p>
+              <p className="text-gray-700">
+                Today, we manage over 500 properties across Chicago and the North Suburbs, 
+                maintaining a 98% client satisfaction rate through responsive service and 
+                transparent communication.
+              </p>
+            </div>
+            <div>
+              <img 
+                src="https://images.unsplash.com/photo-1496307653780-42ee777d4833"
+                alt="Stellar Property Management Chicago office team working on HOA management solutions"
+                className="rounded-lg shadow-lg w-full h-auto object-cover aspect-[4/3]"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="py-12 md:py-20 bg-gray-50">
+      {/* Values Section */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="font-heading text-3xl font-bold mb-10 text-center">Why Choose Stellar Property Management?</h2>
-            
-            <div className="space-y-6">
-              <div className="flex items-start">
-                <div className="mr-4 bg-darkBlue rounded-full p-1">
-                  <CheckIcon className="h-5 w-5 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-heading text-xl font-semibold mb-2">Local Chicago Expertise</h3>
-                  <p className="text-gray-600">Deep knowledge of Chicago's neighborhoods and market trends.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="mr-4 bg-darkBlue rounded-full p-1">
-                  <CheckIcon className="h-5 w-5 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-heading text-xl font-semibold mb-2">Comprehensive Services</h3>
-                  <p className="text-gray-600">End-to-end property management solutions tailored to your needs.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="mr-4 bg-darkBlue rounded-full p-1">
-                  <CheckIcon className="h-5 w-5 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-heading text-xl font-semibold mb-2">Transparent Communication</h3>
-                  <p className="text-gray-600">Regular updates and clear reporting on your property's performance.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="mr-4 bg-darkBlue rounded-full p-1">
-                  <CheckIcon className="h-5 w-5 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-heading text-xl font-semibold mb-2">Technology-Driven</h3>
-                  <p className="text-gray-600">Modern tools for efficient management and better decision-making.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="mr-4 bg-darkBlue rounded-full p-1">
-                  <CheckIcon className="h-5 w-5 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-heading text-xl font-semibold mb-2">Dedicated Support</h3>
-                  <p className="text-gray-600">Responsive team available to address your questions and concerns.</p>
-                </div>
-              </div>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12">Our Values</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center p-6">
+              <h3 className="font-heading text-xl font-semibold mb-4">Transparency</h3>
+              <p className="text-gray-700">
+                Clear communication and honest reporting in all our interactions with boards, 
+                residents, and vendors.
+              </p>
+            </div>
+            <div className="text-center p-6">
+              <h3 className="font-heading text-xl font-semibold mb-4">Responsiveness</h3>
+              <p className="text-gray-700">
+                Quick response times and proactive communication ensure issues are addressed 
+                before they become problems.
+              </p>
+            </div>
+            <div className="text-center p-6">
+              <h3 className="font-heading text-xl font-semibold mb-4">Expertise</h3>
+              <p className="text-gray-700">
+                Continuous education and local market knowledge help us provide the best 
+                possible service to Chicago communities.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="py-12 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-lg overflow-hidden">
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="p-8 md:p-12">
-                <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">Contact Us Today</h2>
-                <p className="text-gray-600 mb-6">
-                  Have questions about our property management services? Reach out to us today and discover how we can help you maximize your investment.
-                </p>
-                
-                <form className="space-y-4">
-                  <div>
-                    <input 
-                      type="text" 
-                      placeholder="Name" 
-                      className="w-full px-3 py-2 border rounded-md"
-                    />
-                  </div>
-                  <div>
-                    <input 
-                      type="email" 
-                      placeholder="Email" 
-                      className="w-full px-3 py-2 border rounded-md"
-                    />
-                  </div>
-                  <div>
-                    <input 
-                      type="tel" 
-                      placeholder="Phone" 
-                      className="w-full px-3 py-2 border rounded-md"
-                    />
-                  </div>
-                  <div>
-                    <textarea 
-                      placeholder="Message" 
-                      rows={4}
-                      className="w-full px-3 py-2 border rounded-md"
-                    ></textarea>
-                  </div>
-                  <Button className="w-full bg-darkBlue hover:bg-blue-800">
-                    Send Message
-                  </Button>
-                </form>
-              </div>
-              
-              <div className="bg-gray-100 p-8 md:p-12">
-                <h3 className="font-heading text-xl font-bold mb-4">Our Office Location</h3>
-                <p className="text-gray-600 mb-6">
-                  5107 North Western Avenue Ste 1S<br />
-                  Chicago, Illinois 60625
-                </p>
-                
-                <div className="h-48 mb-6">
-                  {/* Replacing the map placeholder with the actual MapComponent */}
-                  <MapComponent 
-                    latitude={41.975938} 
-                    longitude={-87.691592}
-                    className="w-full h-full rounded"
-                  />
-                </div>
-                
-                <Button variant="outline" className="w-full border-darkBlue text-darkBlue hover:bg-darkBlue hover:text-white">
-                  <a href="https://maps.google.com/?q=5107+North+Western+Avenue+Chicago+Illinois+60625" target="_blank" rel="noopener noreferrer">
-                    Get Directions
-                  </a>
-                </Button>
-              </div>
-            </div>
+      {/* CTA Section */}
+      <section className="py-16 bg-darkBlue text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
+            Ready to Experience the Stellar Difference?
+          </h2>
+          <p className="text-lg mb-8 max-w-2xl mx-auto">
+            Join hundreds of satisfied Chicago HOAs and condo associations who trust 
+            Stellar Property Management for their community needs.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-white text-white hover:bg-white hover:text-darkBlue"
+              asChild
+            >
+              <Link to="/contact">Contact Us Today</Link>
+            </Button>
+            <Button 
+              size="lg" 
+              className="bg-white text-darkBlue hover:bg-gray-100"
+              asChild
+            >
+              <Link to="/request-proposal">Get Free Proposal</Link>
+            </Button>
           </div>
         </div>
       </section>
