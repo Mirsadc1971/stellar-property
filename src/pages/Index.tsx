@@ -11,6 +11,8 @@ import Testimonials from "@/components/home/Testimonials";
 import CtaSection from "@/components/home/CtaSection";
 import MapComponent from "@/components/ui/MapComponent";
 import Gpt4ChatBox from "@/components/home/Gpt4ChatBox";
+import { Link } from "react-router-dom";
+import { ArrowRight, Building, Users, Award } from "lucide-react";
 
 const Index = () => {
   // useLayoutEffect runs before browser paint, ensuring immediate scroll
@@ -126,8 +128,99 @@ const Index = () => {
 
       <AboutSection />
       <ServicesSection />
+
+      {/* Featured Neighborhoods Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading text-3xl font-bold text-center mb-4">
+            Featured Chicago Neighborhoods
+          </h2>
+          <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+            Discover our specialized property management services across Chicago's most prestigious neighborhoods.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-gray-50 p-6 rounded-lg hover:shadow-md transition-shadow">
+              <h3 className="font-semibold text-xl mb-3">
+                <Link to="/neighborhoods/lincoln-park" className="text-darkBlue hover:underline">Lincoln Park</Link>
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Prestigious lakefront neighborhood with historic Victorian homes and luxury high-rises.
+              </p>
+              <Link to="/neighborhoods/lincoln-park" className="text-darkBlue font-medium inline-flex items-center">
+                Learn More <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+            
+            <div className="bg-gray-50 p-6 rounded-lg hover:shadow-md transition-shadow">
+              <h3 className="font-semibold text-xl mb-3">
+                <Link to="/neighborhoods/river-north" className="text-darkBlue hover:underline">River North</Link>
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Dynamic arts district with converted warehouses and modern condominiums.
+              </p>
+              <Link to="/neighborhoods/river-north" className="text-darkBlue font-medium inline-flex items-center">
+                Learn More <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+            
+            <div className="bg-gray-50 p-6 rounded-lg hover:shadow-md transition-shadow">
+              <h3 className="font-semibold text-xl mb-3">
+                <Link to="/neighborhoods/gold-coast" className="text-darkBlue hover:underline">Gold Coast</Link>
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Upscale district known for luxury shopping, fine dining, and elegant architecture.
+              </p>
+              <Link to="/neighborhoods/gold-coast" className="text-darkBlue font-medium inline-flex items-center">
+                Learn More <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+          
+          <div className="text-center mt-8">
+            <Link to="/service-areas/chicago" className="text-darkBlue hover:underline font-medium">
+              View All Chicago Service Areas →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <WhyChooseUs />
       <Testimonials />
+      
+      {/* Service Areas Quick Links */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading text-3xl font-bold text-center mb-12">Our Service Areas</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-white p-8 rounded-lg shadow-sm text-center">
+              <Building className="h-12 w-12 text-darkBlue mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-4">
+                <Link to="/service-areas/chicago" className="text-darkBlue hover:underline">Chicago Neighborhoods</Link>
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Comprehensive property management across all Chicago neighborhoods, from downtown high-rises to historic districts.
+              </p>
+              <Link to="/service-areas/chicago" className="text-darkBlue font-medium inline-flex items-center">
+                Explore Chicago Services <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+            
+            <div className="bg-white p-8 rounded-lg shadow-sm text-center">
+              <Users className="h-12 w-12 text-darkBlue mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-4">
+                <Link to="/service-areas/north-suburbs" className="text-darkBlue hover:underline">North Suburbs</Link>
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Professional management services for suburban communities throughout Chicago's North Shore and surrounding areas.
+              </p>
+              <Link to="/service-areas/north-suburbs" className="text-darkBlue font-medium inline-flex items-center">
+                Explore Suburban Services <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
       
       {/* Location Section */}
       <section className="py-16 bg-gray-100" aria-labelledby="location-heading">
@@ -144,6 +237,9 @@ const Index = () => {
                 5107 North Western Avenue Ste 1S<br />
                 Chicago, Illinois 60625
               </address>
+              <p className="text-gray-600 mt-2">
+                <Link to="/contact" className="text-darkBlue hover:underline">Contact us</Link> to schedule a consultation
+              </p>
             </div>
           </div>
         </div>
