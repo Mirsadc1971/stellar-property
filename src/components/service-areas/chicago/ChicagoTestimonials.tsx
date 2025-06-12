@@ -1,19 +1,27 @@
 
+import TestimonialSchema from "@/components/seo/TestimonialSchema";
+
 const chicagoTestimonials = [
   {
-    quote: "Managing our 40-unit building in River North was overwhelming until we found Stellar. Their understanding of Chicago regulations saved us thousands in potential violations.",
+    quote: "Managing our 40-unit building in River North was overwhelming until we found Stellar Property Management. Their deep understanding of Chicago Municipal Code regulations saved us thousands in potential violations. The team's local expertise and rapid response times make them the best property management company in Chicago.",
     author: "Maria Rodriguez",
-    building: "River North Condominiums"
+    title: "HOA Board President",
+    community: "River North Condominiums",
+    rating: 5
   },
   {
-    quote: "The emergency response during the winter storm was incredible. Stellar had our heating restored in hours, not days like our previous management company.",
+    quote: "The emergency response during last winter's polar vortex was incredible. Stellar had our heating restored in hours, not days like our previous management company. Their 24/7 Chicago emergency services and local vendor network are exactly what downtown properties need.",
     author: "James Chen", 
-    building: "Downtown High-Rise"
+    title: "Property Owner",
+    community: "Downtown High-Rise",
+    rating: 5
   },
   {
-    quote: "Their expertise with Chicago Department of Buildings requirements made our major renovation project seamless.",
+    quote: "Their expertise with Chicago Department of Buildings requirements made our major renovation project seamless. Stellar's knowledge of local regulations and permit processes saved us months of delays. They're the most professional property management team we've worked with.",
     author: "Sarah Johnson",
-    building: "Lincoln Park Association"
+    title: "Association Manager",
+    community: "Lincoln Park Association",
+    rating: 5
   }
 ];
 
@@ -22,19 +30,13 @@ export default function ChicagoTestimonials() {
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Chicago Success Stories</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {chicagoTestimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                <div className="text-4xl text-gray-300 mb-4">&quot;</div>
-                <p className="text-gray-700 italic mb-6">{testimonial.quote}</p>
-                <div>
-                  <p className="font-semibold">{testimonial.author}</p>
-                  <p className="text-gray-600 text-sm">{testimonial.building}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <h2 className="text-3xl font-bold text-center mb-4">
+            Chicago Property Management Success Stories
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            See why Chicago property owners trust Stellar Property Management for their HOA and condo management needs.
+          </p>
+          <TestimonialSchema testimonials={chicagoTestimonials} />
         </div>
       </div>
     </section>
