@@ -1,5 +1,5 @@
 
-import { ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import BreadcrumbNavigation from '@/components/seo/BreadcrumbNavigation';
