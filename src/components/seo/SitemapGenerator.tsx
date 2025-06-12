@@ -1,5 +1,7 @@
 
 import { useEffect } from 'react';
+import { seoConfig } from '@/config/seo';
+import { routes } from '@/config/routes';
 
 interface SitemapUrl {
   loc: string;
@@ -9,53 +11,45 @@ interface SitemapUrl {
 }
 
 export const generateSitemap = (): string => {
-  const baseUrl = 'https://stellarpropertygroup.com';
   const currentDate = new Date().toISOString().split('T')[0];
 
-  const urls: SitemapUrl[] = [
-    // Main pages
-    { loc: '/', lastmod: currentDate, changefreq: 'weekly', priority: 1.0 },
-    { loc: '/about', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/services', lastmod: currentDate, changefreq: 'monthly', priority: 0.9 },
-    { loc: '/contact', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/request-proposal', lastmod: currentDate, changefreq: 'monthly', priority: 0.9 },
-    { loc: '/blog', lastmod: currentDate, changefreq: 'weekly', priority: 0.7 },
-    { loc: '/faqs', lastmod: currentDate, changefreq: 'monthly', priority: 0.6 },
-    { loc: '/payments', lastmod: currentDate, changefreq: 'monthly', priority: 0.6 },
-    { loc: '/forms', lastmod: currentDate, changefreq: 'monthly', priority: 0.5 },
-    { loc: '/resident-info', lastmod: currentDate, changefreq: 'monthly', priority: 0.5 },
+  // Generate URLs from routes configuration
+  const staticUrls: SitemapUrl[] = routes
+    .filter(route => !route.path.includes(':') && route.path !== '*') // Exclude dynamic routes and 404
+    .map(route => {
+      let priority = 0.5;
+      let changefreq: SitemapUrl['changefreq'] = 'monthly';
 
-    // Service areas
-    { loc: '/service-areas/chicago', lastmod: currentDate, changefreq: 'monthly', priority: 0.9 },
-    { loc: '/service-areas/north-suburbs', lastmod: currentDate, changefreq: 'monthly', priority: 0.9 },
+      // Set priorities based on page importance
+      if (route.path === '/') {
+        priority = 1.0;
+        changefreq = 'weekly';
+      } else if (route.path.includes('/service-areas/') || route.path === '/services') {
+        priority = 0.9;
+        changefreq = 'monthly';
+      } else if (route.path.includes('/neighborhoods/')) {
+        priority = 0.8;
+        changefreq = 'monthly';
+      } else if (route.path === '/blog') {
+        priority = 0.7;
+        changefreq = 'weekly';
+      } else if (route.path.includes('/forms/') || route.path === '/forms') {
+        priority = 0.5;
+        changefreq = 'monthly';
+      }
 
-    // Neighborhoods
-    { loc: '/neighborhoods/the-loop', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/river-north', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/gold-coast', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/lincoln-park', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/lakeview', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/wicker-park', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/bucktown', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/old-town', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/west-loop', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/south-loop', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/streeterville', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/hyde-park', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/uptown', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/wrigleyville', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/rogers-park', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/edgewater', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/andersonville', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/ravenswood', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/logan-square', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-    { loc: '/neighborhoods/ukrainian-village', lastmod: currentDate, changefreq: 'monthly', priority: 0.8 },
-  ];
+      return {
+        loc: route.path,
+        lastmod: currentDate,
+        changefreq,
+        priority
+      };
+    });
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(url => `  <url>
-    <loc>${baseUrl}${url.loc}</loc>
+${staticUrls.map(url => `  <url>
+    <loc>${seoConfig.baseUrl}${url.loc}</loc>
     ${url.lastmod ? `<lastmod>${url.lastmod}</lastmod>` : ''}
     ${url.changefreq ? `<changefreq>${url.changefreq}</changefreq>` : ''}
     ${url.priority ? `<priority>${url.priority}</priority>` : ''}

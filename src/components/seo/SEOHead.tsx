@@ -1,5 +1,6 @@
 
 import { Helmet } from 'react-helmet-async';
+import { seoConfig } from '@/config/seo';
 
 interface SEOHeadProps {
   title: string;
@@ -17,19 +18,18 @@ export default function SEOHead({
   title,
   description,
   canonical,
-  ogImage = "https://stellarpropertygroup.com/og-image.jpg",
+  ogImage = seoConfig.defaultOgImage,
   ogType = "website",
   keywords,
   noindex = false,
   structuredData,
   breadcrumbs
 }: SEOHeadProps) {
-  const fullTitle = title.includes('Stellar Property Management') 
+  const fullTitle = title.includes(seoConfig.siteName) 
     ? title 
-    : `${title} | Stellar Property Management`;
+    : `${title} | ${seoConfig.siteName}`;
 
-  const baseUrl = 'https://stellarpropertygroup.com';
-  const fullCanonical = canonical ? `${baseUrl}${canonical}` : undefined;
+  const fullCanonical = canonical ? `${seoConfig.baseUrl}${canonical}` : undefined;
 
   return (
     <Helmet>
@@ -51,16 +51,16 @@ export default function SEOHead({
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={fullCanonical || `${baseUrl}/`} />
+      <meta property="og:url" content={fullCanonical || `${seoConfig.baseUrl}/`} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={ogImage} />
-      <meta property="og:site_name" content="Stellar Property Management" />
+      <meta property="og:site_name" content={seoConfig.siteName} />
       <meta property="og:locale" content="en_US" />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={fullCanonical || `${baseUrl}/`} />
+      <meta property="twitter:url" content={fullCanonical || `${seoConfig.baseUrl}/`} />
       <meta property="twitter:title" content={fullTitle} />
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={ogImage} />
@@ -68,8 +68,8 @@ export default function SEOHead({
       {/* Geo Tags for Local SEO */}
       <meta name="geo.region" content="US-IL" />
       <meta name="geo.placename" content="Chicago" />
-      <meta name="geo.position" content="41.975938;-87.691592" />
-      <meta name="ICBM" content="41.975938, -87.691592" />
+      <meta name="geo.position" content={`${seoConfig.business.geo.latitude};${seoConfig.business.geo.longitude}`} />
+      <meta name="ICBM" content={`${seoConfig.business.geo.latitude}, ${seoConfig.business.geo.longitude}`} />
 
       {/* Structured Data */}
       {structuredData && (
@@ -88,7 +88,7 @@ export default function SEOHead({
               "@type": "ListItem",
               "position": index + 1,
               "name": crumb.name,
-              "item": `${baseUrl}${crumb.url}`
+              "item": `${seoConfig.baseUrl}${crumb.url}`
             }))
           })}
         </script>

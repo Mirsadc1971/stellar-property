@@ -9,48 +9,13 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
+import { seoConfig } from '@/config/seo';
 
 interface BreadcrumbItem {
   label: string;
   href?: string;
   current?: boolean;
 }
-
-const routeLabels: Record<string, string> = {
-  'about': 'About Us',
-  'services': 'Services',
-  'contact': 'Contact',
-  'request-proposal': 'Request Proposal',
-  'blog': 'Blog',
-  'faqs': 'FAQs',
-  'payments': 'Payments',
-  'forms': 'Forms',
-  'resident-info': 'Resident Information',
-  'service-areas': 'Service Areas',
-  'chicago': 'Chicago',
-  'north-suburbs': 'North Suburbs',
-  'neighborhoods': 'Neighborhoods',
-  'the-loop': 'The Loop',
-  'river-north': 'River North',
-  'gold-coast': 'Gold Coast',
-  'lincoln-park': 'Lincoln Park',
-  'lakeview': 'Lakeview',
-  'wicker-park': 'Wicker Park',
-  'bucktown': 'Bucktown',
-  'old-town': 'Old Town',
-  'west-loop': 'West Loop',
-  'south-loop': 'South Loop',
-  'streeterville': 'Streeterville',
-  'hyde-park': 'Hyde Park',
-  'uptown': 'Uptown',
-  'wrigleyville': 'Wrigleyville',
-  'rogers-park': 'Rogers Park',
-  'edgewater': 'Edgewater',
-  'andersonville': 'Andersonville',
-  'ravenswood': 'Ravenswood',
-  'logan-square': 'Logan Square',
-  'ukrainian-village': 'Ukrainian Village',
-};
 
 export default function BreadcrumbNavigation() {
   const location = useLocation();
@@ -67,7 +32,8 @@ export default function BreadcrumbNavigation() {
   let currentPath = '';
   pathSegments.forEach((segment, index) => {
     currentPath += `/${segment}`;
-    const label = routeLabels[segment] || segment.charAt(0).toUpperCase() + segment.slice(1);
+    const label = seoConfig.routeLabels[segment as keyof typeof seoConfig.routeLabels] || 
+                  segment.charAt(0).toUpperCase() + segment.slice(1);
     const isLast = index === pathSegments.length - 1;
     
     breadcrumbItems.push({
