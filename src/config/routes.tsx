@@ -1,3 +1,4 @@
+
 import { lazy } from 'react';
 
 const routes = [
@@ -24,7 +25,7 @@ const routes = [
   },
   {
     path: '/faqs',
-    component: lazy(() => import('@/pages/Faqs')),
+    component: lazy(() => import('@/pages/FAQs')),
   },
   {
     path: '/payments',
@@ -40,7 +41,7 @@ const routes = [
   },
   {
     path: '/service-areas',
-    component: lazy(() => import('@/pages/ServiceAreas')),
+    component: lazy(() => import('@/pages/service-areas/Chicago')),
     exact: true,
   },
   {
@@ -53,7 +54,7 @@ const routes = [
   },
   {
     path: '/neighborhoods',
-    component: lazy(() => import('@/pages/Neighborhoods')),
+    component: lazy(() => import('@/pages/neighborhoods/TheLoop')),
     exact: true,
   },
   {

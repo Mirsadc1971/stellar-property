@@ -1,7 +1,6 @@
-
 import { useEffect } from 'react';
 import { seoConfig } from '@/config/seo';
-import { routes } from '@/config/routes';
+import routes from '@/config/routes';
 
 interface SitemapUrl {
   loc: string;
