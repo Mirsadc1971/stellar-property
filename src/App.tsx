@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -46,6 +45,8 @@ import ElectronicConsentPage from "./pages/ElectronicConsentPage";
 import RepairRequestPage from "./pages/RepairRequestPage";
 import InsuranceProofPage from "./pages/InsuranceProofPage";
 import MovePermitPage from "./pages/MovePermitPage";
+import Chicago from "./pages/service-areas/Chicago";
+import NorthSuburbs from "./pages/service-areas/NorthSuburbs";
 
 const queryClient = new QueryClient();
 
@@ -71,6 +72,8 @@ const App = () => (
               <Route path="/request-proposal" element={<RequestProposal />} />
               <Route path="/report-violation" element={<ReportViolation />} />
               <Route path="/forms" element={<Forms />} />
+              <Route path="/service-areas/chicago" element={<Chicago />} />
+              <Route path="/service-areas/north-suburbs" element={<NorthSuburbs />} />
               <Route path="/neighborhoods/the-loop" element={<TheLoop />} />
               <Route path="/neighborhoods/river-north" element={<RiverNorth />} />
               <Route path="/neighborhoods/streeterville" element={<Streeterville />} />

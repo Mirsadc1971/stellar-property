@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 interface AreaCardProps {
   title: string;
   areas: string[];
+  isMainArea?: boolean;
 }
 
-export default function AreaCard({ title, areas }: AreaCardProps) {
+export default function AreaCard({ title, areas, isMainArea = false }: AreaCardProps) {
   const navigate = useNavigate();
   
   const getNeighborhoodPath = (area: string) => {
@@ -34,6 +35,16 @@ export default function AreaCard({ title, areas }: AreaCardProps) {
     };
     return slugs[area];
   };
+
+  const getMainAreaPath = (title: string) => {
+    if (title.includes("Chicago Property Management")) {
+      return "/service-areas/chicago";
+    }
+    if (title.includes("North Suburbs")) {
+      return "/service-areas/north-suburbs";
+    }
+    return null;
+  };
   
   const handleNavigation = (path: string | undefined) => {
     if (path) {
@@ -46,12 +57,24 @@ export default function AreaCard({ title, areas }: AreaCardProps) {
     }
   };
 
+  const handleTitleClick = () => {
+    if (isMainArea) {
+      const path = getMainAreaPath(title);
+      handleNavigation(path);
+    }
+  };
+
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <h3 className="font-heading text-xl font-semibold mb-4">{title}</h3>
+    <div className={`bg-white p-6 rounded-lg shadow-md ${isMainArea ? 'border-2 border-darkBlue/20' : ''}`}>
+      <h3 
+        className={`font-heading text-xl font-semibold mb-4 ${isMainArea ? 'text-darkBlue cursor-pointer hover:text-blue-700' : ''}`}
+        onClick={handleTitleClick}
+      >
+        {title}
+      </h3>
       <ul className="space-y-2">
         {areas.map((area, index) => {
-          const path = getNeighborhoodPath(area);
+          const path = isMainArea ? null : getNeighborhoodPath(area);
           return (
             <li key={index} className="flex items-center">
               <span className="text-darkBlue mr-2">•</span>
@@ -73,6 +96,21 @@ export default function AreaCard({ title, areas }: AreaCardProps) {
           );
         })}
       </ul>
+      {isMainArea && (
+        <div className="mt-4 pt-4 border-t">
+          <a 
+            href="#" 
+            onClick={(e) => {
+              e.preventDefault();
+              handleTitleClick();
+            }}
+            className="text-darkBlue hover:text-blue-700 font-medium inline-flex items-center"
+          >
+            Learn More
+            <span className="ml-2">→</span>
+          </a>
+        </div>
+      )}
     </div>
   );
 }
