@@ -1,8 +1,10 @@
 
+import { titleTemplates, neighborhoodKeywords, neighborhoodDescriptions } from './seoTitles';
+
 export const seoConfig = {
   baseUrl: 'https://stellarpropertygroup.com',
   siteName: 'Stellar Property Management',
-  defaultTitle: 'Chicago Property Management & HOA Services | Stellar Property Management',
+  defaultTitle: titleTemplates.homepage,
   defaultDescription: 'Stellar Property Management offers expert property management services in Chicago for HOAs and condos. Trust our team for reliable, affordable solutions with 24/7 support.',
   defaultKeywords: 'Chicago HOA management, property management company Chicago, condo association management Chicago, HOA services Chicago',
   defaultOgImage: '/lovable-uploads/8e2d98b2-5011-4e40-a78f-3a78664306ba.png',
@@ -37,6 +39,15 @@ export const seoConfig = {
     logo: '/lovable-uploads/8e2d98b2-5011-4e40-a78f-3a78664306ba.png',
     defaultOg: '/lovable-uploads/8e2d98b2-5011-4e40-a78f-3a78664306ba.png',
     fallback: '/lovable-uploads/8e2d98b2-5011-4e40-a78f-3a78664306ba.png'
+  },
+
+  // Title templates
+  titles: titleTemplates,
+
+  // Neighborhood-specific data
+  neighborhoods: {
+    keywords: neighborhoodKeywords,
+    descriptions: neighborhoodDescriptions
   },
 
   // Route labels for breadcrumbs

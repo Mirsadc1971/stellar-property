@@ -13,6 +13,7 @@ import MapComponent from "@/components/ui/MapComponent";
 import Gpt4ChatBox from "@/components/home/Gpt4ChatBox";
 import { Link } from "react-router-dom";
 import { ArrowRight, Building, Users, Award } from "lucide-react";
+import { seoConfig } from "@/config/seo";
 
 const Index = () => {
   // useLayoutEffect runs before browser paint, ensuring immediate scroll
@@ -102,11 +103,12 @@ const Index = () => {
   return (
     <MainLayout showBreadcrumbs={false}>
       <SEOHead
-        title="Chicago Property Management & HOA Services | Stellar Property Management"
-        description="Stellar Property Management offers expert property management services in Chicago for HOAs and condos. Trust our team for reliable, affordable solutions with 24/7 support."
+        title={seoConfig.titles.homepage}
+        description={seoConfig.defaultDescription}
         canonical="/"
         keywords="Chicago HOA management, property management company Chicago, condo association management Chicago, HOA services Chicago, Chicago property management"
         structuredData={organizationData}
+        serviceType="general"
       />
 
       <HeroSection />

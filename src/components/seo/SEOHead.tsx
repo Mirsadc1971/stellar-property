@@ -1,6 +1,7 @@
 
 import { Helmet } from 'react-helmet-async';
 import { seoConfig } from '@/config/seo';
+import { generateOGImageUrl } from '@/utils/ogImageGenerator';
 
 interface SEOHeadProps {
   title: string;
@@ -12,7 +13,34 @@ interface SEOHeadProps {
   noindex?: boolean;
   structuredData?: any;
   breadcrumbs?: Array<{ name: string; url: string }>;
+  neighborhoodKey?: string;
+  serviceType?: 'neighborhood' | 'service' | 'general';
 }
+
+// Utility function to optimize title length
+const optimizeTitle = (title: string, maxLength: number = 60): string => {
+  if (title.length <= maxLength) return title;
+  
+  // Try to truncate at word boundary
+  const truncated = title.substring(0, maxLength);
+  const lastSpace = truncated.lastIndexOf(' ');
+  
+  if (lastSpace > maxLength * 0.8) {
+    return truncated.substring(0, lastSpace) + '...';
+  }
+  
+  return truncated.substring(0, maxLength - 3) + '...';
+};
+
+// Utility function to ensure absolute canonical URLs
+const getAbsoluteCanonicalUrl = (canonical?: string): string => {
+  if (!canonical) return seoConfig.baseUrl;
+  
+  if (canonical.startsWith('http')) return canonical;
+  
+  const cleanPath = canonical.startsWith('/') ? canonical : `/${canonical}`;
+  return `${seoConfig.baseUrl}${cleanPath}`;
+};
 
 export default function SEOHead({
   title,
@@ -23,18 +51,46 @@ export default function SEOHead({
   keywords,
   noindex = false,
   structuredData,
-  breadcrumbs
+  breadcrumbs,
+  neighborhoodKey,
+  serviceType = 'general'
 }: SEOHeadProps) {
-  const fullTitle = title.includes(seoConfig.siteName) 
-    ? title 
-    : `${title} | ${seoConfig.siteName}`;
-
-  const fullCanonical = canonical ? `${seoConfig.baseUrl}${canonical}` : undefined;
+  // Optimize title for character limit
+  const optimizedTitle = optimizeTitle(title, 60);
   
-  // Use absolute URL for OG image
-  const absoluteOgImage = ogImage?.startsWith('http') 
-    ? ogImage 
-    : `${seoConfig.baseUrl}${ogImage || seoConfig.images.defaultOg}`;
+  // Ensure title includes site name if not already present
+  const fullTitle = optimizedTitle.includes(seoConfig.siteName) 
+    ? optimizedTitle 
+    : `${optimizedTitle} | ${seoConfig.siteName}`;
+
+  // Generate absolute canonical URL
+  const absoluteCanonical = getAbsoluteCanonicalUrl(canonical);
+  
+  // Generate appropriate OG image
+  let absoluteOgImage: string;
+  if (ogImage) {
+    absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${seoConfig.baseUrl}${ogImage}`;
+  } else if (neighborhoodKey && serviceType === 'neighborhood') {
+    absoluteOgImage = generateOGImageUrl({
+      title: optimizedTitle,
+      neighborhood: neighborhoodKey,
+      type: 'neighborhood'
+    });
+  } else if (serviceType === 'service') {
+    absoluteOgImage = generateOGImageUrl({
+      title: optimizedTitle,
+      type: 'service'
+    });
+  } else {
+    absoluteOgImage = `${seoConfig.baseUrl}${seoConfig.images.defaultOg}`;
+  }
+
+  // Enhanced keywords with neighborhood-specific terms
+  let enhancedKeywords = keywords;
+  if (neighborhoodKey && seoConfig.neighborhoods.keywords[neighborhoodKey as keyof typeof seoConfig.neighborhoods.keywords]) {
+    const neighborhoodKeywords = seoConfig.neighborhoods.keywords[neighborhoodKey as keyof typeof seoConfig.neighborhoods.keywords];
+    enhancedKeywords = keywords ? `${keywords}, ${neighborhoodKeywords}` : neighborhoodKeywords;
+  }
 
   return (
     <Helmet>
@@ -42,10 +98,10 @@ export default function SEOHead({
       <title>{fullTitle}</title>
       <meta name="title" content={fullTitle} />
       <meta name="description" content={description} />
-      {keywords && <meta name="keywords" content={keywords} />}
+      {enhancedKeywords && <meta name="keywords" content={enhancedKeywords} />}
       
       {/* Canonical URL */}
-      {fullCanonical && <link rel="canonical" href={fullCanonical} />}
+      <link rel="canonical" href={absoluteCanonical} />
       
       {/* Robots */}
       {noindex ? (
@@ -56,29 +112,42 @@ export default function SEOHead({
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={fullCanonical || `${seoConfig.baseUrl}/`} />
+      <meta property="og:url" content={absoluteCanonical} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={absoluteOgImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content={`${seoConfig.siteName} - ${title}`} />
+      <meta property="og:image:alt" content={`${seoConfig.siteName} - ${optimizedTitle}`} />
       <meta property="og:site_name" content={seoConfig.siteName} />
       <meta property="og:locale" content="en_US" />
 
       {/* Twitter */}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={fullCanonical || `${seoConfig.baseUrl}/`} />
-      <meta property="twitter:title" content={fullTitle} />
-      <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={absoluteOgImage} />
-      <meta property="twitter:image:alt" content={`${seoConfig.siteName} - ${title}`} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:url" content={absoluteCanonical} />
+      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={absoluteOgImage} />
+      <meta name="twitter:image:alt" content={`${seoConfig.siteName} - ${optimizedTitle}`} />
 
-      {/* Geo Tags for Local SEO */}
+      {/* Enhanced Local SEO Tags */}
       <meta name="geo.region" content="US-IL" />
       <meta name="geo.placename" content="Chicago" />
       <meta name="geo.position" content={`${seoConfig.business.geo.latitude};${seoConfig.business.geo.longitude}`} />
       <meta name="ICBM" content={`${seoConfig.business.geo.latitude}, ${seoConfig.business.geo.longitude}`} />
+      
+      {/* Additional Local SEO */}
+      {neighborhoodKey && (
+        <>
+          <meta name="geo.placename" content={`${seoConfig.routeLabels[neighborhoodKey as keyof typeof seoConfig.routeLabels]}, Chicago`} />
+          <meta name="geo.region" content="US-IL-Chicago" />
+        </>
+      )}
+
+      {/* Enhanced Schema.org */}
+      <meta itemProp="name" content={fullTitle} />
+      <meta itemProp="description" content={description} />
+      <meta itemProp="image" content={absoluteOgImage} />
 
       {/* Structured Data */}
       {structuredData && (
@@ -97,7 +166,7 @@ export default function SEOHead({
               "@type": "ListItem",
               "position": index + 1,
               "name": crumb.name,
-              "item": `${seoConfig.baseUrl}${crumb.url}`
+              "item": getAbsoluteCanonicalUrl(crumb.url)
             }))
           })}
         </script>

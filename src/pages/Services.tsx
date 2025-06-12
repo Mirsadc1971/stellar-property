@@ -8,6 +8,7 @@ import ServicesOverview from "@/components/services/ServicesOverview";
 import ServicesOfferings from "@/components/services/ServicesOfferings";
 import AreasSection from "@/components/services/AreasSection";
 import CtaSection from "@/components/services/CtaSection";
+import { seoConfig } from "@/config/seo";
 
 export default function Services() {
   const servicesStructuredData = {
@@ -74,11 +75,12 @@ export default function Services() {
   return (
     <MainLayout>
       <SEOHead
-        title="Professional HOA & Property Management Services in Chicago | Stellar Property Management"
+        title={seoConfig.titles.services}
         description="Comprehensive HOA and condo management services in Chicago. Expert financial management, maintenance coordination, board support, and community management solutions for your property."
         canonical="/services"
         keywords="Chicago HOA management services, property management services Chicago, condo association management, Chicago property maintenance, HOA board support, financial management services"
         structuredData={servicesStructuredData}
+        serviceType="service"
       />
       
       {/* Enhanced Schema Markup */}
