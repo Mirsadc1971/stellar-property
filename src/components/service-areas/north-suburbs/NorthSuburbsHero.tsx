@@ -1,12 +1,24 @@
 
+import { OptimizedImage } from "@/components/seo/OptimizedImage";
+
 export default function NorthSuburbsHero() {
   return (
-    <section 
-      className="relative bg-cover bg-center h-auto min-h-[600px] py-20"
-      style={{ backgroundImage: `url(https://images.unsplash.com/photo-1518495973542-4542c06a5843)` }}
-    >
-      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-      <div className="relative container mx-auto px-4 h-full flex items-center">
+    <section className="relative h-auto min-h-[600px] py-20 overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <OptimizedImage
+          src="https://images.unsplash.com/photo-1518495973542-4542c06a5843"
+          alt="Beautiful suburban community in Chicago North Suburbs with professional landscaping and family-friendly neighborhoods"
+          className="w-full h-full object-cover"
+          priority={true}
+          loading="eager"
+          width={1920}
+          height={1080}
+          aspectRatio="16/9"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+      </div>
+      <div className="relative container mx-auto px-4 h-full flex items-center z-10">
         <div className="text-white max-w-4xl">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             North Suburbs Professional Community Management Services

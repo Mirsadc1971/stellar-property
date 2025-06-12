@@ -21,9 +21,11 @@ export default function HeroSection() {
             alt="Professional Chicago property management services by Stellar Property Management - Modern luxury condominiums in downtown Chicago"
             className="w-full h-full object-cover"
             priority={true}
+            loading="eager"
             sizes="100vw"
             width={1920}
             height={1080}
+            aspectRatio="16/9"
           />
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         </div>

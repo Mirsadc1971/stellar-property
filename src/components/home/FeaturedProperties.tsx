@@ -1,6 +1,7 @@
 
 import { SectionHeading } from "../ui/section-heading";
 import { Card, CardContent } from "../ui/card";
+import { OptimizedImage } from "@/components/seo/OptimizedImage";
 
 interface PropertyCardProps {
   image: string;
@@ -13,10 +14,15 @@ function PropertyCard({ image, type, title, location }: PropertyCardProps) {
   return (
     <Card className="overflow-hidden shadow-md bg-white">
       <div className="h-64 overflow-hidden">
-        <img 
-          src={image} 
-          alt={title} 
+        <OptimizedImage
+          src={image}
+          alt={`${title} - ${type} in ${location} managed by Stellar Property Management`}
           className="w-full h-full object-cover transition duration-300 hover:scale-105"
+          loading="lazy"
+          width={400}
+          height={256}
+          aspectRatio="400/256"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
       <CardContent className="p-6">

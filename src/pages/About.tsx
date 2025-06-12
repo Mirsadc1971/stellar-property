@@ -72,6 +72,9 @@ export default function About() {
                 className="rounded-lg shadow-lg w-full"
                 width={600}
                 height={400}
+                aspectRatio="600/400"
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </div>
