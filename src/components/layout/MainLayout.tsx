@@ -2,13 +2,15 @@
 import { ReactNode, useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import BreadcrumbNavigation from '@/components/seo/BreadcrumbNavigation';
 import { useLocation } from 'react-router-dom';
 
 interface MainLayoutProps {
   children: ReactNode;
+  showBreadcrumbs?: boolean;
 }
 
-export default function MainLayout({ children }: MainLayoutProps) {
+export default function MainLayout({ children, showBreadcrumbs = true }: MainLayoutProps) {
   const location = useLocation();
   
   // This effect will run whenever the location changes
@@ -24,6 +26,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
+      {showBreadcrumbs && <BreadcrumbNavigation />}
       <main className="flex-grow">
         {children}
       </main>

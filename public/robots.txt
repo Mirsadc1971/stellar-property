@@ -1,14 +1,34 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
 
 User-agent: *
 Allow: /
+
+# Important pages for crawling
+Allow: /service-areas/
+Allow: /neighborhoods/
+Allow: /blog/
+Allow: /services
+Allow: /about
+Allow: /contact
+
+# Block admin/form pages from indexing
+Disallow: /forms/
+Disallow: /resident-info/
+Disallow: /payments/
+
+# Block any private or temporary content
+Disallow: /admin/
+Disallow: /api/
+Disallow: /temp/
+
+# Allow images
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
+
+# Sitemap location
+Sitemap: https://stellarpropertygroup.com/sitemap.xml
+
+# Crawl delay (optional - be nice to servers)
+Crawl-delay: 1
