@@ -1,10 +1,11 @@
 
 import { Helmet } from "react-helmet-async";
 import MainLayout from "@/components/layout/MainLayout";
+import SEOHead from "@/components/seo/SEOHead";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Building, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 interface NeighborhoodLayoutProps {
   title: string;
@@ -27,14 +28,39 @@ export default function NeighborhoodLayout({
   schools,
   features
 }: NeighborhoodLayoutProps) {
+  const location = useLocation();
+  const canonicalUrl = location.pathname;
+  const fullTitle = `${title} Property Management - Chicago HOA & Condo Management | Stellar Property Management`;
+  const keywords = `${title} property management, ${title} HOA management, ${title} condo management, Chicago property management, ${title} Chicago`;
+
   return (
     <MainLayout>
-      <Helmet>
-        <title>{`${title} Property Management - Stellar Property Management`}</title>
-        <meta name="description" content={metaDescription} />
-        <meta property="og:title" content={`${title} Property Management - Stellar Property Management`} />
-        <meta property="og:description" content={metaDescription} />
-      </Helmet>
+      <SEOHead
+        title={fullTitle}
+        description={metaDescription}
+        canonical={canonicalUrl}
+        keywords={keywords}
+        ogImage="https://stellarpropertygroup.com/lovable-uploads/8e2d98b2-5011-4e40-a78f-3a78664306ba.png"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "Stellar Property Management",
+          "description": metaDescription,
+          "areaServed": {
+            "@type": "Place",
+            "name": title
+          },
+          "serviceType": "Property Management",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "5107 North Western Avenue Ste 1S",
+            "addressLocality": "Chicago",
+            "addressRegion": "IL",
+            "postalCode": "60625",
+            "addressCountry": "US"
+          }
+        }}
+      />
 
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[400px]">

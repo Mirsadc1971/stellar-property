@@ -2,33 +2,45 @@
 User-agent: *
 Allow: /
 
-# Important pages for crawling
+# High-priority pages for crawling
 Allow: /service-areas/
 Allow: /neighborhoods/
-Allow: /blog/
 Allow: /services
 Allow: /about
 Allow: /contact
+Allow: /blog/
 
 # Block admin/form pages from indexing
 Disallow: /forms/
 Disallow: /resident-info/
 Disallow: /payments/
 
-# Block any private or temporary content
+# Block private or temporary content
 Disallow: /admin/
 Disallow: /api/
 Disallow: /temp/
+Disallow: /*.pdf$
 
-# Allow images
+# Allow media files
 Allow: /*.jpg$
 Allow: /*.jpeg$
 Allow: /*.png$
 Allow: /*.gif$
 Allow: /*.webp$
+Allow: /*.svg$
 
 # Sitemap location
 Sitemap: https://stellarpropertygroup.com/sitemap.xml
 
-# Crawl delay (optional - be nice to servers)
+# Crawl delay (be nice to servers)
+Crawl-delay: 1
+
+# Google-specific rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bing-specific rules
+User-agent: Bingbot
+Allow: /
 Crawl-delay: 1

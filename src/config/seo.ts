@@ -5,7 +5,7 @@ export const seoConfig = {
   defaultTitle: 'Chicago Property Management & HOA Services | Stellar Property Management',
   defaultDescription: 'Stellar Property Management offers expert property management services in Chicago for HOAs and condos. Trust our team for reliable, affordable solutions with 24/7 support.',
   defaultKeywords: 'Chicago HOA management, property management company Chicago, condo association management Chicago, HOA services Chicago',
-  defaultOgImage: 'https://stellarpropertygroup.com/lovable-uploads/8e2d98b2-5011-4e40-a78f-3a78664306ba.png',
+  defaultOgImage: '/lovable-uploads/8e2d98b2-5011-4e40-a78f-3a78664306ba.png',
   
   // Business information
   business: {
@@ -30,6 +30,13 @@ export const seoConfig = {
       'https://www.linkedin.com/company/stellarpropertymgmt',
       'https://twitter.com/stellarpropmgmt'
     ]
+  },
+
+  // Image configurations
+  images: {
+    logo: '/lovable-uploads/8e2d98b2-5011-4e40-a78f-3a78664306ba.png',
+    defaultOg: '/lovable-uploads/8e2d98b2-5011-4e40-a78f-3a78664306ba.png',
+    fallback: '/lovable-uploads/8e2d98b2-5011-4e40-a78f-3a78664306ba.png'
   },
 
   // Route labels for breadcrumbs

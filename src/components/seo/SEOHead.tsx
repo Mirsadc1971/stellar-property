@@ -18,7 +18,7 @@ export default function SEOHead({
   title,
   description,
   canonical,
-  ogImage = seoConfig.defaultOgImage,
+  ogImage,
   ogType = "website",
   keywords,
   noindex = false,
@@ -30,6 +30,11 @@ export default function SEOHead({
     : `${title} | ${seoConfig.siteName}`;
 
   const fullCanonical = canonical ? `${seoConfig.baseUrl}${canonical}` : undefined;
+  
+  // Use absolute URL for OG image
+  const absoluteOgImage = ogImage?.startsWith('http') 
+    ? ogImage 
+    : `${seoConfig.baseUrl}${ogImage || seoConfig.images.defaultOg}`;
 
   return (
     <Helmet>
@@ -54,7 +59,10 @@ export default function SEOHead({
       <meta property="og:url" content={fullCanonical || `${seoConfig.baseUrl}/`} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={ogImage} />
+      <meta property="og:image" content={absoluteOgImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={`${seoConfig.siteName} - ${title}`} />
       <meta property="og:site_name" content={seoConfig.siteName} />
       <meta property="og:locale" content="en_US" />
 
@@ -63,7 +71,8 @@ export default function SEOHead({
       <meta property="twitter:url" content={fullCanonical || `${seoConfig.baseUrl}/`} />
       <meta property="twitter:title" content={fullTitle} />
       <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={ogImage} />
+      <meta property="twitter:image" content={absoluteOgImage} />
+      <meta property="twitter:image:alt" content={`${seoConfig.siteName} - ${title}`} />
 
       {/* Geo Tags for Local SEO */}
       <meta name="geo.region" content="US-IL" />
