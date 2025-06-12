@@ -8,6 +8,9 @@ import ServicesOverview from "@/components/services/ServicesOverview";
 import ServicesOfferings from "@/components/services/ServicesOfferings";
 import AreasSection from "@/components/services/AreasSection";
 import CtaSection from "@/components/services/CtaSection";
+import InternalLinksSection from "@/components/seo/InternalLinksSection";
+import LocalFAQSection from "@/components/common/LocalFAQSection";
+import { Link } from "react-router-dom";
 import { seoConfig } from "@/config/seo";
 
 export default function Services() {
@@ -72,6 +75,46 @@ export default function Services() {
     areaServed: "Chicago, IL"
   };
 
+  const relatedNeighborhoodLinks = [
+    {
+      title: "Lincoln Park Service Excellence",
+      description: "Specialized management for Lincoln Park's mix of historic buildings and modern developments, including lakefront properties.",
+      path: "/neighborhoods/lincoln-park",
+      category: 'neighborhood' as const
+    },
+    {
+      title: "Gold Coast Luxury Services",
+      description: "Premium property management for Gold Coast's exclusive buildings with white-glove service and luxury amenities.",
+      path: "/neighborhoods/gold-coast",
+      category: 'neighborhood' as const
+    },
+    {
+      title: "West Loop Modern Management",
+      description: "Contemporary property solutions for West Loop's converted lofts and new construction developments.",
+      path: "/neighborhoods/west-loop",
+      category: 'neighborhood' as const
+    }
+  ];
+
+  const servicesFAQs = [
+    {
+      question: "What does comprehensive HOA management include for Chicago properties?",
+      answer: `Our complete HOA management includes board meeting support, financial management, maintenance coordination, and vendor oversight. We handle everything from <a href="/neighborhoods/river-north" class="text-darkBlue hover:underline">River North</a> high-rise buildings to <a href="/neighborhoods/old-town" class="text-darkBlue hover:underline">Old Town</a> historic properties, ensuring compliance with Chicago Municipal Code and maintaining community standards that protect property values.`
+    },
+    {
+      question: "How do you handle financial management for Chicago condo associations?",
+      answer: `We provide comprehensive financial services including budgeting, monthly reporting, assessment collections, and reserve fund management. Our team understands Chicago-specific requirements for condo associations and works with buildings throughout <a href="/service-areas/chicago" class="text-darkBlue hover:underline">downtown Chicago</a> and the <a href="/service-areas/north-suburbs" class="text-darkBlue hover:underline">North Suburbs</a> to maintain financial transparency and stability.`
+    },
+    {
+      question: "What maintenance services do you provide for Chicago properties?",
+      answer: `Our maintenance coordination includes 24/7 emergency response, preventive maintenance programs, vendor management, and project oversight. We work with licensed Chicago contractors who understand local building codes, weather challenges, and the unique needs of neighborhoods from <a href="/neighborhoods/lakeview" class="text-darkBlue hover:underline">Lakeview</a> to <a href="/neighborhoods/hyde-park" class="text-darkBlue hover:underline">Hyde Park</a>.`
+    },
+    {
+      question: "Do you provide services for both Chicago and suburban properties?",
+      answer: `Yes, we serve properties throughout <a href="/service-areas/chicago" class="text-darkBlue hover:underline">Chicago</a> and the <a href="/service-areas/north-suburbs" class="text-darkBlue hover:underline">North Suburbs</a>. Our experienced team understands the different requirements for urban high-rises versus suburban communities, providing tailored management solutions for each property type and location. <a href="/contact" class="text-darkBlue hover:underline">Contact us</a> to discuss your specific property needs.`
+    }
+  ];
+
   return (
     <MainLayout>
       <SEOHead
@@ -91,9 +134,45 @@ export default function Services() {
       <SchemaMarkup type="service" data={maintenanceServiceSchema} />
       
       <HeroSection />
+      
+      {/* Enhanced Service Introduction */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-6 text-darkBlue">
+              Professional Property Management Services Across Chicago
+            </h2>
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              Every Chicago neighborhood presents unique property management challenges. From the luxury high-rises of 
+              <Link to="/neighborhoods/streeterville" className="text-darkBlue hover:underline mx-1">Streeterville</Link> 
+              to the historic buildings of <Link to="/neighborhoods/bucktown" className="text-darkBlue hover:underline">Bucktown</Link>, 
+              our comprehensive services are tailored to meet the specific needs of your community. Our 
+              <Link to="/about" className="text-darkBlue hover:underline mx-1">experienced team</Link> 
+              brings decades of Chicago property management expertise to every building we manage.
+            </p>
+          </div>
+        </div>
+      </section>
+      
       <ServicesOverview />
       <ServicesOfferings />
+      
+      {/* Neighborhood-Specific Services Section */}
+      <InternalLinksSection 
+        title="Neighborhood-Specific Expertise"
+        links={relatedNeighborhoodLinks}
+        className="py-16 bg-gray-50"
+      />
+      
       <AreasSection />
+      
+      {/* Services FAQ Section */}
+      <LocalFAQSection 
+        title="Property Management Services FAQ"
+        faqs={servicesFAQs}
+        className="bg-white"
+      />
+      
       <CtaSection />
     </MainLayout>
   );
