@@ -58,8 +58,8 @@ export default function Chicago() {
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         <div className="relative container mx-auto px-4 h-full flex items-center">
           <div className="text-white max-w-3xl">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Chicago's Premier Urban Property Management</h1>
-            <p className="text-xl mb-8">Navigating the complexities of Chicago's urban landscape with expertise in high-rise management, city regulations, and downtown community needs.</p>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">Chicago&apos;s Premier Urban Property Management</h1>
+            <p className="text-xl mb-8">Navigating the complexities of Chicago&apos;s urban landscape with expertise in high-rise management, city regulations, and downtown community needs.</p>
             <div className="flex flex-wrap gap-4">
               <a href="/contact" className="bg-darkBlue text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
                 Get Chicago Expertise
@@ -83,7 +83,7 @@ export default function Chicago() {
             </div>
             <div>
               <Clock className="h-10 w-10 mx-auto mb-3" />
-              <div className="text-3xl font-bold">< 2 hrs</div>
+              <div className="text-3xl font-bold">&lt; 2 hrs</div>
               <div className="text-sm">Emergency Response</div>
             </div>
             <div>
@@ -201,7 +201,7 @@ export default function Chicago() {
             <div className="grid md:grid-cols-3 gap-8">
               {chicagoTestimonials.map((testimonial, index) => (
                 <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                  <div className="text-4xl text-gray-300 mb-4">"</div>
+                  <div className="text-4xl text-gray-300 mb-4">&quot;</div>
                   <p className="text-gray-700 italic mb-6">{testimonial.quote}</p>
                   <div>
                     <p className="font-semibold">{testimonial.author}</p>
@@ -225,7 +225,7 @@ export default function Chicago() {
                 <p className="text-gray-700">Our team stays current with all Chicago regulations, from building codes to zoning requirements. We proactively ensure your property meets all municipal standards and handle all permit applications and inspections.</p>
               </div>
               <div className="border-l-4 border-darkBlue pl-6">
-                <h3 className="text-xl font-semibold mb-2">What's included in high-rise management services?</h3>
+                <h3 className="text-xl font-semibold mb-2">What&apos;s included in high-rise management services?</h3>
                 <p className="text-gray-700">High-rise management includes elevator maintenance coordination, security system oversight, emergency evacuation planning, HVAC management for large buildings, and specialized vendor coordination for multi-story properties.</p>
               </div>
               <div className="border-l-4 border-darkBlue pl-6">
