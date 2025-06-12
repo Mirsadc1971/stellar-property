@@ -1,4 +1,3 @@
-
 import MainLayout from "@/components/layout/MainLayout";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Trees, Home, Leaf, Users, Calendar, Shield, Award, CheckCircle, MapPin, Phone } from "lucide-react";
@@ -85,22 +84,18 @@ export default function NorthSuburbs() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <Home className="h-10 w-10 mx-auto mb-3" />
-              <div className="text-3xl font-bold">200+</div>
               <div className="text-sm">Suburban Communities</div>
             </div>
             <div>
               <Trees className="h-10 w-10 mx-auto mb-3" />
-              <div className="text-3xl font-bold">95%</div>
               <div className="text-sm">Landscape Satisfaction</div>
             </div>
             <div>
               <Calendar className="h-10 w-10 mx-auto mb-3" />
-              <div className="text-3xl font-bold">Year-Round</div>
               <div className="text-sm">Seasonal Care</div>
             </div>
             <div>
               <Users className="h-10 w-10 mx-auto mb-3" />
-              <div className="text-3xl font-bold">15+</div>
               <div className="text-sm">Years Suburban Focus</div>
             </div>
           </div>

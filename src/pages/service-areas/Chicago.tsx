@@ -1,4 +1,3 @@
-
 import MainLayout from "@/components/layout/MainLayout";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Building, Shield, Clock, Users, Phone, MapPin, Award, CheckCircle } from "lucide-react";
@@ -78,22 +77,18 @@ export default function Chicago() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <Building className="h-10 w-10 mx-auto mb-3" />
-              <div className="text-3xl font-bold">300+</div>
               <div className="text-sm">Chicago Properties</div>
             </div>
             <div>
               <Clock className="h-10 w-10 mx-auto mb-3" />
-              <div className="text-3xl font-bold">&lt; 2 hrs</div>
               <div className="text-sm">Emergency Response</div>
             </div>
             <div>
               <Shield className="h-10 w-10 mx-auto mb-3" />
-              <div className="text-3xl font-bold">100%</div>
               <div className="text-sm">Code Compliant</div>
             </div>
             <div>
               <Users className="h-10 w-10 mx-auto mb-3" />
-              <div className="text-3xl font-bold">15+</div>
               <div className="text-sm">Years Downtown</div>
             </div>
           </div>
