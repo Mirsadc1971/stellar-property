@@ -1,3 +1,5 @@
+import { slugify } from '@/utils/slugify';
+
 export interface Community {
   name: string;
   slug: string;
@@ -11,7 +13,11 @@ export interface Community {
   heroImage: string;
 }
 
-export const communityData: Community[] = [
+// Use a single image for all communities to avoid issues
+const communityImage = "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e";
+
+// Chicago neighborhoods
+const chicagoNeighborhoods: Community[] = [
   // Far North Side
   {
     name: "Rogers Park",
@@ -41,7 +47,7 @@ export const communityData: Community[] = [
       "Diverse community engagement"
     ],
     hoaFees: "$150-$400/month",
-    heroImage: "https://images.unsplash.com/photo-1571167530149-c1105da4c2c7"
+    heroImage: communityImage
   },
   {
     name: "West Ridge",
@@ -71,7 +77,7 @@ export const communityData: Community[] = [
       "Community-focused management solutions"
     ],
     hoaFees: "$150-$450/month",
-    heroImage: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43"
+    heroImage: communityImage
   },
   {
     name: "Edgewater",
@@ -101,7 +107,7 @@ export const communityData: Community[] = [
       "Courtyard building operations"
     ],
     hoaFees: "$200-$600/month",
-    heroImage: "https://images.unsplash.com/photo-1543069931-db20cca57f84"
+    heroImage: communityImage
   },
   {
     name: "Uptown",
@@ -131,7 +137,7 @@ export const communityData: Community[] = [
       "Mixed-use development oversight"
     ],
     hoaFees: "$180-$550/month",
-    heroImage: "https://images.unsplash.com/photo-1582630465361-eaa2aacd5f86"
+    heroImage: communityImage
   },
   {
     name: "Lincoln Square",
@@ -161,7 +167,7 @@ export const communityData: Community[] = [
       "New development oversight"
     ],
     hoaFees: "$200-$500/month",
-    heroImage: "https://images.unsplash.com/photo-1582630465361-eaa2aacd5f86"
+    heroImage: communityImage
   },
   {
     name: "North Park",
@@ -191,7 +197,7 @@ export const communityData: Community[] = [
       "Multi-unit building operations"
     ],
     hoaFees: "$180-$480/month",
-    heroImage: "https://images.unsplash.com/photo-1582630465361-eaa2aacd5f86"
+    heroImage: communityImage
   },
   {
     name: "Albany Park",
@@ -221,7 +227,7 @@ export const communityData: Community[] = [
       "Community-focused management solutions"
     ],
     hoaFees: "$150-$400/month",
-    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
+    heroImage: communityImage
   },
   {
     name: "Forest Glen",
@@ -251,7 +257,7 @@ export const communityData: Community[] = [
       "Reserve fund planning"
     ],
     hoaFees: "$200-$500/month",
-    heroImage: "https://images.unsplash.com/photo-1584893884751-993c24fdab1e"
+    heroImage: communityImage
   },
   {
     name: "Jefferson Park",
@@ -281,7 +287,7 @@ export const communityData: Community[] = [
       "Community-focused management"
     ],
     hoaFees: "$150-$400/month",
-    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
+    heroImage: communityImage
   },
   {
     name: "Norwood Park",
@@ -311,7 +317,7 @@ export const communityData: Community[] = [
       "Common area maintenance"
     ],
     hoaFees: "$200-$550/month",
-    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
+    heroImage: communityImage
   },
   {
     name: "Edison Park",
@@ -341,7 +347,7 @@ export const communityData: Community[] = [
       "Community-focused management"
     ],
     hoaFees: "$200-$500/month",
-    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
+    heroImage: communityImage
   },
   {
     name: "O'Hare",
@@ -371,9 +377,9 @@ export const communityData: Community[] = [
       "Transportation-oriented property oversight"
     ],
     hoaFees: "$250-$600/month",
-    heroImage: "https://images.unsplash.com/photo-1599609939591-044013333893"
+    heroImage: communityImage
   },
-  
+
   // North Side
   {
     name: "North Center",
@@ -403,7 +409,7 @@ export const communityData: Community[] = [
       "Commercial property solutions"
     ],
     hoaFees: "$250-$600/month",
-    heroImage: "https://images.unsplash.com/photo-1582630465361-eaa2aacd5f86"
+    heroImage: communityImage
   },
   {
     name: "Lakeview",
@@ -433,7 +439,7 @@ export const communityData: Community[] = [
       "Retail space solutions"
     ],
     hoaFees: "$250-$700/month",
-    heroImage: "https://images.unsplash.com/photo-1599676821464-3555978c0ff4"
+    heroImage: communityImage
   },
   {
     name: "Lincoln Park",
@@ -463,7 +469,7 @@ export const communityData: Community[] = [
       "High-end amenity management"
     ],
     hoaFees: "$300-$800/month",
-    heroImage: "https://images.unsplash.com/photo-1599676821464-3555978c0ff4"
+    heroImage: communityImage
   },
   {
     name: "Avondale",
@@ -493,7 +499,7 @@ export const communityData: Community[] = [
       "Community-focused management"
     ],
     hoaFees: "$180-$450/month",
-    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
+    heroImage: communityImage
   },
   {
     name: "Logan Square",
@@ -523,9 +529,9 @@ export const communityData: Community[] = [
       "Commercial property solutions"
     ],
     hoaFees: "$200-$600/month",
-    heroImage: "https://images.unsplash.com/photo-1599609939591-044013333893"
+    heroImage: communityImage
   },
-  
+
   // Northwest Side
   {
     name: "Irving Park",
@@ -555,7 +561,7 @@ export const communityData: Community[] = [
       "Community-focused management"
     ],
     hoaFees: "$150-$450/month",
-    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
+    heroImage: communityImage
   },
   {
     name: "Portage Park",
@@ -585,7 +591,7 @@ export const communityData: Community[] = [
       "Community-focused management"
     ],
     hoaFees: "$150-$400/month",
-    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
+    heroImage: communityImage
   },
   {
     name: "Dunning",
@@ -615,7 +621,7 @@ export const communityData: Community[] = [
       "Residential property management"
     ],
     hoaFees: "$150-$450/month",
-    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
+    heroImage: communityImage
   },
   {
     name: "Belmont Cragin",
@@ -645,7 +651,7 @@ export const communityData: Community[] = [
       "Community-focused management"
     ],
     hoaFees: "$150-$400/month",
-    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
+    heroImage: communityImage
   },
   {
     name: "Hermosa",
@@ -675,7 +681,7 @@ export const communityData: Community[] = [
       "Community-focused management"
     ],
     hoaFees: "$150-$400/month",
-    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
+    heroImage: communityImage
   },
   {
     name: "Montclare",
@@ -705,9 +711,9 @@ export const communityData: Community[] = [
       "Community-focused management"
     ],
     hoaFees: "$150-$400/month",
-    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
+    heroImage: communityImage
   },
-  
+
   // Central/Downtown
   {
     name: "Near North Side",
@@ -737,7 +743,7 @@ export const communityData: Community[] = [
       "Mixed-use property expertise"
     ],
     hoaFees: "$500-$2,000/month",
-    heroImage: "https://images.unsplash.com/photo-1487958449943-2429e8be8625"
+    heroImage: communityImage
   },
   {
     name: "The Loop",
@@ -767,7 +773,7 @@ export const communityData: Community[] = [
       "Luxury amenity coordination"
     ],
     hoaFees: "$400-$1,200/month",
-    heroImage: "https://images.unsplash.com/photo-1487958449943-2429e8be8625"
+    heroImage: communityImage
   },
   {
     name: "Near West Side",
@@ -797,7 +803,7 @@ export const communityData: Community[] = [
       "Institutional property coordination"
     ],
     hoaFees: "$250-$700/month",
-    heroImage: "https://images.unsplash.com/photo-1597626133663-53df9633b799"
+    heroImage: communityImage
   },
   {
     name: "West Town",
@@ -827,7 +833,7 @@ export const communityData: Community[] = [
       "Commercial property solutions"
     ],
     hoaFees: "$200-$650/month",
-    heroImage: "https://images.unsplash.com/photo-1594305577398-5f8dddba007b"
+    heroImage: communityImage
   },
   {
     name: "Noble Square",
@@ -857,7 +863,7 @@ export const communityData: Community[] = [
       "Commercial property management"
     ],
     hoaFees: "$300-$700/month",
-    heroImage: "https://images.unsplash.com/photo-1594305577398-5f8dddba007b"
+    heroImage: communityImage
   },
   {
     name: "River North",
@@ -887,7 +893,7 @@ export const communityData: Community[] = [
       "Commercial property solutions"
     ],
     hoaFees: "$500-$1,500/month",
-    heroImage: "https://images.unsplash.com/photo-1554797589-4e8b99f1d33c"
+    heroImage: communityImage
   },
   {
     name: "Gold Coast",
@@ -917,7 +923,7 @@ export const communityData: Community[] = [
       "Concierge-level service"
     ],
     hoaFees: "$800-$3,000/month",
-    heroImage: "https://images.unsplash.com/photo-1581373449483-44867d6afee4"
+    heroImage: communityImage
   },
   {
     name: "Streeterville",
@@ -947,7 +953,7 @@ export const communityData: Community[] = [
       "Waterfront property maintenance expertise"
     ],
     hoaFees: "$600-$2,000/month",
-    heroImage: "https://images.unsplash.com/photo-1599578704297-c84a64957344"
+    heroImage: communityImage
   },
   {
     name: "Fulton Market",
@@ -977,10 +983,12 @@ export const communityData: Community[] = [
       "Commercial property solutions"
     ],
     hoaFees: "$350-$900/month",
-    heroImage: "https://images.unsplash.com/photo-1597626133663-53df9633b799"
-  },
-  
-  // North Shore Suburbs
+    heroImage: communityImage
+  }
+];
+
+// North Shore suburbs
+const northShoreSuburbs: Community[] = [
   {
     name: "Evanston",
     slug: "evanston",
@@ -1009,14 +1017,14 @@ export const communityData: Community[] = [
       "Multi-unit building operations"
     ],
     hoaFees: "$300-$900/month",
-    heroImage: "https://images.unsplash.com/photo-1543069931-db20cca57f84"
+    heroImage: communityImage
   },
   {
     name: "Wilmette",
     slug: "wilmette",
     region: "North Shore",
     description: "Prestigious North Shore community with excellent schools, beautiful lakefront, and upscale amenities. Wilmette offers elite suburban living with lake access.",
-    history: "Wilmette was incorporated as a village in 1872 and named after Antoine Ouilmette, a French-Canadian fur trader. The village developed as a railroad suburb in the late 19th century and experienced significant growth in the early 20th century. The completion of the Bahá'í House of Worship in 1953 added a distinctive architectural landmark to the community.",
+    history: "Wilmette was incorporated in 1872 and named after Antoine Ouilmette, a French-Canadian fur trader. The village developed as a railroad suburb in the late 19th century and experienced significant growth in the early 20th century. The completion of the Bahá'í House of Worship in 1953 added a distinctive architectural landmark to the community.",
     features: [
       "Prestigious North Shore",
       "Excellent Schools",
@@ -1039,7 +1047,7 @@ export const communityData: Community[] = [
       "High-end amenity management"
     ],
     hoaFees: "$400-$1,200/month",
-    heroImage: "https://images.unsplash.com/photo-1543069931-db20cca57f84"
+    heroImage: communityImage
   },
   {
     name: "Highland Park",
@@ -1069,7 +1077,7 @@ export const communityData: Community[] = [
       "Community association governance"
     ],
     hoaFees: "$350-$1,000/month",
-    heroImage: "https://images.unsplash.com/photo-1543069931-db20cca57f84"
+    heroImage: communityImage
   },
   {
     name: "Bannockburn",
@@ -1099,10 +1107,12 @@ export const communityData: Community[] = [
       "Exclusive community governance"
     ],
     hoaFees: "$500-$2,000/month",
-    heroImage: "https://images.unsplash.com/photo-1543069931-db20cca57f84"
-  },
-  
-  // Northwest Suburbs
+    heroImage: communityImage
+  }
+];
+
+// Northwest suburbs
+const northwestSuburbs: Community[] = [
   {
     name: "Arlington Heights",
     slug: "arlington-heights",
@@ -1131,7 +1141,7 @@ export const communityData: Community[] = [
       "Community amenity management"
     ],
     hoaFees: "$300-$900/month",
-    heroImage: "https://images.unsplash.com/photo-1560472355-b33ff0c44a43"
+    heroImage: communityImage
   },
   {
     name: "Buffalo Grove",
@@ -1161,7 +1171,7 @@ export const communityData: Community[] = [
       "Reserve fund planning"
     ],
     hoaFees: "$300-$800/month",
-    heroImage: "https://images.unsplash.com/photo-1560472355-b33ff0c44a43"
+    heroImage: communityImage
   },
   {
     name: "Des Plaines",
@@ -1191,7 +1201,7 @@ export const communityData: Community[] = [
       "Community amenity oversight"
     ],
     hoaFees: "$200-$550/month",
-    heroImage: "https://images.unsplash.com/photo-1560472355-b33ff0c44a43"
+    heroImage: communityImage
   },
   {
     name: "Schaumburg",
@@ -1221,6 +1231,13 @@ export const communityData: Community[] = [
       "Amenity-rich community management"
     ],
     hoaFees: "$300-$800/month",
-    heroImage: "https://images.unsplash.com/photo-1560472355-b33ff0c44a43"
+    heroImage: communityImage
   }
+];
+
+// Combine all communities
+export const communityData: Community[] = [
+  ...chicagoNeighborhoods,
+  ...northShoreSuburbs,
+  ...northwestSuburbs
 ];
