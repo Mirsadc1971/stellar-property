@@ -72,7 +72,7 @@ export default function NeighborhoodLayout({
   const neighborhoodFAQs = [
     {
       question: `What makes ${neighborhoodName} property management unique?`,
-      answer: `${neighborhoodName} presents specific property management challenges that require local expertise. Our team understands the neighborhood's building types, local regulations, and community dynamics. We work with <a href="/services" class="text-darkBlue hover:underline">comprehensive management services</a> tailored to ${neighborhoodName}'s unique characteristics, ensuring your property maintains its value and community standards.`
+      answer: `${neighborhoodName} presents specific property management challenges that require local expertise. Our team understands the area's building types, local regulations, and community dynamics. We work with <a href="/services" class="text-darkBlue hover:underline">comprehensive management services</a> tailored to ${neighborhoodName}'s unique characteristics, ensuring your property maintains its value and community standards.`
     },
     {
       question: `How do you handle maintenance for ${neighborhoodName} properties?`,
@@ -109,8 +109,8 @@ export default function NeighborhoodLayout({
       <section className="relative h-96 md:h-[500px] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={heroImage}
-            alt={`${title} neighborhood showing beautiful architecture and community areas managed by Stellar Property Management`}
+            src="/townhomes copy.jpg"
+            alt={`${title} neighborhood showing beautiful architecture and areas managed by Stellar Property Management`}
             className="w-full h-full object-cover"
             loading="eager"
           />
@@ -154,7 +154,7 @@ export default function NeighborhoodLayout({
                 Whether your property requires routine maintenance coordination or complex board support, 
                 we understand {neighborhoodName}'s specific challenges and opportunities. Our comprehensive approach 
                 includes financial management, vendor coordination, and community engagement that enhances property 
-                values throughout <Link to="/service-areas/chicago" className="text-darkBlue hover:underline">Chicago</Link>.
+                values throughout <Link to="/properties" className="text-darkBlue hover:underline">Chicagoland</Link>.
               </p>
             </div>
           </div>

@@ -95,7 +95,7 @@ export default function CommunityLayout({
       <section className="relative h-96 md:h-[500px] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={heroImage}
+            src="/townhomes copy.jpg"
             alt={`${title} community showing beautiful architecture and areas managed by Stellar Property Management`}
             className="w-full h-full object-cover"
             loading="eager"

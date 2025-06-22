@@ -1,4 +1,3 @@
-
 import { OptimizedImage } from "@/components/seo/OptimizedImage";
 
 interface ChicagoHeroProps {}
@@ -7,16 +6,12 @@ export default function ChicagoHero({}: ChicagoHeroProps) {
   return (
     <section className="relative h-auto min-h-[600px] py-20 overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <OptimizedImage
-          src="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e"
+        <img
+          src="/townhomes copy.jpg"
           alt="Chicago skyline with downtown high-rise buildings showcasing urban property management opportunities"
           className="w-full h-full object-cover"
           priority={true}
           loading="eager"
-          width={1920}
-          height={1080}
-          aspectRatio="16/9"
-          sizes="100vw"
         />
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
       </div>

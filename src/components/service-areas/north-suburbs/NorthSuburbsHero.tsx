@@ -1,20 +1,15 @@
-
 import { OptimizedImage } from "@/components/seo/OptimizedImage";
 
 export default function NorthSuburbsHero() {
   return (
     <section className="relative h-auto min-h-[600px] py-20 overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <OptimizedImage
-          src="https://images.unsplash.com/photo-1518495973542-4542c06a5843"
+        <img
+          src="/townhomes copy.jpg"
           alt="Beautiful suburban community in Chicago North Suburbs with professional landscaping and family-friendly neighborhoods"
           className="w-full h-full object-cover"
           priority={true}
           loading="eager"
-          width={1920}
-          height={1080}
-          aspectRatio="16/9"
-          sizes="100vw"
         />
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
