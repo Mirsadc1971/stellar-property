@@ -69,6 +69,10 @@ const routes = [
     component: lazy(() => import('@/pages/communities/ArlingtonHeights')),
   },
   {
+    path: '/communities/bannockburn',
+    component: lazy(() => import('@/pages/communities/Bannockburn')),
+  },
+  {
     path: '/service-areas',
     component: lazy(() => import('@/pages/service-areas/Chicago')),
     exact: true,
