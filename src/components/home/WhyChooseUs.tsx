@@ -28,7 +28,7 @@ export default function WhyChooseUs() {
     {
       icon: Award,
       title: "Proven Track Record",
-      description: "Over 20 years managing Chicago properties with 95% client retention"
+      description: "Over 17 years managing Chicago properties with 95% client retention"
     },
     {
       icon: Briefcase,
