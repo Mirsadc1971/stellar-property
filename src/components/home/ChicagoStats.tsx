@@ -18,7 +18,7 @@ export default function ChicagoStats() {
           <div>
             <Shield className="h-10 w-10 mx-auto mb-3" />
             <div className="text-2xl font-bold">17</div>
-            <div className="text-sm">Communities</div>
+            <div className="text-sm">Chicago Neighborhoods</div>
           </div>
           <div>
             <Users className="h-10 w-10 mx-auto mb-3" />

@@ -1,4 +1,3 @@
-
 import ExperienceBadge from "./ExperienceBadge";
 
 export default function AboutSection() {
@@ -12,13 +11,13 @@ export default function AboutSection() {
             </h2>
             
             <p className="mb-6 text-gray-700">
-              At Stellar Property Management, we bring over two decades of Chicago property management expertise to your HOA or condo association. Our locally-based team understands the unique challenges of managing properties in Chicago's diverse neighborhoods.
+              At Stellar Property Management, we bring over 28 years of Chicago property management expertise to your HOA or condo association. Our locally-based team understands the unique challenges of managing properties in Chicago's diverse neighborhoods.
             </p>
           </div>
           
           <div className="relative">
             <img 
-              src="https://images.unsplash.com/photo-1496307653780-42ee777d4833"
+              src="/townhomes.jpg"
               alt="Stellar Property Management Chicago property management team" 
               className="rounded-lg shadow-lg w-full h-auto object-cover aspect-[4/3]"
               loading="lazy"
