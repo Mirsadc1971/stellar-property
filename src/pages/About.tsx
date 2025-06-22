@@ -1,7 +1,6 @@
 import MainLayout from "@/components/layout/MainLayout";
 import SEOHead from "@/components/seo/SEOHead";
 import SchemaMarkup from "@/components/seo/SchemaMarkup";
-import { OptimizedImage } from "@/components/seo/OptimizedImage";
 import { Link } from "react-router-dom";
 import { Users, Award, Clock, MapPin } from "lucide-react";
 
@@ -70,43 +69,6 @@ export default function About() {
                 alt="Stellar Property Management"
                 className="rounded-lg shadow-lg w-full"
               />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading text-3xl font-bold text-center mb-12">Our Impact in Numbers</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="bg-darkBlue text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Users className="h-8 w-8" />
-              </div>
-              <h3 className="text-2xl font-bold text-darkBlue mb-2">500+</h3>
-              <p className="text-gray-600">Properties Managed</p>
-            </div>
-            <div className="text-center">
-              <div className="bg-darkBlue text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Award className="h-8 w-8" />
-              </div>
-              <h3 className="text-2xl font-bold text-darkBlue mb-2">28+</h3>
-              <p className="text-gray-600">Years Experience</p>
-            </div>
-            <div className="text-center">
-              <div className="bg-darkBlue text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Clock className="h-8 w-8" />
-              </div>
-              <h3 className="text-2xl font-bold text-darkBlue mb-2">24/7</h3>
-              <p className="text-gray-600">Emergency Support</p>
-            </div>
-            <div className="text-center">
-              <div className="bg-darkBlue text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <MapPin className="h-8 w-8" />
-              </div>
-              <h3 className="text-2xl font-bold text-darkBlue mb-2">50+</h3>
-              <p className="text-gray-600">Chicago Neighborhoods</p>
             </div>
           </div>
         </div>
