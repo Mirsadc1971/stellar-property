@@ -7,7 +7,7 @@ export default function NorthSuburbsStats() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
             <Home className="h-10 w-10 mx-auto mb-3" />
-            <div className="text-2xl font-bold">50+</div>
+            <div className="text-2xl font-bold">500+</div>
             <div className="text-sm">Suburban Communities</div>
           </div>
           <div>
