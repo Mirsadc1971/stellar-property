@@ -39,88 +39,6 @@ const routes = [
     component: lazy(() => import('@/pages/ResidentInfo')),
   },
   {
-    path: '/properties',
-    component: lazy(() => import('@/pages/Properties')),
-  },
-  // Community pages
-  {
-    path: '/communities/:communitySlug',
-    component: lazy(() => import('@/pages/communities/CommunityPage')),
-  },
-  // Specific community pages
-  {
-    path: '/communities/rogers-park',
-    component: lazy(() => import('@/pages/communities/RogersPark')),
-  },
-  {
-    path: '/communities/west-ridge',
-    component: lazy(() => import('@/pages/communities/WestRidge')),
-  },
-  {
-    path: '/communities/edgewater',
-    component: lazy(() => import('@/pages/communities/Edgewater')),
-  },
-  {
-    path: '/communities/uptown',
-    component: lazy(() => import('@/pages/communities/Uptown')),
-  },
-  {
-    path: '/communities/lincoln-square',
-    component: lazy(() => import('@/pages/communities/LincolnSquare')),
-  },
-  {
-    path: '/communities/lincoln-park',
-    component: lazy(() => import('@/pages/communities/LincolnPark')),
-  },
-  {
-    path: '/communities/lakeview',
-    component: lazy(() => import('@/pages/communities/Lakeview')),
-  },
-  {
-    path: '/communities/the-loop',
-    component: lazy(() => import('@/pages/communities/TheLoop')),
-  },
-  {
-    path: '/communities/river-north',
-    component: lazy(() => import('@/pages/communities/RiverNorth')),
-  },
-  {
-    path: '/communities/gold-coast',
-    component: lazy(() => import('@/pages/communities/GoldCoast')),
-  },
-  {
-    path: '/communities/streeterville',
-    component: lazy(() => import('@/pages/communities/Streeterville')),
-  },
-  {
-    path: '/communities/evanston',
-    component: lazy(() => import('@/pages/communities/Evanston')),
-  },
-  {
-    path: '/communities/wilmette',
-    component: lazy(() => import('@/pages/communities/Wilmette')),
-  },
-  {
-    path: '/communities/highland-park',
-    component: lazy(() => import('@/pages/communities/HighlandPark')),
-  },
-  {
-    path: '/communities/bannockburn',
-    component: lazy(() => import('@/pages/communities/Bannockburn')),
-  },
-  {
-    path: '/communities/arlington-heights',
-    component: lazy(() => import('@/pages/communities/ArlingtonHeights')),
-  },
-  {
-    path: '/communities/schaumburg',
-    component: lazy(() => import('@/pages/communities/Schaumburg')),
-  },
-  {
-    path: '/communities/buffalo-grove',
-    component: lazy(() => import('@/pages/communities/BuffaloGrove')),
-  },
-  {
     path: '/service-areas',
     component: lazy(() => import('@/pages/service-areas/Chicago')),
     exact: true,
@@ -222,44 +140,93 @@ const routes = [
     path: '/about',
     component: lazy(() => import('@/pages/About')),
   },
-  // Forms routes
+  // Add routes for communities pages
   {
-    path: '/construction-request',
-    component: lazy(() => import('@/pages/ConstructionRequest')),
+    path: '/communities',
+    component: lazy(() => import('@/pages/neighborhoods/TheLoop')),
+    exact: true,
   },
   {
-    path: '/repair-request',
-    component: lazy(() => import('@/pages/RepairRequestPage')),
+    path: '/communities/the-loop',
+    component: lazy(() => import('@/pages/neighborhoods/TheLoop')),
   },
   {
-    path: '/insurance-proof',
-    component: lazy(() => import('@/pages/InsuranceProofPage')),
+    path: '/communities/river-north',
+    component: lazy(() => import('@/pages/neighborhoods/RiverNorth')),
   },
   {
-    path: '/move-permit',
-    component: lazy(() => import('@/pages/MovePermitPage')),
+    path: '/communities/gold-coast',
+    component: lazy(() => import('@/pages/neighborhoods/GoldCoast')),
   },
   {
-    path: '/notice-of-sale',
-    component: lazy(() => import('@/pages/NoticePage')),
+    path: '/communities/lincoln-park',
+    component: lazy(() => import('@/pages/neighborhoods/LincolnPark')),
   },
   {
-    path: '/electronic-consent',
-    component: lazy(() => import('@/pages/ElectronicConsentPage')),
+    path: '/communities/lakeview',
+    component: lazy(() => import('@/pages/neighborhoods/Lakeview')),
   },
   {
-    path: '/report-violation',
-    component: lazy(() => import('@/pages/ReportViolation')),
+    path: '/communities/wicker-park',
+    component: lazy(() => import('@/pages/neighborhoods/WickerPark')),
   },
   {
-    path: '/services/nominations',
-    component: lazy(() => import('@/pages/Nominations')),
+    path: '/communities/bucktown',
+    component: lazy(() => import('@/pages/neighborhoods/Bucktown')),
   },
   {
-    path: '/services/resident-info',
-    component: lazy(() => import('@/pages/ResidentInfo')),
+    path: '/communities/old-town',
+    component: lazy(() => import('@/pages/neighborhoods/OldTown')),
   },
-  // Catch-all route for 404
+  {
+    path: '/communities/west-loop',
+    component: lazy(() => import('@/pages/neighborhoods/WestLoop')),
+  },
+  {
+    path: '/communities/south-loop',
+    component: lazy(() => import('@/pages/neighborhoods/SouthLoop')),
+  },
+  {
+    path: '/communities/streeterville',
+    component: lazy(() => import('@/pages/neighborhoods/Streeterville')),
+  },
+  {
+    path: '/communities/hyde-park',
+    component: lazy(() => import('@/pages/neighborhoods/HydePark')),
+  },
+  {
+    path: '/communities/uptown',
+    component: lazy(() => import('@/pages/neighborhoods/Uptown')),
+  },
+  {
+    path: '/communities/wrigleyville',
+    component: lazy(() => import('@/pages/neighborhoods/Wrigleyville')),
+  },
+  {
+    path: '/communities/rogers-park',
+    component: lazy(() => import('@/pages/neighborhoods/RogersPark')),
+  },
+  {
+    path: '/communities/edgewater',
+    component: lazy(() => import('@/pages/neighborhoods/Edgewater')),
+  },
+  {
+    path: '/communities/andersonville',
+    component: lazy(() => import('@/pages/neighborhoods/Andersonville')),
+  },
+  {
+    path: '/communities/ravenswood',
+    component: lazy(() => import('@/pages/neighborhoods/Ravenswood')),
+  },
+  {
+    path: '/communities/logan-square',
+    component: lazy(() => import('@/pages/neighborhoods/LoganSquare')),
+  },
+  {
+    path: '/communities/ukrainian-village',
+    component: lazy(() => import('@/pages/neighborhoods/UkrainianVillage')),
+  },
+  // Add a catch-all route for 404 pages
   {
     path: '*',
     component: lazy(() => import('@/pages/NotFound')),
