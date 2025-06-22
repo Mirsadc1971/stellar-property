@@ -72,7 +72,21 @@ export default function Footer() {
         
         {/* Bottom Footer */}
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">&copy; {currentYear} Stellar Property Management. All rights reserved.</p>
+          <p className="text-gray-400 text-sm">&copy; {currentYear} Manage369 / Stellar Property Group. All rights reserved. Licensed Property Management Company.</p>
+        </div>
+        
+        {/* License Information */}
+        <div className="text-center mt-6 text-gray-500 text-sm">
+          <p>IDFPR Management Firm License 291.000211 | Fully Insured & Bonded</p>
+          <p className="mt-2">Serving Chicago neighborhoods and suburbs with professional property management since 2007</p>
+        </div>
+        
+        {/* Legal Links */}
+        <div className="flex justify-center mt-6 space-x-6 text-sm text-gray-500">
+          <a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/privacy-policy')}} className="hover:text-gray-400">Privacy Policy</a>
+          <a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/terms-of-service')}} className="hover:text-gray-400">Terms of Service</a>
+          <a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/accessibility')}} className="hover:text-gray-400">Accessibility</a>
+          <a href="#" onClick={(e) => {e.preventDefault(); handleNavigation('/sitemap')}} className="hover:text-gray-400">Sitemap</a>
         </div>
       </div>
     </footer>
