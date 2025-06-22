@@ -1,5 +1,3 @@
-import { slugify } from '@/utils/slugify';
-
 export interface Community {
   name: string;
   slug: string;
@@ -13,12 +11,8 @@ export interface Community {
   heroImage: string;
 }
 
-// Use a single image for all communities to avoid issues
-const communityImage = "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e";
-
-// Chicago neighborhoods
-const chicagoNeighborhoods: Community[] = [
-  // Far North Side
+export const communityData: Community[] = [
+  // Chicago - Far North Side
   {
     name: "Rogers Park",
     slug: "rogers-park",
@@ -47,7 +41,7 @@ const chicagoNeighborhoods: Community[] = [
       "Diverse community engagement"
     ],
     hoaFees: "$150-$400/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1571167530149-c1105da4c2c7"
   },
   {
     name: "West Ridge",
@@ -77,7 +71,7 @@ const chicagoNeighborhoods: Community[] = [
       "Community-focused management solutions"
     ],
     hoaFees: "$150-$450/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43"
   },
   {
     name: "Edgewater",
@@ -107,7 +101,7 @@ const chicagoNeighborhoods: Community[] = [
       "Courtyard building operations"
     ],
     hoaFees: "$200-$600/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1543069931-db20cca57f84"
   },
   {
     name: "Uptown",
@@ -137,7 +131,7 @@ const chicagoNeighborhoods: Community[] = [
       "Mixed-use development oversight"
     ],
     hoaFees: "$180-$550/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1582630465361-eaa2aacd5f86"
   },
   {
     name: "Lincoln Square",
@@ -167,7 +161,7 @@ const chicagoNeighborhoods: Community[] = [
       "New development oversight"
     ],
     hoaFees: "$200-$500/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1582630465361-eaa2aacd5f86"
   },
   {
     name: "North Park",
@@ -197,7 +191,7 @@ const chicagoNeighborhoods: Community[] = [
       "Multi-unit building operations"
     ],
     hoaFees: "$180-$480/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1582630465361-eaa2aacd5f86"
   },
   {
     name: "Albany Park",
@@ -227,7 +221,7 @@ const chicagoNeighborhoods: Community[] = [
       "Community-focused management solutions"
     ],
     hoaFees: "$150-$400/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
   },
   {
     name: "Forest Glen",
@@ -257,7 +251,7 @@ const chicagoNeighborhoods: Community[] = [
       "Reserve fund planning"
     ],
     hoaFees: "$200-$500/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1584893884751-993c24fdab1e"
   },
   {
     name: "Jefferson Park",
@@ -287,7 +281,7 @@ const chicagoNeighborhoods: Community[] = [
       "Community-focused management"
     ],
     hoaFees: "$150-$400/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
   },
   {
     name: "Norwood Park",
@@ -317,7 +311,7 @@ const chicagoNeighborhoods: Community[] = [
       "Common area maintenance"
     ],
     hoaFees: "$200-$550/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
   },
   {
     name: "Edison Park",
@@ -347,7 +341,7 @@ const chicagoNeighborhoods: Community[] = [
       "Community-focused management"
     ],
     hoaFees: "$200-$500/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
   },
   {
     name: "O'Hare",
@@ -377,10 +371,10 @@ const chicagoNeighborhoods: Community[] = [
       "Transportation-oriented property oversight"
     ],
     hoaFees: "$250-$600/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1599609939591-044013333893"
   },
-
-  // North Side
+  
+  // Chicago - North Side
   {
     name: "North Center",
     slug: "north-center",
@@ -409,7 +403,7 @@ const chicagoNeighborhoods: Community[] = [
       "Commercial property solutions"
     ],
     hoaFees: "$250-$600/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1582630465361-eaa2aacd5f86"
   },
   {
     name: "Lakeview",
@@ -439,7 +433,7 @@ const chicagoNeighborhoods: Community[] = [
       "Retail space solutions"
     ],
     hoaFees: "$250-$700/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1599676821464-3555978c0ff4"
   },
   {
     name: "Lincoln Park",
@@ -469,7 +463,7 @@ const chicagoNeighborhoods: Community[] = [
       "High-end amenity management"
     ],
     hoaFees: "$300-$800/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1599676821464-3555978c0ff4"
   },
   {
     name: "Avondale",
@@ -499,7 +493,7 @@ const chicagoNeighborhoods: Community[] = [
       "Community-focused management"
     ],
     hoaFees: "$180-$450/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
   },
   {
     name: "Logan Square",
@@ -529,10 +523,10 @@ const chicagoNeighborhoods: Community[] = [
       "Commercial property solutions"
     ],
     hoaFees: "$200-$600/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1599609939591-044013333893"
   },
-
-  // Northwest Side
+  
+  // Chicago - Northwest Side
   {
     name: "Irving Park",
     slug: "irving-park",
@@ -561,7 +555,7 @@ const chicagoNeighborhoods: Community[] = [
       "Community-focused management"
     ],
     hoaFees: "$150-$450/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
   },
   {
     name: "Portage Park",
@@ -591,49 +585,49 @@ const chicagoNeighborhoods: Community[] = [
       "Community-focused management"
     ],
     hoaFees: "$150-$400/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
   },
   {
     name: "Dunning",
     slug: "dunning",
     region: "Northwest Side",
-    description: "Quiet residential neighborhood with suburban feel, affordable housing, and strong community spirit. Dunning offers peaceful living with city convenience.",
+    description: "Quiet residential neighborhood with suburban feel, affordable housing, and community atmosphere. Dunning offers peaceful living with neighborhood character.",
     history: "Dunning was named after Andrew Dunning, who purchased land in the area in the 1850s. The neighborhood remained largely undeveloped until after World War II, when it experienced significant growth as part of Chicago's expansion. Originally home to several institutions including a state hospital, the area has transformed into a primarily residential community with a suburban character that distinguishes it from more urban parts of Chicago.",
     features: [
-      "Suburban Feel",
-      "Quiet Residential",
+      "Quiet Streets",
+      "Small Community",
       "Affordable Housing",
-      "Dunning Square shopping center",
-      "Wright College campus"
+      "Rutherford Sayre Park",
+      "Montclare-Elmwood Park Metra station"
     ],
     propertyTypes: [
-      "Suburban-style Condos",
-      "Single-family Buildings",
-      "Ranch-style homes",
+      "Small Buildings",
+      "Affordable Condos",
       "Chicago bungalows",
+      "Ranch-style homes",
       "Mid-century residential developments"
     ],
     managementServices: [
       "Single-family home association management",
-      "Community amenity oversight",
+      "Small community expertise",
+      "Affordable housing solutions",
       "Property value enhancement strategies",
-      "Common area maintenance",
-      "Residential property management"
+      "Community-focused management"
     ],
     hoaFees: "$150-$450/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
   },
   {
     name: "Belmont Cragin",
     slug: "belmont-cragin",
     region: "Northwest Side",
-    description: "Diverse working-class neighborhood with strong Latino community, affordable housing, and family-oriented atmosphere. Belmont Cragin offers authentic multicultural living.",
+    description: "Diverse working-class neighborhood with strong Latino community, affordable housing, and family-oriented atmosphere. Belmont Cragin offers authentic Chicago Latino community living.",
     history: "Belmont Cragin developed in the late 19th century as a manufacturing center and working-class residential area. The neighborhood experienced significant demographic changes in the late 20th century, with a large influx of Latino residents, particularly from Mexico and Puerto Rico. Today, it remains one of Chicago's most densely populated neighborhoods, known for its affordable housing, family-oriented character, and vibrant cultural diversity.",
     features: [
       "Latino Community",
       "Working-class",
       "Diverse Population",
-      "Riis Park",
+      "Kelvyn Park",
       "Belmont Avenue commercial corridor"
     ],
     propertyTypes: [
@@ -651,7 +645,7 @@ const chicagoNeighborhoods: Community[] = [
       "Community-focused management"
     ],
     hoaFees: "$150-$400/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
   },
   {
     name: "Hermosa",
@@ -681,7 +675,7 @@ const chicagoNeighborhoods: Community[] = [
       "Community-focused management"
     ],
     hoaFees: "$150-$400/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
   },
   {
     name: "Montclare",
@@ -711,40 +705,10 @@ const chicagoNeighborhoods: Community[] = [
       "Community-focused management"
     ],
     hoaFees: "$150-$400/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1594305577517-3075205a9493"
   },
-
-  // Central/Downtown
-  {
-    name: "Near North Side",
-    slug: "near-north-side",
-    region: "Central/Downtown",
-    description: "Upscale downtown area including Gold Coast and River North, featuring luxury high-rises, shopping, and dining. Near North Side represents Chicago's premium urban living.",
-    history: "The Near North Side has been one of Chicago's most fashionable areas since the city's early days. Following the Great Chicago Fire of 1871, wealthy Chicagoans built elegant homes north of the river, establishing what would become the Gold Coast. The area has continuously evolved, from the notorious Cabrini-Green housing project (now redeveloped) to the upscale shopping district of the Magnificent Mile and the entertainment-focused River North, creating one of Chicago's most diverse and dynamic neighborhoods.",
-    features: [
-      "Luxury Living",
-      "Premium Shopping",
-      "Fine Dining",
-      "Magnificent Mile shopping",
-      "Navy Pier"
-    ],
-    propertyTypes: [
-      "Luxury High-rises",
-      "Premium Condos",
-      "Historic mansions",
-      "Boutique condo buildings",
-      "Mixed-use developments"
-    ],
-    managementServices: [
-      "Luxury high-rise operations",
-      "Concierge-level service",
-      "High-end amenity management",
-      "Historic building preservation",
-      "Mixed-use property expertise"
-    ],
-    hoaFees: "$500-$2,000/month",
-    heroImage: communityImage
-  },
+  
+  // Chicago - Central/Downtown
   {
     name: "The Loop",
     slug: "the-loop",
@@ -773,97 +737,7 @@ const chicagoNeighborhoods: Community[] = [
       "Luxury amenity coordination"
     ],
     hoaFees: "$400-$1,200/month",
-    heroImage: communityImage
-  },
-  {
-    name: "Near West Side",
-    slug: "near-west-side",
-    region: "Central/Downtown",
-    description: "Dynamic area including University of Illinois at Chicago campus, medical district, and emerging residential developments. Near West Side offers urban convenience with institutional presence.",
-    history: "The Near West Side has a rich and complex history, from its early days as home to immigrants working in nearby factories to its current status as a center for education, healthcare, and urban redevelopment. The area includes the historic Maxwell Street Market, the University of Illinois at Chicago campus (built in the 1960s), and the Illinois Medical District. Recent decades have seen significant residential development, particularly in the Fulton Market and West Loop sections.",
-    features: [
-      "University Area",
-      "Medical District",
-      "Urban Development",
-      "University of Illinois at Chicago",
-      "Illinois Medical District"
-    ],
-    propertyTypes: [
-      "Student Housing",
-      "Medical Professional Housing",
-      "Converted industrial lofts",
-      "Modern residential developments",
-      "Mixed-use properties"
-    ],
-    managementServices: [
-      "University-adjacent property expertise",
-      "Medical district housing solutions",
-      "Mixed-use property management",
-      "Student housing operations",
-      "Institutional property coordination"
-    ],
-    hoaFees: "$250-$700/month",
-    heroImage: communityImage
-  },
-  {
-    name: "West Town",
-    slug: "west-town",
-    region: "Central/Downtown",
-    description: "Trendy area encompassing Wicker Park, Ukrainian Village, and surrounding neighborhoods. West Town offers hip urban living with artistic flair and nightlife.",
-    history: "West Town developed in the late 19th century as an industrial and residential area for European immigrants, particularly Polish, German, and Ukrainian communities. The neighborhood experienced economic challenges in the mid-20th century before beginning a revitalization in the 1980s and 90s. Today, West Town encompasses several distinct sub-neighborhoods including Wicker Park and Ukrainian Village, known for their historic architecture, artistic character, and vibrant commercial districts.",
-    features: [
-      "Artistic Community",
-      "Trendy Nightlife",
-      "Historic Architecture",
-      "Division Street entertainment corridor",
-      "Chicago Avenue arts district"
-    ],
-    propertyTypes: [
-      "Loft Conversions",
-      "Historic Condos",
-      "Victorian and worker cottages",
-      "Two-flat and three-flat buildings",
-      "Mixed-use properties"
-    ],
-    managementServices: [
-      "Historic building preservation",
-      "Mixed-use property expertise",
-      "Entertainment district management",
-      "Multi-unit building operations",
-      "Commercial property solutions"
-    ],
-    hoaFees: "$200-$650/month",
-    heroImage: communityImage
-  },
-  {
-    name: "Noble Square",
-    slug: "noble-square",
-    region: "Central/Downtown",
-    description: "Small trendy neighborhood near downtown with modern developments, young professionals, and urban convenience. Noble Square offers contemporary city living.",
-    history: "Noble Square is a small neighborhood within the larger West Town community area. The area was originally settled by Polish immigrants in the late 19th century, with the St. Boniface Church (built in 1902) serving as a community anchor. After a period of economic challenges in the mid-20th century, Noble Square has experienced significant revitalization since the 1990s, attracting young professionals seeking proximity to downtown and the amenities of nearby Wicker Park.",
-    features: [
-      "Modern Developments",
-      "Young Professionals",
-      "Urban Convenience",
-      "Eckhart Park",
-      "Polonia Triangle"
-    ],
-    propertyTypes: [
-      "Modern Condos",
-      "New Construction",
-      "Converted industrial buildings",
-      "Worker cottages",
-      "Two-flat and three-flat buildings"
-    ],
-    managementServices: [
-      "Modern development oversight",
-      "Mixed-use property expertise",
-      "Urban property solutions",
-      "Multi-unit building operations",
-      "Commercial property management"
-    ],
-    hoaFees: "$300-$700/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1487958449943-2429e8be8625"
   },
   {
     name: "River North",
@@ -893,37 +767,7 @@ const chicagoNeighborhoods: Community[] = [
       "Commercial property solutions"
     ],
     hoaFees: "$500-$1,500/month",
-    heroImage: communityImage
-  },
-  {
-    name: "Gold Coast",
-    slug: "gold-coast",
-    region: "Central/Downtown",
-    description: "Chicago's most prestigious neighborhood, featuring historic mansions, luxury high-rises, and upscale shopping along the Magnificent Mile. The Gold Coast epitomizes Chicago elegance.",
-    history: "The Gold Coast emerged as Chicago's most exclusive neighborhood following the Great Chicago Fire of 1871. Wealthy Chicagoans built ornate mansions along Lake Shore Drive and the surrounding streets, establishing it as the city's premier residential district. Today, the neighborhood blends historic charm with modern luxury, featuring landmark buildings, designer boutiques, and renowned restaurants.",
-    features: [
-      "Historic Elegance",
-      "Magnificent Mile",
-      "Luxury Shopping",
-      "Historic Astor Street District",
-      "Oak Street shopping"
-    ],
-    propertyTypes: [
-      "Historic Mansions",
-      "Luxury High-rises",
-      "Vintage co-op buildings",
-      "Boutique condo buildings",
-      "Mixed-use properties"
-    ],
-    managementServices: [
-      "Luxury property management",
-      "Historic building preservation",
-      "High-end amenity management",
-      "Doorman building operations",
-      "Concierge-level service"
-    ],
-    hoaFees: "$800-$3,000/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1554797589-4e8b99f1d33c"
   },
   {
     name: "Streeterville",
@@ -953,7 +797,187 @@ const chicagoNeighborhoods: Community[] = [
       "Waterfront property maintenance expertise"
     ],
     hoaFees: "$600-$2,000/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1599578704297-c84a64957344"
+  },
+  {
+    name: "West Loop",
+    slug: "west-loop",
+    region: "Central/Downtown",
+    description: "Former industrial district turned culinary and tech hub, known for its restaurants, art galleries, and converted loft spaces.",
+    history: "The West Loop's transformation from a meat-packing and warehouse district to one of Chicago's hottest neighborhoods is a testament to urban renewal. Now home to Restaurant Row, tech companies, and luxury residential developments, the area maintains its industrial charm while embracing modern amenities. The neighborhood continues to evolve with new developments while preserving its historic character.",
+    features: [
+      "Restaurant Row on Randolph",
+      "Fulton Market",
+      "Google's Chicago Office",
+      "McDonald's Global HQ",
+      "Mary Bartelme Park"
+    ],
+    propertyTypes: [
+      "Converted Warehouses",
+      "Luxury Lofts",
+      "New construction high-rises",
+      "Mixed-use developments",
+      "Boutique condo buildings"
+    ],
+    managementServices: [
+      "Mixed-use development expertise",
+      "Restaurant and retail space management",
+      "Tech-forward building solutions",
+      "Historic loft conversion experience",
+      "Modern amenity management"
+    ],
+    hoaFees: "$350-$1,000/month",
+    heroImage: "https://images.unsplash.com/photo-1597626133663-53df9633b799"
+  },
+  {
+    name: "Near West Side",
+    slug: "near-west-side",
+    region: "Central/Downtown",
+    description: "Dynamic area including University of Illinois at Chicago campus, medical district, and emerging residential developments. Near West Side offers urban convenience with institutional presence.",
+    history: "The Near West Side has a rich and complex history, from its early days as home to immigrants working in nearby factories to its current status as a center for education, healthcare, and urban redevelopment. The area includes the historic Maxwell Street Market, the University of Illinois at Chicago campus (built in the 1960s), and the Illinois Medical District. Recent decades have seen significant residential development, particularly in the Fulton Market and West Loop sections.",
+    features: [
+      "University Area",
+      "Medical District",
+      "Urban Development",
+      "University of Illinois at Chicago",
+      "Illinois Medical District"
+    ],
+    propertyTypes: [
+      "Student Housing",
+      "Medical Professional Housing",
+      "Converted industrial lofts",
+      "Modern residential developments",
+      "Mixed-use properties"
+    ],
+    managementServices: [
+      "University-adjacent property expertise",
+      "Medical district housing solutions",
+      "Mixed-use property management",
+      "Student housing operations",
+      "Institutional property coordination"
+    ],
+    hoaFees: "$250-$700/month",
+    heroImage: "https://images.unsplash.com/photo-1597626133663-53df9633b799"
+  },
+  {
+    name: "West Town",
+    slug: "west-town",
+    region: "Central/Downtown",
+    description: "Trendy area encompassing Wicker Park, Ukrainian Village, and surrounding neighborhoods. West Town offers hip urban living with artistic flair and nightlife.",
+    history: "West Town developed in the late 19th century as an industrial and residential area for European immigrants, particularly Polish, German, and Ukrainian communities. The neighborhood experienced economic challenges in the mid-20th century before beginning a revitalization in the 1980s and 90s. Today, West Town encompasses several distinct sub-neighborhoods including Wicker Park and Ukrainian Village, known for their historic architecture, artistic character, and vibrant commercial districts.",
+    features: [
+      "Artistic Community",
+      "Trendy Nightlife",
+      "Historic Architecture",
+      "Division Street entertainment corridor",
+      "Chicago Avenue arts district"
+    ],
+    propertyTypes: [
+      "Loft Conversions",
+      "Historic Condos",
+      "Victorian and worker cottages",
+      "Two-flat and three-flat buildings",
+      "Mixed-use properties"
+    ],
+    managementServices: [
+      "Historic building preservation",
+      "Mixed-use property expertise",
+      "Entertainment district management",
+      "Multi-unit building operations",
+      "Commercial property solutions"
+    ],
+    hoaFees: "$200-$650/month",
+    heroImage: "https://images.unsplash.com/photo-1594305577398-5f8dddba007b"
+  },
+  {
+    name: "Noble Square",
+    slug: "noble-square",
+    region: "Central/Downtown",
+    description: "Small trendy neighborhood near downtown with modern developments, young professionals, and urban convenience. Noble Square offers contemporary city living.",
+    history: "Noble Square is a small neighborhood within the larger West Town community area. The area was originally settled by Polish immigrants in the late 19th century, with the St. Boniface Church (built in 1902) serving as a community anchor. After a period of economic challenges in the mid-20th century, Noble Square has experienced significant revitalization since the 1990s, attracting young professionals seeking proximity to downtown and the amenities of nearby Wicker Park.",
+    features: [
+      "Modern Developments",
+      "Young Professionals",
+      "Urban Convenience",
+      "Eckhart Park",
+      "Polonia Triangle"
+    ],
+    propertyTypes: [
+      "Modern Condos",
+      "New Construction",
+      "Converted industrial buildings",
+      "Worker cottages",
+      "Two-flat and three-flat buildings"
+    ],
+    managementServices: [
+      "Modern development oversight",
+      "Mixed-use property expertise",
+      "Urban property solutions",
+      "Multi-unit building operations",
+      "Commercial property management"
+    ],
+    hoaFees: "$300-$700/month",
+    heroImage: "https://images.unsplash.com/photo-1594305577398-5f8dddba007b"
+  },
+  {
+    name: "Gold Coast",
+    slug: "gold-coast",
+    region: "Central/Downtown",
+    description: "Chicago's most prestigious neighborhood, featuring historic mansions, luxury high-rises, and upscale shopping along the Magnificent Mile. The Gold Coast epitomizes Chicago elegance.",
+    history: "The Gold Coast emerged as Chicago's most exclusive neighborhood following the Great Chicago Fire of 1871. Wealthy Chicagoans built ornate mansions along Lake Shore Drive and the surrounding streets, establishing it as the city's premier residential district. Today, the neighborhood blends historic charm with modern luxury, featuring landmark buildings, designer boutiques, and renowned restaurants.",
+    features: [
+      "Historic Elegance",
+      "Magnificent Mile",
+      "Luxury Shopping",
+      "Historic Astor Street District",
+      "Oak Street shopping"
+    ],
+    propertyTypes: [
+      "Historic Mansions",
+      "Luxury High-rises",
+      "Vintage co-op buildings",
+      "Boutique condo buildings",
+      "Mixed-use properties"
+    ],
+    managementServices: [
+      "Luxury property management",
+      "Historic building preservation",
+      "High-end amenity management",
+      "Doorman building operations",
+      "Concierge-level service"
+    ],
+    hoaFees: "$800-$3,000/month",
+    heroImage: "https://images.unsplash.com/photo-1581373449483-44867d6afee4"
+  },
+  {
+    name: "Near North Side",
+    slug: "near-north-side",
+    region: "Central/Downtown",
+    description: "Upscale downtown area including Gold Coast and River North, featuring luxury high-rises, shopping, and dining. Near North Side represents Chicago's premium urban living.",
+    history: "The Near North Side has been one of Chicago's most fashionable areas since the city's early days. Following the Great Chicago Fire of 1871, wealthy Chicagoans built elegant homes north of the river, establishing what would become the Gold Coast. The area has continuously evolved, from the notorious Cabrini-Green housing project (now redeveloped) to the upscale shopping district of the Magnificent Mile and the entertainment-focused River North, creating one of Chicago's most diverse and dynamic neighborhoods.",
+    features: [
+      "Luxury Living",
+      "Premium Shopping",
+      "Fine Dining",
+      "Magnificent Mile shopping",
+      "Navy Pier"
+    ],
+    propertyTypes: [
+      "Luxury High-rises",
+      "Premium Condos",
+      "Historic mansions",
+      "Boutique condo buildings",
+      "Mixed-use developments"
+    ],
+    managementServices: [
+      "Luxury high-rise operations",
+      "Concierge-level service",
+      "High-end amenity management",
+      "Historic building preservation",
+      "Mixed-use property expertise"
+    ],
+    hoaFees: "$500-$2,000/month",
+    heroImage: "https://images.unsplash.com/photo-1487958449943-2429e8be8625"
   },
   {
     name: "Fulton Market",
@@ -983,12 +1007,10 @@ const chicagoNeighborhoods: Community[] = [
       "Commercial property solutions"
     ],
     hoaFees: "$350-$900/month",
-    heroImage: communityImage
-  }
-];
-
-// North Shore suburbs
-const northShoreSuburbs: Community[] = [
+    heroImage: "https://images.unsplash.com/photo-1597626133663-53df9633b799"
+  },
+  
+  // North Shore
   {
     name: "Evanston",
     slug: "evanston",
@@ -1017,7 +1039,7 @@ const northShoreSuburbs: Community[] = [
       "Multi-unit building operations"
     ],
     hoaFees: "$300-$900/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1543069931-db20cca57f84"
   },
   {
     name: "Wilmette",
@@ -1047,7 +1069,7 @@ const northShoreSuburbs: Community[] = [
       "High-end amenity management"
     ],
     hoaFees: "$400-$1,200/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1543069931-db20cca57f84"
   },
   {
     name: "Highland Park",
@@ -1077,7 +1099,7 @@ const northShoreSuburbs: Community[] = [
       "Community association governance"
     ],
     hoaFees: "$350-$1,000/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1543069931-db20cca57f84"
   },
   {
     name: "Bannockburn",
@@ -1107,12 +1129,10 @@ const northShoreSuburbs: Community[] = [
       "Exclusive community governance"
     ],
     hoaFees: "$500-$2,000/month",
-    heroImage: communityImage
-  }
-];
-
-// Northwest suburbs
-const northwestSuburbs: Community[] = [
+    heroImage: "https://images.unsplash.com/photo-1543069931-db20cca57f84"
+  },
+  
+  // Northwest Suburbs
   {
     name: "Arlington Heights",
     slug: "arlington-heights",
@@ -1141,7 +1161,7 @@ const northwestSuburbs: Community[] = [
       "Community amenity management"
     ],
     hoaFees: "$300-$900/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1560472355-b33ff0c44a43"
   },
   {
     name: "Buffalo Grove",
@@ -1171,37 +1191,7 @@ const northwestSuburbs: Community[] = [
       "Reserve fund planning"
     ],
     hoaFees: "$300-$800/month",
-    heroImage: communityImage
-  },
-  {
-    name: "Des Plaines",
-    slug: "des-plaines",
-    region: "Northwest Suburbs",
-    description: "Diverse suburban community with excellent transportation access, family amenities, and growing business district. Des Plaines offers affordable suburban living with urban convenience.",
-    history: "Des Plaines developed along the Des Plaines River and was incorporated as a city in 1925. The opening of O'Hare International Airport nearby in the 1950s spurred significant growth. The city is known as the home of the first McDonald's franchise opened by Ray Kroc in 1955 (now a museum). Throughout its history, Des Plaines has maintained a balance of residential, commercial, and industrial development that has created a diverse and stable community.",
-    features: [
-      "Transportation Hub",
-      "Diverse Community",
-      "Business District",
-      "Rivers Casino",
-      "Des Plaines River Trail"
-    ],
-    propertyTypes: [
-      "Affordable Condos",
-      "Family Townhomes",
-      "Single-family homes",
-      "Mid-century subdivisions",
-      "Mixed-use developments"
-    ],
-    managementServices: [
-      "Homeowners association management",
-      "Townhouse community operations",
-      "Commercial property solutions",
-      "Multi-family building operations",
-      "Community amenity oversight"
-    ],
-    hoaFees: "$200-$550/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1560472355-b33ff0c44a43"
   },
   {
     name: "Schaumburg",
@@ -1231,13 +1221,36 @@ const northwestSuburbs: Community[] = [
       "Amenity-rich community management"
     ],
     hoaFees: "$300-$800/month",
-    heroImage: communityImage
+    heroImage: "https://images.unsplash.com/photo-1560472355-b33ff0c44a43"
+  },
+  {
+    name: "Des Plaines",
+    slug: "des-plaines",
+    region: "Northwest Suburbs",
+    description: "Diverse suburban community with excellent transportation access, family amenities, and growing business district. Des Plaines offers affordable suburban living with urban convenience.",
+    history: "Des Plaines developed along the Des Plaines River and was incorporated as a city in 1925. The opening of O'Hare International Airport nearby in the 1950s spurred significant growth. The city is known as the home of the first McDonald's franchise opened by Ray Kroc in 1955 (now a museum). Throughout its history, Des Plaines has maintained a balance of residential, commercial, and industrial development that has created a diverse and stable community.",
+    features: [
+      "Transportation Hub",
+      "Diverse Community",
+      "Business District",
+      "Rivers Casino",
+      "Des Plaines River Trail"
+    ],
+    propertyTypes: [
+      "Affordable Condos",
+      "Family Townhomes",
+      "Single-family homes",
+      "Mid-century subdivisions",
+      "Mixed-use developments"
+    ],
+    managementServices: [
+      "Homeowners association management",
+      "Townhouse community operations",
+      "Commercial property solutions",
+      "Multi-family building operations",
+      "Community amenity oversight"
+    ],
+    hoaFees: "$200-$550/month",
+    heroImage: "https://images.unsplash.com/photo-1560472355-b33ff0c44a43"
   }
-];
-
-// Combine all communities
-export const communityData: Community[] = [
-  ...chicagoNeighborhoods,
-  ...northShoreSuburbs,
-  ...northwestSuburbs
 ];
