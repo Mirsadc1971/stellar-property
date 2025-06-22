@@ -90,7 +90,7 @@ const routes = [
   },
   {
     path: '/communities/streeterville',
-    component: lazy(() => import('@/pages/neighborhoods/Streeterville')),
+    component: lazy(() => import('@/pages/communities/Streeterville')),
   },
   {
     path: '/communities/evanston',
@@ -221,6 +221,43 @@ const routes = [
   {
     path: '/about',
     component: lazy(() => import('@/pages/About')),
+  },
+  // Forms routes
+  {
+    path: '/construction-request',
+    component: lazy(() => import('@/pages/ConstructionRequest')),
+  },
+  {
+    path: '/repair-request',
+    component: lazy(() => import('@/pages/RepairRequestPage')),
+  },
+  {
+    path: '/insurance-proof',
+    component: lazy(() => import('@/pages/InsuranceProofPage')),
+  },
+  {
+    path: '/move-permit',
+    component: lazy(() => import('@/pages/MovePermitPage')),
+  },
+  {
+    path: '/notice-of-sale',
+    component: lazy(() => import('@/pages/NoticePage')),
+  },
+  {
+    path: '/electronic-consent',
+    component: lazy(() => import('@/pages/ElectronicConsentPage')),
+  },
+  {
+    path: '/report-violation',
+    component: lazy(() => import('@/pages/ReportViolation')),
+  },
+  {
+    path: '/services/nominations',
+    component: lazy(() => import('@/pages/Nominations')),
+  },
+  {
+    path: '/services/resident-info',
+    component: lazy(() => import('@/pages/ResidentInfo')),
   },
   // Catch-all route for 404
   {
