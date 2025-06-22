@@ -2,16 +2,14 @@ import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import CommunityLayout from '@/components/community/CommunityLayout';
 import { communityData } from '@/data/communityData';
+import { getCommunityBySlug } from '@/data/communityGenerator';
 import NotFound from '@/pages/NotFound';
 
 export default function CommunityPage() {
   const { communitySlug } = useParams<{ communitySlug: string }>();
   
   // Find the community data based on the slug
-  const community = communityData.find(c => 
-    c.slug === communitySlug || 
-    c.name.toLowerCase().replace(/\s+/g, '-') === communitySlug
-  );
+  const community = getCommunityBySlug(communitySlug || '');
   
   // Check if there's a dedicated page for this community
   const hasDedicatedPage = [
@@ -20,11 +18,6 @@ export default function CommunityPage() {
     'streeterville', 'evanston', 'wilmette', 'highland-park', 'bannockburn',
     'arlington-heights', 'schaumburg', 'buffalo-grove'
   ].includes(communitySlug || '');
-  
-  // If there's a dedicated page, redirect to it
-  if (hasDedicatedPage) {
-    return <Navigate to={`/communities/${communitySlug}`} replace />;
-  }
   
   // If community not found, show 404 page
   if (!community) {

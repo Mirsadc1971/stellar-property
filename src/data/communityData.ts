@@ -4,7 +4,7 @@ export const communityData = [
   {
     name: "Rogers Park",
     slug: "rogers-park",
-    region: "Chicago",
+    region: "Far North Side",
     heroImage: "https://images.unsplash.com/photo-1571167530149-c1105da4c2c7",
     description: "Chicago's northernmost neighborhood, known for its cultural diversity, beaches, and artistic community.",
     history: "Rogers Park was incorporated as a village in 1878, named after Irish immigrant Philip Rogers who settled in the area in the 1830s. The neighborhood was annexed to Chicago in 1893 and saw rapid development with the expansion of transit lines. Throughout the 20th century, Rogers Park became one of Chicago's most diverse communities, welcoming immigrants from around the world.",
@@ -33,7 +33,7 @@ export const communityData = [
   {
     name: "West Ridge",
     slug: "west-ridge",
-    region: "Chicago",
+    region: "Far North Side",
     heroImage: "https://images.unsplash.com/photo-1560472355-b33ff0c44a43",
     description: "A diverse neighborhood with rich cultural heritage, known for its Indian and Orthodox Jewish communities.",
     history: "West Ridge, also known as West Rogers Park, developed in the early 20th century as a farming community before being annexed to Chicago. The area saw significant growth after World War II and has become known for its cultural diversity, with particularly strong Indian, Pakistani, Assyrian, and Orthodox Jewish communities.",
@@ -62,16 +62,16 @@ export const communityData = [
   {
     name: "Edgewater",
     slug: "edgewater",
-    region: "Chicago",
+    region: "Far North Side",
     heroImage: "https://images.unsplash.com/photo-1543069931-db20cca57f84",
     description: "A lakefront community known for its beaches, historic mansions, and diverse population.",
     history: "Edgewater was originally developed in the late 19th century as a summer retreat for Chicago's elite, featuring luxurious hotels and mansions along the lakefront. The extension of Lake Shore Drive and the elevated train in the early 20th century transformed it into a residential neighborhood. Over decades, the area evolved from an exclusive enclave to a diverse community welcoming immigrants from around the world.",
     features: [
       "Kathy Osterman Beach",
       "Bryn Mawr Historic District",
-      "Andersonville sub-neighborhood",
-      "Diverse dining and shopping options",
-      "Historic Edgewater Beach Apartments"
+      "Berger Park Cultural Center",
+      "Edgewater Beach Apartments",
+      "Raven Theatre"
     ],
     propertyTypes: [
       "Vintage high-rise buildings",
@@ -91,16 +91,16 @@ export const communityData = [
   {
     name: "Uptown",
     slug: "uptown",
-    region: "Chicago",
+    region: "Far North Side",
     heroImage: "https://images.unsplash.com/photo-1582630465361-eaa2aacd5f86",
     description: "A diverse neighborhood known for historic entertainment venues, lakefront recreation, and multicultural dining.",
-    history: "Uptown flourished in the early 20th century as a premier entertainment district, home to elaborate movie palaces and ballrooms that attracted visitors from across Chicago. During the Jazz Age, venues like the Green Mill became legendary. Following World War II, the neighborhood welcomed diverse immigrant communities.",
+    history: "Uptown flourished in the early 20th century as a premier entertainment district, home to elaborate movie palaces and ballrooms that attracted visitors from across Chicago. During the Jazz Age, venues like the Green Mill became legendary. Following World War II, the neighborhood welcomed diverse immigrant communities, establishing its identity as one of Chicago's most multicultural areas.",
     features: [
-      "Historic Uptown Theatre",
+      "Aragon Ballroom",
       "Green Mill Jazz Club",
+      "Riviera Theatre",
       "Montrose Beach and Harbor",
-      "Diverse international dining scene",
-      "Graceland Cemetery"
+      "Uptown Theatre"
     ],
     propertyTypes: [
       "Historic apartment buildings",
@@ -110,17 +110,17 @@ export const communityData = [
       "Mixed-use properties"
     ],
     managementServices: [
-      "Historic building preservation",
-      "Entertainment venue management",
-      "Multi-unit building operations",
-      "Affordable housing expertise",
-      "Commercial property solutions"
+      "Historic entertainment venue management",
+      "Diverse housing solutions",
+      "Vintage apartment building expertise",
+      "Lakefront property maintenance",
+      "Mixed-use development oversight"
     ]
   },
   {
     name: "Lincoln Square",
     slug: "lincoln-square",
-    region: "Chicago",
+    region: "Far North Side",
     heroImage: "https://images.unsplash.com/photo-1582630465361-eaa2aacd5f86",
     description: "A charming neighborhood with German heritage, independent businesses, and family-friendly atmosphere.",
     history: "Lincoln Square was originally farmland before being annexed to Chicago in 1889. The area's German heritage dates back to the early 20th century when many German immigrants settled here. The neighborhood has maintained its European charm while evolving into one of Chicago's most desirable residential areas.",
@@ -150,7 +150,7 @@ export const communityData = [
   {
     name: "Lincoln Park",
     slug: "lincoln-park",
-    region: "Chicago",
+    region: "North Side",
     heroImage: "https://images.unsplash.com/photo-1599676821464-3555978c0ff4",
     description: "An affluent community known for its tree-lined streets, historic buildings, and expansive namesake park.",
     history: "Lincoln Park has evolved from modest beginnings into one of Chicago's most desirable neighborhoods. Named after the sprawling park along Lake Michigan, the area combines historic architecture with modern amenities. The neighborhood's transformation accelerated in the 1960s, and today it stands as a premier example of successful urban development.",
@@ -179,7 +179,7 @@ export const communityData = [
   {
     name: "Lakeview",
     slug: "lakeview",
-    region: "Chicago",
+    region: "North Side",
     heroImage: "https://images.unsplash.com/photo-1599676821464-3555978c0ff4",
     description: "A diverse neighborhood offering lakefront recreation, entertainment venues, and a mix of historic and modern housing.",
     history: "Lakeview has grown from a summer resort town in the 1800s to one of Chicago's largest and most diverse neighborhoods. Home to several distinct areas including Wrigleyville and Boystown, the neighborhood offers a perfect blend of residential charm and urban excitement. Its proximity to Lake Michigan and excellent transportation options has made it a consistently popular choice for residents.",
@@ -209,7 +209,7 @@ export const communityData = [
   {
     name: "The Loop",
     slug: "the-loop",
-    region: "Chicago",
+    region: "Central/Downtown",
     heroImage: "https://images.unsplash.com/photo-1487958449943-2429e8be8625",
     description: "Chicago's central business district and cultural heart, known for its iconic architecture, world-class theaters, and bustling business community.",
     history: "The Loop is Chicago's central business district and the seat of Cook County government. Named for the elevated 'L' train tracks that encircle the area, The Loop has been Chicago's commercial core since the city's founding. Today, it's home to world-renowned architecture, theaters, shopping destinations, and Millennium Park, making it one of the most visited neighborhoods in Chicago.",
@@ -238,7 +238,7 @@ export const communityData = [
   {
     name: "River North",
     slug: "river-north",
-    region: "Chicago",
+    region: "Central/Downtown",
     heroImage: "https://images.unsplash.com/photo-1554797589-4e8b99f1d33c",
     description: "A dynamic urban neighborhood known for its art galleries, high-end dining, and proximity to Downtown Chicago's business center.",
     history: "River North, once an industrial area, transformed in the 1970s into a thriving arts and entertainment district. Home to the largest concentration of art galleries outside of Manhattan, the neighborhood has become synonymous with urban sophistication. Its proximity to the Chicago Loop and its mix of historic warehouses converted into lofts and modern high-rises make it a unique and desirable location.",
@@ -267,7 +267,7 @@ export const communityData = [
   {
     name: "Gold Coast",
     slug: "gold-coast",
-    region: "Chicago",
+    region: "Central/Downtown",
     heroImage: "https://images.unsplash.com/photo-1581373449483-44867d6afee4",
     description: "An affluent historic district known for luxury high-rises, historic mansions, and upscale shopping along Oak Street.",
     history: "The Gold Coast emerged as Chicago's most exclusive neighborhood following the Great Chicago Fire of 1871. Wealthy Chicagoans built ornate mansions along Lake Shore Drive and the surrounding streets, establishing it as the city's premier residential district. Today, the neighborhood blends historic charm with modern luxury, featuring landmark buildings, designer boutiques, and renowned restaurants.",
@@ -296,7 +296,7 @@ export const communityData = [
   {
     name: "Streeterville",
     slug: "streeterville",
-    region: "Chicago",
+    region: "Central/Downtown",
     heroImage: "https://images.unsplash.com/photo-1599578704297-c84a64957344",
     description: "A vibrant lakefront neighborhood home to luxury high-rises, world-class shopping, and Chicago's famous Navy Pier.",
     history: "Streeterville's unique history begins with George 'Cap' Streeter, who accidentally grounded his boat on a sandbar in 1886. The neighborhood has since transformed into one of Chicago's most prestigious areas, featuring iconic landmarks like Navy Pier and the Magnificent Mile. Its prime location between the Magnificent Mile and Lake Michigan has made it a sought-after destination for luxury living and high-end commercial properties.",
