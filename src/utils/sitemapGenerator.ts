@@ -28,6 +28,12 @@ export const generateSitemapUrls = (): SitemapUrl[] => {
       } else if (route.path.includes('/neighborhoods/')) {
         priority = 0.8;
         changefreq = 'monthly';
+      } else if (route.path.includes('/communities/')) {
+        priority = 0.8;
+        changefreq = 'monthly';
+      } else if (route.path === '/properties') {
+        priority = 0.9;
+        changefreq = 'monthly';
       } else if (route.path === '/blog') {
         priority = 0.7;
         changefreq = 'weekly';
