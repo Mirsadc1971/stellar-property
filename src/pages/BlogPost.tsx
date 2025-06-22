@@ -1,14 +1,15 @@
-
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import MainLayout from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
+import SEOHead from "@/components/seo/SEOHead";
 
 export default function BlogPost() {
   const { id } = useParams<{ id: string }>();
   const post = blogPosts.find((post) => post.id === id);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Scroll to top when page loads
@@ -35,6 +36,13 @@ export default function BlogPost() {
 
   return (
     <MainLayout>
+      <SEOHead
+        title={`${post.title} | Stellar Property Management Blog`}
+        description={post.excerpt}
+        canonical={`/blog/${post.id}`}
+        keywords={`Chicago property management, ${post.title.toLowerCase()}, HOA management Chicago, condo association management, Stellar Property Management`}
+      />
+      
       <article className="container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto">
           {/* Back button */}
@@ -94,8 +102,47 @@ export default function BlogPost() {
             </ul>
             
             <p>
-              At Manage369, we believe in transparency and building lasting relationships with our property owners. We welcome these questions and are committed to providing clear, detailed answers that help you make informed decisions about your valuable real estate investments.
+              At <Link to="/" className="text-darkBlue hover:underline">Stellar Property Management</Link>, we believe in transparency and building lasting relationships with our property owners. We welcome these questions and are committed to providing clear, detailed answers that help you make informed decisions about your valuable real estate investments.
             </p>
+            
+            <div className="bg-gray-50 p-6 rounded-lg mt-8">
+              <h3 className="text-xl font-bold mb-4">Need Professional Property Management?</h3>
+              <p className="mb-4">
+                If you're looking for expert property management services in Chicago or the surrounding suburbs, our team is ready to help.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Button asChild className="bg-darkBlue hover:bg-blue-800">
+                  <Link to="/contact">Contact Us</Link>
+                </Button>
+                <Button asChild variant="outline" className="border-darkBlue text-darkBlue hover:bg-darkBlue hover:text-white">
+                  <Link to="/request-proposal">Request a Proposal</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+          
+          {/* Related posts */}
+          <div className="mt-12 pt-8 border-t">
+            <h3 className="text-2xl font-bold mb-6">Related Articles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {blogPosts
+                .filter(relatedPost => relatedPost.id !== post.id)
+                .slice(0, 2)
+                .map(relatedPost => (
+                  <div key={relatedPost.id} className="bg-white p-4 rounded-lg border hover:shadow-md transition-shadow">
+                    <h4 className="font-semibold mb-2">
+                      <Link to={`/blog/${relatedPost.id}`} className="text-darkBlue hover:underline">
+                        {relatedPost.title}
+                      </Link>
+                    </h4>
+                    <p className="text-sm text-gray-600 line-clamp-2 mb-2">{relatedPost.excerpt}</p>
+                    <Link to={`/blog/${relatedPost.id}`} className="text-sm text-darkBlue hover:underline">
+                      Read More →
+                    </Link>
+                  </div>
+                ))
+              }
+            </div>
           </div>
         </div>
       </article>

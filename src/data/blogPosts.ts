@@ -1,4 +1,3 @@
-
 export interface BlogPost {
   id: string;
   title: string;
@@ -10,73 +9,43 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    id: "how-to-choose",
+    id: "how-to-choose-property-management",
     title: "How to Choose a Property Management Company",
-    excerpt: "A complete guide to selecting the right property management partner for your real estate assets in Chicago.",
-    author: "Sarah Anderson",
+    excerpt: "A complete guide to selecting the right property management partner for your real estate assets in Chicago. Learn what questions to ask and what to look for in a quality property management company.",
+    author: "Stellar Property Management",
     date: "4/9/2025",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
   },
   {
-    id: "condo-association-help",
+    id: "condo-association-warning-signs",
     title: "5 Signs Your Condo Association Needs Help",
-    excerpt: "Is your condo board overwhelmed? Here are five major red flags that indicate it's time for professional assistance.",
-    author: "John Kim",
+    excerpt: "Is your condo board overwhelmed? Here are five major red flags that indicate it's time for professional assistance from a property management company.",
+    author: "Stellar Property Management",
     date: "3/27/2025",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
   },
   {
-    id: "reserve-funds",
+    id: "understanding-reserve-funds",
     title: "Understanding Reserve Funds for Associations",
-    excerpt: "Learn the essentials of planning long-term capital repairs and keeping your association solvent.",
-    author: "Priya Patel",
+    excerpt: "Learn the essentials of planning long-term capital repairs and keeping your association solvent. A comprehensive guide to reserve funds for HOAs and condo associations.",
+    author: "Stellar Property Management",
     date: "3/13/2025",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
   },
   {
-    id: "renovation-rules",
+    id: "renovation-rules-for-owners",
     title: "Renovation Rules: What Every Owner Needs to Know",
-    excerpt: "A practical breakdown of construction approval processes and consequences for non-compliance.",
-    author: "Alex Torres",
+    excerpt: "A practical breakdown of construction approval processes and consequences for non-compliance in Chicago condominiums and HOAs.",
+    author: "Stellar Property Management",
     date: "2/19/2025",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
   },
   {
-    id: "tenant-communication",
+    id: "tenant-communication-best-practices",
     title: "Tenant Communication Best Practices",
-    excerpt: "How to keep tenants informed, happy, and following the rules with minimal friction.",
-    author: "Natalie Mehta",
+    excerpt: "How to keep tenants informed, happy, and following the rules with minimal friction. Effective communication strategies for property managers and HOA boards.",
+    author: "Stellar Property Management",
     date: "2/5/2025",
-  },
-  {
-    id: "investment-property",
-    title: "What Makes a Good Investment Property?",
-    excerpt: "Expert insight on evaluating market value, location, and risk for investors in Chicago.",
-    author: "Daniel Smith",
-    date: "1/24/2025",
-  },
-  {
-    id: "annual-meeting-prep",
-    title: "Annual Meeting Prep for HOA Boards",
-    excerpt: "Step-by-step checklist for successful and efficient annual meetings with your association.",
-    author: "Grace Lin",
-    date: "1/9/2025",
-  },
-  {
-    id: "chicago-rental-ordinance",
-    title: "Navigating the Chicago Rental Ordinance",
-    excerpt: "Essential reading for landlords and residents on compliance with city regulations.",
-    author: "Omar Williams",
-    date: "12/21/2024",
-  },
-  {
-    id: "owner-tenant-disputes",
-    title: "How to Handle Owner and Tenant Disputes",
-    excerpt: "A manager's playbook for resolving common conflicts without drama.",
-    author: "Maya Lee",
-    date: "11/30/2024",
-  },
-  {
-    id: "preventative-maintenance",
-    title: "Preventative Maintenance for Commercial Buildings",
-    excerpt: "Why proactive upkeep saves you money and headaches over the long run.",
-    author: "Jordan Brooks",
-    date: "11/15/2024",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
   }
 ];

@@ -1,13 +1,20 @@
-
 import MainLayout from "@/components/layout/MainLayout";
 import { Link } from "react-router-dom";
 import { blogPosts } from "@/data/blogPosts";
 import type { BlogPost } from "@/data/blogPosts";
 import { Badge } from "@/components/ui/badge";
+import SEOHead from "@/components/seo/SEOHead";
 
 export default function Blog() {
   return (
     <MainLayout>
+      <SEOHead
+        title="Chicago Property Management Blog | Stellar Property Management"
+        description="Expert advice on HOA management, condo associations, and property investment throughout Chicago's neighborhoods. Written by our experienced local team."
+        canonical="/blog"
+        keywords="Chicago property management blog, HOA management tips, condo association advice, Chicago real estate, property management resources"
+      />
+      
       <section className="bg-gray-100 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
@@ -38,7 +45,7 @@ interface BlogCardProps {
 
 function BlogCard({ post }: BlogCardProps) {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg">
       <div className="bg-gray-200 h-48">
         {post.image ? (
           <img 
