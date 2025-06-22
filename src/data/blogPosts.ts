@@ -93,11 +93,11 @@ This holistic approach not only shields your community but also improves board p
   {
     id: "illinois-hoa-law-changes-2024",
     title: "2024 Illinois HOA Law Changes Every Board Member Should Know",
-    excerpt: "Boards operating in Illinois—including in Skokie and Evanston—need to navigate a wave of new regulations as of January 2024. Manage369 supports associations in adhering to each policy.",
+    excerpt: "Boards operating in Illinois need to navigate a wave of new regulations as of January 2024. Manage369 supports associations in adhering to each policy.",
     author: "Stellar Property Management",
     date: "2/19/2025",
     image: "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e",
-    content: `Boards operating in Illinois—including in Skokie and Evanston—need to navigate a wave of new regulations as of January 2024. Manage369 supports associations in adhering to each policy, helping avoid penalties and bolstering resident satisfaction. Here's a comprehensive summary of recent legal updates.
+    content: `Boards operating in Illinois need to navigate a wave of new regulations as of January 2024. Manage369 supports associations in adhering to each policy, helping avoid penalties and bolstering resident satisfaction. Here's a comprehensive summary of recent legal updates.
 
 🏘️ Key Legislative Updates You Must Know
 A. Enhanced Aging-in-Place Standards (55+ Communities)
@@ -116,48 +116,5 @@ E. Audit Requirements
 Associations with annual budgets above $250,000 must engage an independent CPA for audits every three years—reinforcing public trust and financial integrity.
 
 If you'd like, Manage369 can provide free policy templates, annual budget checklists, EV‑charging infrastructure referrals, and training materials. These legislative updates also align with our own emergency preparedness and financial best practice guides—see our posts on emergency protocols in Evanston and [financial mistake avoidance] for seamless integration.`
-  },
-  {
-    id: "tenant-communication-best-practices",
-    title: "Tenant Communication Best Practices",
-    excerpt: "How to keep tenants informed, happy, and following the rules with minimal friction. Effective communication strategies for property managers and HOA boards.",
-    author: "Stellar Property Management",
-    date: "2/5/2025",
-    image: "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e",
-    content: `Effective communication is the foundation of successful property management. Whether you're managing a small condo association or a large residential complex, how you communicate with residents can make or break your reputation and effectiveness.
-
-### Key Communication Strategies
-
-1. **Establish Clear Communication Channels**
-   - Implement a dedicated resident portal for announcements, maintenance requests, and document access
-   - Maintain consistent email newsletters with important updates
-   - Use text messaging for urgent matters and emergencies
-   - Hold regular in-person or virtual town halls for major discussions
-
-2. **Set Expectations Early**
-   - Provide comprehensive welcome packets to new residents
-   - Clearly outline rules, regulations, and consequences
-   - Explain communication protocols during the onboarding process
-   - Detail response timeframes for different types of requests
-
-3. **Practice Transparency**
-   - Share financial information appropriately with stakeholders
-   - Explain the reasoning behind decisions, especially unpopular ones
-   - Provide regular updates on ongoing projects and maintenance
-   - Be honest about challenges and limitations
-
-4. **Leverage Technology Effectively**
-   - Use property management software with robust communication features
-   - Implement automated notifications for important deadlines
-   - Offer self-service options for common requests
-   - Ensure all digital tools are user-friendly for residents of all ages
-
-5. **Handle Difficult Conversations Professionally**
-   - Address rule violations promptly but respectfully
-   - Listen actively to complaints and acknowledge concerns
-   - Focus on solutions rather than blame
-   - Document all significant interactions for future reference
-
-By implementing these communication best practices, property managers can significantly improve resident satisfaction, reduce conflicts, and create a more harmonious community environment. Remember that good communication is an ongoing process that requires consistent effort and refinement.`
   }
 ];

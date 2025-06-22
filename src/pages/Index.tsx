@@ -10,7 +10,6 @@ import CtaSection from "@/components/home/CtaSection";
 import InternalLinksSection from "@/components/seo/InternalLinksSection";
 import LocalFAQSection from "@/components/common/LocalFAQSection";
 import ChicagoOverviewSection from "@/components/home/ChicagoOverviewSection";
-import AIAssistantSection from "@/components/home/AIAssistantSection";
 import LocationSection from "@/components/home/LocationSection";
 import FeaturedProperties from "@/components/home/FeaturedProperties";
 import SitemapGenerator from "@/components/seo/SitemapGenerator";
@@ -45,8 +44,6 @@ const Index = () => {
       <HeroSection />
       
       <ChicagoOverviewSection />
-      
-      <AIAssistantSection />
 
       <AboutSection />
       <ServicesSection />
