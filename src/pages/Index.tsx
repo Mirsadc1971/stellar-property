@@ -1,4 +1,3 @@
-
 import React, { useLayoutEffect } from 'react';
 import MainLayout from "@/components/layout/MainLayout";
 import SEOHead from "@/components/seo/SEOHead";
@@ -20,6 +19,7 @@ import {
   serviceAreaLinks,
   chicagoFAQs
 } from "@/components/home/homepageData";
+import SitemapGenerator from "@/components/seo/SitemapGenerator";
 
 const Index = () => {
   // useLayoutEffect runs before browser paint, ensuring immediate scroll
@@ -77,6 +77,9 @@ const Index = () => {
       <LocationSection />
 
       <CtaSection />
+      
+      {/* Generate sitemap for SEO */}
+      <SitemapGenerator />
     </MainLayout>
   );
 };

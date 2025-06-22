@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { generateSitemapXml } from '@/utils/sitemapGenerator';
 
