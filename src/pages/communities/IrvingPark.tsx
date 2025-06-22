@@ -10,11 +10,11 @@ export default function IrvingPark() {
       description="Diverse residential neighborhood with strong Polish heritage, affordable housing, and family-friendly atmosphere. Irving Park offers authentic Chicago living."
       history="Irving Park began as a rural community in the 1840s before being annexed to Chicago in 1889. The arrival of the railroad spurred development, with many elegant homes built in the late 19th century. The neighborhood has welcomed waves of immigrants throughout its history, creating a diverse community with strong European influences, particularly Polish and German, that remain evident in its cultural institutions and architecture."
       features={[
+        "Polish Heritage",
+        "Diverse Community",
+        "Affordable Housing",
         "Independence Park",
-        "Villa District historic area",
-        "Irving Park Road commercial corridor",
-        "Historic churches and architecture",
-        "Six Corners shopping district"
+        "Villa District historic area"
       ]}
       propertyTypes={[
         "Affordable Condos",
@@ -30,7 +30,8 @@ export default function IrvingPark() {
         "Commercial property oversight",
         "Community-focused management"
       ]}
-      region="Chicago"
+      region="Northwest Side"
+      hoaFees="$150-$450/month"
     />
   );
 }

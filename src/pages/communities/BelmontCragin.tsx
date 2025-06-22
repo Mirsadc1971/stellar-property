@@ -10,11 +10,11 @@ export default function BelmontCragin() {
       description="Diverse working-class neighborhood with strong Latino community, affordable housing, and family-oriented atmosphere. Belmont Cragin offers authentic multicultural living."
       history="Belmont Cragin developed in the late 19th century as a manufacturing center and working-class residential area. The neighborhood experienced significant demographic changes in the late 20th century, with a large influx of Latino residents, particularly from Mexico and Puerto Rico. Today, it remains one of Chicago's most densely populated neighborhoods, known for its affordable housing, family-oriented character, and vibrant cultural diversity."
       features={[
+        "Latino Community",
+        "Working-class",
+        "Diverse Population",
         "Riis Park",
-        "Cragin Park",
-        "Belmont Avenue commercial corridor",
-        "Diverse dining options",
-        "Strong community organizations"
+        "Belmont Avenue commercial corridor"
       ]}
       propertyTypes={[
         "Affordable Condos",
@@ -30,7 +30,8 @@ export default function BelmontCragin() {
         "Commercial property oversight",
         "Community-focused management"
       ]}
-      region="Chicago"
+      region="Northwest Side"
+      hoaFees="$150-$400/month"
     />
   );
 }

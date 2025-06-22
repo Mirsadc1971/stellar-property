@@ -10,11 +10,11 @@ export default function WestTown() {
       description="Trendy area encompassing Wicker Park, Ukrainian Village, and surrounding neighborhoods. West Town offers hip urban living with artistic flair and nightlife."
       history="West Town developed in the late 19th century as an industrial and residential area for European immigrants, particularly Polish, German, and Ukrainian communities. The neighborhood experienced economic challenges in the mid-20th century before beginning a revitalization in the 1980s and 90s. Today, West Town encompasses several distinct sub-neighborhoods including Wicker Park and Ukrainian Village, known for their historic architecture, artistic character, and vibrant commercial districts."
       features={[
+        "Artistic Community",
+        "Trendy Nightlife",
+        "Historic Architecture",
         "Division Street entertainment corridor",
-        "Chicago Avenue arts district",
-        "Historic Ukrainian Village",
-        "Wicker Park's Six Corners",
-        "The 606 elevated trail"
+        "Chicago Avenue arts district"
       ]}
       propertyTypes={[
         "Loft Conversions",
@@ -30,7 +30,8 @@ export default function WestTown() {
         "Multi-unit building operations",
         "Commercial property solutions"
       ]}
-      region="Chicago"
+      region="Central/Downtown"
+      hoaFees="$200-$650/month"
     />
   );
 }

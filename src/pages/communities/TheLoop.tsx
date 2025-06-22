@@ -10,11 +10,11 @@ export default function TheLoop() {
       description="Chicago's central business district, home to iconic skyscrapers, world-class dining, and luxury high-rise condominiums. The Loop represents the heart of Chicago's financial and cultural center."
       history="The Loop is Chicago's central business district and the seat of Cook County government. Named for the elevated 'L' train tracks that encircle the area, The Loop has been Chicago's commercial core since the city's founding. Today, it's home to world-renowned architecture, theaters, shopping destinations, and Millennium Park, making it one of the most visited neighborhoods in Chicago."
       features={[
+        "Historic Architecture",
+        "Business District",
+        "Cultural Hub",
         "Millennium Park & Cloud Gate",
-        "Art Institute of Chicago",
-        "Chicago Theatre District",
-        "Chicago Board of Trade",
-        "State Street shopping"
+        "Art Institute of Chicago"
       ]}
       propertyTypes={[
         "High-rise Condominiums",
@@ -30,7 +30,8 @@ export default function TheLoop() {
         "Historic building preservation",
         "Luxury amenity coordination"
       ]}
-      region="Chicago"
+      region="Central/Downtown"
+      hoaFees="$400-$1,200/month"
     />
   );
 }

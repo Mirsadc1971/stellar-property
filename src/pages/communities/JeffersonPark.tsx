@@ -10,11 +10,11 @@ export default function JeffersonPark() {
       description="Working-class neighborhood with strong Polish heritage, affordable housing, and excellent transportation access. Jefferson Park offers authentic Chicago character."
       history="Jefferson Park developed around its transportation hub, with the area's growth accelerating after being annexed to Chicago in 1889. The neighborhood became a center for Polish immigrants in the early 20th century, establishing a cultural identity that remains evident today. Its role as a transportation nexus was solidified with the construction of the Jefferson Park Transit Center in 1970, making it one of Chicago's most accessible neighborhoods."
       features={[
+        "Polish Heritage",
+        "Working-class Community",
+        "Transportation Hub",
         "Jefferson Park Transit Center",
-        "Jefferson Memorial Park",
-        "Gateway Theatre",
-        "Polish cultural institutions",
-        "Copernicus Center"
+        "Jefferson Memorial Park"
       ]}
       propertyTypes={[
         "Affordable Condos",
@@ -30,7 +30,8 @@ export default function JeffersonPark() {
         "Commercial property oversight",
         "Community-focused management"
       ]}
-      region="Chicago"
+      region="Far North Side"
+      hoaFees="$150-$400/month"
     />
   );
 }

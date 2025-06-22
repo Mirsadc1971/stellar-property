@@ -19,21 +19,13 @@ export default function Properties() {
     "Far North Side",
     "North Side",
     "Northwest Side",
-    "West Side",
-    "Central/Downtown",
-    "South Side",
-    "Southwest Side",
-    "Far Southwest Side",
-    "Far Southeast Side"
+    "Central/Downtown"
   ];
 
   // Suburban regions
   const suburbanRegions = [
     "North Shore",
-    "Northwest Suburbs",
-    "Western Suburbs",
-    "Southwest Suburbs",
-    "South Suburbs"
+    "Northwest Suburbs"
   ];
 
   // Filter communities based on search term
@@ -50,7 +42,7 @@ export default function Properties() {
         title="Chicago Communities We Serve | Stellar Property Management"
         description="Explore our property management services across Chicago and its suburbs. Professional HOA and condo management for communities throughout Chicagoland."
         canonical="/properties"
-        keywords="Chicago property management, Chicago communities, HOA management Chicago, condo management Chicago, suburban property management"
+        keywords="Chicago property management, Chicago communities, HOA management Chicago, condo management Chicago, suburban property management, Stellar Property Management"
       />
 
       <section className="bg-gray-100 py-16">
@@ -128,7 +120,7 @@ export default function Properties() {
                             <Building className="h-4 w-4 text-darkBlue" />
                             <span className="font-medium">{community.name}</span>
                           </div>
-                          <p className="text-sm text-gray-500 mt-2 line-clamp-2">{community.description}</p>
+                          <p className="text-sm text-gray-500 mt-2 line-clamp-2">{community.description.split('.')[0]}.</p>
                         </Link>
                       ))}
                     </div>
@@ -156,7 +148,7 @@ export default function Properties() {
                             <Building className="h-4 w-4 text-darkBlue" />
                             <span className="font-medium">{community.name}</span>
                           </div>
-                          <p className="text-sm text-gray-500 mt-2 line-clamp-2">{community.description}</p>
+                          <p className="text-sm text-gray-500 mt-2 line-clamp-2">{community.description.split('.')[0]}.</p>
                         </Link>
                       ))}
                     </div>

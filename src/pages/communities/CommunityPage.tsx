@@ -11,14 +11,6 @@ export default function CommunityPage() {
   // Find the community data based on the slug
   const community = getCommunityBySlug(communitySlug || '');
   
-  // Check if there's a dedicated page for this community
-  const hasDedicatedPage = [
-    'rogers-park', 'west-ridge', 'edgewater', 'uptown', 'lincoln-square',
-    'lincoln-park', 'lakeview', 'the-loop', 'river-north', 'gold-coast',
-    'streeterville', 'evanston', 'wilmette', 'highland-park', 'bannockburn',
-    'arlington-heights', 'schaumburg', 'buffalo-grove'
-  ].includes(communitySlug || '');
-  
   // If community not found, show 404 page
   if (!community) {
     return <NotFound />;
@@ -26,8 +18,8 @@ export default function CommunityPage() {
   
   return (
     <CommunityLayout
-      title={`${community.name}, ${community.region}`}
-      metaDescription={`Expert property management services in ${community.name}, ${community.region}. Stellar Property Management offers professional HOA and condo management services tailored for ${community.name}'s unique community needs.`}
+      title={`${community.name}, ${community.region === "Chicago" ? "Chicago" : community.region}`}
+      metaDescription={`Expert property management services in ${community.name}, ${community.region === "Chicago" ? "Chicago" : community.region}. Stellar Property Management offers professional HOA and condo management services tailored for ${community.name}'s unique community needs.`}
       heroImage={community.heroImage}
       description={community.description}
       history={community.history}
@@ -35,6 +27,7 @@ export default function CommunityPage() {
       propertyTypes={community.propertyTypes}
       managementServices={community.managementServices}
       region={community.region}
+      hoaFees={community.hoaFees}
     />
   );
 }

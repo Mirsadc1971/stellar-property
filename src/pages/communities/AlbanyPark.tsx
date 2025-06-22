@@ -10,11 +10,11 @@ export default function AlbanyPark() {
       description="Diverse immigrant community with affordable housing, strong cultural identity, and growing arts scene. Albany Park represents Chicago's multicultural spirit."
       history="Albany Park developed in the early 20th century following the extension of the Ravenswood elevated train line. The neighborhood has been a gateway community for immigrants throughout its history, welcoming waves of new residents from around the world. This cultural diversity has created one of Chicago's most international neighborhoods, with over 40 languages spoken in its schools and a rich tapestry of global cuisines and businesses."
       features={[
+        "Immigrant Community",
+        "Affordable Housing",
+        "Cultural Diversity",
         "Global dining scene with authentic restaurants",
-        "Albany Park Theater Project",
-        "North Branch of the Chicago River",
-        "Diverse religious institutions",
-        "Vibrant international markets"
+        "Albany Park Theater Project"
       ]}
       propertyTypes={[
         "Affordable Condos",
@@ -30,7 +30,8 @@ export default function AlbanyPark() {
         "Commercial property oversight",
         "Community-focused management solutions"
       ]}
-      region="Chicago"
+      region="Far North Side"
+      hoaFees="$150-$400/month"
     />
   );
 }

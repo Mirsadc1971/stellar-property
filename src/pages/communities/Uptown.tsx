@@ -10,16 +10,16 @@ export default function Uptown() {
       description="Historic entertainment district experiencing renaissance with new development, diverse community, and rich cultural heritage. Uptown offers urban excitement with neighborhood character."
       history="Uptown flourished in the early 20th century as a premier entertainment district, home to elaborate movie palaces and ballrooms that attracted visitors from across Chicago. During the Jazz Age, venues like the Green Mill became legendary. Following World War II, the neighborhood welcomed diverse immigrant communities, establishing its identity as one of Chicago's most multicultural areas."
       features={[
+        "Entertainment District",
+        "Cultural Heritage",
+        "Urban Renaissance",
         "Aragon Ballroom",
-        "Green Mill Jazz Club",
-        "Riviera Theatre",
-        "Montrose Beach and Harbor",
-        "Uptown Theatre"
+        "Green Mill Jazz Club"
       ]}
       propertyTypes={[
         "Historic Buildings",
         "New Developments",
-        "Converted entertainment venues",
+        "Art Deco high-rises",
         "Courtyard buildings",
         "Mixed-use properties"
       ]}
@@ -30,7 +30,8 @@ export default function Uptown() {
         "Lakefront property maintenance",
         "Mixed-use development oversight"
       ]}
-      region="Chicago"
+      region="Far North Side"
+      hoaFees="$180-$550/month"
     />
   );
 }

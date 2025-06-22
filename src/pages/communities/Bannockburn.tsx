@@ -10,11 +10,11 @@ export default function Bannockburn() {
       description="Small exclusive village with luxury estates, pristine character, and ultimate privacy. Bannockburn offers the most exclusive North Shore living."
       history="Bannockburn was incorporated in 1929 as one of the North Shore's most exclusive communities. Named after the Scottish battlefield, the village was developed with large estate lots and strict zoning to preserve its rural character. The community has maintained its reputation as one of the most affluent suburbs in the Chicago area, with many properties featuring extensive grounds and equestrian facilities."
       features={[
+        "Small Exclusive Village",
+        "Luxury Estates",
         "Trinity International University campus",
         "Bannockburn Green shopping center",
-        "Extensive forest preserves and nature trails",
-        "Equestrian facilities and riding trails",
-        "Historic estate properties"
+        "Extensive forest preserves and nature trails"
       ]}
       propertyTypes={[
         "Luxury Estates",
@@ -31,6 +31,7 @@ export default function Bannockburn() {
         "Exclusive community governance"
       ]}
       region="North Shore"
+      hoaFees="$500-$2,000/month"
     />
   );
 }

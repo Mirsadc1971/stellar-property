@@ -10,11 +10,11 @@ export default function LoganSquare() {
       description="Hip, artistic neighborhood known for its vibrant nightlife, craft breweries, and creative community. Logan Square has become one of Chicago's most sought-after areas for young professionals."
       history="Logan Square was developed in the late 19th century around its namesake public square and boulevard system. The neighborhood was home to many European immigrants, particularly Norwegians and Poles. After a period of economic challenges in the mid-20th century, Logan Square has experienced significant revitalization since the early 2000s, becoming known for its thriving arts scene, independent businesses, and historic greystones and boulevards."
       features={[
+        "Arts Scene",
+        "Craft Breweries",
+        "Historic Architecture",
         "Historic boulevard system",
-        "Logan Square Farmers Market",
-        "Palmer Square Park",
-        "Milwaukee Avenue corridor",
-        "Craft brewery scene"
+        "Logan Square Farmers Market"
       ]}
       propertyTypes={[
         "Vintage Condos",
@@ -30,7 +30,8 @@ export default function LoganSquare() {
         "Multi-unit building operations",
         "Commercial property solutions"
       ]}
-      region="Chicago"
+      region="North Side"
+      hoaFees="$200-$600/month"
     />
   );
 }

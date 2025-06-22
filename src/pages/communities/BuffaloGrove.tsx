@@ -10,11 +10,11 @@ export default function BuffaloGrove() {
       description="Affluent suburban community with excellent schools, family-friendly atmosphere, and modern amenities. Buffalo Grove offers premium suburban living with strong community values."
       history="Buffalo Grove was incorporated in 1958, making it a relatively young suburb. The area was originally settled in the 1840s by German farmers who named it for the buffalo that once roamed the area. Significant development occurred in the 1960s and 1970s, transforming it from a small farming community into a thriving residential suburb."
       features={[
+        "Affluent Community",
+        "Excellent Schools",
+        "Family-Friendly",
         "Buffalo Grove Golf Course",
-        "Raupp Museum",
-        "Buffalo Creek Forest Preserve",
-        "Community Arts Center",
-        "Buffalo Grove Days festival"
+        "Buffalo Creek Forest Preserve"
       ]}
       propertyTypes={[
         "Luxury Condos",
@@ -31,6 +31,7 @@ export default function BuffaloGrove() {
         "Reserve fund planning"
       ]}
       region="Northwest Suburbs"
+      hoaFees="$300-$800/month"
     />
   );
 }

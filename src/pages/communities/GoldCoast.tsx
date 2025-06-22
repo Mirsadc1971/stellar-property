@@ -10,11 +10,11 @@ export default function GoldCoast() {
       description="Chicago's most prestigious neighborhood, featuring historic mansions, luxury high-rises, and upscale shopping along the Magnificent Mile. The Gold Coast epitomizes Chicago elegance."
       history="The Gold Coast emerged as Chicago's most exclusive neighborhood following the Great Chicago Fire of 1871. Wealthy Chicagoans built ornate mansions along Lake Shore Drive and the surrounding streets, establishing it as the city's premier residential district. Today, the neighborhood blends historic charm with modern luxury, featuring landmark buildings, designer boutiques, and renowned restaurants."
       features={[
+        "Historic Elegance",
+        "Magnificent Mile",
+        "Luxury Shopping",
         "Historic Astor Street District",
-        "Oak Street shopping",
-        "Lake Michigan views",
-        "Rush Street entertainment",
-        "Prestigious residential addresses"
+        "Oak Street shopping"
       ]}
       propertyTypes={[
         "Historic Mansions",
@@ -30,7 +30,8 @@ export default function GoldCoast() {
         "Doorman building operations",
         "Concierge-level service"
       ]}
-      region="Chicago"
+      region="Central/Downtown"
+      hoaFees="$800-$3,000/month"
     />
   );
 }

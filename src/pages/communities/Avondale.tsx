@@ -10,11 +10,11 @@ export default function Avondale() {
       description="Emerging neighborhood with growing arts scene, affordable housing, and strong Latino heritage. Avondale offers authentic Chicago character with development potential."
       history="Avondale developed in the late 19th century as a working-class industrial area and home to many Polish immigrants. The neighborhood later welcomed Latino residents, particularly from Mexico and Puerto Rico, creating a rich cultural mix. In recent years, Avondale has begun attracting artists and young professionals seeking affordable housing close to trendier areas like Logan Square, while still maintaining its authentic working-class character."
       features={[
+        "Arts Scene",
+        "Latino Heritage",
+        "Affordable Housing",
         "Avondale Mural Project",
-        "St. Hyacinth Basilica",
-        "Brands Park",
-        "Milwaukee Avenue arts corridor",
-        "Diverse dining scene"
+        "St. Hyacinth Basilica"
       ]}
       propertyTypes={[
         "Affordable Condos",
@@ -30,7 +30,8 @@ export default function Avondale() {
         "Commercial property solutions",
         "Community-focused management"
       ]}
-      region="Chicago"
+      region="North Side"
+      hoaFees="$180-$450/month"
     />
   );
 }

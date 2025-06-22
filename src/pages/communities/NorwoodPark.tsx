@@ -10,11 +10,11 @@ export default function NorwoodPark() {
       description="Suburban-style neighborhood with single-family homes, quiet streets, and strong community ties. Norwood Park offers suburban living within Chicago."
       history="Norwood Park was founded as a village in 1872 and annexed to Chicago in 1893. The neighborhood was designed with a suburban layout featuring curved streets and generous lots, departing from Chicago's typical grid pattern. This distinctive character has been preserved, making Norwood Park one of the city's most suburban-feeling neighborhoods with a strong sense of community identity and pride."
       features={[
+        "Suburban Style",
+        "Single-family Homes",
+        "Quiet Streets",
         "Historic Norwood Park Circle",
-        "Norwood Park Historical Society",
-        "Beautiful Victorian homes",
-        "Onahan Elementary School",
-        "Norwood Park Field House"
+        "Norwood Park Historical Society"
       ]}
       propertyTypes={[
         "Single-family Condos",
@@ -30,7 +30,8 @@ export default function NorwoodPark() {
         "Property value enhancement strategies",
         "Common area maintenance"
       ]}
-      region="Chicago"
+      region="Far North Side"
+      hoaFees="$200-$550/month"
     />
   );
 }

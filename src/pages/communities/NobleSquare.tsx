@@ -10,11 +10,11 @@ export default function NobleSquare() {
       description="Small trendy neighborhood near downtown with modern developments, young professionals, and urban convenience. Noble Square offers contemporary city living."
       history="Noble Square is a small neighborhood within the larger West Town community area. The area was originally settled by Polish immigrants in the late 19th century, with the St. Boniface Church (built in 1902) serving as a community anchor. After a period of economic challenges in the mid-20th century, Noble Square has experienced significant revitalization since the 1990s, attracting young professionals seeking proximity to downtown and the amenities of nearby Wicker Park."
       features={[
+        "Modern Developments",
+        "Young Professionals",
+        "Urban Convenience",
         "Eckhart Park",
-        "Polonia Triangle",
-        "St. Boniface Church",
-        "Milwaukee Avenue corridor",
-        "Proximity to downtown Chicago"
+        "Polonia Triangle"
       ]}
       propertyTypes={[
         "Modern Condos",
@@ -30,7 +30,8 @@ export default function NobleSquare() {
         "Multi-unit building operations",
         "Commercial property management"
       ]}
-      region="Chicago"
+      region="Central/Downtown"
+      hoaFees="$300-$700/month"
     />
   );
 }

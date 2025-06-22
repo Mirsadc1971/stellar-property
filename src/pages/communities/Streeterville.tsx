@@ -10,12 +10,11 @@ export default function Streeterville() {
       description="Prestigious lakefront neighborhood featuring luxury high-rises, world-class shopping, and stunning Lake Michigan views. Home to Northwestern Memorial Hospital and Navy Pier."
       history="Streeterville's unique history begins with George 'Cap' Streeter, who accidentally grounded his boat on a sandbar in 1886. The neighborhood has since transformed into one of Chicago's most prestigious areas, featuring iconic landmarks like Navy Pier and the Magnificent Mile. Its prime location between the Magnificent Mile and Lake Michigan has made it a sought-after destination for luxury living and high-end commercial properties."
       features={[
+        "Lakefront Location",
+        "Medical District",
+        "Luxury Shopping",
         "Navy Pier",
-        "Museum of Contemporary Art",
-        "Northwestern Memorial Hospital",
-        "Ohio Street Beach",
-        "Magnificent Mile",
-        "900 North Michigan Shops"
+        "Museum of Contemporary Art"
       ]}
       propertyTypes={[
         "Luxury Towers",
@@ -31,7 +30,8 @@ export default function Streeterville() {
         "Premium amenity management",
         "Waterfront property maintenance expertise"
       ]}
-      region="Chicago"
+      region="Central/Downtown"
+      hoaFees="$600-$2,000/month"
     />
   );
 }

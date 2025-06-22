@@ -10,11 +10,11 @@ export default function OHare() {
       description="Airport-adjacent area with modern developments, business travelers, and convenient transportation. O'Hare offers urban convenience with airport access."
       history="The O'Hare community area developed primarily after World War II with the expansion of O'Hare International Airport, which opened to commercial air traffic in 1955. Originally part of the surrounding townships, the area was annexed to Chicago to secure the airport for the city. The neighborhood has evolved to serve the needs of the airport, with hotels, office parks, and residential developments catering to business travelers and airport employees."
       features={[
+        "Airport Access",
+        "Modern Developments",
+        "Business Travelers",
         "O'Hare International Airport",
-        "Catherine Chevalier Woods",
-        "Donald E. Stephens Convention Center (nearby)",
-        "Fashion Outlets of Chicago (nearby)",
-        "Rosemont Entertainment District (nearby)"
+        "Catherine Chevalier Woods"
       ]}
       propertyTypes={[
         "Modern Condos",
@@ -30,7 +30,8 @@ export default function OHare() {
         "Hotel-condominium management",
         "Transportation-oriented property oversight"
       ]}
-      region="Chicago"
+      region="Far North Side"
+      hoaFees="$250-$600/month"
     />
   );
 }

@@ -17,6 +17,7 @@ interface CommunityLayoutProps {
   propertyTypes: string[];
   managementServices: string[];
   region: string;
+  hoaFees?: string;
 }
 
 export default function CommunityLayout({
@@ -28,7 +29,8 @@ export default function CommunityLayout({
   features,
   propertyTypes,
   managementServices,
-  region
+  region,
+  hoaFees = "$200-$600/month"
 }: CommunityLayoutProps) {
   // Extract community key from title for SEO
   const communityKey = title.toLowerCase()
@@ -42,7 +44,7 @@ export default function CommunityLayout({
   const getRelatedCommunities = () => {
     let relatedCommunities = [];
     
-    if (region === "Chicago") {
+    if (region === "Far North Side" || region === "North Side" || region === "Northwest Side" || region === "Central/Downtown" || region === "Chicago") {
       relatedCommunities = ["Lincoln Park", "River North", "Gold Coast", "Lakeview", "West Loop", "Wicker Park"];
     } else if (region === "North Shore") {
       relatedCommunities = ["Evanston", "Wilmette", "Highland Park", "Northbrook", "Glenview", "Lake Forest"];
@@ -86,7 +88,7 @@ export default function CommunityLayout({
         title={`${title} Property Management | Stellar Property Management`}
         description={metaDescription}
         canonical={`/communities/${communityKey}`}
-        keywords={`${communityName} property management, ${communityName} HOA management, ${communityName} condo management, Chicago property management, ${region} property management`}
+        keywords={`${communityName} property management, ${communityName} HOA management, ${communityName} condo management, Chicago property management, ${region} property management, Stellar Property Management`}
         breadcrumbs={breadcrumbs}
       />
 
@@ -212,6 +214,9 @@ export default function CommunityLayout({
                     </li>
                   ))}
                 </ul>
+                <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+                  <p className="font-medium text-darkBlue">Typical HOA Fees: {hoaFees}</p>
+                </div>
               </div>
               
               <div>

@@ -10,11 +10,11 @@ export default function LincolnPark() {
       description="One of Chicago's most desirable neighborhoods, combining historic charm with modern amenities. Home to DePaul University, Lincoln Park Zoo, and beautiful tree-lined streets."
       history="Lincoln Park has evolved from modest beginnings into one of Chicago's most desirable neighborhoods. Named after the sprawling park along Lake Michigan, the area combines historic architecture with modern amenities. The neighborhood's transformation accelerated in the 1960s, and today it stands as a premier example of successful urban development."
       features={[
+        "Historic Character",
+        "Family-Friendly",
+        "University Area",
         "Lincoln Park Zoo",
-        "DePaul University",
-        "Lincoln Park Conservatory",
-        "North Avenue Beach",
-        "Historic architecture"
+        "DePaul University"
       ]}
       propertyTypes={[
         "Victorian Condos",
@@ -30,7 +30,8 @@ export default function LincolnPark() {
         "Mixed-use property expertise",
         "High-end amenity management"
       ]}
-      region="Chicago"
+      region="North Side"
+      hoaFees="$300-$800/month"
     />
   );
 }

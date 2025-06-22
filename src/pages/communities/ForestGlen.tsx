@@ -10,11 +10,11 @@ export default function ForestGlen() {
       description="Quiet residential neighborhood with suburban feel, excellent schools, and family-friendly atmosphere. Forest Glen offers peaceful living within the city."
       history="Forest Glen was originally developed as a railroad suburb in the late 19th century, with the Milwaukee Road depot serving as its center. The area was annexed to Chicago in 1889 but has maintained its distinct suburban character with winding streets, mature trees, and spacious lots. The Forest Glen Community Club, established in 1896, continues to foster neighborhood identity and community spirit."
       features={[
+        "Suburban Feel",
+        "Excellent Schools",
+        "Family-Friendly",
         "Forest Glen Woods and North Branch Trail",
-        "Historic Forest Glen Community Club",
-        "Edgebrook Golf Course",
-        "Quiet, tree-lined streets",
-        "Excellent public and private schools"
+        "Historic Forest Glen Community Club"
       ]}
       propertyTypes={[
         "Single-family Condos",
@@ -30,7 +30,8 @@ export default function ForestGlen() {
         "Common area maintenance",
         "Reserve fund planning"
       ]}
-      region="Chicago"
+      region="Far North Side"
+      hoaFees="$200-$500/month"
     />
   );
 }

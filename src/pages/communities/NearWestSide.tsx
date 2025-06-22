@@ -10,11 +10,11 @@ export default function NearWestSide() {
       description="Dynamic area including University of Illinois at Chicago campus, medical district, and emerging residential developments. Near West Side offers urban convenience with institutional presence."
       history="The Near West Side has a rich and complex history, from its early days as home to immigrants working in nearby factories to its current status as a center for education, healthcare, and urban redevelopment. The area includes the historic Maxwell Street Market, the University of Illinois at Chicago campus (built in the 1960s), and the Illinois Medical District. Recent decades have seen significant residential development, particularly in the Fulton Market and West Loop sections."
       features={[
+        "University Area",
+        "Medical District",
+        "Urban Development",
         "University of Illinois at Chicago",
-        "Illinois Medical District",
-        "United Center",
-        "Historic Maxwell Street area",
-        "Whitney Young Magnet High School"
+        "Illinois Medical District"
       ]}
       propertyTypes={[
         "Student Housing",
@@ -30,7 +30,8 @@ export default function NearWestSide() {
         "Student housing operations",
         "Institutional property coordination"
       ]}
-      region="Chicago"
+      region="Central/Downtown"
+      hoaFees="$250-$700/month"
     />
   );
 }

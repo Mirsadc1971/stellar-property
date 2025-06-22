@@ -11,10 +11,10 @@ export default function Lakeview() {
       history="Lakeview has grown from a summer resort town in the 1800s to one of Chicago's largest and most diverse neighborhoods. Home to several distinct areas including Wrigleyville and Boystown, the neighborhood offers a perfect blend of residential charm and urban excitement. Its proximity to Lake Michigan and excellent transportation options has made it a consistently popular choice for residents."
       features={[
         "Wrigley Field",
+        "Lakefront Access",
+        "Diverse Community",
         "Belmont Harbor",
-        "Boystown entertainment district",
-        "Southport Corridor shopping",
-        "Lakefront recreation trail"
+        "Boystown entertainment district"
       ]}
       propertyTypes={[
         "Three-flats",
@@ -30,7 +30,8 @@ export default function Lakeview() {
         "Modern development oversight",
         "Retail space solutions"
       ]}
-      region="Chicago"
+      region="North Side"
+      hoaFees="$250-$700/month"
     />
   );
 }

@@ -7,14 +7,14 @@ export default function Wilmette() {
       title="Wilmette, Illinois"
       metaDescription="Expert property management services in Wilmette, an upscale North Shore suburb. Stellar Property Management offers professional property management for residential and commercial properties."
       heroImage="https://images.unsplash.com/photo-1543069931-db20cca57f84"
-      description="An upscale North Shore suburb known for excellent schools, beautiful homes, and the iconic Bahá'í Temple."
+      description="Prestigious North Shore community with excellent schools, beautiful lakefront, and upscale amenities. Wilmette offers elite suburban living with lake access."
       history="Wilmette was incorporated in 1872 and named after Antoine Ouilmette, a French-Canadian fur trader. The village developed as a railroad suburb in the late 19th century and experienced significant growth in the early 20th century. The completion of the Bahá'í House of Worship in 1953 added a distinctive architectural landmark to the community."
       features={[
+        "Prestigious North Shore",
+        "Excellent Schools",
+        "Lakefront Access",
         "Bahá'í House of Worship",
-        "Gillson Park and Beach",
-        "Plaza del Lago shopping center",
-        "Wilmette Harbor",
-        "Historic Village Center"
+        "Gillson Park and Beach"
       ]}
       propertyTypes={[
         "Luxury Lakefront Condos",
@@ -31,6 +31,7 @@ export default function Wilmette() {
         "High-end amenity management"
       ]}
       region="North Shore"
+      hoaFees="$400-$1,200/month"
     />
   );
 }

@@ -10,11 +10,11 @@ export default function EdisonPark() {
       description="Small suburban enclave with tree-lined streets, single-family homes, and tight-knit community. Edison Park offers small-town feel in the big city."
       history="Edison Park was originally an independent village founded in 1896 and named after inventor Thomas Edison. The community was annexed to Chicago in 1910 but has maintained its distinct small-town atmosphere. The neighborhood has historically been home to many city workers, particularly police officers and firefighters, contributing to its strong community bonds and civic pride."
       features={[
+        "Suburban Enclave",
+        "Tree-lined Streets",
+        "Tight-knit Community",
         "Edison Park Fest annual celebration",
-        "Monument Park",
-        "Restaurant row on Northwest Highway",
-        "Edison Park Field House",
-        "Brooks Park"
+        "Restaurant row on Northwest Highway"
       ]}
       propertyTypes={[
         "Single-family Condos",
@@ -30,7 +30,8 @@ export default function EdisonPark() {
         "Property value enhancement strategies",
         "Community-focused management"
       ]}
-      region="Chicago"
+      region="Far North Side"
+      hoaFees="$200-$500/month"
     />
   );
 }

@@ -10,11 +10,11 @@ export default function NorthCenter() {
       description="Family-friendly neighborhood with tree-lined streets, excellent schools, and strong community spirit. North Center offers suburban feel with urban convenience."
       history="North Center developed in the late 19th and early 20th centuries as a working-class neighborhood with strong German and Swedish influences. The area grew around the intersection of Lincoln, Damen, and Irving Park Road, which remains its commercial heart. Over the decades, the neighborhood has evolved into a family-oriented community while preserving its historic character and small-town feel within the city."
       features={[
+        "Family-Friendly",
+        "Tree-lined Streets",
+        "Excellent Schools",
         "Welles Park",
-        "North Center Town Square",
-        "Lane Tech College Prep High School",
-        "Ribfest Chicago annual festival",
-        "Chicago Brewing District"
+        "North Center Town Square"
       ]}
       propertyTypes={[
         "Family Condos",
@@ -30,7 +30,8 @@ export default function NorthCenter() {
         "New development oversight",
         "Commercial property solutions"
       ]}
-      region="Chicago"
+      region="North Side"
+      hoaFees="$250-$600/month"
     />
   );
 }

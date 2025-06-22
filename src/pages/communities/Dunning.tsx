@@ -10,11 +10,11 @@ export default function Dunning() {
       description="Quiet residential neighborhood with suburban feel, affordable housing, and strong community spirit. Dunning offers peaceful living with city convenience."
       history="Dunning was named after Andrew Dunning, who purchased land in the area in the 1850s. The neighborhood remained largely undeveloped until after World War II, when it experienced significant growth as part of Chicago's expansion. Originally home to several institutions including a state hospital, the area has transformed into a primarily residential community with a suburban character that distinguishes it from more urban parts of Chicago."
       features={[
+        "Suburban Feel",
+        "Quiet Residential",
+        "Affordable Housing",
         "Dunning Square shopping center",
-        "Portage Park (nearby)",
-        "Wright College campus",
-        "Quiet residential streets",
-        "Merrimac Park"
+        "Wright College campus"
       ]}
       propertyTypes={[
         "Suburban-style Condos",
@@ -30,7 +30,8 @@ export default function Dunning() {
         "Common area maintenance",
         "Residential property management"
       ]}
-      region="Chicago"
+      region="Northwest Side"
+      hoaFees="$150-$450/month"
     />
   );
 }

@@ -10,11 +10,11 @@ export default function Schaumburg() {
       description="Major suburban center with business districts, shopping centers, and diverse housing options. Schaumburg offers comprehensive suburban living with urban amenities."
       history="Schaumburg remained primarily agricultural until the 1950s when developers began transforming farmland into residential subdivisions. The opening of Woodfield Mall in 1971, then the largest mall in America, established Schaumburg as a major commercial center. Today, it's known for its robust retail presence, corporate offices, and diverse housing options."
       features={[
+        "Business Center",
+        "Shopping Districts",
+        "Diverse Housing",
         "Woodfield Mall",
-        "Schaumburg Convention Center",
-        "Prairie Center for the Arts",
-        "Busse Woods Forest Preserve",
-        "LEGOLAND Discovery Center"
+        "Schaumburg Convention Center"
       ]}
       propertyTypes={[
         "Business Condos",
@@ -31,6 +31,7 @@ export default function Schaumburg() {
         "Amenity-rich community management"
       ]}
       region="Northwest Suburbs"
+      hoaFees="$300-$800/month"
     />
   );
 }

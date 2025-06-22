@@ -10,11 +10,11 @@ export default function LincolnSquare() {
       description="Charming German-heritage neighborhood with tree-lined streets, family-friendly atmosphere, and strong community spirit. Lincoln Square offers European charm in Chicago."
       history="Lincoln Square was originally farmland before being annexed to Chicago in 1889. The area's German heritage dates back to the early 20th century when many German immigrants settled here. The neighborhood has maintained its European charm while evolving into one of Chicago's most desirable residential areas."
       features={[
+        "German Heritage",
+        "Family-Friendly",
+        "Tree-lined Streets",
         "Historic Lincoln Square",
-        "Old Town School of Folk Music",
-        "Welles Park",
-        "Independent shops and restaurants",
-        "DANK Haus German Cultural Center"
+        "Old Town School of Folk Music"
       ]}
       propertyTypes={[
         "Family Condos",
@@ -30,7 +30,8 @@ export default function LincolnSquare() {
         "Multi-unit building operations",
         "New development oversight"
       ]}
-      region="Chicago"
+      region="Far North Side"
+      hoaFees="$200-$500/month"
     />
   );
 }

@@ -10,11 +10,11 @@ export default function ArlingtonHeights() {
       description="Premier northwest suburb known for excellent schools, beautiful downtown area, and high quality of life. Arlington Heights offers upscale suburban living with strong community amenities."
       history="Arlington Heights began as a small farming community in the 1800s before being incorporated in 1887. The arrival of the railroad and later Arlington Park Racetrack in 1927 spurred significant growth. Following World War II, the village experienced a housing boom that transformed it into one of Chicago's largest and most prosperous suburbs."
       features={[
+        "Premier Suburb",
+        "Excellent Schools",
+        "Downtown District",
         "Arlington Park Racetrack site",
-        "Vibrant downtown district",
-        "Arlington Heights Memorial Library",
-        "Lake Arlington",
-        "Extensive park system"
+        "Arlington Heights Memorial Library"
       ]}
       propertyTypes={[
         "Upscale Condos",
@@ -31,6 +31,7 @@ export default function ArlingtonHeights() {
         "Community amenity management"
       ]}
       region="Northwest Suburbs"
+      hoaFees="$300-$900/month"
     />
   );
 }

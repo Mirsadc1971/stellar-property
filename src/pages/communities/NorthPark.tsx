@@ -10,11 +10,11 @@ export default function NorthPark() {
       description="Diverse residential neighborhood with strong Korean community, excellent schools, and family-oriented atmosphere. North Park offers multicultural suburban feel."
       history="North Park developed in the early 20th century as transportation improved access to this once-rural area. The neighborhood has welcomed various immigrant groups throughout its history, with a particularly strong Korean community establishing itself in recent decades. The presence of North Park University and the North Park Village Nature Center has contributed to the area's community-oriented character."
       features={[
+        "Korean Community",
+        "Excellent Schools",
+        "Family-Oriented",
         "North Park University campus",
-        "North Park Village Nature Center",
-        "Peterson Park",
-        "Korean commercial district",
-        "LaBagh Woods Forest Preserve"
+        "North Park Village Nature Center"
       ]}
       propertyTypes={[
         "Family Condos",
@@ -30,7 +30,8 @@ export default function NorthPark() {
         "Single-family home association management",
         "Multi-unit building operations"
       ]}
-      region="Chicago"
+      region="Far North Side"
+      hoaFees="$180-$480/month"
     />
   );
 }

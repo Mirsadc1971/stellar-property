@@ -10,11 +10,11 @@ export default function RiverNorth() {
       description="Upscale neighborhood known for its vibrant nightlife, art galleries, and luxury high-rise living. River North combines urban sophistication with convenient downtown access."
       history="River North, once an industrial area, transformed in the 1970s into a thriving arts and entertainment district. Home to the largest concentration of art galleries outside of Manhattan, the neighborhood has become synonymous with urban sophistication. Its proximity to the Chicago Loop and its mix of historic warehouses converted into lofts and modern high-rises make it a unique and desirable location."
       features={[
+        "Art Gallery District",
+        "Nightlife Hub",
+        "Luxury Living",
         "Gallery district",
-        "Merchandise Mart",
-        "Chicago Riverwalk",
-        "Trendy dining scene",
-        "Nightlife destinations"
+        "Chicago Riverwalk"
       ]}
       propertyTypes={[
         "Luxury High-rises",
@@ -30,7 +30,8 @@ export default function RiverNorth() {
         "Entertainment district management",
         "Commercial property solutions"
       ]}
-      region="Chicago"
+      region="Central/Downtown"
+      hoaFees="$500-$1,500/month"
     />
   );
 }
