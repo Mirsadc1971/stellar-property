@@ -61,16 +61,60 @@ const routes = [
     component: lazy(() => import('@/pages/communities/Edgewater')),
   },
   {
+    path: '/communities/uptown',
+    component: lazy(() => import('@/pages/communities/Uptown')),
+  },
+  {
+    path: '/communities/lincoln-square',
+    component: lazy(() => import('@/pages/communities/LincolnSquare')),
+  },
+  {
+    path: '/communities/lincoln-park',
+    component: lazy(() => import('@/pages/communities/LincolnPark')),
+  },
+  {
+    path: '/communities/lakeview',
+    component: lazy(() => import('@/pages/communities/Lakeview')),
+  },
+  {
+    path: '/communities/the-loop',
+    component: lazy(() => import('@/pages/communities/TheLoop')),
+  },
+  {
+    path: '/communities/river-north',
+    component: lazy(() => import('@/pages/communities/RiverNorth')),
+  },
+  {
+    path: '/communities/gold-coast',
+    component: lazy(() => import('@/pages/communities/GoldCoast')),
+  },
+  {
     path: '/communities/evanston',
     component: lazy(() => import('@/pages/communities/Evanston')),
+  },
+  {
+    path: '/communities/wilmette',
+    component: lazy(() => import('@/pages/communities/Wilmette')),
+  },
+  {
+    path: '/communities/highland-park',
+    component: lazy(() => import('@/pages/communities/HighlandPark')),
+  },
+  {
+    path: '/communities/bannockburn',
+    component: lazy(() => import('@/pages/communities/Bannockburn')),
   },
   {
     path: '/communities/arlington-heights',
     component: lazy(() => import('@/pages/communities/ArlingtonHeights')),
   },
   {
-    path: '/communities/bannockburn',
-    component: lazy(() => import('@/pages/communities/Bannockburn')),
+    path: '/communities/schaumburg',
+    component: lazy(() => import('@/pages/communities/Schaumburg')),
+  },
+  {
+    path: '/communities/buffalo-grove',
+    component: lazy(() => import('@/pages/communities/BuffaloGrove')),
   },
   {
     path: '/service-areas',
