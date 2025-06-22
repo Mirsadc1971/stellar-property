@@ -39,6 +39,10 @@ const routes = [
     component: lazy(() => import('@/pages/ResidentInfo')),
   },
   {
+    path: '/properties',
+    component: lazy(() => import('@/pages/Properties')),
+  },
+  {
     path: '/service-areas',
     component: lazy(() => import('@/pages/service-areas/Chicago')),
     exact: true,
