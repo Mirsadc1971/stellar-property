@@ -381,6 +381,35 @@ export const communityData = [
       "Community association governance"
     ]
   },
+  {
+    name: "Bannockburn",
+    slug: "bannockburn",
+    region: "North Shore",
+    heroImage: "https://images.unsplash.com/photo-1543069931-db20cca57f84",
+    description: "An exclusive North Shore village known for its luxury estates, equestrian properties, and pristine natural setting.",
+    history: "Bannockburn was incorporated in 1929 as one of the North Shore's most exclusive communities. Named after the Scottish battlefield, the village was developed with large estate lots and strict zoning to preserve its rural character. The community has maintained its reputation as one of the most affluent suburbs in the Chicago area, with many properties featuring extensive grounds and equestrian facilities.",
+    features: [
+      "Trinity International University campus",
+      "Bannockburn Green shopping center",
+      "Extensive forest preserves and nature trails",
+      "Equestrian facilities and riding trails",
+      "Historic estate properties"
+    ],
+    propertyTypes: [
+      "Luxury estate homes",
+      "Equestrian properties",
+      "Custom-built residences",
+      "Historic mansions",
+      "Large-lot single-family homes"
+    ],
+    managementServices: [
+      "Luxury estate management",
+      "Equestrian property expertise",
+      "Large property maintenance",
+      "Historic home preservation",
+      "Exclusive community governance"
+    ]
+  },
   // Northwest Suburbs
   {
     name: "Arlington Heights",
