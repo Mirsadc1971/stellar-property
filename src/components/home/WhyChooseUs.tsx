@@ -1,4 +1,3 @@
-
 import { CircleCheck, Award, Shield, Clock, Building2, Briefcase, DollarSign } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -29,7 +28,7 @@ export default function WhyChooseUs() {
     {
       icon: Award,
       title: "Proven Track Record",
-      description: "Over 20 years managing Chicago properties with 95% client retention"
+      description: "Over 28 years managing Chicago properties with 95% client retention"
     },
     {
       icon: Briefcase,
