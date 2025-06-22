@@ -15,7 +15,10 @@ export default function CommunityPage() {
   
   // Check if there's a dedicated page for this community
   const hasDedicatedPage = [
-    'rogers-park', 'west-ridge', 'edgewater', 'evanston', 'arlington-heights'
+    'rogers-park', 'west-ridge', 'edgewater', 'uptown', 'lincoln-square',
+    'lincoln-park', 'lakeview', 'the-loop', 'river-north', 'gold-coast',
+    'streeterville', 'evanston', 'wilmette', 'highland-park', 'bannockburn',
+    'arlington-heights', 'schaumburg', 'buffalo-grove'
   ].includes(communitySlug || '');
   
   // If there's a dedicated page, redirect to it
