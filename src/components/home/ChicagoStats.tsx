@@ -7,7 +7,7 @@ export default function ChicagoStats() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
             <Building className="h-10 w-10 mx-auto mb-3" />
-            <div className="text-2xl font-bold">50</div>
+            <div className="text-2xl font-bold">50+</div>
             <div className="text-sm">Chicago Properties</div>
           </div>
           <div>
@@ -17,12 +17,12 @@ export default function ChicagoStats() {
           </div>
           <div>
             <Shield className="h-10 w-10 mx-auto mb-3" />
-            <div className="text-2xl font-bold">17</div>
-            <div className="text-sm">Chicago Neighborhoods</div>
+            <div className="text-2xl font-bold">100%</div>
+            <div className="text-sm">Code Compliant</div>
           </div>
           <div>
             <Users className="h-10 w-10 mx-auto mb-3" />
-            <div className="text-2xl font-bold">28</div>
+            <div className="text-2xl font-bold">17+</div>
             <div className="text-sm">Years Downtown</div>
           </div>
         </div>
