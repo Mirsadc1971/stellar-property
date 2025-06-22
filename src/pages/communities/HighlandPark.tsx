@@ -17,11 +17,11 @@ export default function HighlandPark() {
         "Historic landmark districts"
       ]}
       propertyTypes={[
-        "Luxury lakefront estates",
+        "Cultural District Condos",
+        "Vibrant Properties",
         "Mid-century modern homes",
         "Ravine properties",
-        "Downtown condominiums",
-        "New construction developments"
+        "Downtown condominiums"
       ]}
       managementServices={[
         "Luxury estate management",

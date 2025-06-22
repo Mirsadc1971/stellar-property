@@ -7,7 +7,7 @@ export default function GoldCoast() {
       title="Gold Coast, Chicago"
       metaDescription="Expert property management services in Gold Coast, Chicago's prestigious lakefront neighborhood. Stellar Property Management offers professional property management for residential and commercial properties in this historic area."
       heroImage="https://images.unsplash.com/photo-1581373449483-44867d6afee4"
-      description="An affluent historic district known for luxury high-rises, historic mansions, and upscale shopping along Oak Street."
+      description="Chicago's most prestigious neighborhood, featuring historic mansions, luxury high-rises, and upscale shopping along the Magnificent Mile. The Gold Coast epitomizes Chicago elegance."
       history="The Gold Coast emerged as Chicago's most exclusive neighborhood following the Great Chicago Fire of 1871. Wealthy Chicagoans built ornate mansions along Lake Shore Drive and the surrounding streets, establishing it as the city's premier residential district. Today, the neighborhood blends historic charm with modern luxury, featuring landmark buildings, designer boutiques, and renowned restaurants."
       features={[
         "Historic Astor Street District",
@@ -17,8 +17,8 @@ export default function GoldCoast() {
         "Prestigious residential addresses"
       ]}
       propertyTypes={[
-        "Historic mansions",
-        "Luxury high-rise condominiums",
+        "Historic Mansions",
+        "Luxury High-rises",
         "Vintage co-op buildings",
         "Boutique condo buildings",
         "Mixed-use properties"

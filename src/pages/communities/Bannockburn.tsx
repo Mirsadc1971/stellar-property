@@ -7,7 +7,7 @@ export default function Bannockburn() {
       title="Bannockburn, Illinois"
       metaDescription="Expert property management services in Bannockburn, an exclusive North Shore village. Stellar Property Management offers professional property management for luxury estates and residential properties."
       heroImage="https://images.unsplash.com/photo-1543069931-db20cca57f84"
-      description="An exclusive North Shore village known for its luxury estates, equestrian properties, and pristine natural setting."
+      description="Small exclusive village with luxury estates, pristine character, and ultimate privacy. Bannockburn offers the most exclusive North Shore living."
       history="Bannockburn was incorporated in 1929 as one of the North Shore's most exclusive communities. Named after the Scottish battlefield, the village was developed with large estate lots and strict zoning to preserve its rural character. The community has maintained its reputation as one of the most affluent suburbs in the Chicago area, with many properties featuring extensive grounds and equestrian facilities."
       features={[
         "Trinity International University campus",
@@ -17,8 +17,8 @@ export default function Bannockburn() {
         "Historic estate properties"
       ]}
       propertyTypes={[
-        "Luxury estate homes",
-        "Equestrian properties",
+        "Luxury Estates",
+        "Exclusive Condos",
         "Custom-built residences",
         "Historic mansions",
         "Large-lot single-family homes"

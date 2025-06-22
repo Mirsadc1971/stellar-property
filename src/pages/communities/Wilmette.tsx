@@ -17,8 +17,8 @@ export default function Wilmette() {
         "Historic Village Center"
       ]}
       propertyTypes={[
-        "Stately single-family homes",
-        "Luxury condominiums",
+        "Luxury Lakefront Condos",
+        "Prestigious Buildings",
         "Historic properties",
         "Lakefront estates",
         "New construction developments"

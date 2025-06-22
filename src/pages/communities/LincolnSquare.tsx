@@ -7,7 +7,7 @@ export default function LincolnSquare() {
       title="Lincoln Square, Chicago"
       metaDescription="Expert property management services in Lincoln Square, Chicago's charming neighborhood with German heritage. Stellar Property Management offers professional property management for residential and commercial properties."
       heroImage="https://images.unsplash.com/photo-1582630465361-eaa2aacd5f86"
-      description="A charming neighborhood with German heritage, independent businesses, and family-friendly atmosphere."
+      description="Charming German-heritage neighborhood with tree-lined streets, family-friendly atmosphere, and strong community spirit. Lincoln Square offers European charm in Chicago."
       history="Lincoln Square was originally farmland before being annexed to Chicago in 1889. The area's German heritage dates back to the early 20th century when many German immigrants settled here. The neighborhood has maintained its European charm while evolving into one of Chicago's most desirable residential areas."
       features={[
         "Historic Lincoln Square",
@@ -17,10 +17,10 @@ export default function LincolnSquare() {
         "DANK Haus German Cultural Center"
       ]}
       propertyTypes={[
-        "Single-family homes",
+        "Family Condos",
+        "Historic Buildings",
         "Two-flat and three-flat buildings",
         "Courtyard apartments",
-        "New construction condominiums",
         "Mixed-use properties"
       ]}
       managementServices={[

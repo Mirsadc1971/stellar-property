@@ -6,7 +6,7 @@ export const communityData = [
     slug: "rogers-park",
     region: "Far North Side",
     heroImage: "https://images.unsplash.com/photo-1571167530149-c1105da4c2c7",
-    description: "Chicago's northernmost neighborhood, known for its cultural diversity, beaches, and artistic community.",
+    description: "Diverse lakefront neighborhood known for its multicultural community, affordable housing options, and proximity to Loyola University. Rogers Park offers urban living with a neighborhood feel.",
     history: "Rogers Park was incorporated as a village in 1878, named after Irish immigrant Philip Rogers who settled in the area in the 1830s. The neighborhood was annexed to Chicago in 1893 and saw rapid development with the expansion of transit lines. Throughout the 20th century, Rogers Park became one of Chicago's most diverse communities, welcoming immigrants from around the world.",
     features: [
       "Miles of public beaches along Lake Michigan",
@@ -35,7 +35,7 @@ export const communityData = [
     slug: "west-ridge",
     region: "Far North Side",
     heroImage: "https://images.unsplash.com/photo-1560472355-b33ff0c44a43",
-    description: "A diverse neighborhood with rich cultural heritage, known for its Indian and Orthodox Jewish communities.",
+    description: "Quiet residential neighborhood with strong Orthodox Jewish community, tree-lined streets, and family-friendly atmosphere. West Ridge offers suburban feel within the city.",
     history: "West Ridge, also known as West Rogers Park, developed in the early 20th century as a farming community before being annexed to Chicago. The area saw significant growth after World War II and has become known for its cultural diversity, with particularly strong Indian, Pakistani, Assyrian, and Orthodox Jewish communities.",
     features: [
       "Devon Avenue international marketplace",
@@ -64,7 +64,7 @@ export const communityData = [
     slug: "edgewater",
     region: "Far North Side",
     heroImage: "https://images.unsplash.com/photo-1543069931-db20cca57f84",
-    description: "A lakefront community known for its beaches, historic mansions, and diverse population.",
+    description: "Historic lakefront neighborhood with beautiful vintage buildings, diverse community, and stunning lake views. Edgewater combines historic charm with modern amenities.",
     history: "Edgewater was originally developed in the late 19th century as a summer retreat for Chicago's elite, featuring luxurious hotels and mansions along the lakefront. The extension of Lake Shore Drive and the elevated train in the early 20th century transformed it into a residential neighborhood. Over decades, the area evolved from an exclusive enclave to a diverse community welcoming immigrants from around the world.",
     features: [
       "Kathy Osterman Beach",
@@ -93,7 +93,7 @@ export const communityData = [
     slug: "uptown",
     region: "Far North Side",
     heroImage: "https://images.unsplash.com/photo-1582630465361-eaa2aacd5f86",
-    description: "A diverse neighborhood known for historic entertainment venues, lakefront recreation, and multicultural dining.",
+    description: "Historic entertainment district experiencing renaissance with new development, diverse community, and rich cultural heritage. Uptown offers urban excitement with neighborhood character.",
     history: "Uptown flourished in the early 20th century as a premier entertainment district, home to elaborate movie palaces and ballrooms that attracted visitors from across Chicago. During the Jazz Age, venues like the Green Mill became legendary. Following World War II, the neighborhood welcomed diverse immigrant communities, establishing its identity as one of Chicago's most multicultural areas.",
     features: [
       "Aragon Ballroom",
@@ -122,7 +122,7 @@ export const communityData = [
     slug: "lincoln-square",
     region: "Far North Side",
     heroImage: "https://images.unsplash.com/photo-1582630465361-eaa2aacd5f86",
-    description: "A charming neighborhood with German heritage, independent businesses, and family-friendly atmosphere.",
+    description: "Charming German-heritage neighborhood with tree-lined streets, family-friendly atmosphere, and strong community spirit. Lincoln Square offers European charm in Chicago.",
     history: "Lincoln Square was originally farmland before being annexed to Chicago in 1889. The area's German heritage dates back to the early 20th century when many German immigrants settled here. The neighborhood has maintained its European charm while evolving into one of Chicago's most desirable residential areas.",
     features: [
       "Historic Lincoln Square",
@@ -144,6 +144,35 @@ export const communityData = [
       "Small business district expertise",
       "Multi-unit building operations",
       "New development oversight"
+    ]
+  },
+  {
+    name: "North Park",
+    slug: "north-park",
+    region: "Far North Side",
+    heroImage: "https://images.unsplash.com/photo-1582630465361-eaa2aacd5f86",
+    description: "Diverse residential neighborhood with strong Korean community, excellent schools, and family-oriented atmosphere. North Park offers multicultural suburban feel.",
+    history: "North Park developed in the early 20th century as transportation improved access to this once-rural area. The neighborhood has welcomed various immigrant groups throughout its history, with a particularly strong Korean community establishing itself in recent decades. The presence of North Park University and the North Park Village Nature Center has contributed to the area's community-oriented character.",
+    features: [
+      "North Park University campus",
+      "North Park Village Nature Center",
+      "Peterson Park",
+      "Korean commercial district",
+      "LaBagh Woods Forest Preserve"
+    ],
+    propertyTypes: [
+      "Single-family bungalows",
+      "Ranch-style homes",
+      "Two-flat buildings",
+      "Small apartment buildings",
+      "Mid-century residential developments"
+    ],
+    managementServices: [
+      "Family-oriented property management",
+      "Culturally diverse community expertise",
+      "University-adjacent property solutions",
+      "Single-family home association management",
+      "Multi-unit building operations"
     ]
   },
   // North Side

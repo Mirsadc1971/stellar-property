@@ -7,18 +7,18 @@ export default function Edgewater() {
       title="Edgewater, Chicago"
       metaDescription="Expert property management services in Edgewater, Chicago's lakefront neighborhood. Stellar Property Management offers professional property management for residential and commercial properties."
       heroImage="https://images.unsplash.com/photo-1543069931-db20cca57f84"
-      description="A lakefront community known for its beaches, historic mansions, and diverse population."
+      description="Historic lakefront neighborhood with beautiful vintage buildings, diverse community, and stunning lake views. Edgewater combines historic charm with modern amenities."
       history="Edgewater was originally developed in the late 19th century as a summer retreat for Chicago's elite, featuring luxurious hotels and mansions along the lakefront. The extension of Lake Shore Drive and the elevated train in the early 20th century transformed it into a residential neighborhood. Over decades, the area evolved from an exclusive enclave to a diverse community welcoming immigrants from around the world."
       features={[
         "Kathy Osterman Beach",
         "Bryn Mawr Historic District",
-        "Andersonville sub-neighborhood",
-        "Diverse dining and shopping options",
-        "Historic Edgewater Beach Apartments"
+        "Berger Park Cultural Center",
+        "Edgewater Beach Apartments",
+        "Raven Theatre"
       ]}
       propertyTypes={[
-        "Vintage high-rise buildings",
-        "Courtyard apartments",
+        "Historic High-rises",
+        "Vintage Condos",
         "Converted mansions",
         "Modern condominiums",
         "Mixed-use properties"

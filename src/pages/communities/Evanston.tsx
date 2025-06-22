@@ -17,8 +17,8 @@ export default function Evanston() {
         "Grosse Point Lighthouse"
       ]}
       propertyTypes={[
-        "Historic single-family homes",
-        "Lakefront high-rise condominiums",
+        "Lakefront Condos",
+        "Historic Buildings",
         "University-adjacent apartments",
         "Victorian and Prairie-style houses",
         "Mixed-use developments"
