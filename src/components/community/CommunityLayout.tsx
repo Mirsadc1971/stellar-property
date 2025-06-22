@@ -95,16 +95,11 @@ export default function CommunityLayout({
       {/* Hero Section */}
       <section className="relative h-96 md:h-[500px] overflow-hidden">
         <div className="absolute inset-0">
-          <OptimizedImage
+          <img
             src={heroImage}
             alt={`${title} community showing beautiful architecture and areas managed by Stellar Property Management`}
             className="w-full h-full object-cover"
-            priority={true}
             loading="eager"
-            width={1920}
-            height={500}
-            aspectRatio="16/9"
-            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         </div>
