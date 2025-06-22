@@ -99,14 +99,14 @@ export default function Properties() {
 
           {/* Chicago Neighborhoods */}
           <div className="mb-16">
-            <h2 className="text-2xl font-bold mb-8 flex items-center">
+            <h2 className="text-2xl font-bold mb-8 flex items-center" id="chicago">
               <Building className="mr-2 h-6 w-6 text-darkBlue" />
               Chicago Neighborhoods
             </h2>
 
             {/* Far North Side */}
             <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-4 text-darkBlue border-b pb-2">
+              <h3 className="text-xl font-semibold mb-4 text-darkBlue border-b pb-2" id="far-north-side">
                 {communities.farNorthSide.name}
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -125,7 +125,7 @@ export default function Properties() {
 
             {/* North Side */}
             <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-4 text-darkBlue border-b pb-2">
+              <h3 className="text-xl font-semibold mb-4 text-darkBlue border-b pb-2" id="north-side">
                 {communities.northSide.name}
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -144,7 +144,7 @@ export default function Properties() {
 
             {/* Northwest Side */}
             <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-4 text-darkBlue border-b pb-2">
+              <h3 className="text-xl font-semibold mb-4 text-darkBlue border-b pb-2" id="northwest-side">
                 {communities.northwestSide.name}
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -163,7 +163,7 @@ export default function Properties() {
 
             {/* Central / Downtown Area */}
             <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-4 text-darkBlue border-b pb-2">
+              <h3 className="text-xl font-semibold mb-4 text-darkBlue border-b pb-2" id="central-downtown">
                 {communities.centralDowntown.name}
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -183,14 +183,14 @@ export default function Properties() {
 
           {/* Suburbs */}
           <div>
-            <h2 className="text-2xl font-bold mb-8 flex items-center">
+            <h2 className="text-2xl font-bold mb-8 flex items-center" id="suburbs">
               <Building className="mr-2 h-6 w-6 text-darkBlue" />
               North & Northwest Suburbs
             </h2>
 
             {/* Core Northwest Suburbs */}
             <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-4 text-darkBlue border-b pb-2">
+              <h3 className="text-xl font-semibold mb-4 text-darkBlue border-b pb-2" id="core-northwest-suburbs">
                 {communities.coreNorthwestSuburbs.name}
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -209,7 +209,7 @@ export default function Properties() {
 
             {/* Extended Northwest Suburbs */}
             <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-4 text-darkBlue border-b pb-2">
+              <h3 className="text-xl font-semibold mb-4 text-darkBlue border-b pb-2" id="extended-northwest-suburbs">
                 {communities.extendedNorthwestSuburbs.name}
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -228,7 +228,7 @@ export default function Properties() {
 
             {/* North Shore Suburbs */}
             <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-4 text-darkBlue border-b pb-2">
+              <h3 className="text-xl font-semibold mb-4 text-darkBlue border-b pb-2" id="north-shore-suburbs">
                 {communities.northShoreSuburbs.name}
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

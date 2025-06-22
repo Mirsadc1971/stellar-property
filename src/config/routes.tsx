@@ -39,6 +39,36 @@ const routes = [
     component: lazy(() => import('@/pages/ResidentInfo')),
   },
   {
+    path: '/properties',
+    component: lazy(() => import('@/pages/Properties')),
+  },
+  // Community pages
+  {
+    path: '/communities/:communitySlug',
+    component: lazy(() => import('@/pages/communities/CommunityPage')),
+  },
+  // Specific community pages
+  {
+    path: '/communities/rogers-park',
+    component: lazy(() => import('@/pages/communities/RogersPark')),
+  },
+  {
+    path: '/communities/west-ridge',
+    component: lazy(() => import('@/pages/communities/WestRidge')),
+  },
+  {
+    path: '/communities/edgewater',
+    component: lazy(() => import('@/pages/communities/Edgewater')),
+  },
+  {
+    path: '/communities/evanston',
+    component: lazy(() => import('@/pages/communities/Evanston')),
+  },
+  {
+    path: '/communities/arlington-heights',
+    component: lazy(() => import('@/pages/communities/ArlingtonHeights')),
+  },
+  {
     path: '/service-areas',
     component: lazy(() => import('@/pages/service-areas/Chicago')),
     exact: true,
@@ -140,14 +170,10 @@ const routes = [
     path: '/about',
     component: lazy(() => import('@/pages/About')),
   },
+  // Catch-all route for 404
   {
-    path: '/properties',
-    component: lazy(() => import('@/pages/Properties')),
-  },
-  // Community pages
-  {
-    path: '/communities/:communitySlug',
-    component: lazy(() => import('@/pages/communities/CommunityPage')),
+    path: '*',
+    component: lazy(() => import('@/pages/NotFound')),
   },
 ];
 
