@@ -89,6 +89,10 @@ const routes = [
     component: lazy(() => import('@/pages/communities/GoldCoast')),
   },
   {
+    path: '/communities/streeterville',
+    component: lazy(() => import('@/pages/neighborhoods/Streeterville')),
+  },
+  {
     path: '/communities/evanston',
     component: lazy(() => import('@/pages/communities/Evanston')),
   },
