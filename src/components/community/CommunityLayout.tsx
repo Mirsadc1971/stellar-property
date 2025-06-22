@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 interface CommunityLayoutProps {
   title: string;
   metaDescription: string;
-  heroImage: string;
+  heroImage?: string;
   description: string;
   history: string;
   features: string[];
@@ -59,10 +59,10 @@ export default function CommunityLayout({
 
   const relatedCommunities = getRelatedCommunities();
 
-  const communityFAQs = [
+  const neighborhoodFAQs = [
     {
       question: `What makes ${communityName} property management unique?`,
-      answer: `${communityName} presents specific property management challenges that require local expertise. Our team understands the area's building types, local regulations, and community dynamics. We work with <a href="/services" class="text-darkBlue hover:underline">comprehensive management services</a> tailored to ${communityName}'s unique characteristics, ensuring your property maintains its value and community standards.`
+      answer: `${communityName} presents specific property management challenges that require local expertise. Our team understands the neighborhood's building types, local regulations, and community dynamics. We work with <a href="/services" class="text-darkBlue hover:underline">comprehensive management services</a> tailored to ${communityName}'s unique characteristics, ensuring your property maintains its value and community standards.`
     },
     {
       question: `How do you handle maintenance for ${communityName} properties?`,
@@ -95,8 +95,8 @@ export default function CommunityLayout({
       <section className="relative h-96 md:h-[500px] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/townhomes copy.jpg"
-            alt={`${title} community showing beautiful architecture and areas managed by Stellar Property Management`}
+            src="/townhomes.jpg"
+            alt="Stellar Property Management"
             className="w-full h-full object-cover"
             loading="eager"
           />
@@ -166,7 +166,7 @@ export default function CommunityLayout({
                 <Clock className="h-8 w-8 text-darkBlue mb-4" />
                 <h3 className="text-xl font-semibold mb-3">24/7 Support</h3>
                 <p className="text-gray-600">
-                  Round-the-clock emergency response with local vendor networks throughout {region}.
+                  Round-the-clock emergency response with local vendor networks throughout Chicago.
                 </p>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-sm">
@@ -229,10 +229,10 @@ export default function CommunityLayout({
         </div>
       </section>
 
-      {/* Related Communities */}
+      {/* Related Areas */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Explore More Communities</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Explore More Chicago Neighborhoods</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {relatedCommunities.map((community, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
@@ -260,7 +260,7 @@ export default function CommunityLayout({
       {/* Community-Specific FAQ */}
       <LocalFAQSection 
         title={`${communityName} Property Management FAQ`}
-        faqs={communityFAQs}
+        faqs={neighborhoodFAQs}
         className="bg-white"
       />
 
