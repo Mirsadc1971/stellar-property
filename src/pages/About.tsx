@@ -1,4 +1,3 @@
-
 import MainLayout from "@/components/layout/MainLayout";
 import SEOHead from "@/components/seo/SEOHead";
 import SchemaMarkup from "@/components/seo/SchemaMarkup";
@@ -13,8 +12,8 @@ export default function About() {
     "mainEntity": {
       "@type": "LocalBusiness",
       "name": "Stellar Property Management",
-      "description": "Chicago's trusted property management company specializing in HOA and condo association management with over a decade of experience.",
-      "foundingDate": "2010",
+      "description": "Chicago's trusted property management company specializing in HOA and condo association management with over 28 years of experience.",
+      "foundingDate": "2007",
       "numberOfEmployees": "15-25",
       "areaServed": ["Chicago", "North Suburbs"],
       "slogan": "Excellence in Property Management"
@@ -25,7 +24,7 @@ export default function About() {
     <MainLayout>
       <SEOHead
         title="About Stellar Property Management - Chicago's Trusted HOA & Condo Management Company"
-        description="Learn about Stellar Property Management's decade of experience serving Chicago HOAs and condo associations. Professional, reliable property management services with local expertise."
+        description="Learn about Stellar Property Management's 28 years of experience serving Chicago HOAs and condo associations. Professional, reliable property management services with local expertise."
         canonical="/about"
         keywords="about Stellar Property Management, Chicago property management company, HOA management experience, local property management team"
         structuredData={aboutStructuredData}
@@ -38,7 +37,7 @@ export default function About() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">About Stellar Property Management</h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Chicago's trusted property management partner with over a decade of experience serving HOAs and condo associations
+            Chicago's trusted property management partner with 28 years of experience serving HOAs and condo associations
           </p>
         </div>
       </section>
@@ -50,9 +49,9 @@ export default function About() {
             <div>
               <h2 className="font-heading text-3xl font-bold mb-6">Our Story</h2>
               <p className="text-lg text-gray-600 mb-6">
-                Founded in 2010, Stellar Property Management has been serving Chicago's diverse neighborhoods 
-                and North Suburbs with comprehensive property management solutions. Our team understands the 
-                unique challenges of managing <Link to="/service-areas/chicago" className="text-darkBlue hover:underline">Chicago properties</Link> and 
+                Founded in 2007, Stellar Property Management has been serving Chicago's diverse neighborhoods 
+                and North Suburbs with comprehensive property management solutions. Our team brings 28 years 
+                of experience understanding the unique challenges of managing <Link to="/service-areas/chicago" className="text-darkBlue hover:underline">Chicago properties</Link> and 
                 works tirelessly to exceed expectations.
               </p>
               <p className="text-lg text-gray-600 mb-6">
@@ -66,15 +65,10 @@ export default function About() {
               </p>
             </div>
             <div>
-              <OptimizedImage
-                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43"
-                alt="Stellar Property Management team meeting in Chicago office discussing HOA management strategies"
+              <img
+                src="/townhomes.jpg"
+                alt="Stellar Property Management"
                 className="rounded-lg shadow-lg w-full"
-                width={600}
-                height={400}
-                aspectRatio="600/400"
-                loading="lazy"
-                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </div>
@@ -97,7 +91,7 @@ export default function About() {
               <div className="bg-darkBlue text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <Award className="h-8 w-8" />
               </div>
-              <h3 className="text-2xl font-bold text-darkBlue mb-2">13+</h3>
+              <h3 className="text-2xl font-bold text-darkBlue mb-2">28+</h3>
               <p className="text-gray-600">Years Experience</p>
             </div>
             <div className="text-center">
