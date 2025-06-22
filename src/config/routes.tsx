@@ -1,4 +1,3 @@
-
 import { lazy } from 'react';
 
 const routes = [
@@ -140,6 +139,15 @@ const routes = [
   {
     path: '/about',
     component: lazy(() => import('@/pages/About')),
+  },
+  {
+    path: '/properties',
+    component: lazy(() => import('@/pages/Properties')),
+  },
+  // Community pages
+  {
+    path: '/communities/:communitySlug',
+    component: lazy(() => import('@/pages/communities/CommunityPage')),
   },
 ];
 
