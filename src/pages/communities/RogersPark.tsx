@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import CommunityLayout from '@/components/community/CommunityLayout';
 
 export default function RogersPark() {
