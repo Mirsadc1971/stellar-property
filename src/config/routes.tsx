@@ -39,10 +39,6 @@ const routes = [
     component: lazy(() => import('@/pages/ResidentInfo')),
   },
   {
-    path: '/properties',
-    component: lazy(() => import('@/pages/Properties')),
-  },
-  {
     path: '/service-areas',
     component: lazy(() => import('@/pages/service-areas/Chicago')),
     exact: true,
@@ -144,93 +140,62 @@ const routes = [
     path: '/about',
     component: lazy(() => import('@/pages/About')),
   },
-  // Add routes for communities pages
+  // Add properties route
   {
-    path: '/communities',
-    component: lazy(() => import('@/pages/neighborhoods/TheLoop')),
-    exact: true,
+    path: '/properties',
+    component: lazy(() => import('@/pages/Properties')),
   },
+  // Add construction request route
   {
-    path: '/communities/the-loop',
-    component: lazy(() => import('@/pages/neighborhoods/TheLoop')),
+    path: '/construction-request',
+    component: lazy(() => import('@/pages/ConstructionRequest')),
   },
+  // Add repair request route
   {
-    path: '/communities/river-north',
-    component: lazy(() => import('@/pages/neighborhoods/RiverNorth')),
+    path: '/repair-request',
+    component: lazy(() => import('@/pages/RepairRequestPage')),
   },
+  // Add insurance proof route
   {
-    path: '/communities/gold-coast',
-    component: lazy(() => import('@/pages/neighborhoods/GoldCoast')),
+    path: '/insurance-proof',
+    component: lazy(() => import('@/pages/InsuranceProofPage')),
   },
+  // Add move permit route
   {
-    path: '/communities/lincoln-park',
-    component: lazy(() => import('@/pages/neighborhoods/LincolnPark')),
+    path: '/move-permit',
+    component: lazy(() => import('@/pages/MovePermitPage')),
   },
+  // Add notice of sale route
   {
-    path: '/communities/lakeview',
-    component: lazy(() => import('@/pages/neighborhoods/Lakeview')),
+    path: '/notice-of-sale',
+    component: lazy(() => import('@/pages/NoticePage')),
   },
+  // Add electronic consent route
   {
-    path: '/communities/wicker-park',
-    component: lazy(() => import('@/pages/neighborhoods/WickerPark')),
+    path: '/electronic-consent',
+    component: lazy(() => import('@/pages/ElectronicConsentPage')),
   },
+  // Add report violation route
   {
-    path: '/communities/bucktown',
-    component: lazy(() => import('@/pages/neighborhoods/Bucktown')),
+    path: '/report-violation',
+    component: lazy(() => import('@/pages/ReportViolation')),
   },
+  // Add nominations route
   {
-    path: '/communities/old-town',
-    component: lazy(() => import('@/pages/neighborhoods/OldTown')),
+    path: '/services/nominations',
+    component: lazy(() => import('@/pages/Nominations')),
   },
+  // Add resident info route
   {
-    path: '/communities/west-loop',
-    component: lazy(() => import('@/pages/neighborhoods/WestLoop')),
+    path: '/services/resident-info',
+    component: lazy(() => import('@/pages/ResidentInfo')),
   },
+  // Add blog post route
   {
-    path: '/communities/south-loop',
-    component: lazy(() => import('@/pages/neighborhoods/SouthLoop')),
+    path: '/blog/:id',
+    component: lazy(() => import('@/pages/BlogPost')),
   },
-  {
-    path: '/communities/streeterville',
-    component: lazy(() => import('@/pages/neighborhoods/Streeterville')),
-  },
-  {
-    path: '/communities/hyde-park',
-    component: lazy(() => import('@/pages/neighborhoods/HydePark')),
-  },
-  {
-    path: '/communities/uptown',
-    component: lazy(() => import('@/pages/neighborhoods/Uptown')),
-  },
-  {
-    path: '/communities/wrigleyville',
-    component: lazy(() => import('@/pages/neighborhoods/Wrigleyville')),
-  },
-  {
-    path: '/communities/rogers-park',
-    component: lazy(() => import('@/pages/neighborhoods/RogersPark')),
-  },
-  {
-    path: '/communities/edgewater',
-    component: lazy(() => import('@/pages/neighborhoods/Edgewater')),
-  },
-  {
-    path: '/communities/andersonville',
-    component: lazy(() => import('@/pages/neighborhoods/Andersonville')),
-  },
-  {
-    path: '/communities/ravenswood',
-    component: lazy(() => import('@/pages/neighborhoods/Ravenswood')),
-  },
-  {
-    path: '/communities/logan-square',
-    component: lazy(() => import('@/pages/neighborhoods/LoganSquare')),
-  },
-  {
-    path: '/communities/ukrainian-village',
-    component: lazy(() => import('@/pages/neighborhoods/UkrainianVillage')),
-  },
-  // Add a catch-all route for 404 pages
+  // Add catch-all route for 404
   {
     path: '*',
     component: lazy(() => import('@/pages/NotFound')),
