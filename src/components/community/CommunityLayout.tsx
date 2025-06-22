@@ -1,7 +1,6 @@
 import React from 'react';
 import MainLayout from "@/components/layout/MainLayout";
 import SEOHead from "@/components/seo/SEOHead";
-import { OptimizedImage } from "@/components/seo/OptimizedImage";
 import LocalFAQSection from "@/components/common/LocalFAQSection";
 import { Link } from "react-router-dom";
 import { Building, Users, MapPin, Clock, Star, ArrowRight } from "lucide-react";

@@ -1,6 +1,5 @@
 import { slugify } from '@/utils/slugify';
 
-// Define community data structure
 export interface Community {
   name: string;
   slug: string;
@@ -14,7 +13,66 @@ export interface Community {
   heroImage: string;
 }
 
-// Define community data
+// Base URL for Unsplash images
+const unsplashBaseUrl = "https://images.unsplash.com/";
+
+// Helper function to get a random image ID from a list
+const getRandomImage = (images: string[]): string => {
+  return images[Math.floor(Math.random() * images.length)];
+};
+
+// Collection of image IDs for different types of communities
+const cityImages = [
+  "photo-1487958449943-2429e8be8625",
+  "photo-1554797589-4e8b99f1d33c",
+  "photo-1581373449483-44867d6afee4",
+  "photo-1599676821464-3555978c0ff4",
+  "photo-1599578704297-c84a64957344"
+];
+
+const suburbanImages = [
+  "photo-1560472354-b33ff0c44a43",
+  "photo-1560472355-b33ff0c44a43",
+  "photo-1543069931-db20cca57f84",
+  "photo-1518495973542-4542c06a5843",
+  "photo-1578681994506-b8bdf7a35d0a"
+];
+
+const residentialImages = [
+  "photo-1594305577517-3075205a9493",
+  "photo-1594305577398-5f8dddba007b",
+  "photo-1582630465361-eaa2aacd5f86",
+  "photo-1584893884751-993c24fdab1e",
+  "photo-1590592080558-626ef88141de"
+];
+
+const downtownImages = [
+  "photo-1597626133663-53df9633b799",
+  "photo-1599609939591-044013333893",
+  "photo-1594262335218-18986eb4a2bd",
+  "photo-1599676821464-3555978c0ff4",
+  "photo-1449157291145-7efd050a4d0e"
+];
+
+// Helper function to get an appropriate image for a community based on its region
+const getCommunityImage = (region: string): string => {
+  let imageCollection;
+  
+  if (region === "Central/Downtown") {
+    imageCollection = downtownImages;
+  } else if (region === "North Shore" || region === "Northwest Suburbs") {
+    imageCollection = suburbanImages;
+  } else if (region === "Far North Side" || region === "North Side" || region === "Northwest Side") {
+    imageCollection = residentialImages;
+  } else {
+    imageCollection = cityImages;
+  }
+  
+  const imageId = getRandomImage(imageCollection);
+  return `${unsplashBaseUrl}${imageId}`;
+};
+
+// Generate community data
 export const communityData: Community[] = [
   // Far North Side
   {
