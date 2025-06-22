@@ -396,10 +396,40 @@ const communityHistories = {
     "Originally developed in the late 19th century as a streetcar suburb, this area has evolved into one of Chicago's most vibrant neighborhoods. Its proximity to Lake Michigan and excellent transportation options have made it consistently desirable. Over the decades, it has maintained a balance of residential charm and urban excitement that continues to attract diverse residents.",
     "This community began as a working-class neighborhood in the early 20th century before evolving into a trendy urban area in recent decades. Its historic buildings have been preserved and repurposed, maintaining the area's architectural character while accommodating modern uses. Today, it's known for its vibrant street life and diverse cultural offerings."
   ],
+  "Northwest Side": [
+    "Originally settled in the late 19th century, this area developed as a working-class neighborhood with strong ethnic communities. The extension of streetcar lines and later the elevated train brought significant residential development. Throughout the 20th century, the neighborhood welcomed diverse immigrant communities, creating a rich cultural tapestry that continues to define the area today.",
+    "This community began as a farming settlement before being annexed to Chicago in the late 19th century. The area saw significant development in the early 20th century with the arrival of the elevated train. Over decades, it has maintained its residential character while welcoming diverse populations that have contributed to its vibrant cultural identity.",
+    "Established in the early 20th century, this neighborhood grew rapidly as transportation expanded from downtown Chicago. The area features distinctive architecture from different eras, reflecting its development over time. Today, it maintains a balance of historic preservation and modern amenities that make it a desirable residential community."
+  ],
+  "West Side": [
+    "This area developed in the late 19th century as an industrial and residential neighborhood. The Great Chicago Fire of 1871 led to significant rebuilding efforts that shaped the area's character. Throughout the 20th century, the neighborhood has undergone various phases of development and revitalization, maintaining its role as an important part of Chicago's urban fabric.",
+    "Originally developed as a working-class neighborhood in the late 19th century, this area has a rich history of industrial development and community organizing. Over the decades, it has seen significant changes while maintaining strong neighborhood identity and cultural heritage that continues to define the community today.",
+    "This community began as part of Chicago's westward expansion in the late 19th century. The area developed with a mix of residential and industrial uses, creating a diverse urban environment. Today, ongoing revitalization efforts are bringing new investment while preserving the area's historic character and community spirit."
+  ],
   "Central/Downtown": [
     "As Chicago's historic core, this area has been at the center of the city's development since its founding. Following the Great Chicago Fire of 1871, it was rebuilt with innovative architecture that would define the modern skyscraper. Throughout the 20th century, it evolved from primarily commercial use to include significant residential development, creating a vibrant mixed-use district that defines urban living in Chicago.",
     "This neighborhood transformed from an industrial and warehouse district in the late 19th century to one of Chicago's most prestigious areas. Its proximity to the central business district made it attractive for upscale development, and over decades it has become known for luxury residences, high-end shopping, and fine dining that attract visitors and residents alike.",
     "Originally developed as a commercial and entertainment district in the late 19th century, this area has reinvented itself multiple times throughout Chicago's history. Recent decades have seen significant residential development, transforming former commercial buildings into desirable urban homes while maintaining the area's historic character and central role in Chicago's cultural life."
+  ],
+  "South Side": [
+    "This area developed in the late 19th century as part of Chicago's southward expansion. The neighborhood has a rich history of cultural institutions, including universities and museums, that have shaped its character. Throughout the 20th century, it has maintained its role as an important cultural and residential center while adapting to changing urban conditions.",
+    "Originally developed as a residential neighborhood in the late 19th century, this area became known for its beautiful architecture and strong community institutions. Over the decades, it has maintained its residential character while welcoming diverse populations that have contributed to its vibrant cultural identity and ongoing development.",
+    "This community began as part of Chicago's post-fire reconstruction in the late 19th century. The area developed with distinctive architecture and strong neighborhood institutions that continue to define its character. Today, ongoing revitalization efforts are bringing new investment while preserving the area's historic significance and community spirit."
+  ],
+  "Southwest Side": [
+    "Originally settled in the late 19th century, this area developed as a working-class neighborhood with strong ethnic communities. The extension of streetcar lines brought significant residential development. Throughout the 20th century, the neighborhood welcomed diverse immigrant communities, creating a rich cultural tapestry that continues to define the area today.",
+    "This community began as a farming settlement before being annexed to Chicago in the late 19th century. The area saw significant development in the early 20th century with improved transportation. Over decades, it has maintained its residential character while welcoming diverse populations that have contributed to its vibrant cultural identity.",
+    "Established in the early 20th century, this neighborhood grew as part of Chicago's expansion. The area features distinctive architecture from different eras, reflecting its development over time. Today, it maintains a balance of historic preservation and modern amenities that make it a desirable residential community."
+  ],
+  "Far Southwest Side": [
+    "Originally settled in the late 19th century, this area developed as a residential neighborhood with strong community institutions. The extension of transportation lines brought significant development. Throughout the 20th century, the neighborhood maintained its residential character while developing strong community organizations and local identity.",
+    "This community began as a farming settlement before being incorporated into Chicago. The area saw significant development in the early 20th century with improved transportation access. Over decades, it has maintained its suburban-like character while developing excellent schools and community services.",
+    "Established in the early 20th century, this neighborhood grew as families sought residential areas outside the city center. The area features beautiful homes and tree-lined streets that reflect its development as a desirable residential community. Today, it continues to attract families seeking quality neighborhoods with strong community spirit."
+  ],
+  "Far Southeast Side": [
+    "This area developed in the late 19th century with strong ties to Chicago's industrial development. The neighborhood has a rich history of working-class communities and industrial heritage that shaped its character. Throughout the 20th century, it has maintained its role as an important residential area while adapting to changing economic conditions.",
+    "Originally developed as an industrial and residential area in the late 19th century, this community has a strong history of neighborhood organizing and community pride. Over the decades, it has maintained its residential character while working to preserve its industrial heritage and develop new opportunities for residents.",
+    "This community began as part of Chicago's industrial expansion in the late 19th century. The area developed with a mix of residential and industrial uses, creating a unique urban environment. Today, ongoing efforts focus on revitalization while preserving the area's historic character and strong community identity."
   ],
   "North Shore": [
     "Established in the late 19th century as a railroad suburb, this community developed as an escape from urban Chicago for wealthy residents. The area's beautiful natural setting along Lake Michigan attracted prominent architects who designed impressive homes and public buildings. Throughout the 20th century, it maintained its reputation for excellent schools, beautiful homes, and strong community institutions.",
@@ -415,6 +445,16 @@ const communityHistories = {
     "Established in the late 19th century as a railroad suburb, this community has long been known for its architectural significance and progressive values. Historic preservation has maintained the area's distinctive character while allowing for appropriate development. Throughout its history, the community has been known for excellent schools, diverse housing, and strong civic engagement.",
     "This village developed in the early 20th century as improved transportation made suburban living more accessible. Its growth accelerated after World War II with significant residential development. Throughout its history, the community has maintained a balance of housing options, commercial vitality, and public amenities that create an excellent quality of life.",
     "Founded in the 19th century, this community grew significantly with the arrival of the railroad. Its historic downtown and residential neighborhoods reflect different eras of development, creating architectural diversity. The community has consistently invested in education, parks, and public services, making it one of Chicago's most desirable suburbs."
+  ],
+  "Southwest Suburbs": [
+    "This community remained primarily agricultural until the post-World War II era, when suburban development transformed the Chicago region. The construction of highways spurred rapid growth in the 1950s and 60s. Since then, it has evolved into a complete community with diverse housing, strong commercial districts, and excellent public services.",
+    "Originally settled in the 19th century, this area remained largely rural until the mid-20th century suburban boom. The development of shopping centers and residential subdivisions in the 1960s and 70s established it as a growing suburban community. Today, it balances residential neighborhoods with commercial development that serves the broader region.",
+    "This community began as a small farming settlement before experiencing growth during the post-World War II suburban expansion. Careful planning created residential neighborhoods while accommodating commercial development. Over decades, it has evolved into a complete community with diverse housing options, good schools, and strong public services."
+  ],
+  "South Suburbs": [
+    "Established in the late 19th century, this community developed with the expansion of railroad lines south of Chicago. The area attracted residents seeking suburban living while maintaining access to the city. Throughout the 20th century, it has maintained its residential character while developing strong community institutions and local identity.",
+    "This village developed in the early 20th century as improved transportation made suburban living more accessible. Its growth continued after World War II with significant residential development. Throughout its history, the community has maintained a balance of housing options and public amenities that create a good quality of life.",
+    "Founded in the 19th century, this community grew with the arrival of the railroad. Its residential neighborhoods reflect different eras of development, creating diversity in housing stock. The community has worked to maintain good schools, parks, and public services while adapting to changing regional conditions."
   ]
 };
 
@@ -852,11 +892,17 @@ const managementServices = {
 
 // Function to generate a random item from an array
 const getRandomItem = (array: string[]) => {
+  if (!array || array.length === 0) {
+    return "A vibrant community with excellent amenities and strong neighborhood character.";
+  }
   return array[Math.floor(Math.random() * array.length)];
 };
 
 // Function to get random items from an array without duplicates
 const getRandomItems = (array: string[], count: number) => {
+  if (!array || array.length === 0) {
+    return ["Excellent community amenities", "Strong neighborhood character", "Beautiful residential areas"];
+  }
   const shuffled = [...array].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, count);
 };
@@ -869,17 +915,17 @@ const generateSlug = (name: string) => {
 // Function to generate community data for a specific neighborhood
 const generateCommunityData = (name: string, region: string, isChicago: boolean = true) => {
   const regionKey = isChicago ? region : region;
-  const regionFeatures = communityFeatures[regionKey as keyof typeof communityFeatures];
-  const regionPropertyTypes = propertyTypes[regionKey as keyof typeof propertyTypes];
-  const regionManagementServices = managementServices[regionKey as keyof typeof managementServices];
-  const regionDescriptions = communityDescriptions[regionKey as keyof typeof communityDescriptions];
-  const regionHistories = communityHistories[regionKey as keyof typeof communityHistories];
+  const regionFeatures = communityFeatures[regionKey as keyof typeof communityFeatures] || [];
+  const regionPropertyTypes = propertyTypes[regionKey as keyof typeof propertyTypes] || [];
+  const regionManagementServices = managementServices[regionKey as keyof typeof managementServices] || [];
+  const regionDescriptions = communityDescriptions[regionKey as keyof typeof communityDescriptions] || [];
+  const regionHistories = communityHistories[regionKey as keyof typeof communityHistories] || [];
   
   return {
     name,
     slug: generateSlug(name),
     region: isChicago ? "Chicago" : region,
-    heroImage: heroImages[regionKey as keyof typeof heroImages],
+    heroImage: heroImages[regionKey as keyof typeof heroImages] || "https://images.unsplash.com/photo-1560518883-ce09059eeffa",
     description: getRandomItem(regionDescriptions),
     history: getRandomItem(regionHistories),
     features: getRandomItems(regionFeatures, 5),
