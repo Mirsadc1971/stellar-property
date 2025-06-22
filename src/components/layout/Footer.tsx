@@ -71,8 +71,8 @@ export default function Footer() {
         </div>
         
         {/* Bottom Footer */}
-        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">&copy; {currentYear} Manage369 / Stellar Property Group. All rights reserved. Licensed Property Management Company.</p>
+        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
+          <p className="text-gray-400 text-sm">&copy; {currentYear} Manage369 / Stellar Property Group. All rights reserved.</p>
         </div>
         
         {/* License Information */}
