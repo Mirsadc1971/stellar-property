@@ -1,129 +1,170 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MainLayout from "@/components/layout/MainLayout";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { OptimizedImage } from "@/components/seo/OptimizedImage";
-import { Building, MapPin, Home, DollarSign } from "lucide-react";
+import { Building, MapPin, Home, Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import SEOHead from "@/components/seo/SEOHead";
+import { allCommunities, getCommunitiesByRegion } from '@/data/communityGenerator';
 
 export default function Properties() {
-  // Sample properties data
-  const properties = [
-    {
-      id: 1,
-      title: "Lakefront Condominiums",
-      type: "Condominium",
-      location: "North Side, Chicago",
-      units: "120 Units",
-      description: "Luxury lakefront condominiums with stunning views of Lake Michigan. Features include 24/7 doorman, fitness center, and rooftop deck.",
-      image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625"
-    },
-    {
-      id: 2,
-      title: "Downtown High-Rise",
-      type: "Condominium",
-      location: "Downtown Chicago",
-      units: "250 Units",
-      description: "Modern high-rise in the heart of downtown Chicago with premium amenities including indoor pool, business center, and concierge services.",
-      image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742"
-    },
-    {
-      id: 3,
-      title: "Suburban Condo Complex",
-      type: "Condominium",
-      location: "Chicago Suburbs",
-      units: "85 Units",
-      description: "Family-friendly suburban condominium complex with spacious units, community pool, and well-maintained grounds.",
-      image: "https://images.unsplash.com/photo-1496307653780-42ee777d4833"
-    },
-    {
-      id: 4,
-      title: "Historic Brownstone Association",
-      type: "HOA",
-      location: "Lincoln Park, Chicago",
-      units: "24 Units",
-      description: "Beautifully preserved historic brownstones with modern interiors, managed by our expert historic property team.",
-      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43"
-    },
-    {
-      id: 5,
-      title: "Riverside Townhomes",
-      type: "HOA",
-      location: "West Loop, Chicago",
-      units: "42 Units",
-      description: "Contemporary townhome community with private patios, garage parking, and riverside walking paths.",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa"
-    },
-    {
-      id: 6,
-      title: "Parkview Residences",
-      type: "Condominium",
-      location: "Hyde Park, Chicago",
-      units: "68 Units",
-      description: "Elegant mid-rise condominium building overlooking Jackson Park with spacious floor plans and updated amenities.",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa"
-    }
+  const [searchTerm, setSearchTerm] = useState('');
+  
+  // Chicago regions
+  const chicagoRegions = [
+    "Far North Side",
+    "North Side",
+    "Northwest Side",
+    "West Side",
+    "Central/Downtown",
+    "South Side",
+    "Southwest Side",
+    "Far Southwest Side",
+    "Far Southeast Side"
   ];
+
+  // Suburban regions
+  const suburbanRegions = [
+    "North Shore",
+    "Northwest Suburbs",
+    "Western Suburbs",
+    "Southwest Suburbs",
+    "South Suburbs"
+  ];
+
+  // Filter communities based on search term
+  const filteredCommunities = searchTerm
+    ? allCommunities.filter(community => 
+        community.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        community.region.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : [];
 
   return (
     <MainLayout>
+      <SEOHead
+        title="Chicago Communities We Serve | Stellar Property Management"
+        description="Explore our property management services across Chicago and its suburbs. Professional HOA and condo management for communities throughout Chicagoland."
+        canonical="/properties"
+        keywords="Chicago property management, Chicago communities, HOA management Chicago, condo management Chicago, suburban property management"
+      />
+
       <section className="bg-gray-100 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-heading text-4xl font-bold mb-4">Our Managed Properties</h1>
+            <h1 className="font-heading text-4xl font-bold mb-4">Communities We Serve</h1>
             <p className="text-lg text-gray-600">
-              Explore our portfolio of professionally managed properties throughout Chicago and the North Suburbs.
+              Explore our property management services across Chicago and the surrounding suburbs.
+              With over 100 communities served, we have the local expertise to meet your property management needs.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-12 md:py-20">
+      <section className="py-12">
         <div className="container mx-auto px-4">
-          <SectionHeading 
-            title="Featured Properties" 
-            subtitle="Discover some of our premier managed properties across Chicago's diverse neighborhoods."
-            center
-          />
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-            {properties.map((property) => (
-              <Card key={property.id} className="overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                <div className="h-64 overflow-hidden">
-                  <OptimizedImage
-                    src={property.image}
-                    alt={`${property.title} - ${property.type} in ${property.location} managed by Stellar Property Management`}
-                    className="w-full h-full object-cover transition duration-300 hover:scale-105"
-                    loading="lazy"
-                    width={400}
-                    height={256}
-                    aspectRatio="400/256"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
+          <div className="max-w-3xl mx-auto mb-12">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <Input 
+                placeholder="Search communities by name or region..." 
+                className="pl-10"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+            
+            {searchTerm && (
+              <div className="mt-4">
+                <h2 className="text-xl font-semibold mb-4">Search Results ({filteredCommunities.length})</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {filteredCommunities.map((community) => (
+                    <Link 
+                      key={community.slug} 
+                      to={`/communities/${community.slug}`}
+                      className="block p-3 bg-white rounded-lg border hover:shadow-md transition-shadow"
+                    >
+                      <div className="flex items-center gap-2">
+                        <Building className="h-4 w-4 text-darkBlue" />
+                        <span className="font-medium">{community.name}</span>
+                      </div>
+                      <div className="text-sm text-gray-500 mt-1 flex items-center gap-1">
+                        <MapPin className="h-3 w-3" />
+                        <span>{community.region}</span>
+                      </div>
+                    </Link>
+                  ))}
                 </div>
-                <CardContent className="p-6">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-sm font-semibold text-darkBlue bg-blue-50 px-2 py-1 rounded">
-                      {property.type}
-                    </span>
-                    <span className="text-sm text-gray-600">
-                      {property.units}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-heading font-semibold mt-1 mb-2">{property.title}</h3>
-                  <div className="flex items-center text-gray-600 mb-3">
-                    <MapPin className="h-4 w-4 mr-1" />
-                    <p>{property.location}</p>
-                  </div>
-                  <p className="text-gray-600 mb-4 line-clamp-3">{property.description}</p>
-                  <Button variant="outline" className="w-full mt-2 border-darkBlue text-darkBlue hover:bg-darkBlue hover:text-white">
-                    View Property Details
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+              </div>
+            )}
           </div>
+          
+          <Tabs defaultValue="chicago" className="w-full">
+            <TabsList className="grid w-full grid-cols-2 mb-8">
+              <TabsTrigger value="chicago">Chicago</TabsTrigger>
+              <TabsTrigger value="suburbs">Suburbs</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="chicago" className="space-y-12">
+              {chicagoRegions.map((region) => {
+                const communities = getCommunitiesByRegion(region);
+                if (communities.length === 0) return null;
+                
+                return (
+                  <div key={region} id={region.toLowerCase().replace(/\s+/g, '-')}>
+                    <h2 className="text-2xl font-bold mb-6 text-darkBlue">{region}</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                      {communities.map((community) => (
+                        <Link 
+                          key={community.slug} 
+                          to={`/communities/${community.slug}`}
+                          className="block p-4 bg-white rounded-lg border hover:shadow-md transition-shadow"
+                        >
+                          <div className="flex items-center gap-2">
+                            <Building className="h-4 w-4 text-darkBlue" />
+                            <span className="font-medium">{community.name}</span>
+                          </div>
+                          <p className="text-sm text-gray-500 mt-2 line-clamp-2">{community.description}</p>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </TabsContent>
+            
+            <TabsContent value="suburbs" className="space-y-12">
+              {suburbanRegions.map((region) => {
+                const communities = getCommunitiesByRegion(region);
+                if (communities.length === 0) return null;
+                
+                return (
+                  <div key={region} id={region.toLowerCase().replace(/\s+/g, '-')}>
+                    <h2 className="text-2xl font-bold mb-6 text-darkBlue">{region}</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                      {communities.map((community) => (
+                        <Link 
+                          key={community.slug} 
+                          to={`/communities/${community.slug}`}
+                          className="block p-4 bg-white rounded-lg border hover:shadow-md transition-shadow"
+                        >
+                          <div className="flex items-center gap-2">
+                            <Building className="h-4 w-4 text-darkBlue" />
+                            <span className="font-medium">{community.name}</span>
+                          </div>
+                          <p className="text-sm text-gray-500 mt-2 line-clamp-2">{community.description}</p>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 
@@ -158,11 +199,11 @@ export default function Properties() {
               
               <div className="bg-white p-6 rounded-lg shadow-md text-center">
                 <div className="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <DollarSign className="h-8 w-8 text-darkBlue" />
+                  <MapPin className="h-8 w-8 text-darkBlue" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Financial Services</h3>
+                <h3 className="text-xl font-semibold mb-3">Local Expertise</h3>
                 <p className="text-gray-600">
-                  Comprehensive financial management including budgeting, reporting, and collections.
+                  Deep knowledge of local regulations, vendor networks, and community needs across Chicagoland.
                 </p>
               </div>
             </div>
