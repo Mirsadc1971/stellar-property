@@ -12,6 +12,8 @@ import LocalFAQSection from "@/components/common/LocalFAQSection";
 import ChicagoOverviewSection from "@/components/home/ChicagoOverviewSection";
 import AIAssistantSection from "@/components/home/AIAssistantSection";
 import LocationSection from "@/components/home/LocationSection";
+import FeaturedProperties from "@/components/home/FeaturedProperties";
+import SitemapGenerator from "@/components/seo/SitemapGenerator";
 import { seoConfig } from "@/config/seo";
 import {
   organizationData,
@@ -19,7 +21,6 @@ import {
   serviceAreaLinks,
   chicagoFAQs
 } from "@/components/home/homepageData";
-import SitemapGenerator from "@/components/seo/SitemapGenerator";
 
 const Index = () => {
   // useLayoutEffect runs before browser paint, ensuring immediate scroll
@@ -49,6 +50,8 @@ const Index = () => {
 
       <AboutSection />
       <ServicesSection />
+      
+      <FeaturedProperties />
 
       {/* Enhanced Featured Neighborhoods Section */}
       <InternalLinksSection 
