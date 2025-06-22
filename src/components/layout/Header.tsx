@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -67,6 +66,11 @@ export default function Header() {
           
           <a href="#" onClick={(e) => {
             e.preventDefault();
+            handleNavigation('/properties');
+          }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Communities</a>
+          
+          <a href="#" onClick={(e) => {
+            e.preventDefault();
             handleNavigation('/contact');
           }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Contact</a>
           
@@ -124,6 +128,11 @@ export default function Header() {
               e.preventDefault();
               handleNavigation('/services');
             }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Services</a>
+            
+            <a href="#" onClick={(e) => {
+              e.preventDefault();
+              handleNavigation('/properties');
+            }} className="px-3 py-2 text-sm font-medium hover:text-darkBlue">Communities</a>
             
             <a href="#" onClick={(e) => {
               e.preventDefault();
