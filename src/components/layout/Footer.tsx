@@ -23,7 +23,6 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-1">
             <h2 className="font-heading font-bold text-xl mb-4">Stellar Property Management</h2>
             <p className="text-gray-300 mb-4">Chicago's trusted Condominium and HOA Management Experts</p>
-            <NAPConsistency className="text-gray-300" />
           </div>
           
           {/* Company Links */}
@@ -52,23 +51,7 @@ export default function Footer() {
           {/* Contact Info */}
           <div className="col-span-1">
             <h3 className="font-heading font-semibold text-lg mb-4">Contact Us</h3>
-            <div className="space-y-2">
-              <div className="flex items-start">
-                <MapPin className="h-5 w-5 mr-2 text-gray-400 mt-0.5" />
-                <span className="text-gray-300">
-                  5107 North Western Avenue Ste 1S<br />
-                  Chicago, IL 60625
-                </span>
-              </div>
-              <div className="flex items-center">
-                <Mail className="h-5 w-5 mr-2 text-gray-400" />
-                <a href="mailto:service@stellarpropertygroup.com" className="text-gray-300 hover:text-white">service@stellarpropertygroup.com</a>
-              </div>
-              <div className="flex items-center">
-                <Phone className="h-5 w-5 mr-2 text-gray-400" />
-                <a href="tel:7737280652" className="text-gray-300 hover:text-white">773.728.0652</a>
-              </div>
-            </div>
+            <NAPConsistency className="text-gray-300" />
           </div>
         </div>
         
