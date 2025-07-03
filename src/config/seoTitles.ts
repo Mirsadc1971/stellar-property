@@ -1,4 +1,3 @@
-
 // Title templates optimized for 60-character limit
 export const titleTemplates = {
   homepage: 'Chicago Property Management & HOA Services | Stellar',

@@ -1,4 +1,3 @@
-
 import { seoConfig } from '@/config/seo';
 import { getNeighborhoodOGImage } from './ogImageGenerator';
 

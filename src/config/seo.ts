@@ -1,4 +1,3 @@
-
 import { titleTemplates, neighborhoodKeywords, neighborhoodDescriptions } from './seoTitles';
 
 export const seoConfig = {
