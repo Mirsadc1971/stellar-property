@@ -23,7 +23,7 @@ export const NAPConsistency: React.FC<NAPConsistencyProps> = ({
           <span itemProp="postalCode">{seoConfig.business.address.postalCode}</span>
         </address>
         <div>
-          Phone: <a href={`tel:${seoConfig.business.phone.replace(/\D/g, '')}`} itemProp="telephone" className="hover:underline">{seoConfig.business.phone}</a>
+          Phone: <a href={`tel:${seoConfig.business.phone.replace(/\D/g, '')}`} itemProp="telephone\" className="hover:underline">{seoConfig.business.phone}</a>
         </div>
         <div>
           Email: <a href={`mailto:${seoConfig.business.email}`} itemProp="email" className="hover:underline">{seoConfig.business.email}</a>
