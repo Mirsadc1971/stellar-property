@@ -9,7 +9,7 @@ export const organizationData = {
   "image": "https://stellarpropertygroup.com/lovable-uploads/8e2d98b2-5011-4e40-a78f-3a78664306ba.png",
   "description": "Professional Chicago property management company specializing in HOA and condo association management services. Expert solutions for property maintenance, financial management, and community success.",
   "telephone": "+17737280652",
-  "email": "info@stellarpropertygroup.com",
+  "email": "service@stellarpropertygroup.com",
   "priceRange": "$$",
   "address": {
     "@type": "PostalAddress",

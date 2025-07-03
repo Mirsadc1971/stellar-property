@@ -20,7 +20,7 @@ export const seoConfig = {
       addressCountry: 'US'
     },
     phone: '+17737280652',
-    email: 'info@stellarpropertygroup.com',
+    email: 'service@stellarpropertygroup.com',
     geo: {
       latitude: 41.975938,
       longitude: -87.691592
