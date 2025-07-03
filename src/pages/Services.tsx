@@ -1,4 +1,3 @@
-
 import MainLayout from "@/components/layout/MainLayout";
 import SEOHead from "@/components/seo/SEOHead";
 import StructuredData from "@/components/seo/StructuredData";
@@ -150,6 +149,19 @@ export default function Services() {
               <Link to="/about" className="text-darkBlue hover:underline mx-1">experienced team</Link> 
               brings decades of Chicago property management expertise to every building we manage.
             </p>
+            
+            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 mt-8">
+              <h3 className="text-xl font-semibold mb-4">Our Core Services – Tailored Property Management Solutions for Chicago</h3>
+              <p className="text-gray-700 mb-4 text-left">
+                Stellar Property Group delivers expert, hands-on management for residential and commercial properties across the Chicago area. Our Condo Association Management services provide day-to-day operational support, board guidance, and long-term planning to ensure smooth governance and community satisfaction. For subdivisions and planned communities, our HOA Management in Chicago focuses on enforcing rules fairly, managing finances responsibly, and maintaining neighborhood appeal.
+              </p>
+              <p className="text-gray-700 mb-4 text-left">
+                We also offer Commercial Property Management in Chicago, giving building owners peace of mind through tenant oversight, lease compliance, maintenance coordination, and vendor supervision. Our Financial Reporting & Budgeting services help associations and property owners plan wisely with detailed monthly reports, reserve studies, and audit preparation.
+              </p>
+              <p className="text-gray-700 text-left">
+                Through our Maintenance and Vendor Coordination, we ensure prompt, professional service using trusted, licensed contractors. From routine upkeep to emergency repairs, we manage the details so you can focus on the big picture.
+              </p>
+            </div>
           </div>
         </div>
       </section>

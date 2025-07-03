@@ -1,4 +1,3 @@
-
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
