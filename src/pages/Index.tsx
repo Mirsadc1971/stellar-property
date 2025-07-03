@@ -33,10 +33,10 @@ const Index = () => {
   return (
     <MainLayout showBreadcrumbs={false}>
       <SEOHead
-        title={seoConfig.titles.homepage}
-        description={seoConfig.defaultDescription}
+        title="Stellar Property Group | Top Property Management in Chicago"
+        description="Expert property management services in Chicago. Stellar Property Group offers comprehensive solutions for residential & commercial properties. Contact us today!"
         canonical="/"
-        keywords="Chicago HOA management, property management company Chicago, condo association management Chicago, HOA services Chicago, Chicago property management"
+        keywords="Chicago property management, property management company Chicago, condo association management Chicago, HOA services Chicago, Chicago property management"
         structuredData={organizationData}
         serviceType="general"
       />

@@ -13,6 +13,14 @@ export default function AboutSection() {
             <p className="mb-6 text-gray-700">
               At Stellar Property Management, we bring over 28 years of Chicago property management expertise to your HOA or condo association. Our locally-based team understands the unique challenges of managing properties in Chicago's diverse neighborhoods.
             </p>
+            
+            <p className="mb-6 text-gray-700">
+              We specialize in comprehensive property management solutions tailored to Chicago's specific needs. From financial management and maintenance coordination to board support and resident services, our team delivers exceptional results for communities throughout the Chicagoland area.
+            </p>
+            
+            <p className="mb-6 text-gray-700">
+              Our commitment to transparent communication, proactive management, and personalized service has made us the preferred choice for property owners and associations seeking professional management solutions in Chicago.
+            </p>
           </div>
           
           <div className="relative">

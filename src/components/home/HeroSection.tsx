@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -36,7 +35,7 @@ export default function HeroSection() {
               id="hero-heading" 
               className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
             >
-              Chicago's Trusted Property Management Experts
+              Leading Property Management Services in Chicago
             </h1>
             <p 
               className="text-xl text-white/90 mb-8"

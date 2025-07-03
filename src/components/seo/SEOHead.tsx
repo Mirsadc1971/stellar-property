@@ -1,4 +1,3 @@
-
 import { Helmet } from 'react-helmet-async';
 import { seoConfig } from '@/config/seo';
 import { generateOGImageUrl } from '@/utils/ogImageGenerator';

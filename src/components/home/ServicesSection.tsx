@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { SectionHeading } from "../ui/section-heading";
 import { 
