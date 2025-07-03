@@ -151,12 +151,17 @@ export default function ServicesSection() {
 
         {/* Enhanced internal linking section for neighborhoods */}
         <div className="mt-16 bg-white p-8 rounded-lg shadow-md">
-          <h3 className="text-2xl font-bold text-center mb-4">Serving Chicago's Most Desirable Neighborhoods</h3>
+          <h3 className="text-2xl font-bold text-center mb-4">Proudly Serving Chicago's Most Distinctive Communities</h3>
           <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
-            From historic districts to modern developments, our local expertise covers every corner of Chicago. 
-            Our <Link to="/about" className="text-darkBlue hover:underline">experienced team</Link> brings deep 
-            knowledge of each neighborhood's unique character, building types, and community needs to deliver 
-            exceptional property management results.
+            Stellar Property Group brings deep local expertise to some of Chicago's most sought-after neighborhoods and surrounding suburbs. 
+            We provide tailored solutions for property management in Lincoln Park, where historic buildings and high-rise condos demand 
+            detailed oversight and proactive maintenance. In Skokie, our HOA management services are customized to meet the needs of 
+            quiet residential communities with a focus on financial transparency and responsive communication.
+          </p>
+          <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
+            We also specialize in condo management in Evanston, supporting vibrant, mixed-use associations with a balance of commercial 
+            and residential units. In Rogers Park, our team understands the unique dynamics of multi-unit buildings and provides hands-on 
+            management that keeps communities thriving.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 text-center">
             {featuredNeighborhoods.map((neighborhood, index) => (

@@ -13,7 +13,7 @@ export default function ChicagoOverviewSection() {
             For over a decade, Stellar Property Management has been the premier choice for 
             <Link to="/services" className="text-darkBlue hover:underline mx-1">HOA and condo management</Link> 
             throughout Chicago. From luxury <Link to="/neighborhoods/gold-coast" className="text-darkBlue hover:underline">Gold Coast</Link> high-rises 
-            to historic <Link to="/neighborhoods/lincoln-park" className="text-darkBlue hover:underline">Lincoln Park</Link> buildings, 
+            to historic <Link to="/neighborhoods/old-town" className="text-darkBlue hover:underline">Old Town</Link> buildings, 
             we understand the unique challenges each neighborhood presents.
           </p>
           

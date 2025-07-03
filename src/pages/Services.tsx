@@ -176,6 +176,68 @@ export default function Services() {
         className="py-16 bg-gray-50"
       />
       
+      {/* Chicago's Distinctive Communities Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-6 text-center">Proudly Serving Chicago's Most Distinctive Communities</h2>
+            <p className="text-gray-700 mb-6">
+              Stellar Property Group brings deep local expertise to some of Chicago's most sought-after neighborhoods and surrounding suburbs. We provide tailored solutions for property management in Lincoln Park, where historic buildings and high-rise condos demand detailed oversight and proactive maintenance. In Skokie, our HOA management services are customized to meet the needs of quiet residential communities with a focus on financial transparency and responsive communication.
+            </p>
+            <p className="text-gray-700 mb-6">
+              We also specialize in condo management in Evanston, supporting vibrant, mixed-use associations with a balance of commercial and residential units. In Rogers Park, our team understands the unique dynamics of multi-unit buildings and provides hands-on management that keeps communities thriving.
+            </p>
+            <p className="text-gray-700 mb-8">
+              Our familiarity with these areas allows us to offer services that align with local regulations, architectural styles, and community expectations.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h3 className="text-xl font-semibold mb-3">Chicago Neighborhoods</h3>
+                <ul className="space-y-2">
+                  <li className="flex items-center">
+                    <span className="text-darkBlue mr-2">•</span>
+                    <Link to="/neighborhoods/lincoln-park" className="hover:text-darkBlue">Lincoln Park</Link>
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-darkBlue mr-2">•</span>
+                    <Link to="/neighborhoods/gold-coast" className="hover:text-darkBlue">Gold Coast</Link>
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-darkBlue mr-2">•</span>
+                    <Link to="/neighborhoods/river-north" className="hover:text-darkBlue">River North</Link>
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-darkBlue mr-2">•</span>
+                    <Link to="/neighborhoods/west-loop" className="hover:text-darkBlue">West Loop</Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h3 className="text-xl font-semibold mb-3">Suburban Communities</h3>
+                <ul className="space-y-2">
+                  <li className="flex items-center">
+                    <span className="text-darkBlue mr-2">•</span>
+                    <Link to="/communities/evanston" className="hover:text-darkBlue">Evanston</Link>
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-darkBlue mr-2">•</span>
+                    <Link to="/communities/skokie" className="hover:text-darkBlue">Skokie</Link>
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-darkBlue mr-2">•</span>
+                    <Link to="/communities/wilmette" className="hover:text-darkBlue">Wilmette</Link>
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-darkBlue mr-2">•</span>
+                    <Link to="/communities/rogers-park" className="hover:text-darkBlue">Rogers Park</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       <AreasSection />
       
       {/* Services FAQ Section */}
