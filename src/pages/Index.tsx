@@ -13,6 +13,9 @@ import ChicagoOverviewSection from "@/components/home/ChicagoOverviewSection";
 import LocationSection from "@/components/home/LocationSection";
 import FeaturedProperties from "@/components/home/FeaturedProperties";
 import SitemapGenerator from "@/components/seo/SitemapGenerator";
+import LocalBusinessInfo from "@/components/home/LocalBusinessInfo";
+import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
+import LocalSEOTags from "@/components/seo/LocalSEOTags";
 import { seoConfig } from "@/config/seo";
 import {
   organizationData,
@@ -40,6 +43,9 @@ const Index = () => {
         structuredData={organizationData}
         serviceType="general"
       />
+      
+      <LocalBusinessSchema />
+      <LocalSEOTags />
 
       <HeroSection />
       
@@ -66,6 +72,9 @@ const Index = () => {
 
       <WhyChooseUs />
       <Testimonials />
+      
+      {/* Local Business Information for NAP Consistency */}
+      <LocalBusinessInfo />
       
       {/* Enhanced Chicago-Specific FAQ Section */}
       <LocalFAQSection 

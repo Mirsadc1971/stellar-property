@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { NAPConsistency } from '@/components/seo/NAPConsistency';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -22,6 +23,7 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-1">
             <h2 className="font-heading font-bold text-xl mb-4">Stellar Property Management</h2>
             <p className="text-gray-300 mb-4">Chicago's trusted Condominium and HOA Management Experts</p>
+            <NAPConsistency className="text-gray-300" />
           </div>
           
           {/* Company Links */}

@@ -1,4 +1,3 @@
-
 import MainLayout from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Clock, Shield } from "lucide-react";
@@ -7,6 +6,10 @@ import { Recaptcha } from "@/components/ui/recaptcha";
 import { useRecaptcha } from "@/hooks/use-recaptcha";
 import { FormEvent, useState } from "react";
 import { toast } from "sonner";
+import SEOHead from "@/components/seo/SEOHead";
+import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
+import LocalSEOTags from "@/components/seo/LocalSEOTags";
+import { NAPConsistency } from "@/components/seo/NAPConsistency";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -60,6 +63,16 @@ export default function Contact() {
 
   return (
     <MainLayout>
+      <SEOHead
+        title="Contact Stellar Property Management | Chicago Property Experts"
+        description="Contact Chicago's trusted property management company. Reach our team for HOA management, condo association services, and property maintenance solutions."
+        canonical="/contact"
+        keywords="contact property management Chicago, Chicago HOA management contact, condo association management contact, property management phone number Chicago"
+      />
+      
+      <LocalBusinessSchema />
+      <LocalSEOTags />
+      
       {/* Hero Section */}
       <section className="bg-darkBlue text-white py-16">
         <div className="container mx-auto px-4 text-center">
@@ -78,47 +91,7 @@ export default function Contact() {
               <h2 className="font-heading text-3xl font-bold mb-8">Get In Touch</h2>
               
               <div className="space-y-6 mb-10">
-                <div className="flex items-start">
-                  <MapPin className="h-6 w-6 text-darkBlue mr-4 mt-1" />
-                  <div>
-                    <h3 className="font-heading text-xl font-semibold mb-1">Our Address</h3>
-                    <p className="text-gray-600">
-                      5107 North Western Avenue Ste 1S<br />
-                      Chicago, Illinois 60625
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <Phone className="h-6 w-6 text-darkBlue mr-4 mt-1" />
-                  <div>
-                    <h3 className="font-heading text-xl font-semibold mb-1">Phone Number</h3>
-                    <p className="text-gray-600">
-                      <a href="tel:7737280652" className="hover:text-darkBlue">773.728.0652</a>
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <Mail className="h-6 w-6 text-darkBlue mr-4 mt-1" />
-                  <div>
-                    <h3 className="font-heading text-xl font-semibold mb-1">Email Address</h3>
-                    <p className="text-gray-600">
-                      <a href="mailto:service@stellarpropertygroup.com" className="hover:text-darkBlue">service@stellarpropertygroup.com</a>
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <Clock className="h-6 w-6 text-darkBlue mr-4 mt-1" />
-                  <div>
-                    <h3 className="font-heading text-xl font-semibold mb-1">Office Hours</h3>
-                    <p className="text-gray-600">
-                      Monday - Friday: 9:30 AM - 4:30 PM<br />
-                      Saturday - Sunday: Closed
-                    </p>
-                  </div>
-                </div>
+                <NAPConsistency showTitle={false} />
               </div>
               
               <div className="bg-gray-100 p-6 rounded-lg">

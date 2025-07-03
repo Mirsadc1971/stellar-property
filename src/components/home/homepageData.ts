@@ -1,4 +1,3 @@
-
 export const organizationData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",

@@ -30,6 +30,17 @@ export const seoConfig = {
       'https://www.facebook.com/stellarpropertymgmt',
       'https://www.linkedin.com/company/stellarpropertymgmt',
       'https://twitter.com/stellarpropmgmt'
+    ],
+    googleMyBusiness: {
+      placeId: 'ChIJA32NGOvND4gRGIKwKSQfIBs',
+      reviewUrl: 'https://search.google.com/local/writereview?placeid=ChIJA32NGOvND4gRGIKwKSQfIBs'
+    },
+    yearFounded: '2007',
+    serviceAreas: [
+      'Chicago', 'Lincoln Park', 'Gold Coast', 'River North', 'Lakeview',
+      'West Loop', 'Old Town', 'Wicker Park', 'Bucktown', 'Streeterville',
+      'South Loop', 'The Loop', 'Uptown', 'Rogers Park', 'Edgewater',
+      'Hyde Park', 'Andersonville', 'Evanston', 'Skokie', 'Wilmette'
     ]
   },
 

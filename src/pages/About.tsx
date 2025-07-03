@@ -1,8 +1,11 @@
 import MainLayout from "@/components/layout/MainLayout";
 import SEOHead from "@/components/seo/SEOHead";
 import SchemaMarkup from "@/components/seo/SchemaMarkup";
+import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
+import LocalSEOTags from "@/components/seo/LocalSEOTags";
 import { Link } from "react-router-dom";
 import { Users, Award, Clock, MapPin } from "lucide-react";
+import { NAPConsistency } from "@/components/seo/NAPConsistency";
 
 export default function About() {
   const aboutStructuredData = {
@@ -30,6 +33,8 @@ export default function About() {
       />
       
       <SchemaMarkup type="organization" />
+      <LocalBusinessSchema />
+      <LocalSEOTags />
       
       {/* Hero Section */}
       <section className="bg-darkBlue text-white py-16">
@@ -99,6 +104,45 @@ export default function About() {
                 We anticipate needs and address issues before they become problems, protecting 
                 your investment and maintaining community standards.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Information Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading text-3xl font-bold text-center mb-12">Our Chicago Office</h2>
+          <div className="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-md">
+            <NAPConsistency showTitle={true} />
+            
+            <div className="mt-8">
+              <h3 className="text-xl font-semibold mb-4">Service Areas</h3>
+              <p className="text-gray-600 mb-4">
+                We proudly serve properties throughout Chicago and the North Suburbs, including:
+              </p>
+              <div className="grid grid-cols-2 gap-2 text-sm">
+                <div>
+                  <strong>Chicago Neighborhoods:</strong>
+                  <ul className="list-disc ml-5 mt-1 space-y-1">
+                    <li>Lincoln Park</li>
+                    <li>Gold Coast</li>
+                    <li>River North</li>
+                    <li>Lakeview</li>
+                    <li>West Loop</li>
+                  </ul>
+                </div>
+                <div>
+                  <strong>North Suburbs:</strong>
+                  <ul className="list-disc ml-5 mt-1 space-y-1">
+                    <li>Evanston</li>
+                    <li>Skokie</li>
+                    <li>Wilmette</li>
+                    <li>Highland Park</li>
+                    <li>Northbrook</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
